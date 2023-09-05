@@ -3,6 +3,7 @@
 
 
 class Quad {
+private:
 	//================
 	//メンバ変数
 	//================
@@ -15,6 +16,7 @@ class Quad {
 	//画像の描画範囲
 	Vec2 imageSize_;
 
+public:
 	//===============
 	//メンバ関数
 	//===============
@@ -45,7 +47,7 @@ class Quad {
 	//スクリーン座標系
 	Vec2 getScreenLtVertex() { return localCo.screenFromOrigin(vertex_[0]); }
 	Vec2 getScreenRtVertex() { return localCo.screenFromOrigin(vertex_[1]); }
-	Vec2 getScreenLbVertex() {return localCo.screenFromOrigin(vertex_[2]);}
+	Vec2 getScreenLbVertex() { return localCo.screenFromOrigin(vertex_[2]); }
 	Vec2 getScreenRbVertex() { return localCo.screenFromOrigin(vertex_[3]); }
 
 
