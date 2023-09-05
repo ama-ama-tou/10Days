@@ -10,7 +10,7 @@ struct Box {
 	float height;
 	bool isHitting;
 	void isHit(Box& another);
-	void vertexUpdata();
+	void vertexUpdate();
 };
 
 
@@ -26,7 +26,7 @@ void Box::isHit(Box& another) {
 }
 
 //4頂点の座標の更新
-void Box::vertexUpdata() {
+void Box::vertexUpdate() {
 	//左上座標
 	vertex[0].x = pos.x - (width / 2);
 	vertex[0].y = pos.y - (height / 2);
