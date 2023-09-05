@@ -8,6 +8,7 @@ class Player :
 	//ƒƒ“ƒo•Ï”
 	//================
 	Vec2 pos;
+
 	float speed;
 
 	
