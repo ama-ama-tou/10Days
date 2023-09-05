@@ -12,7 +12,6 @@ public:
 
 	Vec2 screenFromOrigin(Vec2 target) {
 		return target += origin_;
-
 	}
 
 
