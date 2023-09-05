@@ -1,21 +1,21 @@
-#pragma once
+ï»¿#pragma once
 #include"Vec2.h"
 
 struct Quad {
 	//================
-	//ƒƒ“ƒo•Ï”
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
 	//================
 	Vec2 vertex_[4];
 	
 
 	int GH_;
-	//‰æ‘œ‚Ì¶ãÀ•W
+	//ç”»åƒã®å·¦ä¸Šåº§æ¨™
 	Vec2 imageLtPos_;
-	//‰æ‘œ‚Ì•`‰æ”ÍˆÍ
+	//ç”»åƒã®æç”»ç¯„å›²
 	Vec2 imageSize_;
 
 	//===============
-	//ƒƒ“ƒoŠÖ”
+	//ãƒ¡ãƒ³ãƒé–¢æ•°
 	//===============
 
 	void Init(Vec2 pos, Vec2 size, int GH, Vec2 imageLtPos, Vec2 imageSize) {
