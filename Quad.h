@@ -31,5 +31,4 @@ struct Quad {
 	}
 
 	void Draw();
-
 };

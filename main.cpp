@@ -13,8 +13,6 @@ struct Box {
 	void vertexUpdate();
 };
 
-
-
  // 当たり判定関数
 void Box::isHit(Box& another) {
 	bool hitLeft = vertex[1].x < another.vertex[0].x && vertex[2].x > another.vertex[0].x;
@@ -40,7 +38,6 @@ void Box::vertexUpdate() {
 	vertex[3].x = pos.x + (width / 2);
 	vertex[3].y = pos.y + (height / 2);
 }
-
 
 
 // Windowsアプリでのエントリーポイント(main関数)
