@@ -20,6 +20,9 @@
     <Filter Include="lib\unit">
       <UniqueIdentifier>{a40e95c6-7daf-46a3-9799-9ac83c073eb5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entitiy">
+      <UniqueIdentifier>{87bcd6c8-c0b9-4271-ae6f-bf2346e9d8c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\DirectXCommon.cpp">
@@ -40,6 +43,9 @@
     </ClCompile>
     <ClCompile Include="C:\KamataEngine\DirectXGame\2d\ImGuiManager.cpp">
       <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Quad.cpp">
+      <Filter>Entitiy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -114,7 +120,14 @@
     <ClInclude Include="Vec2.h">
       <Filter>lib\unit</Filter>
     </ClInclude>
-    <ClInclude Include="Coordinate.h" />
-    <ClInclude Include="LoadCSV.h" />
+    <ClInclude Include="Coordinate.h">
+      <Filter>lib\unit</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadCSV.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="Quad.h">
+      <Filter>Entitiy</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -19,6 +19,5 @@ public:
 	//=========================
 	Vec2 getOrigin() { return origin_; }
 	void setOrigin(Vec2& origin) { origin_ = origin; }
-
 };
 
