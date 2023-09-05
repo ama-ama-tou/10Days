@@ -19,7 +19,7 @@ class Player :
 	
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, int GH, Vec2 imageLtPos, Vec2 imageSize) {
 		Quad::Init(pos, size, localCoOrigin, GH, imageLtPos, imageSize);
-		speed = 8.0f;
+		speed = imageSize;
 	}
 
 	void Move(char* keys,char* preKeys);
