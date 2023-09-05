@@ -107,6 +107,7 @@
     <ClCompile Include="C:\KamataEngine\DirectXGame\2d\ImGuiManager.cpp" />
     <ClCompile Include="C:\KamataEngine\Adapter\Novice.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Quad.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +139,7 @@
     <ClInclude Include="C:\KamataEngine\Adapter\Novice.h" />
     <ClInclude Include="Coordinate.h" />
     <ClInclude Include="LoadCSV.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Quad.h" />
     <ClInclude Include="Vec2.h" />
   </ItemGroup>
