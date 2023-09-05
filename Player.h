@@ -1,5 +1,6 @@
 #pragma once
 #include "Quad.h"
+#include <Novice.h>
 class Player :
     public Quad {
 

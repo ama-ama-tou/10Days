@@ -11,7 +11,7 @@ void Player::Move(char* keys,char* preKeys) {
 	//ã‰º‚ÌˆÚ“®
 	if (keys[DIK_W]) {
 		pos.y -= speed;
-	} else if (DIK_S) {
+	} else if (keys[DIK_S]) {
 		pos.y += speed;
 	}
 }
