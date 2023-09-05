@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 #include"Vec2.h"
 
 //==============================
-//@@À•WŒnƒNƒ‰ƒX
+//ã€€ã€€åº§æ¨™ç³»ã‚¯ãƒ©ã‚¹
 //==============================
 class Coordinate{
 	
@@ -17,7 +17,7 @@ public:
 	}
 
 	//=========================
-	//ƒQƒbƒ^[/ƒZƒbƒ^[
+	//ã‚²ãƒƒã‚¿ãƒ¼/ã‚»ãƒƒã‚¿ãƒ¼
 	//=========================
 	Vec2 getOrigin() { return origin_; }
 	void setOrigin(Vec2& origin) { origin_ = origin; }

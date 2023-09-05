@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include"Coordinate.h"
 
 class Quad {
