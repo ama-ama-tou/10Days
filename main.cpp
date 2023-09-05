@@ -24,21 +24,7 @@ void Box::isHit(Box& another) {
 	isHitting = (hitLeft || hitRight) && (hitTop || hitBottom);
 }
 
-//4頂点の座標の更新
-void Box::vertexUpdate() {
-	//左上座標
-	vertex[0].x = pos.x - (width / 2);
-	vertex[0].y = pos.y - (height / 2);
-	//右上座標
-	vertex[1].x = pos.x + (width / 2);
-	vertex[1].y = pos.y - (height / 2);
-	//左下座標
-	vertex[2].x = pos.x - (width / 2);
-	vertex[2].y = pos.y + (height / 2);
-	//右下座標
-	vertex[3].x = pos.x + (width / 2);
-	vertex[3].y = pos.y + (height / 2);
-}
+
 
 
 // Windowsアプリでのエントリーポイント(main関数)
