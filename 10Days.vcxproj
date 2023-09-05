@@ -106,7 +106,6 @@
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\TextureManager.cpp" />
     <ClCompile Include="C:\KamataEngine\DirectXGame\2d\ImGuiManager.cpp" />
     <ClCompile Include="C:\KamataEngine\Adapter\Novice.cpp" />
-    <ClCompile Include="Coordinate.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -136,7 +135,7 @@
     <ClInclude Include="C:\KamataEngine\DirectXGame\input\Input.h" />
     <ClInclude Include="C:\KamataEngine\DirectXGame\scene\GameScene.h" />
     <ClInclude Include="C:\KamataEngine\Adapter\Novice.h" />
-    <ClInclude Include="CoordinateSystem.h" />
+    <ClInclude Include="Coordinate.h" />
     <ClInclude Include="LoadCSV.h" />
     <ClInclude Include="Vec2.h" />
   </ItemGroup>

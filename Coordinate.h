@@ -11,7 +11,7 @@ class Coordinate{
 public:
 
 	Vec2 screenFromOrigin(Vec2 target) {
-		return target += origin_;
+		return target+=origin_;
 	}
 
 

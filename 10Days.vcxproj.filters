@@ -114,5 +114,7 @@
     <ClInclude Include="Vec2.h">
       <Filter>lib\unit</Filter>
     </ClInclude>
+    <ClInclude Include="Coordinate.h" />
+    <ClInclude Include="LoadCSV.h" />
   </ItemGroup>
 </Project>
