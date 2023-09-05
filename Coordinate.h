@@ -10,6 +10,8 @@ class Coordinate{
 
 public:
 
+	Coordinate(Vec2 origin) :origin_(origin) {};
+
 	Vec2 screenFromOrigin(Vec2 target) {
 		return target+=origin_;
 	}
