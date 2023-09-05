@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include"Vec2.h"
 
+
 struct Quad {
 	//================
 	//メンバ変数
@@ -30,8 +31,5 @@ struct Quad {
 	}
 
 	void Draw();
-
-
-
 
 };

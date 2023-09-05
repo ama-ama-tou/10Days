@@ -38,7 +38,6 @@ struct Vec2 final {
         this->x += other.x;
         this->y += other.y;
 
-        return ;
     }
 
     // ベクトルの減算
@@ -48,7 +47,7 @@ struct Vec2 final {
     Vec2 operator-=(const Vec2& other) {
         this->x -= other.x;
         this->y -= other.y;
-        return ;
+     
     }
 
     Vec2 operator*(const Vec2& other) const {
