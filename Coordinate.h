@@ -14,15 +14,10 @@ public:
 		return target+=origin_;
 	}
 
-
-
 	//=========================
 	//ゲッター/セッター
 	//=========================
 	Vec2 getOrigin() { return origin_; }
 	void setOrigin(Vec2& origin) { origin_ = origin; }
-
-
-
 };
 
