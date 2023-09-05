@@ -2,26 +2,26 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 /// <summary>
-/// 2ŸŒ³ƒxƒNƒgƒ‹
+/// 2æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«
 /// </summary>
 struct Vec2 final {
     float x;
     float y;
-    // ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+    // ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     Vec2() : x(0), y(0) {}
     Vec2(float x, float y) : x(x), y(y) {}
 
-    // ƒxƒNƒgƒ‹‚Ì’·‚³‚ğ•Ô‚·
+    // ãƒ™ã‚¯ãƒˆãƒ«ã®é•·ã•ã‚’è¿”ã™
     float length() const {
         return sqrtf(x * x + y * y);
     }
 
-    // ƒxƒNƒgƒ‹‚Ì’·‚³‚Ì2æ‚ğ•Ô‚·iŒvZ‚ÌÅ“K‰»—pj
+    // ãƒ™ã‚¯ãƒˆãƒ«ã®é•·ã•ã®2ä¹—ã‚’è¿”ã™ï¼ˆè¨ˆç®—ã®æœ€é©åŒ–ç”¨ï¼‰
     float lengthSquared() const {
         return x * x + y * y;
     }
 
-    // ƒxƒNƒgƒ‹‚ğ³‹K‰»‚µ‚½Œ‹‰Ê‚ğ•Ô‚·
+    // ãƒ™ã‚¯ãƒˆãƒ«ã‚’æ­£è¦åŒ–ã—ãŸçµæœã‚’è¿”ã™
     Vec2 normalize() const {
         float len = length();
         if (len != 0) {
@@ -30,7 +30,7 @@ struct Vec2 final {
         return Vec2(0, 0);
     }
 
-    // ƒxƒNƒgƒ‹‚Ì‰ÁZ
+    // ãƒ™ã‚¯ãƒˆãƒ«ã®åŠ ç®—
     Vec2 operator+(const Vec2& other) const {
         return Vec2(x + other.x, y + other.y);
     }
@@ -40,7 +40,7 @@ struct Vec2 final {
 
     }
 
-    // ƒxƒNƒgƒ‹‚ÌŒ¸Z
+    // ãƒ™ã‚¯ãƒˆãƒ«ã®æ¸›ç®—
     Vec2 operator-(const Vec2& other) const {
         return Vec2(x - other.x, y - other.y);
     }
@@ -54,7 +54,7 @@ struct Vec2 final {
         return Vec2(x * other.x, y * other.y);
     }
 
-    // ƒxƒNƒgƒ‹‚ÌƒXƒJƒ‰[œZ
+    // ãƒ™ã‚¯ãƒˆãƒ«ã®ã‚¹ã‚«ãƒ©ãƒ¼é™¤ç®—
     Vec2 operator/(float scalar) const {
         if (scalar != 0) {
             return Vec2(x / scalar, y / scalar);

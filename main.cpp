@@ -4,26 +4,44 @@
 const char kWindowTitle[] = "LC1B_08_オリハライッセイ_タイトル";
 
 struct Box {
-private:
 	Vec2 vertex[4];
 	Vec2 pos;
 	float width;
 	float height;
 	bool isHitting;
-
-public:
 	void isHit(Box& another);
+	void vertexUpdata();
 };
+
+
 
  // 当たり判定関数
 void Box::isHit(Box& another) {
-	bool hitLeft = vertex[1].x > another.vertex[0].x && vertex[0].x < another.vertex[3].x;
-	bool hitRight = vertex[0].x > another.vertex[1].x && vertex[1].x < another.vertex[0].x;
-	bool hitTop = vertex[3].y > another.vertex[0].y && vertex[0].y < another.vertex[3].y;
-	bool hitBottom = vertex[0].y > another.vertex[3].y && vertex[3].y < another.vertex[0].y;
+	bool hitLeft = vertex[1].x < another.vertex[0].x && vertex[2].x > another.vertex[0].x;
+	bool hitRight = vertex[0].x > another.vertex[1].x && vertex[3].x < another.vertex[1].x;
+	bool hitTop = vertex[1].y < another.vertex[0].y && vertex[0].y > another.vertex[2].y;
+	bool hitBottom = vertex[0].y > another.vertex[3].y && vertex[2].y < another.vertex[3].y;
 
-	isHitting = (hitLeft && hitTop) || (hitRight && hitTop) || (hitLeft && hitBottom) || (hitRight && hitBottom);
+	isHitting = (hitLeft || hitRight) && (hitTop || hitBottom);
 }
+
+//4頂点の座標の更新
+void Box::vertexUpdata() {
+	//左上座標
+	vertex[0].x = pos.x - (width / 2);
+	vertex[0].y = pos.y - (height / 2);
+	//右上座標
+	vertex[1].x = pos.x + (width / 2);
+	vertex[1].y = pos.y - (height / 2);
+	//左下座標
+	vertex[2].x = pos.x - (width / 2);
+	vertex[2].y = pos.y + (height / 2);
+	//右下座標
+	vertex[3].x = pos.x + (width / 2);
+	vertex[3].y = pos.y + (height / 2);
+}
+
+
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
