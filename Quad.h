@@ -1,7 +1,6 @@
 #pragma once
 #include"Coordinate.h"
 
-
 class Quad {
 	//================
 	//ƒƒ“ƒo•Ï”
