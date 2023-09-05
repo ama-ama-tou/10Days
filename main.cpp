@@ -3,6 +3,28 @@
 
 const char kWindowTitle[] = "LC1B_08_オリハライッセイ_タイトル";
 
+struct Box {
+private:
+	Vec2 vertex[4];
+	Vec2 pos;
+	float width;
+	float height;
+	bool isHitting;
+
+public:
+	void isHit(Box& another);
+};
+
+ // 当たり判定関数
+void Box::isHit(Box& another) {
+	bool hitLeft = vertex[1].x > another.vertex[0].x && vertex[0].x < another.vertex[3].x;
+	bool hitRight = vertex[0].x > another.vertex[1].x && vertex[1].x < another.vertex[0].x;
+	bool hitTop = vertex[3].y > another.vertex[0].y && vertex[0].y < another.vertex[3].y;
+	bool hitBottom = vertex[0].y > another.vertex[3].y && vertex[3].y < another.vertex[0].y;
+
+	isHitting = (hitLeft && hitTop) || (hitRight && hitTop) || (hitLeft && hitBottom) || (hitRight && hitBottom);
+}
+
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
