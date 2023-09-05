@@ -36,13 +36,13 @@ class Quad {
 	//===============
 	//ゲッター/セッター
 	//===============
-	
+	//ローカル座標系
 	Vec2 getLtVertex() { return vertex_[0]; }
 	Vec2 getRtVertex() { return vertex_[1]; }
 	Vec2 getLbVertex() { return vertex_[2]; }
 	Vec2 getRbVertex() { return vertex_[3]; }
 
-	//
+	//スクリーン座標系
 	Vec2 getScreenLtVertex() { return localCo.screenFromOrigin(vertex_[0]); }
 	Vec2 getScreenRtVertex() { return localCo.screenFromOrigin(vertex_[1]); }
 	Vec2 getScreenLbVertex() {return localCo.screenFromOrigin(vertex_[2]);}
