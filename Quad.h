@@ -1,24 +1,23 @@
-#pragma once
+ï»¿#pragma once
 #include"Coordinate.h"
-
 
 class Quad {
 private:
 	//================
-	//ƒƒ“ƒo•Ï”
+	//ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½Ïï¿½
 	//================
 	Coordinate localCo;
 	Vec2 vertex_[4];
 
 	int GH_;
-	//‰æ‘œ‚Ì¶ãÀ•W
+	//ï¿½æ‘œï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½W
 	Vec2 imageLtPos_;
-	//‰æ‘œ‚Ì•`‰æ”ÍˆÍ
+	//ï¿½æ‘œï¿½Ì•`ï¿½ï¿½Íˆï¿½
 	Vec2 imageSize_;
 
 public:
 	//===============
-	//ƒƒ“ƒoŠÖ”
+	//ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½Öï¿½
 	//===============
 
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin,int GH, Vec2 imageLtPos, Vec2 imageSize) {
@@ -36,15 +35,15 @@ public:
 
 	void Draw();
 	//===============
-	//ƒQƒbƒ^[/ƒZƒbƒ^[
+	//ï¿½Qï¿½bï¿½^ï¿½[/ï¿½Zï¿½bï¿½^ï¿½[
 	//===============
-	//ƒ[ƒJƒ‹À•WŒn
+	//ï¿½ï¿½ï¿½[ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½n
 	Vec2 getLtVertex() { return vertex_[0]; }
 	Vec2 getRtVertex() { return vertex_[1]; }
 	Vec2 getLbVertex() { return vertex_[2]; }
 	Vec2 getRbVertex() { return vertex_[3]; }
 
-	//ƒXƒNƒŠ[ƒ“À•WŒn
+	//ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½n
 	Vec2 getScreenLtVertex() { return localCo.screenFromOrigin(vertex_[0]); }
 	Vec2 getScreenRtVertex() { return localCo.screenFromOrigin(vertex_[1]); }
 	Vec2 getScreenLbVertex() { return localCo.screenFromOrigin(vertex_[2]); }
