@@ -23,6 +23,9 @@
     <Filter Include="Entitiy">
       <UniqueIdentifier>{87bcd6c8-c0b9-4271-ae6f-bf2346e9d8c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{b8cc80df-e4f7-4442-90ba-d62483d192ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\DirectXCommon.cpp">
@@ -50,8 +53,8 @@
     <ClCompile Include="Player.cpp">
       <Filter>Entitiy</Filter>
     </ClCompile>
-    <ClCompile Include="MapChip.cpp">
-      <Filter>KamataEngine</Filter>
+    <ClCompile Include="Block.cpp">
+      <Filter>Entitiy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -138,8 +141,11 @@
     <ClInclude Include="Player.h">
       <Filter>Entitiy</Filter>
     </ClInclude>
-    <ClInclude Include="MapChip.h">
+    <ClInclude Include="Block.h">
       <Filter>Entitiy</Filter>
+    </ClInclude>
+    <ClInclude Include="base.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
