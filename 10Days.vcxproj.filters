@@ -26,6 +26,9 @@
     <Filter Include="Game">
       <UniqueIdentifier>{b8cc80df-e4f7-4442-90ba-d62483d192ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{17f885c7-8152-4aae-852c-e973539cdb3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\DirectXCommon.cpp">
@@ -55,6 +58,18 @@
     </ClCompile>
     <ClCompile Include="Block.cpp">
       <Filter>Entitiy</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Title.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Select.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Game.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +161,18 @@
     </ClInclude>
     <ClInclude Include="base.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Title.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Select.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Game.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
