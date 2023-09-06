@@ -16,10 +16,9 @@ class Block :
     bool isLocated_;
     BlockType type_;
 
-    
-
 public:
-    void Init(int colNum,int rowNum, Vec2 size,
+    void Init(int MaxCol, int MaxRow, 
+        int colNum, int rowNum,
         Vec2 localCoOrigin,
         Vec2 imageLtPos, Vec2 imageSize,BlockType whatType);
 
