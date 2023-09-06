@@ -3,8 +3,4 @@
 void CollisionManager::Collision() {
 	player_.
 
-
-
-
-
 }
