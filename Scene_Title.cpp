@@ -50,9 +50,15 @@ void Scene_Title::Load() {
 
 
 void Scene_Title::Update() {
-
-
-
+	if (Button_goManu.getIsClicked()) {
+		sceneNum = SCENE_MENU;
+	}
+	if (Button_goSelect.getIsClicked()) {
+		sceneNum = SCENE_STAGESELLECT;
+	}
+	if (Button_exit.getIsClicked()) {
+	//ƒQ[ƒ€‚ğI—¹‚³‚¹‚éˆ—
+	}
 }
 
 

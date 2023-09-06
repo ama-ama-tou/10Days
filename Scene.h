@@ -8,6 +8,8 @@ enum SceneNum {
 };
 
 class Scene{
+protected:
+	static int sceneNum;
 
 public :
 

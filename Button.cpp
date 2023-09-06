@@ -12,7 +12,10 @@ void Button::checkInsideMouse(Vec2 mousePos) {
 void Button::Update(Vec2 mousePos, int clickState) {
 	Button::checkInsideMouse(mousePos);
 	if (isInsideMouse_) {
-		isClicked_ = clickState;
+		if (clickState==1) {
+			//右クリックされたとき
+			isClicked_ = true;
+		}
 	}
 }
 
