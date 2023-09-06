@@ -16,13 +16,22 @@ class Block :
     BlockType type_;
 
     //当たっているブロックの種類
-    int isHitBlockType_;
+    int isHitBlockType_[4];
 
 public:
+
+   //=======================
+   //メンバ関数
+   //=======================
     void Init(int MaxCol, int MaxRow, 
         int colNum, int rowNum,
         Vec2 localCoOrigin,
         Vec2 imageLtPos, Vec2 imageSize,BlockType whatType);
+
+
+    int CalcuRowAddress(int vertexNum);
+    int CalcuColAddress(int vertexNum);
+
     //=======================
     //ゲッター/セッター
     //=======================
@@ -32,8 +41,15 @@ public:
     int getHitting() { return isHit_; }
     void setHitting(int isHit) { isHit_ = isHit; }
 
-    int getHitBlockType() { return isHitBlockType_; }
-    void setHitBlockType(int isHitBlockType) { isHitBlockType_ = isHitBlockType; }
+    //各頂点がどのブロックと接しているかのフラグ
+    int getHitBlockLtType() { return isHitBlockType_[0]; }
+    int getHitBlockRtType() { return isHitBlockType_[1]; }
+    int getHitBlockRbType() { return isHitBlockType_[2]; }
+    int getHitBlockLbType() { return isHitBlockType_[3]; }
 
+    void setHitBlockLtType(int isHitBlockType) { isHitBlockType_[0] = isHitBlockType; }
+    void setHitBlockRtType(int isHitBlockType) { isHitBlockType_[1] = isHitBlockType; }
+    void setHitBlockRbType(int isHitBlockType) { isHitBlockType_[2] = isHitBlockType; }
+    void setHitBlockLbType(int isHitBlockType) { isHitBlockType_[3] = isHitBlockType; }
 };
 
