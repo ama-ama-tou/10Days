@@ -15,6 +15,8 @@ class Block :
     bool isHit_;
     BlockType type_;
 
+    //当たっているブロックの種類
+
 public:
     void Init(int MaxCol, int MaxRow, 
         int colNum, int rowNum,
