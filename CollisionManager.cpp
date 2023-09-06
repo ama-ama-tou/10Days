@@ -12,6 +12,14 @@ void CollisionManager::Collision() {
 		}
 	}
 
+	///“–‚½‚è”»’è
+	for (int vertexNum = 0; vertexNum < 4; vertexNum++) {
+		rowAddress_ = player_.CalcuRowAddress(vertexNum);
+		colAddress_ = player_.CalcuColAddress(vertexNum);
+
+		if(block_[colAddress_][rowAddress_] )
 
 
+
+	}
 };
