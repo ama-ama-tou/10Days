@@ -5,6 +5,7 @@
 
 class Scene_Title:
 	public Scene{
+
 private:
 	Quad titleBar;
 
