@@ -2,7 +2,7 @@
 #include "Quad.h"
 #include <Vec2.h>
 
-class Bottun :
+class Button :
 	public Quad {
 private:
 

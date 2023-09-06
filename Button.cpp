@@ -1,4 +1,4 @@
-#include "Bottun.h"
+#include "Buttun.h"
 #include <Novice.h>
 
 //マウスがスクリーン上にあるか調べる関数
