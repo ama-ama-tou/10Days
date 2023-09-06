@@ -19,6 +19,10 @@ class Player {
 	//画像サイズ(表示する)
 	Vec2 imageSize_;
 
+	//面しているかどうか
+	bool isFacing_;
+
+public:
 	//===============
 	//メンバ関数
 	//===============
@@ -40,6 +44,13 @@ class Player {
 	void Update(char* keys, char* preKeys);
 	void Draw();
 	void Move(char* keys,char* preKeys);
-	void isHit();
+
+	//===============
+	//ゲッター/セッター
+	//===============
+	bool getIsFacing() { return isFacing_; }
+	
+	bool setIsFacing(bool isFacing) { isFacing_ = isFacing; }
+	
 };
 
