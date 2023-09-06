@@ -19,7 +19,7 @@ class Block :
     
 
 public:
-    void Init(Vec2 pos, Vec2 size,
+    void Init(int colNum,int rowNum, Vec2 size,
         Vec2 localCoOrigin,
         Vec2 imageLtPos, Vec2 imageSize,BlockType whatType);
 

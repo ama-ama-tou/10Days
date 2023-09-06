@@ -1,7 +1,7 @@
 ﻿#include "Block.h"
 #include <Novice.h>
 
-void Block::Init(Vec2 pos, Vec2 size,
+void Block::Init(int MaxCol, int MaxRow, Vec2 stageWindowSize,
 	Vec2 localCoOrigin,
 	Vec2 imageLtPos, Vec2 imageSize, BlockType whatType) {
 
