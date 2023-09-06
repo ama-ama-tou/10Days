@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"Player.h"
 #include"Block.h"
 #include"CollisionManager.h"
@@ -10,7 +10,7 @@ enum StageNum {
 	STAGE_2ND,
 	STAGE_3RD,
 	STAGE_4TH
-	///ŒãX’Ç‰Á
+	///å¾Œã€…è¿½åŠ 
 
 
 };
@@ -19,23 +19,23 @@ class Stage {
 
 	Coordinate stageCo_{ kFieldLtPos };
 
-	//ƒvƒŒƒCƒ„[
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 	Player* player_;
 
-	//ƒ[ƒh‚·‚éƒtƒ@ƒCƒ‹
+	//ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«
 	const std::string& csvFilePath_;
-	//ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚ñ‚¾‚à‚Ì
+	//ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚“ã ã‚‚ã®
 	std::vector<std::vector<int>> stageCsv_;
 
 
 	Block*** block_;
-	//block_‚Ì—v‘f”
+	//block_ã®è¦ç´ æ•°
 	int row_;
 	int col_;
 
-	//ƒNƒŠƒA‚µ‚½‚©
+	//ã‚¯ãƒªã‚¢ã—ãŸã‹
 	bool isClear;
-	//ƒŠƒZƒbƒg‚·‚é‚©
+	//ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã‹
 	bool isReset;
 
 

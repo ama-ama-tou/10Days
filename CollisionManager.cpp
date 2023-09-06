@@ -1,10 +1,10 @@
-#include "CollisionManager.h"
+ï»¿#include "CollisionManager.h"
 #include "player.h"
 #include "Vec2.h"
 #include "Block.h"
 
 
-///ƒvƒŒƒCƒ„[‚Ì“–‚½‚è”»’è
+///ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å½“ãŸã‚Šåˆ¤å®š
 void CollisionManager::playerCollision() {
 
 	for (int i = 0; i < 12; i++) {
@@ -14,31 +14,31 @@ void CollisionManager::playerCollision() {
 		}
 	}
 
-	///“–‚½‚è”»’è
+	///å½“ãŸã‚Šåˆ¤å®š
 	for (int vertexNum = 0; vertexNum < 4; vertexNum++) {
-		//’¸“_‚Ì”Ô’n‚ÌŒvZ
+		//é ‚ç‚¹ã®ç•ªåœ°ã®è¨ˆç®—
 		rowAddress_ = player_.CalcuRowAddress(vertexNum);
 		colAddress_ = player_.CalcuColAddress(vertexNum);
 
-		///Še’¸“_‚Ì”Ô’n‚©‚ç‚Ç‚ÌƒuƒƒbƒN‚Æ“–‚½‚Á‚Ä‚¢‚é‚©‚Ì”»’è
+		///å„é ‚ç‚¹ã®ç•ªåœ°ã‹ã‚‰ã©ã®ãƒ–ãƒ­ãƒƒã‚¯ã¨å½“ãŸã£ã¦ã„ã‚‹ã‹ã®åˆ¤å®š
 		if (block_[colAddress_][rowAddress_]->getType() != NONE) {
 			if (vertexNum == 0) {
-				player_.setIsHitLt(true); //¶ã‚ª“–‚½‚Á‚Ä‚¢‚é
+				player_.setIsHitLt(true); //å·¦ä¸ŠãŒå½“ãŸã£ã¦ã„ã‚‹
 
 			}else if (vertexNum == 1) {
-				player_.setIsHitRt(true); //‰Eã‚ª“–‚½‚Á‚Ä‚¢‚é
+				player_.setIsHitRt(true); //å³ä¸ŠãŒå½“ãŸã£ã¦ã„ã‚‹
 
 			} else if (vertexNum == 2) {
-				player_.setIsHitRb(true); //‰E‰º‚ª“–‚½‚Á‚Ä‚¢‚é
+				player_.setIsHitRb(true); //å³ä¸‹ãŒå½“ãŸã£ã¦ã„ã‚‹
 
 			} else if (vertexNum == 3) {
-				player_.setIsHitLb(true); //¶‰º‚ª“–‚½‚Á‚Ä‚¢‚é
+				player_.setIsHitLb(true); //å·¦ä¸‹ãŒå½“ãŸã£ã¦ã„ã‚‹
 			}
 		}
 	}
 };
 
-///ƒuƒƒbƒN‚ÆƒuƒƒbƒN
+///ãƒ–ãƒ­ãƒƒã‚¯ã¨ãƒ–ãƒ­ãƒƒã‚¯
 void  CollisionManager::blockCollision() {
 	for (int i = 0; i < 12; i++) {
 		for (int j = 0; j < 12; j++)
@@ -47,22 +47,22 @@ void  CollisionManager::blockCollision() {
 		}
 	}
 
-	///“–‚½‚è”»’è
+	///å½“ãŸã‚Šåˆ¤å®š
 	for (int vertexNum = 0; vertexNum < 4; vertexNum++) {
-		//’¸“_‚Ì”Ô’n‚ÌŒvZ
+		//é ‚ç‚¹ã®ç•ªåœ°ã®è¨ˆç®—
 		rowAddress_ = blockType_[vertexNum].CalcuRowAddress(vertexNum);
 		colAddress_ = blockType_[vertexNum].CalcuColAddress(vertexNum);
 
-		///ƒuƒƒbƒN‚ÌŠe’¸“_‚©‚ç‚Ç‚ÌƒuƒƒbƒN‚Æ“–‚½‚Á‚Ä‚¢‚é‚©”»’è‚·‚é
+		///ãƒ–ãƒ­ãƒƒã‚¯ã®å„é ‚ç‚¹ã‹ã‚‰ã©ã®ãƒ–ãƒ­ãƒƒã‚¯ã¨å½“ãŸã£ã¦ã„ã‚‹ã‹åˆ¤å®šã™ã‚‹
 		if (block_[colAddress_][rowAddress_]->getType() == N_POLE) {
 			if (vertexNum == 0) {
-				blockType_[vertexNum].setHitBlockLtType(N_POLE);///¶ã
+				blockType_[vertexNum].setHitBlockLtType(N_POLE);///å·¦ä¸Š
 			} else if(vertexNum == 1){
-				blockType_[vertexNum].setHitBlockRtType(N_POLE);///‰Eã
+				blockType_[vertexNum].setHitBlockRtType(N_POLE);///å³ä¸Š
 			} else if (vertexNum == 2) {
-				blockType_[vertexNum].setHitBlockRbType(N_POLE);///‰E‰º
+				blockType_[vertexNum].setHitBlockRbType(N_POLE);///å³ä¸‹
 			} else if (vertexNum == 3) {
-				blockType_[vertexNum].setHitBlockLbType(N_POLE);///¶‰º
+				blockType_[vertexNum].setHitBlockLbType(N_POLE);///å·¦ä¸‹
 			}
 		}
 

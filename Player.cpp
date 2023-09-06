@@ -26,10 +26,10 @@ void Player::Move(char* keys,char* preKeys) {
 int Player::CalcuRowAddress(int vertexNum){
 	int row;
 	if (vertexNum == 0) {
-		row = vertex_[vertexNum].x / size_.x; //左上の場合
+		row = static_cast<int>(vertex_[vertexNum].x / size_.x); //左上の場合
 
 	} else {
-		row = (vertex_[vertexNum].x - 1) / size_.x; //それ以外の場合-1する必要がある
+		row = static_cast<int>((vertex_[vertexNum].x - 1) / size_.x); //それ以外の場合-1する必要がある
 	}
 	return row;
 }
@@ -37,10 +37,10 @@ int Player::CalcuRowAddress(int vertexNum){
 int Player::CalcuColAddress(int vertexNum){
 	int col;
 	if (vertexNum == 0) {
-		col = vertex_[vertexNum].y / size_.y; //左上の場合
+		col = static_cast<int>(vertex_[vertexNum].y / size_.y); //左上の場合
 
 	} else {
-		col = (vertex_[vertexNum].y - 1) / size_.y; //それ以外の場合-1する必要がある
+		col = static_cast<int>((vertex_[vertexNum].y - 1) / size_.y); //それ以外の場合-1する必要がある
 	}
 	return col;
 }
