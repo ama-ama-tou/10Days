@@ -56,6 +56,9 @@
     <ClCompile Include="Block.cpp">
       <Filter>Entitiy</Filter>
     </ClCompile>
+    <ClCompile Include="Bottun.cpp">
+      <Filter>Entitiy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -146,6 +149,9 @@
     </ClInclude>
     <ClInclude Include="base.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Bottun.h">
+      <Filter>Entitiy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
