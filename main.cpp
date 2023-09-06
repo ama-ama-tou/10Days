@@ -2,30 +2,7 @@
 #include <Vec2.h>
 #include "Player.h"
 
-const char kWindowTitle[] = "LC1B_08_オリハライッセイ_タイトル";
-
-struct Box {
-	Vec2 vertex[4];
-	Vec2 pos;
-	float width;
-	float height;
-	bool isHitting;
-	void isHit(Box& another);
-	void vertexUpdate();
-};
-
- // 当たり判定関数
-void Box::isHit(Box& another) {
-	bool hitLeft = vertex[1].x < another.vertex[0].x && vertex[2].x > another.vertex[0].x;
-	bool hitRight = vertex[0].x > another.vertex[1].x && vertex[3].x < another.vertex[1].x;
-	bool hitTop = vertex[1].y < another.vertex[0].y && vertex[0].y > another.vertex[2].y;
-	bool hitBottom = vertex[0].y > another.vertex[3].y && vertex[2].y < another.vertex[3].y;
-
-	isHitting = (hitLeft || hitRight) && (hitTop || hitBottom);
-}
-
-
-
+const char kWindowTitle[] = "LC1B_08_オリハライッセイ_磁気・単・極子";
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
