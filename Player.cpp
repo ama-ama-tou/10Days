@@ -18,7 +18,15 @@ void Player::Move(char* keys,char* preKeys) {
 	}
 }
 
-void Player::isHit() {
+void Player::Update() {
+	getLtVertex() = pos_;
+	getRtVertex() = Vec2(pos_.x + size_.x, pos_.y);
+	getLbVertex() = Vec2(pos_.x, pos_.y + size_.y);
+	getRbVertex() = Vec2(pos_.x + size_.x, pos_.y + size_.y);	
+}
 
-	float 
+void Player::isHit() {
+	 Player::Update();
+
+
 }
