@@ -51,9 +51,9 @@ public:
 	//===============
 	//ゲッター/セッター
 	//===============
-	int getIsFacing() { return isHit_; }
+	int getIsHit() { return isHit_; }
 	
-	int setIsFacing(int isFacing) { isHit_ = isFacing; }
+	int setIsHit(int isHit) { isHit_ = isHit; }
 	
 	//ローカル座標上
 	Vec2 getLtVertex() { return vertex_[0]; }
