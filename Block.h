@@ -23,6 +23,12 @@ public:
     //=======================
     //ゲッター/セッター
     //=======================
+    BlockType getType() { return type_; }
+    void setType(BlockType type) { type_ = type; }
+
+    bool getFacing() { return isFacing_; }
+    void setFacing(bool isFacing) { isFacing_ = isFacing; }
+
 
 };
 
