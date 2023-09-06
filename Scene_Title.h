@@ -11,9 +11,10 @@ private:
 	Button goSelect;
 	Button goManu;
 
-
-
-
+public:
+	void Load()override;
+	void Update()override;
+	void Unload()override;
 
 
 };

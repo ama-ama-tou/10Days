@@ -5,5 +5,8 @@ class Scene_Select:
 	public Scene {
 
 
+
+
+
 };
 

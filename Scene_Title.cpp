@@ -2,6 +2,8 @@
 #include <Novice.h>
 
 void Scene_Title::Load() {
+	
+
 
 }
 
