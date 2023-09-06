@@ -57,4 +57,7 @@ public:
 	Coordinate getLocalCo() { return localCo_; }
 	void setLocalCoOrigin(Vec2 pos) { localCo_.setOrigin(pos); }
 
+	Vec2 getImageLtPos() { return imageLtPos_; }
+	void setImageLtPos(Vec2 imageLtPos) { imageLtPos_ = imageLtPos; }
+
 };
