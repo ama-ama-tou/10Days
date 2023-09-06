@@ -23,6 +23,18 @@ void Player::Move(char* keys,char* preKeys) {
 	vertex_[3] = Vec2(pos_.x + size_.x, pos_.y + size_.y);
 }
 
+int Player::CalcuRowAddress(Vec2 pos, Vec2 size){
+	int row;
+	row = pos.x / size.x;
+	return row;
+}
+
+int Player::CalcuColAddress(Vec2 pos, Vec2 size){
+	int col;
+	col = pos.y / size.y;
+	return col;
+}
+
 
 
 void Player::Update(char* keys, char* preKeys) {
