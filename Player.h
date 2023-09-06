@@ -23,7 +23,7 @@ class Player {
 	bool isHit_;
 
 	//面しているかどうか
-	int isFacing_;
+	bool isFacing_[4];
 
 public:
 	//===============
@@ -55,20 +55,27 @@ public:
 	//ゲッター/セッター
 	//===============
 	///各頂点の当たっていかフラグ
-	int getIsHitLt() { return isHit_; }
-	int getIsHitRt() { return isHit_; }
-	int getIsHitRb() { return isHit_; }
-	int getIsHitLb() { return isHit_; }
+	bool getIsHitLt() { return isHit_; }
+	bool getIsHitRt() { return isHit_; }
+	bool getIsHitRb() { return isHit_; }
+	bool getIsHitLb() { return isHit_; }
 
-	int setIsHitLt(bool isHit) { isHit_ = isHit; }
-	int setIsHitRt(bool isHit) { isHit_ = isHit; }
-	int setIsHitRb(bool isHit) { isHit_ = isHit; }
-	int setIsHitLb(bool isHit) { isHit_ = isHit; }
+	void setIsHitLt(bool isHit) { isHit_ = isHit; }
+	void setIsHitRt(bool isHit) { isHit_ = isHit; }
+	void setIsHitRb(bool isHit) { isHit_ = isHit; }
+	void setIsHitLb(bool isHit) { isHit_ = isHit; }
 
-	///
-	int getIsFacing() { return isFacing_; }
-	int setIsFacing(int isFacing) { isFacing_ = isFacing; }
-	
+	///どの面が接しているか(上→右→下→左)
+	bool getIsFacingTop() { return isFacing_[0]; }
+	bool getIsFacingRight() { return isFacing_[1]; }
+	bool getIsFacingBottom() { return isFacing_[2]; }
+	bool getIsFacingLeft() { return isFacing_[3]; }
+
+	void setIsFacingTop(bool isFacing) { isFacing_[0] = isFacing; }
+	void setIsFacingRight(bool isFacing) { isFacing_[1] = isFacing; }
+	void setIsFacingBottom(bool isFacing) { isFacing_[2] = isFacing; }
+	void setIsFacingLeft(bool isFacing) { isFacing_[3] = isFacing; }
+	 
 	//ローカル座標上
 	Vec2 getLtVertex() { return vertex_[0]; }
 	Vec2 getRtVertex() { return vertex_[1]; }

@@ -18,6 +18,10 @@ class Block :
     //当たっているブロックの種類
     int isHitBlockType_[4];
 
+    //ブロックがブロックと面しているか
+    bool isFacing_[4];
+
+
 public:
 
    //=======================
@@ -51,5 +55,17 @@ public:
     void setHitBlockRtType(int isHitBlockType) { isHitBlockType_[1] = isHitBlockType; }
     void setHitBlockRbType(int isHitBlockType) { isHitBlockType_[2] = isHitBlockType; }
     void setHitBlockLbType(int isHitBlockType) { isHitBlockType_[3] = isHitBlockType; }
+
+
+    ///どの面が接しているか(上→右→下→左)
+    bool getIsFacingTop() { return isFacing_[0]; }
+    bool getIsFacingRight() { return isFacing_[1]; }
+    bool getIsFacingBottom() { return isFacing_[2]; }
+    bool getIsFacingLeft() { return isFacing_[3]; }
+
+    void setIsFacingTop(bool isFacing) { isFacing_[0] = isFacing; }
+    void setIsFacingRight(bool isFacing) { isFacing_[1] = isFacing; }
+    void setIsFacingBottom(bool isFacing) { isFacing_[2] = isFacing; }
+    void setIsFacingLeft(bool isFacing) { isFacing_[3] = isFacing; }
 };
 

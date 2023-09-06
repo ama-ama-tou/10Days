@@ -9,8 +9,8 @@ class CollisionManager {
 	Block* blockType_;
 
 	//各頂点の番地
-	int rowAddress_ = 0;
-	int colAddress_ = 0;
+	int rowAddress_[4] = { 0 };
+	int colAddress_[4] = { 0 };
 
 public:
 	CollisionManager(Player& player,Block***& block , Block*& blockType) :player_(player),block_(block),blockType_(blockType) {};

@@ -14,26 +14,42 @@ void CollisionManager::playerCollision() {
 		}
 	}
 
-	///当たり判定
+	//頂点の番地の計算
 	for (int vertexNum = 0; vertexNum < 4; vertexNum++) {
-		//頂点の番地の計算
-		rowAddress_ = player_.CalcuRowAddress(vertexNum);
-		colAddress_ = player_.CalcuColAddress(vertexNum);
+		rowAddress_[vertexNum] = player_.CalcuRowAddress(vertexNum);
+		colAddress_[vertexNum] = player_.CalcuColAddress(vertexNum);
+	}
+	
+	//----------各頂点の番地からどの面が接しているかの判定----------//
+	///上の面
+	if (!player_.getIsFacingTop()) {
+		if (block_[colAddress_[0]][rowAddress_[0] - 1]->getType() != NONE && //左上の1個上
+			block_[colAddress_[1]][rowAddress_[1] - 1]->getType() != NONE) { //右上の1個上
+			player_.setIsFacingTop(true);
+		}
+	}
 
-		///各頂点の番地からどのブロックと当たっているかの判定
-		if (block_[colAddress_][rowAddress_]->getType() != NONE) {
-			if (vertexNum == 0) {
-				player_.setIsHitLt(true); //左上が当たっている
+	///右の面
+	if (!player_.getIsFacingRight()) {
+		if (block_[colAddress_[1] + 1][rowAddress_[1]]->getType() != NONE && //右上の1個右
+			block_[colAddress_[2] + 1][rowAddress_[2]]->getType() != NONE) { //右下の1個右
+			player_.setIsFacingRight(true);
+		}
+	}
 
-			}else if (vertexNum == 1) {
-				player_.setIsHitRt(true); //右上が当たっている
+	///下の面
+	if (!player_.getIsFacingBottom()) {
+		if (block_[colAddress_[2]][rowAddress_[2] + 1]->getType() != NONE && //右下の1個下
+			block_[colAddress_[3]][rowAddress_[3] + 1]->getType() != NONE) { //左下の1個下
+			player_.setIsFacingBottom(true);
+		}
+	}
 
-			} else if (vertexNum == 2) {
-				player_.setIsHitRb(true); //右下が当たっている
-
-			} else if (vertexNum == 3) {
-				player_.setIsHitLb(true); //左下が当たっている
-			}
+	///左の面
+	if (!player_.getIsFacingBottom()) {
+		if (block_[colAddress_[3]][rowAddress_[3] + 1]->getType() != NONE && //左下の1個左
+			block_[colAddress_[0]][rowAddress_[0] + 1]->getType() != NONE) { //左上の1個左
+			player_.setIsFacingLeft(true);
 		}
 	}
 };
@@ -50,21 +66,42 @@ void  CollisionManager::blockCollision() {
 	///当たり判定
 	for (int vertexNum = 0; vertexNum < 4; vertexNum++) {
 		//頂点の番地の計算
-		rowAddress_ = blockType_[vertexNum].CalcuRowAddress(vertexNum);
-		colAddress_ = blockType_[vertexNum].CalcuColAddress(vertexNum);
-
-		///ブロックの各頂点からどのブロックと当たっているか判定する
-		if (block_[colAddress_][rowAddress_]->getType() == N_POLE) {
-			if (vertexNum == 0) {
-				blockType_[vertexNum].setHitBlockLtType(N_POLE);///左上
-			} else if(vertexNum == 1){
-				blockType_[vertexNum].setHitBlockRtType(N_POLE);///右上
-			} else if (vertexNum == 2) {
-				blockType_[vertexNum].setHitBlockRbType(N_POLE);///右下
-			} else if (vertexNum == 3) {
-				blockType_[vertexNum].setHitBlockLbType(N_POLE);///左下
-			}
-		}
-
+		rowAddress_[vertexNum] = blockType_[vertexNum].CalcuRowAddress(vertexNum);
+		colAddress_[vertexNum] = blockType_[vertexNum].CalcuColAddress(vertexNum);
 	}
+
+	///----------各頂点の番地からどの面が接しているかの判定----------///
+	///上の面
+	if (!block_[colAddress_[0]][rowAddress_[0]]->getIsFacingTop()) {
+		if (block_[colAddress_[0]][rowAddress_[0] - 1]->getType() != NONE && //左上の1個上
+			block_[colAddress_[1]][rowAddress_[1] - 1]->getType() != NONE) { //右上の1個上
+			player_.setIsFacingTop(true);
+		}
+	}
+
+	///右の面
+	if (!block_[colAddress_[0]][rowAddress_[0]]->getIsFacingRight()) {
+		if (block_[colAddress_[1] + 1][rowAddress_[1]]->getType() != NONE && //右上の1個右
+			block_[colAddress_[2] + 1][rowAddress_[2]]->getType() != NONE) { //右下の1個右
+			player_.setIsFacingRight(true);
+		}
+	}
+
+	///下の面
+	if (!block_[colAddress_[0]][rowAddress_[0]]->getIsFacingBottom()) {
+		if (block_[colAddress_[2]][rowAddress_[2] + 1]->getType() != NONE && //右下の1個下
+			block_[colAddress_[3]][rowAddress_[3] + 1]->getType() != NONE) { //左下の1個下
+			player_.setIsFacingBottom(true);
+		}
+	}
+
+	///左の面
+	if (!block_[colAddress_[0]][rowAddress_[0]]->getIsFacingBottom()) {
+		if (block_[colAddress_[3]][rowAddress_[3] + 1]->getType() != NONE && //左下の1個左
+			block_[colAddress_[0]][rowAddress_[0] + 1]->getType() != NONE) { //左上の1個左
+			player_.setIsFacingLeft(true);
+		}
+	}
+
+	
 };
