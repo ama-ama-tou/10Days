@@ -52,5 +52,29 @@ public:
 	
 	bool setIsFacing(bool isFacing) { isFacing_ = isFacing; }
 	
+	//ローカル座標上
+	Vec2 getLtVertex() { return vertex_[0]; }
+	Vec2 getRtVertex() { return vertex_[1]; }
+	Vec2 getLbVertex() { return vertex_[2]; }
+	Vec2 getRbVertex() { return vertex_[3]; }
+
+	void setLtVertex(Vec2 pos) { vertex_[0] = pos; }
+	void setRtVertex(Vec2 pos) { vertex_[1] = pos; }
+	void setLbVertex(Vec2 pos) { vertex_[2] = pos; }
+	void setRbVertex(Vec2 pos) { vertex_[3] = pos; }
+
+	//スクリーン座標上
+	Vec2 getScreenLtVertex() { return localCo_.screenFromOrigin(vertex_[0]); }
+	Vec2 getScreenRtVertex() { return localCo_.screenFromOrigin(vertex_[1]); }
+	Vec2 getScreenLbVertex() { return localCo_.screenFromOrigin(vertex_[2]); }
+	Vec2 getScreenRbVertex() { return localCo_.screenFromOrigin(vertex_[3]); }
+
+	Coordinate getLocalCo() { return localCo_; }
+	void setLocalCoOrigin(Vec2 pos) { localCo_.setOrigin(pos); }
+
+	Vec2 getImageLtPos() { return imageLtPos_; }
+	void setImageLtPos(Vec2 imageLtPos) { imageLtPos_ = imageLtPos; }
+
+
 };
 
