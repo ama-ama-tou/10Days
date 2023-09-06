@@ -45,10 +45,13 @@ void Scene_Title::Load() {
 	
 	Button_exit.Init(exitButtonPos, buttonSize, Vec2(0.0f, 0.0f),
 		exitGH, exitClickedGH, Vec2(0.0f, 0.0f), buttonSize);
+
 }
 
 
 void Scene_Title::Update() {
+
+
 
 }
 
