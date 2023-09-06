@@ -20,5 +20,8 @@ public:
 	//=======================
 	int getSelectedStage(Vec2 mousePos, int clickState);
 
+
+
+
 };
 
