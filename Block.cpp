@@ -8,7 +8,7 @@ void Block::Init(Vec2 pos, Vec2 size,
 	type_ = whatType;
 
 	//typeに合わせてGHを変更
-	if (type_ == NON) {
+	if (type_ == NONE) {
 		GH_ = 0;
 	} else if (type_==N_POLE) {
 		GH_ = Novice::LoadTexture("./Resource/image/character/nPole.png");
@@ -21,6 +21,4 @@ void Block::Init(Vec2 pos, Vec2 size,
 	Quad::Init(pos, size, 
 		localCoOrigin,
 		GH_, imageLtPos, imageSize);
-
-
 }

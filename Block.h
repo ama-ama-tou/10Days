@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "Quad.h"
 enum BlockType {
-    NON,
+    NONE,
     N_POLE,//N極
     S_POLE,//S極
     WALL//壁
