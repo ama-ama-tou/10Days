@@ -1,5 +1,6 @@
 ﻿#include <Novice.h>
 #include <Vec2.h>
+#include "Player.h"
 
 const char kWindowTitle[] = "LC1B_08_オリハライッセイ_タイトル";
 
@@ -10,10 +11,8 @@ struct Box {
 	float height;
 	bool isHitting;
 	void isHit(Box& another);
-	void vertexUpdata();
+	void vertexUpdate();
 };
-
-
 
  // 当たり判定関数
 void Box::isHit(Box& another) {
@@ -25,21 +24,6 @@ void Box::isHit(Box& another) {
 	isHitting = (hitLeft || hitRight) && (hitTop || hitBottom);
 }
 
-//4頂点の座標の更新
-void Box::vertexUpdata() {
-	//左上座標
-	vertex[0].x = pos.x - (width / 2);
-	vertex[0].y = pos.y - (height / 2);
-	//右上座標
-	vertex[1].x = pos.x + (width / 2);
-	vertex[1].y = pos.y - (height / 2);
-	//左下座標
-	vertex[2].x = pos.x - (width / 2);
-	vertex[2].y = pos.y + (height / 2);
-	//右下座標
-	vertex[3].x = pos.x + (width / 2);
-	vertex[3].y = pos.y + (height / 2);
-}
 
 
 
@@ -66,6 +50,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		/// ↓更新処理ここから
 		///
 		
+		
 
 		///
 		/// ↑更新処理ここまで
@@ -73,7 +58,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		///
 		/// ↓描画処理ここから
-		///
+		/// 
+
+		
 
 		///
 		/// ↑描画処理ここまで
