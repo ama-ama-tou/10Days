@@ -15,8 +15,8 @@ public:
 	CollisionManager(Player& player,Block***& block) :player_(player),block_(block) {};
 
 	//“–‚½‚è”»’è
-	void Collision();
+	void playerCollision();
 
-
+	void blockCollision();
 };
 

@@ -12,10 +12,11 @@ class Block :
 
     int GH_;
 
-    bool isHit_;
+    int isHit_;
     BlockType type_;
 
     //当たっているブロックの種類
+    int isHitBlockType_;
 
 public:
     void Init(int MaxCol, int MaxRow, 
@@ -28,9 +29,11 @@ public:
     BlockType getType() { return type_; }
     void setType(BlockType type) { type_ = type; }
 
-    bool getFacing() { return isHit_; }
-    void setFacing(bool isFacing) { isHit_ = isFacing; }
+    int getHitting() { return isHit_; }
+    void setHitting(int isHit) { isHit_ = isHit; }
 
+    int getHitBlockType() { return isHitBlockType_; }
+    void setHitBlockType(int isHitBlockType) { isHitBlockType_ = isHitBlockType; }
 
 };
 
