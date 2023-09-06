@@ -12,8 +12,7 @@ class Block :
 
     int GH_;
 
-    bool isPlayerFaced_;
-    bool isLocated_;
+    bool isFacing_;
     BlockType type_;
 
 public:
@@ -21,8 +20,9 @@ public:
         int colNum, int rowNum,
         Vec2 localCoOrigin,
         Vec2 imageLtPos, Vec2 imageSize,BlockType whatType);
-
-    
+    //=======================
+    //ゲッター/セッター
+    //=======================
 
 };
 
