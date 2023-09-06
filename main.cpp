@@ -11,10 +11,9 @@ struct Box {
 	float height;
 	bool isHitting;
 	void isHit(Box& another);
-	void vertexUpdate();
 };
 
- // 当たり判定関数
+// 当たり判定関数
 void Box::isHit(Box& another) {
 	bool hitLeft = vertex[1].x < another.vertex[0].x && vertex[2].x > another.vertex[0].x;
 	bool hitRight = vertex[0].x > another.vertex[1].x && vertex[3].x < another.vertex[1].x;
@@ -23,8 +22,6 @@ void Box::isHit(Box& another) {
 
 	isHitting = (hitLeft || hitRight) && (hitTop || hitBottom);
 }
-
-
 
 
 // Windowsアプリでのエントリーポイント(main関数)
