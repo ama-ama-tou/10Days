@@ -6,13 +6,13 @@ private:
 	//================
 	//メンバ変数
 	//================
-	Coordinate localCo;
+	Coordinate localCo_;
 	Vec2 vertex_[4];
 
 	int GH_;
-	//�摜�̍�����W
+	//画像の左上座標
 	Vec2 imageLtPos_;
-	//�摜�̕`��͈�
+	//画像サイズ(表示する)
 	Vec2 imageSize_;
 
 public:
@@ -26,7 +26,7 @@ public:
 		vertex_[2] = Vec2(pos.x, pos.y + size.y);
 		vertex_[3] = Vec2(pos.x + size.x, pos.y + size.y);
 
-		localCo.setOrigin(localCoOrigin);
+		localCo_.setOrigin(localCoOrigin);
 
 		GH_ = GH;
 		imageLtPos_ = imageLtPos;
@@ -35,19 +35,26 @@ public:
 
 	void Draw();
 	//===============
-	//　ゲッター
+	//ゲッター/セッター
 	//===============
-	//ローカル座標系
+	//ローカル座標上
 	Vec2 getLtVertex() { return vertex_[0]; }
 	Vec2 getRtVertex() { return vertex_[1]; }
 	Vec2 getLbVertex() { return vertex_[2]; }
 	Vec2 getRbVertex() { return vertex_[3]; }
 
-	//スクリーン座標系
-	Vec2 getScreenLtVertex() { return localCo.screenFromOrigin(vertex_[0]); }
-	Vec2 getScreenRtVertex() { return localCo.screenFromOrigin(vertex_[1]); }
-	Vec2 getScreenLbVertex() { return localCo.screenFromOrigin(vertex_[2]); }
-	Vec2 getScreenRbVertex() { return localCo.screenFromOrigin(vertex_[3]); }
+	void setLtVertex(Vec2 pos) {vertex_[0]=pos; }
+	void setRtVertex(Vec2 pos) {vertex_[1]=pos; }
+	void setLbVertex(Vec2 pos) {vertex_[2]=pos; }
+	void setRbVertex(Vec2 pos) {vertex_[3]=pos; }
 
+	//スクリーン座標上
+	Vec2 getScreenLtVertex() { return localCo_.screenFromOrigin(vertex_[0]); }
+	Vec2 getScreenRtVertex() { return localCo_.screenFromOrigin(vertex_[1]); }
+	Vec2 getScreenLbVertex() { return localCo_.screenFromOrigin(vertex_[2]); }
+	Vec2 getScreenRbVertex() { return localCo_.screenFromOrigin(vertex_[3]); }
+
+	Coordinate getLocalCo() { return localCo_; }
+	void setLocalCoOrigin(Vec2 pos) { localCo_.setOrigin(pos); }
 
 };

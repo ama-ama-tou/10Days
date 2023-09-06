@@ -50,6 +50,9 @@
     <ClCompile Include="Player.cpp">
       <Filter>Entitiy</Filter>
     </ClCompile>
+    <ClCompile Include="MapChip.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -133,6 +136,9 @@
       <Filter>Entitiy</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
+      <Filter>Entitiy</Filter>
+    </ClInclude>
+    <ClInclude Include="MapChip.h">
       <Filter>Entitiy</Filter>
     </ClInclude>
   </ItemGroup>

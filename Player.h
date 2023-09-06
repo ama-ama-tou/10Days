@@ -1,18 +1,18 @@
-#pragma once
+ï»¿#pragma once
 #include "Quad.h"
 #include <Novice.h>
 class Player :
     public Quad {
 
 	//================
-	//ƒƒ“ƒo•Ï”
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
 	//================
 	Vec2 pos;
 
 	float speed;
 
 	//===============
-	//ƒƒ“ƒoŠÖ”
+	//ãƒ¡ãƒ³ãƒé–¢æ•°
 	//===============
 	
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, int GH, Vec2 imageLtPos, Vec2 imageSize) {
