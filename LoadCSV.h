@@ -21,9 +21,7 @@ std::vector<std::vector<int>>LoadCsv(const std::string& csvFilePath){
         }
         intArray.push_back(row);
     }
-
     return intArray;
-
 };
 
 
