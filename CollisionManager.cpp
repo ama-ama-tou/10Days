@@ -102,6 +102,4 @@ void  CollisionManager::blockCollision() {
 			player_.setIsFacingLeft(true);
 		}
 	}
-
-	
 };

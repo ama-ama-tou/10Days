@@ -1,8 +1,8 @@
-#include "Scene_Title.h"
+ï»¿#include "Scene_Title.h"
 #include <Novice.h>
 
 void Scene_Title::Load() {
-	//titleBar‰Šú‰»
+	//titleBaråˆæœŸåŒ–
 	Vec2 titlePos;
 	titlePos=Vec2{ 327.0f, 200.0f };
 	Vec2 titleSize{ 625.0f,125.0f };
@@ -13,13 +13,13 @@ void Scene_Title::Load() {
 	);
 
 	//=================
-	//ƒ{ƒ^ƒ“‰Šú‰»
+	//ãƒœã‚¿ãƒ³åˆæœŸåŒ–
 	//=================
 
 	Vec2 goSelectPos = Vec2(titleBar.getScreenLbVertex().x,
 		titleBar.getScreenLbVertex().y + 100.0f);
 	
-	//ƒ{ƒ^ƒ“ƒTƒCƒY‚Í“ˆê‚·‚é
+	//ãƒœã‚¿ãƒ³ã‚µã‚¤ã‚ºã¯çµ±ä¸€ã™ã‚‹
 	Vec2 buttonSize{ 500.0f,100.0f };
 	const char* goSelectGH = "./Resource/image/obj/button/goSelectButton.png";
 	const char* goSelectClickedGH = "./Resource/image/obj/button/goSelectCickedButton.png";
@@ -27,7 +27,7 @@ void Scene_Title::Load() {
 		goSelectGH, goSelectClickedGH, 
 		Vec2(0.0f, 0.0f), buttonSize);
 
-	//menuƒ{ƒ^ƒ“
+	//menuãƒœã‚¿ãƒ³
 	Vec2 menuButtonPos{ Button_goSelect.getScreenLbVertex().x,
 		Button_goSelect.getScreenLbVertex().y + 50.0f };
 
@@ -57,7 +57,7 @@ void Scene_Title::Update() {
 		sceneNum = SCENE_STAGESELLECT;
 	}
 	if (Button_exit.getIsClicked()) {
-	//ƒQ[ƒ€‚ğI—¹‚³‚¹‚éˆ—
+	//ã‚²ãƒ¼ãƒ ã‚’çµ‚äº†ã•ã›ã‚‹å‡¦ç†
 	}
 }
 

@@ -1,11 +1,11 @@
-#include "Stage.h"
+ï»¿#include "Stage.h"
 
 void Stage::Init() {
 
 	Vec2 playerStartPos{ 0.0f,0.0f };
 
 	//--------------------------------
-	//ƒuƒƒbƒN‚Ì‰Šú
+	//ãƒ–ãƒ­ãƒƒã‚¯ã®åˆæœŸ
 	//--------------------------------
 	Vec2 blockImageSize{ 64.0f,64.0f };
 
@@ -19,18 +19,18 @@ void Stage::Init() {
 				static_cast<BlockType>(stageCsv_[r][c])
 			);
 			if (stageCsv_[r][c]==9) {
-				//playerStartPos‚ğİ’è(r*size.x,c*size.y)
+				//playerStartPosã‚’è¨­å®š(r*size.x,c*size.y)
 			}
 			
 
 		}
 	}
 	//--------------------------------
-	//ƒvƒŒƒCƒ„[‚Ì‰Šú
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®åˆæœŸ
 	//--------------------------------
 	player_->Init(
 		playerStartPos,
-		block_[0][0]->getSize(),//QuadŒ^‚ÉƒTƒCƒY‚Ì’Ç‰Á
+		block_[0][0]->getSize(),//Quadå‹ã«ã‚µã‚¤ã‚ºã®è¿½åŠ 
 		stageCo_.getOrigin(),
 		Vec2(0.0f, 0.0f),//imageLtPos
 		blockImageSize

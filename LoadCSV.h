@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 //#include <iostream>
 #include <fstream>
@@ -14,8 +14,8 @@ std::vector<std::vector<int>>LoadCsv(const std::string& csvFilePath){
         std::vector<int> row;
         std::istringstream iss(line);
         while (std::getline(iss, value, ',')) {
-            // int�^�ɕϊ����čs�ɒǉ�
-            //int�ɕϊ�
+            // int型に変換して行に追加
+            //intに変換
             int intValue = std::stoi(value);
             row.push_back(intValue);
         }

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Scene.h"
 #include "Button.h"
 
@@ -9,14 +9,14 @@ class Scene_Select:
 private:
 
 	//======================
-	//ƒƒ“ƒo•Ï”
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
 	//======================
 
 	Button stage_[9];
 	
 public:
 	//=======================
-	//ƒQƒbƒ^[
+	//ã‚²ãƒƒã‚¿ãƒ¼
 	//=======================
 	int getSelectedStage(Vec2 mousePos, int clickState);
 
