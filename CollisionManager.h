@@ -5,13 +5,11 @@
 
 class CollisionManager {
 	Player player_;
-	std::vector<Block*> block_;
+	Block** block_;
 public:
-	CollisionManager(Player& player) :player_(player) {};
+	CollisionManager(Player& player,Block**& block) :player_(player),block_(block) {};
 
-	void AddBlock(Block* block) {
-		block_.push_back(block);
-	}
+	//“–‚½‚è”»’è
 	void Collision();
 
 
