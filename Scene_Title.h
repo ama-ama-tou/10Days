@@ -8,8 +8,9 @@ class Scene_Title:
 private:
 	Quad titleBar;
 
-	Button goSelect;
-	Button goManu;
+	Button Button_goSelect;
+	Button Button_goManu;
+	Button Button_exit;
 
 public:
 	void Load()override;
