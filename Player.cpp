@@ -24,20 +24,11 @@ void Player::Move(char* keys,char* preKeys) {
 }
 
 
+
 void Player::Update(char* keys, char* preKeys) {
-	 Player::Move( keys, preKeys);
+	Player::Move(keys, preKeys);
 }
 
-//衝突判定
-void Player::isHit() {
-	 Player::Update();
-	 for (int i = 0; i < 4; i++) {
-		 pos_.x = vertex_[i].x / size_;
-		 pos_.y = vertex_[i].y / size_;
-	 }
-
-
-}
 
 //描画関数
 void Player::Draw() {
