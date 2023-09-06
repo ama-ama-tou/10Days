@@ -37,10 +37,10 @@ int Player::CalcuRowAddress(int vertexNum){
 int Player::CalcuColAddress(int vertexNum){
 	int col;
 	if (vertexNum == 0) {
-		col = vertex_[vertexNum].y / size_.y;
+		col = vertex_[vertexNum].y / size_.y; //左上の場合
 
 	} else {
-		col = (vertex_[vertexNum].y - 1) / size_.y;
+		col = (vertex_[vertexNum].y - 1) / size_.y; //それ以外の場合-1する必要がある
 	}
 	return col;
 }

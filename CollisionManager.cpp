@@ -17,7 +17,9 @@ void CollisionManager::Collision() {
 		rowAddress_ = player_.CalcuRowAddress(vertexNum);
 		colAddress_ = player_.CalcuColAddress(vertexNum);
 
-		if(block_[colAddress_][rowAddress_] )
+		if (block_[colAddress_][rowAddress_]->getType() == NONE) {
+
+		}
 
 
 
