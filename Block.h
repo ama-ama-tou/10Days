@@ -12,7 +12,7 @@ class Block :
 
     int GH_;
 
-    bool isFacing_;
+    bool isHit_;
     BlockType type_;
 
 public:
@@ -26,8 +26,8 @@ public:
     BlockType getType() { return type_; }
     void setType(BlockType type) { type_ = type; }
 
-    bool getFacing() { return isFacing_; }
-    void setFacing(bool isFacing) { isFacing_ = isFacing; }
+    bool getFacing() { return isHit_; }
+    void setFacing(bool isFacing) { isHit_ = isFacing; }
 
 
 };

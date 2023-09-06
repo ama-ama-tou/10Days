@@ -20,7 +20,7 @@ class Player {
 	Vec2 imageSize_;
 
 	//面しているかどうか
-	bool isFacing_;
+	int isHit_;
 
 public:
 	//===============
@@ -51,9 +51,9 @@ public:
 	//===============
 	//ゲッター/セッター
 	//===============
-	bool getIsFacing() { return isFacing_; }
+	int getIsFacing() { return isHit_; }
 	
-	bool setIsFacing(bool isFacing) { isFacing_ = isFacing; }
+	int setIsFacing(int isFacing) { isHit_ = isFacing; }
 	
 	//ローカル座標上
 	Vec2 getLtVertex() { return vertex_[0]; }
