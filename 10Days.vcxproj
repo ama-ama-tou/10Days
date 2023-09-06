@@ -101,7 +101,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Block.cpp" />
-    <ClCompile Include="Bottun.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\DirectXCommon.cpp" />
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\WinApp.cpp" />
     <ClCompile Include="C:\KamataEngine\DirectXGame\scene\GameScene.cpp" />
@@ -120,7 +120,7 @@
   <ItemGroup>
     <ClInclude Include="base.h" />
     <ClInclude Include="Block.h" />
-    <ClInclude Include="Bottun.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="C:\KamataEngine\DirectXGame\math\Matrix4x4.h" />
     <ClInclude Include="C:\KamataEngine\DirectXGame\math\Vector2.h" />
     <ClInclude Include="C:\KamataEngine\DirectXGame\math\Vector3.h" />

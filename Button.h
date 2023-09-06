@@ -14,7 +14,6 @@ private:
 
 	const char* filePass[2];
 	int GH_;
-	int clicedGH_;
 
 public:
 
@@ -29,7 +28,7 @@ public:
 	void Draw();
 
 	bool getISInsideMouse() { return isInsideMouse_;}
-	bool getIsClicked() { return isClicked_ };
+	bool getIsClicked() { return isClicked_; }
 
 };
 

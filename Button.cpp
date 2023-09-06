@@ -1,4 +1,5 @@
 #include "Bottun.h"
+#include <Novice.h>
 
 //マウスがスクリーン上にあるか調べる関数
 void Bottun::checkInsideMouse(Vec2 mousePos) {
@@ -17,8 +18,11 @@ void Bottun::Update(Vec2 mousePos, int clickState) {
 
 void Bottun::Draw() {
 	if (isInsideMouse_) {
-		Quad::Draw(clicedGH_);
+		GH_ = Novice::LoadTexture(filePass[1]);
+	} else {
+		GH_ = Novice::LoadTexture(filePass[0]);
 	}
+	Quad::Draw();
 }
 
 
