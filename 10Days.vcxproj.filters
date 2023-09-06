@@ -59,9 +59,6 @@
     <ClCompile Include="Block.cpp">
       <Filter>Entitiy</Filter>
     </ClCompile>
-    <ClCompile Include="Bottun.cpp">
-      <Filter>KamataEngine</Filter>
-    </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -73,6 +70,12 @@
     </ClCompile>
     <ClCompile Include="Scene_Title.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Entitiy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -165,7 +168,6 @@
     <ClInclude Include="base.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Bottun.h" />
     <ClInclude Include="Scene.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -177,6 +179,10 @@
     </ClInclude>
     <ClInclude Include="Scene_Title.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Button.h">
+      <Filter>Entitiy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
