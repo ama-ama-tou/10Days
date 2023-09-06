@@ -13,10 +13,6 @@ class Player {
 
 	Vec2 vertex_[4];
 
-	///各頂点の番地
-	int rowAddress_;
-	int colAddress_;
-
 	int GH_;
 	//画像の左上座標
 	Vec2 imageLtPos_;
@@ -49,8 +45,8 @@ public:
 	void Draw();
 	void Move(char* keys,char* preKeys);
 
-	int CalcuRowAddress(Vec2 pos, Vec2 size);
-	int CalcuColAddress(Vec2 pos, Vec2 size);
+	int CalcuRowAddress(int vertexNum);
+	int CalcuColAddress(int vertexNum);
 
 	//===============
 	//ゲッター/セッター
