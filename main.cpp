@@ -2,7 +2,7 @@
 #include <Vec2.h>
 #include "Player.h"
 
-const char kWindowTitle[] = "LC1B_08_オリハライッセイ_タイトル";
+const char kWindowTitle[] = "LC1B_08_オリハライッセイ_磁気・単・極子";
 
 struct Box {
 	Vec2 vertex[4];

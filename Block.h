@@ -12,18 +12,23 @@ class Block :
 
     int GH_;
 
-    bool isPlayerFaced_;
-    bool isLocated_;
+    bool isFacing_;
     BlockType type_;
 
-    
-
 public:
-    void Init(int colNum,int rowNum, Vec2 size,
+    void Init(int MaxCol, int MaxRow, 
+        int colNum, int rowNum,
         Vec2 localCoOrigin,
         Vec2 imageLtPos, Vec2 imageSize,BlockType whatType);
+    //=======================
+    //ゲッター/セッター
+    //=======================
+    BlockType getType() { return type_; }
+    void setType(BlockType type) { type_ = type; }
 
-    
+    bool getFacing() { return isFacing_; }
+    void setFacing(bool isFacing) { isFacing_ = isFacing; }
+
 
 };
 

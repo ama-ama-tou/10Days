@@ -1,5 +1,5 @@
 ﻿#include "Player.h"
-
+#include <Novice.h>
 void Player::Move(char* keys,char* preKeys) {
 	//左右の移動
 	
@@ -16,9 +16,36 @@ void Player::Move(char* keys,char* preKeys) {
 	} else if (keys[DIK_S] && !preKeys[DIK_S]) {
 		pos_.y += speed_;
 	}
+
+	vertex_[0] = pos_;
+	vertex_[1] = Vec2(pos_.x + size_.x, pos_.y);
+	vertex_[2] = Vec2(pos_.x, pos_.y + size_.y);
+	vertex_[3] = Vec2(pos_.x + size_.x, pos_.y + size_.y);
 }
 
-void Player::isHit() {
 
-	float 
+
+void Player::Update(char* keys, char* preKeys) {
+	Player::Move(keys, preKeys);
+}
+
+
+//描画関数
+void Player::Draw() {
+	Novice::DrawQuad(
+		static_cast<int>(localCo_.screenFromOrigin(vertex_[0]).x),
+		static_cast<int>(localCo_.screenFromOrigin(vertex_[0]).y),
+		static_cast<int>(localCo_.screenFromOrigin(vertex_[1]).x),
+		static_cast<int>(localCo_.screenFromOrigin(vertex_[1]).y),
+		static_cast<int>(localCo_.screenFromOrigin(vertex_[2]).x),
+		static_cast<int>(localCo_.screenFromOrigin(vertex_[2]).y),
+		static_cast<int>(localCo_.screenFromOrigin(vertex_[3]).x),
+		static_cast<int>(localCo_.screenFromOrigin(vertex_[3]).y),
+		static_cast<int>(imageLtPos_.x),
+		static_cast<int>(imageLtPos_.y),
+		static_cast<int>(imageSize_.x),
+		static_cast<int>(imageSize_.y),
+		GH_,
+		WHITE
+	);
 }
