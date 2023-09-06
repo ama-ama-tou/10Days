@@ -36,7 +36,9 @@ class Player {
 		imageLtPos_ = imageLtPos;
 		imageSize_ = imageSize; speed_ = imageSize;
 	}
-	void Update();
+
+	void Update(char* keys, char* preKeys);
+	void Draw();
 	void Move(char* keys,char* preKeys);
 	void isHit();
 };
