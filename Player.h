@@ -27,7 +27,7 @@ public:
 	//メンバ関数
 	//===============
 	
-	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, int GH, Vec2 imageLtPos, Vec2 imageSize) {
+	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, Vec2 imageLtPos, Vec2 imageSize) {
 		
 		vertex_[0] = pos;
 		vertex_[1] = Vec2(pos.x + size.x, pos.y);
@@ -36,7 +36,7 @@ public:
 
 		localCo_.setOrigin(localCoOrigin);
 
-		GH_ = GH;
+		GH_ =Novice::LoadTexture("./Resource/image/character/player.png");
 		imageLtPos_ = imageLtPos;
 		imageSize_ = imageSize; speed_ = imageSize;
 	}
