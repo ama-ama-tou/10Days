@@ -50,8 +50,8 @@
     <ClCompile Include="Player.cpp">
       <Filter>Entitiy</Filter>
     </ClCompile>
-    <ClCompile Include="MapChip.cpp">
-      <Filter>KamataEngine</Filter>
+    <ClCompile Include="Block.cpp">
+      <Filter>Entitiy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -138,7 +138,7 @@
     <ClInclude Include="Player.h">
       <Filter>Entitiy</Filter>
     </ClInclude>
-    <ClInclude Include="MapChip.h">
+    <ClInclude Include="Block.h">
       <Filter>Entitiy</Filter>
     </ClInclude>
   </ItemGroup>
