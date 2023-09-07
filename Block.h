@@ -24,7 +24,7 @@ class Block :
     //ブロックの各面がどのブロックと面しているか
     int isFacingType_[4];
 
-
+    //ブロックを持っているかいないか
 
 public:
 
