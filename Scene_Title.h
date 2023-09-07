@@ -7,7 +7,7 @@ class Scene_Title:
 	public Scene{
 
 private:
-	Button titleBar;
+	Quad titleBar;
 	Button Button_goSelect;
 	Button Button_goManu;
 	Button Button_exit;
