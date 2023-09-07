@@ -20,6 +20,6 @@ public:
 	void Unload()override;
 
 	//問題点セットできない(未解決)
-	StageNum setPlayStage(StageNum selectedStage)override { stageNum = selectedStage; }
+	void setPlayStage(StageNum selectedStage)override { stageNum = selectedStage; }
 };
 
