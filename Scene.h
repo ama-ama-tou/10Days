@@ -1,4 +1,6 @@
 #pragma once
+#include"InputManager.h"
+
 
 enum SceneNum {
 	SCENE_TITLE,
@@ -9,6 +11,7 @@ enum SceneNum {
 
 class Scene{
 protected:
+	InputManager* inputManager = InputManager::GetInstance();
 	static int sceneNum;
 
 public :

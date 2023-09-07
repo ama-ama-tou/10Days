@@ -44,11 +44,10 @@ void Stage::Update(char* keys, char* preKeys) {
 	player_->Update(keys, preKeys);
 	//コリジョンマネージャーの追加
 	//blockのlocalCoordinateの更新の処理(必要なら)
+	
 	if (/*clear条件*/) {
-		isClear_ == true;
+		
 	}
-
-
 
 	if (/*reset条件*/) {
 		isReset_ == true;
