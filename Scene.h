@@ -45,7 +45,7 @@ public :
 
 	virtual void setPlayStage(StageNum selectedStage)=0;
 
-	virtual StageNum getSelectedStage(Vec2 mousePos, int clickState) = 0;
+	virtual StageNum getSelectedStage() = 0;
 };
 
 

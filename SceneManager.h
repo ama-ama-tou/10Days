@@ -8,7 +8,7 @@
 class SceneManager {
 private:
 
-	InputManager* inputManager = InputManager::GetInstance();
+	
 	std::unique_ptr<Scene> sceneArr_[3];
 
 	int sceneNum_;
