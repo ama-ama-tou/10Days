@@ -1,17 +1,24 @@
-#pragma once
+ï»¿#pragma once
 #include"Player.h"
 #include"Block.h"
 #include<vector>
 
 class CollisionManager {
 	Player player_;
-	Block** block_;
+	Player* playerPos_;
+	Block*** block_;
+	Block blockType_;
+
+	//å„é ‚ç‚¹ã®ç•ªåœ°
+	int rowAddress_[4] = { 0 };
+	int colAddress_[4] = { 0 };
+
 public:
-	CollisionManager(Player& player,Block**& block) :player_(player),block_(block) {};
+	CollisionManager(Player& player,Block***& block , Block*& blockType) :player_(player),block_(block),blockType_(blockType) {};
 
-	//“–‚½‚è”»’è
-	void Collision();
+	//å½“ãŸã‚Šåˆ¤å®š
+	void playerCollision();
 
-
+	void blockCollision();
 };
 

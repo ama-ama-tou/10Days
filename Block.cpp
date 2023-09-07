@@ -32,3 +32,32 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 		localCoOrigin,
 		GH_, imageLtPos, imageSize);
 }
+
+
+int Block::CalcuRowAddress(int vertexNum) {
+	int row = { 0 };
+	if (vertexNum == 0) {
+		row = static_cast<int>(getLtVertex().x / getSize().x); //左上の場合
+	} else if(vertexNum == 1) {
+		row = static_cast<int>((getRtVertex().x - 1) / getSize().x); //右上の場合
+	} else if (vertexNum == 2) {
+		row = static_cast<int>((getRbVertex().x - 1) / getSize().x); //右下の場合
+	} else if (vertexNum == 3) {
+		row = static_cast<int>((getLbVertex().x - 1) / getSize().x); //左下の場合
+	}
+	return row;
+}
+
+int Block::CalcuColAddress(int vertexNum) {
+	int col = { 0 };
+	if (vertexNum == 0) {
+		col = static_cast<int>(getLtVertex().y / getSize().y); //左上の場合
+	} else if (vertexNum == 1) {
+		col = static_cast<int>((getRtVertex().y - 1) / getSize().y); //右上の場合
+	} else if (vertexNum == 2) {
+		col = static_cast<int>((getRbVertex().y - 1) / getSize().y); //右下の場合
+	} else if (vertexNum == 3) {
+		col = static_cast<int>((getLbVertex().y - 1) / getSize().y); //左下の場合
+	}
+	return col;
+}

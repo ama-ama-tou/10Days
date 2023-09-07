@@ -1,23 +1,35 @@
-#pragma once
+ï»¿#pragma once
 #include "Scene.h"
 #include "Button.h"
+#include"Stage.h"
 
 class Scene_Select:
 	public Scene {
-
-	
 private:
+	//======================
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
+	//======================
 
-	//======================
-	//ƒƒ“ƒo•Ï”
-	//======================
+	Button go2Title;
+
 	Button stage_[9];
 	
 public:
+	//======================
+	//ãƒ¡ãƒ³ãƒé–¢æ•°
+	//======================
+	void Load()override;
+	void Update()override;
+	void Draw()override;
+	void Unload()override;
+
+
+
+
 	//=======================
-	//ƒQƒbƒ^[
+	//ã‚²ãƒƒã‚¿ãƒ¼
 	//=======================
-	int getSelectedStage(Vec2 mousePos, int clickState);
+	StageNum getSelectedStage(Vec2 mousePos, int clickState);
 
 
 

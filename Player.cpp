@@ -23,6 +23,27 @@ void Player::Move(char* keys,char* preKeys) {
 	vertex_[3] = Vec2(pos_.x + size_.x, pos_.y + size_.y);
 }
 
+int Player::CalcuRowAddress(int vertexNum){
+	int row;
+	if (vertexNum == 0) {
+		row = static_cast<int>(vertex_[vertexNum].x / size_.x); //左上の場合
+
+	} else {
+		row = static_cast<int>((vertex_[vertexNum].x - 1) / size_.x); //それ以外の場合-1する必要がある
+	}
+	return row;
+}
+
+int Player::CalcuColAddress(int vertexNum){
+	int col;
+	if (vertexNum == 0) {
+		col = static_cast<int>(vertex_[vertexNum].y / size_.y); //左上の場合
+
+	} else {
+		col = static_cast<int>((vertex_[vertexNum].y - 1) / size_.y); //それ以外の場合-1する必要がある
+	}
+	return col;
+}
 
 
 void Player::Update(char* keys, char* preKeys) {

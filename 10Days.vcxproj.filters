@@ -29,6 +29,9 @@
     <Filter Include="Scene">
       <UniqueIdentifier>{17f885c7-8152-4aae-852c-e973539cdb3a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\Stage">
+      <UniqueIdentifier>{da7917e5-59e9-46cb-af8c-eeab751247b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\DirectXCommon.cpp">
@@ -59,9 +62,6 @@
     <ClCompile Include="Block.cpp">
       <Filter>Entitiy</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="Scene_Game.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -76,6 +76,12 @@
     </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>Entitiy</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>Scene\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +189,12 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Button.h">
       <Filter>Entitiy</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>Scene\Stage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

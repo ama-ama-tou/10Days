@@ -8,6 +8,7 @@ private:
 	//================
 	Coordinate localCo_;
 	Vec2 vertex_[4];
+	Vec2 size_;
 
 	int GH_;
 	//画像の左上座標
@@ -59,5 +60,9 @@ public:
 
 	Vec2 getImageLtPos() { return imageLtPos_; }
 	void setImageLtPos(Vec2 imageLtPos) { imageLtPos_ = imageLtPos; }
+
+	///サイズ
+	Vec2 getSize() { return size_; }
+	void setSize(Vec2 size) { size_ = size; }
 
 };

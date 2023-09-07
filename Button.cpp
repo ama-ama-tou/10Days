@@ -1,7 +1,7 @@
-#include "Button.h"
+ï»¿#include "Button.h"
 #include <Novice.h>
 
-//ƒ}ƒEƒX‚ªƒXƒNƒŠ[ƒ“ã‚É‚ ‚é‚©’²‚×‚éŠÖ”
+//ãƒžã‚¦ã‚¹ãŒã‚¹ã‚¯ãƒªãƒ¼ãƒ³ä¸Šã«ã‚ã‚‹ã‹èª¿ã¹ã‚‹é–¢æ•°
 void Button::checkInsideMouse(Vec2 mousePos) {
 	bool inSide = mousePos.x >= getScreenLtVertex().x && mousePos.x <= getScreenRtVertex().x ;
 	bool above = mousePos.y >= getScreenLtVertex().y && mousePos.y <= getScreenLbVertex().y;
@@ -12,7 +12,10 @@ void Button::checkInsideMouse(Vec2 mousePos) {
 void Button::Update(Vec2 mousePos, int clickState) {
 	Button::checkInsideMouse(mousePos);
 	if (isInsideMouse_) {
-		isClicked_ = clickState;
+		if (clickState==1) {
+			//å³ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã¨ã
+			isClicked_ = true;
+		}
 	}
 }
 
