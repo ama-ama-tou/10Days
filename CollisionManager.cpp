@@ -259,8 +259,8 @@ void  CollisionManager::blockCollision() {
 				block_[colAddress_[0] - 1][rowAddress_[0]]->getType() == block_[colAddress_[0]][rowAddress_[0]]->getType()) { //左上の1個上と今のブロック
 				//持たれているブロックか判定する
 				if (!block_[colAddress_[3] - 1][rowAddress_[3]]->getIsHadBlock()) {
-					//反発させる
-
+					//1個先のブロックのposを奥に移動させる
+					block_[colAddress_[0] - 1][rowAddress_[0]]->setPos(block_[colAddress_[0] - 2][rowAddress_[0]]->getPos());
 				}
 
 			} else {
