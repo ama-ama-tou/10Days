@@ -6,7 +6,7 @@ StageNum Scene_Select::getSelectedStage(Vec2 mousePos, int clickState) {
 		stage_[i].Update(mousePos, clickState);
 
 		if (stage_[i].getIsClicked()) {
-			//‘I‚Î‚ê‚½ƒXƒe[ƒW‚Ì”Ô†‚ğ•Ô‚·
+			//é¸ã°ã‚ŒãŸã‚¹ãƒ†ãƒ¼ã‚¸ã®ç•ªå·ã‚’è¿”ã™
 			return static_cast<StageNum>(i);
 		}
 	}
@@ -14,10 +14,10 @@ StageNum Scene_Select::getSelectedStage(Vec2 mousePos, int clickState) {
 
 void Scene_Select::Load() {
 	//=================
-	//ƒ{ƒ^ƒ“‰Šú‰»
+	//ãƒœã‚¿ãƒ³åˆæœŸåŒ–
 	//=================
 
-	//ƒ^ƒCƒgƒ‹‰æ–Ê‚É–ß‚éƒ{ƒ^ƒ“
+	//ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢ã«æˆ»ã‚‹ãƒœã‚¿ãƒ³
 	Vec2 goTitlePos = Vec2(50.0f,670.0f);
 	Vec2 goTitleButtonSize{ 100,50.0f };
 	const char* goTitleGH = "./Resource/image/obj/button/goTitleButton.png";
@@ -26,13 +26,13 @@ void Scene_Select::Load() {
 		goTitleGH, goTitleClickedGH,
 		Vec2(0.0f, 0.0f), goTitleButtonSize);
 
-	//ƒXƒe[ƒWƒZƒŒƒNƒgƒ{ƒ^ƒ“
+	//ã‚¹ãƒ†ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ãƒˆãƒœã‚¿ãƒ³
 	Vec2 selectButtonSize = { 150.0f,150.0f };
 	Vec2 selectButtonSpace = { 100.0f,50.0f };
 	Vec2 selectButtonPos[9];
 	for (int i = 0; i < 9; i++) {
-		int selectButtonRow = i / 3;//s”Ô†(0,1,2)
-		int selectButtonCol = i % 3;//—ñ”Ô†(0,1,2)
+		int selectButtonRow = i / 3;//è¡Œç•ªå·(0,1,2)
+		int selectButtonCol = i % 3;//åˆ—ç•ªå·(0,1,2)
 		selectButtonPos[i] = Vec2(340.0f + selectButtonCol * (selectButtonSize.x + selectButtonSpace.x),
 								60.0f + selectButtonRow * (selectButtonSize.y + selectButtonSpace.y));
 
