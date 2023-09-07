@@ -139,7 +139,7 @@ void  CollisionManager::blockCollision() {
 				//持たれているブロックか判定する
 				if (!block_[colAddress_[0]][rowAddress_[0] - 1]->getIsHadBlock()) {
 					//反発させる
-
+					block_[colAddress_[0]][rowAddress_[0] - 1]->setPos(block_[colAddress_[0]][rowAddress_[0] - 2]->getPos());
 				}
 
 			} else {
@@ -219,7 +219,7 @@ void  CollisionManager::blockCollision() {
 				//持たれているブロックか判定する
 				if (!block_[colAddress_[2]][rowAddress_[2] + 1]->getIsHadBlock()) {
 					//1個先のブロックのposを奥に移動させる
-
+					block_[colAddress_[0] + 1][rowAddress_[0]]->setPos(block_[colAddress_[0] + 2][rowAddress_[0]]->getPos());
 				}
 
 			} else { 
