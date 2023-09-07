@@ -52,9 +52,9 @@ public:
 		row_ = stageCsv_.size();
 		col_ = stageCsv_[0].size();
 
-		block_ = new Block** [row_];
-		for (int i = 0; i < row_; i++) {
-			block_[i] = new Block*[col_];
+		block_ = new Block** [col_];
+		for (int i = 0; i < col_; i++) {
+			block_[i] = new Block*[row_];
 		}
 
 	}
