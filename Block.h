@@ -39,7 +39,7 @@ public:
         Vec2 localCoOrigin,
         Vec2 imageLtPos, Vec2 imageSize,BlockType whatType);
 
-    void Update(Vec2 pos);
+    void Update();
 
     int CalcuRowAddress(int vertexNum);
     int CalcuColAddress(int vertexNum);
@@ -47,6 +47,7 @@ public:
     //=======================
     //ゲッター/セッター
     //=======================
+
     BlockType getType() { return type_; }
     void setType(BlockType type) { type_ = type; }
 
