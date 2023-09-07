@@ -40,7 +40,7 @@ public:
 		vertex_[3] = Vec2(pos.x + size_.x, pos.y + size_.y);
 
 		//1マスずつ進める
-		speed_ = size_;
+		speed_ = static_cast<float>(size_);
 
 		localCo_.setOrigin(localCoOrigin);
 

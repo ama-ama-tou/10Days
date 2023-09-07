@@ -1,4 +1,4 @@
-#include "Scene_Select.h"
+﻿#include "Scene_Select.h"
 #include "Button.h"
 
 StageNum Scene_Select::getSelectedStage(Vec2 mousePos, int clickState) {

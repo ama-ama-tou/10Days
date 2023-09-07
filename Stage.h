@@ -58,8 +58,8 @@ public:
 	Stage(const std::string& csvFilePath) :csvFilePath_(csvFilePath) {
 		stageCsv_ = LoadCsv(csvFilePath);
 
-		row_ = stageCsv_.size();
-		col_ = stageCsv_[0].size();
+		row_ = static_cast<int>(stageCsv_.size());
+		col_ = static_cast<int>(stageCsv_[0].size());
 
 		block_ = new Block** [col_];
 		for (int i = 0; i < col_; i++) {
