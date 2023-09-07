@@ -54,7 +54,7 @@ void Scene_Title::Update() {
 		sceneNum = SCENE_MENU;
 	}
 	if (Button_goSelect.getIsClicked()) {
-		sceneNum = SCENE_STAGESELLECT;
+		sceneNum = SCENE_SELLECT;
 	}
 	if (Button_exit.getIsClicked()) {
 	//ゲームを終了させる処理
