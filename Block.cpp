@@ -34,8 +34,12 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 }
 
 
-void Block::Update(Vec2) {
+void Block::Update() {
+	Vec2 size = Quad::getSize();
+
+	Quad::setLtVertex(pos_);
 	
+
 }
 
 
