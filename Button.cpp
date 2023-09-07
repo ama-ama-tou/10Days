@@ -21,9 +21,9 @@ void Button::Update(Vec2 mousePos, int clickState) {
 
 void Button::Draw() {
 	if (isInsideMouse_) {
-		GH_ = Novice::LoadTexture(filePass[1]);
+		GH_ = Novice::LoadTexture(filePass_[1]);
 	} else {
-		GH_ = Novice::LoadTexture(filePass[0]);
+		GH_ = Novice::LoadTexture(filePass_[0]);
 	}
 	Quad::Draw();
 }
