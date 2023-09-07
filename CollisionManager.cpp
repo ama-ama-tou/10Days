@@ -24,76 +24,91 @@ void CollisionManager::playerCollision() {
 	}
 	
 	//----------各頂点の番地からどの面が接しているかの判定----------//
-	///上の面
+	//上の面
 	if (!player_.getIsFacingTop()) {
-		if (block_[colAddress_[0]][rowAddress_[0] - 1]->getType() != NONE && //左上の1個上
-			block_[colAddress_[1]][rowAddress_[1] - 1]->getType() != NONE) { //右上の1個上
+		if (block_[colAddress_[0]][rowAddress_[0] - 1]->getType() !=NONE && //左上の1個上
+			block_[colAddress_[1]][rowAddress_[1] - 1]->getType() !=NONE) { //右上の1個上
 			
 			player_.setIsFacingTop(true);
 
-			///当たったブロックが壁の場合は止める
-			if (block_[colAddress_[0]][rowAddress_[0] - 1]->getType() == WALL && //左上の1個上
-				block_[colAddress_[1]][rowAddress_[1] - 1]->getType() == WALL) { //右上の1個上
-				///止める
-
-
-			} else {
+			//当たったブロックが壁以外の場合はくっつける
+			if (block_[colAddress_[0]][rowAddress_[0] - 1]->getType() != WALL && //左上の1個上
+				block_[colAddress_[1]][rowAddress_[1] - 1]->getType() != WALL) { //右上の1個上
+				//ローカル座標に追加
 				block_[colAddress_[0]][rowAddress_[0] - 1]->setLocalCoOrigin(playerPos_->getScreenLtVertex());
-			}
+			} 
+		}
+	} else {
+		if (block_[colAddress_[0]][rowAddress_[0]]->getType() !=NONE && //左上(今の座標)
+			block_[colAddress_[1]][rowAddress_[1]]->getType() !=NONE) { //右上(今の座標)
+			//戻す
+			player_.setPos(player_.getPrePos());
 		}
 	}
 
-	///右の面
+	//右の面
 	if (!player_.getIsFacingRight()) {
-		if (block_[colAddress_[1] + 1][rowAddress_[1]]->getType() != NONE && //右上の1個右
-			block_[colAddress_[2] + 1][rowAddress_[2]]->getType() != NONE) { //右下の1個右
+		if (block_[colAddress_[1] + 1][rowAddress_[1]]->getType() !=NONE && //右上の1個右
+			block_[colAddress_[2] + 1][rowAddress_[2]]->getType() !=NONE) { //右下の1個右
 			
 			player_.setIsFacingRight(true);
 
-			///当たったブロックが壁の場合は止める
-			if (block_[colAddress_[1] + 1][rowAddress_[1]]->getType() == WALL && //右上の1個右
-				block_[colAddress_[2] + 1][rowAddress_[2]]->getType() == WALL) { //右下の1個右
-				///止める
+			//当たったブロックが壁以外の場合はくっつける
+			if (block_[colAddress_[1] + 1][rowAddress_[1]]->getType() != WALL && //右上の1個右
+				block_[colAddress_[2] + 1][rowAddress_[2]]->getType() != WALL) { //右下の1個右
 
-			} else {
 				block_[colAddress_[1] + 1][rowAddress_[1]]->setLocalCoOrigin(playerPos_->getScreenLtVertex());
 			}
 		}
-	}
-
-	///下の面
-	if (!player_.getIsFacingBottom()) {
-		if (block_[colAddress_[2]][rowAddress_[2] + 1]->getType() != NONE && //右下の1個下
-			block_[colAddress_[3]][rowAddress_[3] + 1]->getType() != NONE) { //左下の1個下
-			
-			player_.setIsFacingBottom(true);
-
-			///当たったブロックが壁の場合は止める
-			if (block_[colAddress_[2]][rowAddress_[2] + 1]->getType() == WALL && //右上の1個右
-				block_[colAddress_[3]][rowAddress_[3] + 1]->getType() == WALL) { //右下の1個右
-				///止める
-
-			} else {
-				block_[colAddress_[2]][rowAddress_[2] + 1]->setLocalCoOrigin(playerPos_->getScreenLtVertex());
-			}
+	} else {
+		if (block_[colAddress_[1]][rowAddress_[1]]->getType() !=NONE && //右上(今の座標)
+			block_[colAddress_[2]][rowAddress_[2]]->getType() !=NONE) { //右下(今の座標)
+			//戻す
+			player_.setPos(player_.getPrePos());
 		}
 	}
 
-	///左の面
+	//下の面
 	if (!player_.getIsFacingBottom()) {
-		if (block_[colAddress_[3] - 1][rowAddress_[3]]->getType() != NONE && //左下の1個左
-			block_[colAddress_[0] - 1][rowAddress_[0]]->getType() != NONE) { //左上の1個左
+		if (block_[colAddress_[2]][rowAddress_[2] + 1]->getType() !=NONE && //右下の1個下
+			block_[colAddress_[3]][rowAddress_[3] + 1]->getType() !=NONE) { //左下の1個下
+			
+			player_.setIsFacingBottom(true);
+
+			//当たったブロックが壁以外の場合はくっつける
+			if (block_[colAddress_[2]][rowAddress_[2] + 1]->getType() != WALL && //右下の1個右
+				block_[colAddress_[3]][rowAddress_[3] + 1]->getType() != WALL) { //左下の1個右
+
+				block_[colAddress_[2]][rowAddress_[2] + 1]->setLocalCoOrigin(playerPos_->getScreenLtVertex());
+			} 
+		}
+	} else {
+		if (block_[colAddress_[2]][rowAddress_[2]]->getType() !=NONE && //右下(今の座標)
+			block_[colAddress_[3]][rowAddress_[3]]->getType() !=NONE) { //左下(今の座標)
+			//戻す
+			player_.setPos(player_.getPrePos());
+		}
+	}
+
+	//左の面
+	if (!player_.getIsFacingBottom()) {
+		if (block_[colAddress_[3] - 1][rowAddress_[3]]->getType() !=NONE && //左下の1個左
+			block_[colAddress_[0] - 1][rowAddress_[0]]->getType() !=NONE) { //左上の1個左
 			
 			player_.setIsFacingLeft(true);
 
-			///当たったブロックが壁の場合は止める
-			if (block_[colAddress_[3] - 1][rowAddress_[3]]->getType() == WALL && //右上の1個右
-				block_[colAddress_[0] - 1][rowAddress_[0]]->getType() == WALL) { //右下の1個右
-				///止める
+			//当たったブロックが壁以外の場合はくっつける
+			if (block_[colAddress_[3] - 1][rowAddress_[3]]->getType() != WALL && //左下の1個右
+				block_[colAddress_[0] - 1][rowAddress_[0]]->getType() != WALL) { //左上の1個右
 
-			} else {
 				block_[colAddress_[3] - 1][rowAddress_[3]]->setLocalCoOrigin(playerPos_->getScreenLtVertex());
 			}
+		}
+	} else {
+		if (block_[colAddress_[3]][rowAddress_[3]]->getType() !=NONE && //左下(今の座標)
+			block_[colAddress_[0]][rowAddress_[0]]->getType() !=NONE) { //左上(今の座標)
+			//戻す
+			player_.setPos(player_.getPrePos());
 		}
 	}
 };
@@ -116,8 +131,8 @@ void  CollisionManager::blockCollision() {
 	///----------各頂点の番地からどの面が接しているかの判定----------///
 	///上の面
 	if (!block_[colAddress_[0]][rowAddress_[0]]->getIsFacingTop()) {
-		if (block_[colAddress_[0]][rowAddress_[0] - 1]->getType() != NONE && //左上の1個上
-			block_[colAddress_[1]][rowAddress_[1] - 1]->getType() != NONE) { //右上の1個上
+		if (block_[colAddress_[0]][rowAddress_[0] - 1]->getType() !=NONE && //左上の1個上
+			block_[colAddress_[1]][rowAddress_[1] - 1]->getType() !=NONE) { //右上の1個上
 			///面しているブロックの種類を判断
 			if (block_[colAddress_[0]][rowAddress_[0] - 1]->getType() == block_[colAddress_[0]][rowAddress_[0]]->getType() && //左上の1個上と今のブロック
 				block_[colAddress_[1]][rowAddress_[1] - 1]->getType() == block_[colAddress_[1]][rowAddress_[1]]->getType()) { //右上の1個上と今のブロック
@@ -148,8 +163,8 @@ void  CollisionManager::blockCollision() {
 
 	///右の面
 	if (!block_[colAddress_[0]][rowAddress_[0]]->getIsFacingRight()) {
-		if (block_[colAddress_[1] + 1][rowAddress_[1]]->getType() != NONE && //右上の1個右
-			block_[colAddress_[2] + 1][rowAddress_[2]]->getType() != NONE) { //右下の1個右
+		if (block_[colAddress_[1] + 1][rowAddress_[1]]->getType() !=NONE && //右上の1個右
+			block_[colAddress_[2] + 1][rowAddress_[2]]->getType() !=NONE) { //右下の1個右
 			///面しているブロックの種類を判断
 			if (block_[colAddress_[1] + 1][rowAddress_[1]]->getType() == block_[colAddress_[1]][rowAddress_[1]]->getType() && //右上の1個上と今のブロック
 				block_[colAddress_[2] + 1][rowAddress_[2]]->getType() == block_[colAddress_[2]][rowAddress_[2]]->getType()) { //右下の1個上と今のブロック
@@ -179,14 +194,14 @@ void  CollisionManager::blockCollision() {
 
 	///下の面
 	if (!block_[colAddress_[0]][rowAddress_[0]]->getIsFacingBottom()) {
-		if (block_[colAddress_[2]][rowAddress_[2] + 1]->getType() != NONE && //右下の1個下
-			block_[colAddress_[3]][rowAddress_[3] + 1]->getType() != NONE) { //左下の1個下
+		if (block_[colAddress_[2]][rowAddress_[2] + 1]->getType() !=NONE && //右下の1個下
+			block_[colAddress_[3]][rowAddress_[3] + 1]->getType() !=NONE) { //左下の1個下
 			///面しているブロックの種類を判断
 			if (block_[colAddress_[2]][rowAddress_[2] + 1]->getType() == block_[colAddress_[2]][rowAddress_[2]]->getType() && //右下の1個上と今のブロック
 				block_[colAddress_[3]][rowAddress_[3] + 1]->getType() == block_[colAddress_[3]][rowAddress_[3]]->getType()) { //左下の1個上と今のブロック
 				///持たれているブロックか判定する
 				if (!block_[colAddress_[2]][rowAddress_[2] + 1]->getIsHadBlock()) {
-					///反発させる
+					///1個先のブロックのposを奥に移動させる
 
 				}
 
@@ -211,8 +226,8 @@ void  CollisionManager::blockCollision() {
 
 	///左の面
 	if (!block_[colAddress_[0]][rowAddress_[0]]->getIsFacingBottom()) {
-		if (block_[colAddress_[3] - 1][rowAddress_[3]]->getType() != NONE && //左下の1個左
-			block_[colAddress_[0] - 1][rowAddress_[0]]->getType() != NONE) { //左上の1個左
+		if (block_[colAddress_[3] - 1][rowAddress_[3]]->getType() !=NONE && //左下の1個左
+			block_[colAddress_[0] - 1][rowAddress_[0]]->getType() !=NONE) { //左上の1個左
 			///面しているブロックの種類を判断
 			if (block_[colAddress_[3] - 1][rowAddress_[3]]->getType() == block_[colAddress_[3]][rowAddress_[3]]->getType() && //左下の1個上と今のブロック
 				block_[colAddress_[0] - 1][rowAddress_[0]]->getType() == block_[colAddress_[0]][rowAddress_[0]]->getType()) { //左上の1個上と今のブロック

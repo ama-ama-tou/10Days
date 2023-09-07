@@ -36,6 +36,8 @@ public:
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, Vec2 imageLtPos, Vec2 imageSize) {
 		size_ = size;
 
+		prePos_ = pos;
+
 		vertex_[0] = pos;
 		vertex_[1] = Vec2(pos.x + size_.x, pos.y);
 		vertex_[2] = Vec2(pos.x, pos.y + size_.y);
@@ -61,7 +63,7 @@ public:
 	//===============
 	//ゲッター/セッター
 	//===============
-	///各頂点の当たっていかフラグ
+	//各頂点の当たっていかフラグ
 	bool getIsHitLt() { return isHit_; }
 	bool getIsHitRt() { return isHit_; }
 	bool getIsHitRb() { return isHit_; }
@@ -72,7 +74,7 @@ public:
 	void setIsHitRb(bool isHit) { isHit_ = isHit; }
 	void setIsHitLb(bool isHit) { isHit_ = isHit; }
 
-	///どの面が接しているか(上→右→下→左)
+	//どの面が接しているか(上→右→下→左)
 	bool getIsFacingTop() { return isFacing_[0]; }
 	bool getIsFacingRight() { return isFacing_[1]; }
 	bool getIsFacingBottom() { return isFacing_[2]; }
@@ -82,6 +84,14 @@ public:
 	void setIsFacingRight(bool isFacing) { isFacing_[1] = isFacing; }
 	void setIsFacingBottom(bool isFacing) { isFacing_[2] = isFacing; }
 	void setIsFacingLeft(bool isFacing) { isFacing_[3] = isFacing; }
+
+	//pos(左上座標)
+	Vec2 getPos() { return pos_; }
+	void setPos(Vec2 pos) { pos_ = pos; }
+
+	//保存用pos(左上座標)
+	Vec2 getPrePos() { return prePos_; }
+	void setPrePos(Vec2 prePos) { prePos_ = prePos; }
 	 
 	//ローカル座標上
 	Vec2 getLtVertex() { return vertex_[0]; }

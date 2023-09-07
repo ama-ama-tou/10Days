@@ -43,7 +43,7 @@ public :
 
 	virtual void Unload() = 0;
 
-	virtual StageNum setPlayStage(StageNum selectedStage)=0;
+	virtual void setPlayStage(StageNum selectedStage)=0;
 
 	virtual StageNum getSelectedStage(Vec2 mousePos, int clickState) = 0;
 };

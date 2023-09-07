@@ -9,7 +9,7 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 	type_ = whatType;
 
 	//typeに合わせてGHを変更
-	if (type_ == NONE) {
+	if (type_ ==NONE) {
 		GH_ = 0;
 	} else if (type_==N_POLE) {
 		GH_ = Novice::LoadTexture("./Resource/image/character/nPole.png");
