@@ -23,7 +23,9 @@ void Scene_Game::Load() {
 }
 
 void Scene_Game::Update() {
-	stageArr_[stageNum]->Update();
+	inputManager->Update();
+
+	stageArr_[stageNum]->Update(inputManager->GetKeys(), inputManager->GetPreKeys());
 }
 
 void Scene_Game::Draw() {
