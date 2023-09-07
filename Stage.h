@@ -17,6 +17,9 @@ enum StageNum {
 
 class Stage {
 
+	//何ステージか
+	static int stageNum;
+
 	Coordinate stageCo_{ kFieldLtPos };
 
 	//プレイヤー
@@ -33,10 +36,12 @@ class Stage {
 	int row_;
 	int col_;
 
-	//クリアしたか
-	bool isClear;
+	
+	//N極,S極の数の和()
+	int NSBlockNum_;
+
 	//リセットするか
-	bool isReset;
+	bool isReset_;
 
 
 public:
