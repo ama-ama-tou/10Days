@@ -17,6 +17,8 @@ private:
 	
 public:
 
+	Button() {};
+
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, const char* GH, const char* clicedGH,Vec2 imageLtPos, Vec2 imageSize) {
 		Quad::Init(pos, size,localCoOrigin, 0, imageLtPos, imageSize);
 		filePass_[0] = GH;

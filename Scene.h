@@ -34,6 +34,7 @@ protected:
 	static int sceneNum;
 
 public :
+	
 	virtual ~Scene() = 0;
 
 	virtual void Load() = 0;

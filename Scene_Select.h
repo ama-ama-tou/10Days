@@ -17,6 +17,8 @@ public:
 	//======================
 	//メンバ関数
 	//======================
+	Scene_Select() {};
+
 	void Load()override;
 	void Update()override;
 	void Draw()override;
