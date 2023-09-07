@@ -8,9 +8,10 @@ class Player {
 	//================
 	Coordinate localCo_;
 	Vec2 pos_;
-	float speed_;
 	Vec2 size_;
 
+	float speed_;
+	
 	Vec2 vertex_[4];
 
 	int GH_;
@@ -31,17 +32,21 @@ public:
 	//===============
 	
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, Vec2 imageLtPos, Vec2 imageSize) {
-		
+		size_ = size;
+
 		vertex_[0] = pos;
-		vertex_[1] = Vec2(pos.x + size.x, pos.y);
-		vertex_[2] = Vec2(pos.x, pos.y + size.y);
-		vertex_[3] = Vec2(pos.x + size.x, pos.y + size.y);
+		vertex_[1] = Vec2(pos.x + size_.x, pos.y);
+		vertex_[2] = Vec2(pos.x, pos.y + size_.y);
+		vertex_[3] = Vec2(pos.x + size_.x, pos.y + size_.y);
+
+		//1マスずつ進める
+		speed_ = size_;
 
 		localCo_.setOrigin(localCoOrigin);
 
 		GH_ =Novice::LoadTexture("./Resource/image/character/player.png");
 		imageLtPos_ = imageLtPos;
-		imageSize_ = imageSize; speed_ = imageSize;
+		imageSize_ = imageSize; 
 	}
 
 	void Update(char* keys, char* preKeys);
