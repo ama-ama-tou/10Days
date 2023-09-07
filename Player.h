@@ -20,7 +20,7 @@ class Player {
 	Vec2 imageSize_;
 
 	//接っしているかどうか
-	bool isHit_;
+	//bool isHit_;
 
 	//面しているかどうか
 	bool isFacing_[4];
@@ -55,7 +55,7 @@ public:
 	//ゲッター/セッター
 	//===============
 	///各頂点の当たっていかフラグ
-	bool getIsHitLt() { return isHit_; }
+	/*bool getIsHitLt() { return isHit_; }
 	bool getIsHitRt() { return isHit_; }
 	bool getIsHitRb() { return isHit_; }
 	bool getIsHitLb() { return isHit_; }
@@ -63,7 +63,7 @@ public:
 	void setIsHitLt(bool isHit) { isHit_ = isHit; }
 	void setIsHitRt(bool isHit) { isHit_ = isHit; }
 	void setIsHitRb(bool isHit) { isHit_ = isHit; }
-	void setIsHitLb(bool isHit) { isHit_ = isHit; }
+	void setIsHitLb(bool isHit) { isHit_ = isHit; }*/
 
 	///どの面が接しているか(上→右→下→左)
 	bool getIsFacingTop() { return isFacing_[0]; }

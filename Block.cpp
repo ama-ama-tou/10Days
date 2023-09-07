@@ -33,6 +33,7 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 		GH_, imageLtPos, imageSize);
 }
 
+
 int Block::CalcuRowAddress(int vertexNum) {
 	int row = { 0 };
 	if (vertexNum == 0) {
