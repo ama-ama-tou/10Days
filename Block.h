@@ -47,6 +47,11 @@ public:
     //=======================
     //ゲッター/セッター
     //=======================
+    Vec2 getPos() { return pos_; }
+    void setPos(Vec2 pos) { pos_ = pos; }
+
+    Vec2 getPrePos() { return prePos_; }
+    void setPrePos(Vec2 prePos) { prePos_ = prePos; }
 
     BlockType getType() { return type_; }
     void setType(BlockType type) { type_ = type; }
