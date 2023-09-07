@@ -22,6 +22,7 @@ class Block :
     bool isFacing_[4];
 
 
+
 public:
 
    //=======================

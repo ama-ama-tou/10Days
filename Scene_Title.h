@@ -17,6 +17,8 @@ private:
 
 	void Update()override;
 
+	void Draw()override;
+
 	void Unload()override;
 	
 };
