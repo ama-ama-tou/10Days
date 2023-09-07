@@ -71,17 +71,20 @@
     <ClCompile Include="Scene_Title.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionManager.cpp">
-      <Filter>KamataEngine</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>Entitiy</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>KamataEngine</Filter>
-    </ClCompile>
     <ClCompile Include="Stage.cpp">
       <Filter>Scene\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>lib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -186,7 +189,6 @@
     <ClInclude Include="Scene_Title.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Button.h">
       <Filter>Entitiy</Filter>
     </ClInclude>
@@ -195,6 +197,12 @@
     </ClInclude>
     <ClInclude Include="Stage.h">
       <Filter>Scene\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>lib</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
