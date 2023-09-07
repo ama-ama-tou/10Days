@@ -9,7 +9,7 @@ private:
 	//======================
 	//メンバ変数
 	//======================
-
+	Quad titleBar;
 	Button go2Title;
 
 	Button stage_[9];

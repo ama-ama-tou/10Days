@@ -11,3 +11,13 @@ StageNum Scene_Select::getSelectedStage(Vec2 mousePos, int clickState) {
 		}
 	}
 }
+
+void Scene_Select::Load() {
+	Vec2
+}
+
+void Scene_Select::Draw() {
+	for (int i = 0; i < 9; i++) {
+		stage_[i].Draw();
+	}
+}
