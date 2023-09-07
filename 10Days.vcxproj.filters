@@ -14,23 +14,35 @@
     <Filter Include="KamataEngine\Adapter">
       <UniqueIdentifier>{c6468eb4-788b-4a83-b207-a5f4804e56c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="lib">
-      <UniqueIdentifier>{b0c4f41b-75a7-4742-83fc-d2bb4ec43bdf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lib\unit">
-      <UniqueIdentifier>{a40e95c6-7daf-46a3-9799-9ac83c073eb5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Entitiy">
-      <UniqueIdentifier>{87bcd6c8-c0b9-4271-ae6f-bf2346e9d8c1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game">
       <UniqueIdentifier>{b8cc80df-e4f7-4442-90ba-d62483d192ac}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene">
+    <Filter Include="Game\Entitiy">
+      <UniqueIdentifier>{87bcd6c8-c0b9-4271-ae6f-bf2346e9d8c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\lib">
+      <UniqueIdentifier>{b0c4f41b-75a7-4742-83fc-d2bb4ec43bdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\lib\unit">
+      <UniqueIdentifier>{a40e95c6-7daf-46a3-9799-9ac83c073eb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scene">
       <UniqueIdentifier>{17f885c7-8152-4aae-852c-e973539cdb3a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\Stage">
+    <Filter Include="Game\Scene\Stage">
       <UniqueIdentifier>{da7917e5-59e9-46cb-af8c-eeab751247b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Manager">
+      <UniqueIdentifier>{faa4b458-f1a5-4389-9424-2b3b3b18a327}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Manager\SceneManager">
+      <UniqueIdentifier>{223e8d5f-0d34-43e3-a502-c5230904f263}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Manager\CollisionManager">
+      <UniqueIdentifier>{502ae3a5-7fbb-496a-9acd-5bea6318a705}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Manager\InputManager">
+      <UniqueIdentifier>{6db3b4b6-ba09-43cf-ad9f-2c222ae9ffdc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -54,40 +66,40 @@
       <Filter>KamataEngine</Filter>
     </ClCompile>
     <ClCompile Include="Quad.cpp">
-      <Filter>Entitiy</Filter>
+      <Filter>Game\Entitiy</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Entitiy</Filter>
+      <Filter>Game\Entitiy</Filter>
     </ClCompile>
     <ClCompile Include="Block.cpp">
-      <Filter>Entitiy</Filter>
+      <Filter>Game\Entitiy</Filter>
     </ClCompile>
     <ClCompile Include="Scene_Game.cpp">
-      <Filter>Scene</Filter>
+      <Filter>Game\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Scene_Select.cpp">
-      <Filter>Scene</Filter>
+      <Filter>Game\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Scene_Title.cpp">
-      <Filter>Scene</Filter>
+      <Filter>Game\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>Entitiy</Filter>
+      <Filter>Game\Entitiy</Filter>
     </ClCompile>
     <ClCompile Include="Stage.cpp">
-      <Filter>Scene\Stage</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionManager.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>lib</Filter>
+      <Filter>Game\Scene\Stage</Filter>
     </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Game\Manager\CollisionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Game\Manager\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Game\Manager\InputManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,53 +172,53 @@
     <ClInclude Include="C:\KamataEngine\DirectXGame\math\Vector4.h" />
     <ClInclude Include="C:\KamataEngine\DirectXGame\2d\ImGuiManager.h" />
     <ClInclude Include="Vec2.h">
-      <Filter>lib\unit</Filter>
+      <Filter>Game\lib\unit</Filter>
     </ClInclude>
     <ClInclude Include="Coordinate.h">
-      <Filter>lib\unit</Filter>
+      <Filter>Game\lib\unit</Filter>
     </ClInclude>
     <ClInclude Include="LoadCSV.h">
-      <Filter>lib</Filter>
+      <Filter>Game\lib</Filter>
     </ClInclude>
     <ClInclude Include="Quad.h">
-      <Filter>Entitiy</Filter>
+      <Filter>Game\Entitiy</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Entitiy</Filter>
+      <Filter>Game\Entitiy</Filter>
     </ClInclude>
     <ClInclude Include="Block.h">
-      <Filter>Entitiy</Filter>
+      <Filter>Game\Entitiy</Filter>
     </ClInclude>
     <ClInclude Include="base.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Scene</Filter>
+      <Filter>Game\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Scene_Game.h">
-      <Filter>Scene</Filter>
+      <Filter>Game\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Scene_Select.h">
-      <Filter>Scene</Filter>
+      <Filter>Game\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Scene_Title.h">
-      <Filter>Scene</Filter>
+      <Filter>Game\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
-      <Filter>Entitiy</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>Scene</Filter>
+      <Filter>Game\Entitiy</Filter>
     </ClInclude>
     <ClInclude Include="Stage.h">
-      <Filter>Scene\Stage</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionManager.h">
-      <Filter>lib</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>lib</Filter>
+      <Filter>Game\Scene\Stage</Filter>
     </ClInclude>
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Game\Manager\CollisionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Game\Manager\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Game\Manager\InputManager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
