@@ -22,9 +22,10 @@ class Block :
     bool isFacing_;
 
     //ブロックの各面がどのブロックと面しているか
-    int isFacingType_[4];
+   // int isFacingType_[4];
 
-
+    //ブロックを持っているかいないか
+    bool isHadBlock_;
 
 public:
 
@@ -48,6 +49,9 @@ public:
 
     int getHitting() { return isHit_; }
     void setHitting(int isHit) { isHit_ = isHit; }
+
+    bool getIsHadBlock() { return isHadBlock_; }
+    void setIsHadBlock(bool isHadBlock) { isHadBlock_ = isHadBlock; }
 
     //各頂点がどのブロックと接しているかのフラグ
     /*int getHitBlockTopType() { return isHitBlockType_[type_]; }
@@ -73,7 +77,7 @@ public:
 
 
     ///どの面がどの種類と接しているか(上→右→下→左)
-    int getIsFacingTopType() { return isFacingType_[0]; }
+    /*int getIsFacingTopType() { return isFacingType_[0]; }
     int getIsFacingRightType() { return isFacingType_[1]; }
     int getIsFacingBottomType() { return isFacingType_[2]; }
     int getIsFacingLeftType() { return isFacingType_[3]; }
@@ -81,6 +85,6 @@ public:
     void setIsFacingTopType(int isFacing) { isFacingType_[0] = isFacing; }
     void setIsFacingRightType(int isFacing) { isFacingType_[1] = isFacing; }
     void setIsFacingBottomType(int isFacing) { isFacingType_[2] = isFacing; }
-    void setIsFacingLeftType(int isFacing) { isFacingType_[3] = isFacing; }
+    void setIsFacingLeftType(int isFacing) { isFacingType_[3] = isFacing; }*/
 };
 

@@ -5,6 +5,7 @@
 
 class CollisionManager {
 	Player player_;
+	Player* playerPos_;
 	Block*** block_;
 	Block blockType_;
 
