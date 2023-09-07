@@ -1,15 +1,16 @@
 ﻿#include "Scene_Select.h"
 #include "Button.h"
 
-StageNum Scene_Select::getSelectedStage(Vec2 mousePos, int clickState) {
+StageNum Scene_Select::getSelectedStage() {
 	for (int i = 0; i < 9; i++) {
-		stage_[i].Update(mousePos, clickState);
+		stage_[i].Update(inputManager->getMousePos(),inputManager->getClickState());
 
 		if (stage_[i].getIsClicked()) {
 			//選ばれたステージの番号を返す
 			return static_cast<StageNum>(i);
 		}
 	}
+	return static_cast<StageNum>(0);
 }
 
 void Scene_Select::Load() {
@@ -47,6 +48,9 @@ void Scene_Select::Load() {
 }
 
 void Scene_Select::Update() {
+
+	inputManager->Update();
+
 	if (go2Title.getIsClicked()) {
 		sceneNum = SCENE_TITLE;
 	}
