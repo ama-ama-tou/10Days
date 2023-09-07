@@ -16,10 +16,13 @@ class Block :
     BlockType type_;
 
     //当たっているブロックの種類
-    int isHitBlockType_[4];
+   // int isHitBlockType_[4];
 
-    //ブロックがブロックと面しているか
-    bool isFacing_[4];
+    ///ブロックの各面がブロックと接しているか
+    bool isFacing_;
+
+    //ブロックの各面がどのブロックと面しているか
+    int isFacingType_[4];
 
 
 
@@ -47,26 +50,37 @@ public:
     void setHitting(int isHit) { isHit_ = isHit; }
 
     //各頂点がどのブロックと接しているかのフラグ
-    int getHitBlockLtType() { return isHitBlockType_[0]; }
-    int getHitBlockRtType() { return isHitBlockType_[1]; }
-    int getHitBlockRbType() { return isHitBlockType_[2]; }
-    int getHitBlockLbType() { return isHitBlockType_[3]; }
+    /*int getHitBlockTopType() { return isHitBlockType_[type_]; }
+    int getHitBlockRightType() { return isHitBlockType_[type_]; }
+    int getHitBlockbottomType() { return isHitBlockType_[type_]; }
+    int getHitBlockLeftType() { return isHitBlockType_[type_]; }
 
-    void setHitBlockLtType(int isHitBlockType) { isHitBlockType_[0] = isHitBlockType; }
-    void setHitBlockRtType(int isHitBlockType) { isHitBlockType_[1] = isHitBlockType; }
-    void setHitBlockRbType(int isHitBlockType) { isHitBlockType_[2] = isHitBlockType; }
-    void setHitBlockLbType(int isHitBlockType) { isHitBlockType_[3] = isHitBlockType; }
+    void setHitBlockTopType(int isHitBlockType) { isHitBlockType_[type_] = isHitBlockType; }
+    void setHitBlockRightType(int isHitBlockType) { isHitBlockType_[type_] = isHitBlockType; }
+    void setHitBlockBottomType(int isHitBlockType) { isHitBlockType_[type_] = isHitBlockType; }
+    void setHitBlockLeftType(int isHitBlockType) { isHitBlockType_[type_] = isHitBlockType; }*/
+
+    ///ブロックの各面が接しているか
+    bool getIsFacingTop() { return isFacing_; }
+    bool getIsFacingRight() { return isFacing_; }
+    bool getIsFacingBottom() { return isFacing_; }
+    bool getIsFacingLeft() { return isFacing_; }
+
+    void setIsFacingTop(bool isFacing) { isFacing_ = isFacing; }
+    void setIsFacingRight(bool isFacing) { isFacing_ = isFacing; }
+    void setIsFacingBottom(bool isFacing) { isFacing_ = isFacing; }
+    void setIsFacingLeft(bool isFacing) { isFacing_ = isFacing; }
 
 
-    ///どの面が接しているか(上→右→下→左)
-    bool getIsFacingTop() { return isFacing_[0]; }
-    bool getIsFacingRight() { return isFacing_[1]; }
-    bool getIsFacingBottom() { return isFacing_[2]; }
-    bool getIsFacingLeft() { return isFacing_[3]; }
+    ///どの面がどの種類と接しているか(上→右→下→左)
+    int getIsFacingTopType() { return isFacingType_[0]; }
+    int getIsFacingRightType() { return isFacingType_[1]; }
+    int getIsFacingBottomType() { return isFacingType_[2]; }
+    int getIsFacingLeftType() { return isFacingType_[3]; }
 
-    void setIsFacingTop(bool isFacing) { isFacing_[0] = isFacing; }
-    void setIsFacingRight(bool isFacing) { isFacing_[1] = isFacing; }
-    void setIsFacingBottom(bool isFacing) { isFacing_[2] = isFacing; }
-    void setIsFacingLeft(bool isFacing) { isFacing_[3] = isFacing; }
+    void setIsFacingTopType(int isFacing) { isFacingType_[0] = isFacing; }
+    void setIsFacingRightType(int isFacing) { isFacingType_[1] = isFacing; }
+    void setIsFacingBottomType(int isFacing) { isFacingType_[2] = isFacing; }
+    void setIsFacingLeftType(int isFacing) { isFacingType_[3] = isFacing; }
 };
 
