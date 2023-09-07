@@ -34,17 +34,14 @@ protected:
 	static int sceneNum;
 
 public :
+	virtual ~Scene() = 0;
 
 	virtual void Load() = 0;
-
 	virtual void Update() = 0;
-
 	virtual void Draw() = 0;
-
 	virtual void Unload() = 0;
 
 	virtual void setPlayStage(StageNum selectedStage)=0;
-
 	virtual StageNum getSelectedStage() = 0;
 };
 
