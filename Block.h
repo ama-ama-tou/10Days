@@ -12,13 +12,13 @@ enum BlockType {
 class Block :
     public Quad {
 
+    Vec2 pos_;
+    Vec2 prePos_;
+
     int GH_;
 
     int isHit_;
     BlockType type_;
-
-    //当たっているブロックの種類
-   // int isHitBlockType_[4];
 
     ///ブロックの各面がブロックと接しているか
     bool isFacing_;
@@ -39,6 +39,7 @@ public:
         Vec2 localCoOrigin,
         Vec2 imageLtPos, Vec2 imageSize,BlockType whatType);
 
+    void Update(Vec2 pos);
 
     int CalcuRowAddress(int vertexNum);
     int CalcuColAddress(int vertexNum);
@@ -54,17 +55,6 @@ public:
 
     bool getIsHadBlock() { return isHadBlock_; }
     void setIsHadBlock(bool isHadBlock) { isHadBlock_ = isHadBlock; }
-
-    //各頂点がどのブロックと接しているかのフラグ
-    /*int getHitBlockTopType() { return isHitBlockType_[type_]; }
-    int getHitBlockRightType() { return isHitBlockType_[type_]; }
-    int getHitBlockbottomType() { return isHitBlockType_[type_]; }
-    int getHitBlockLeftType() { return isHitBlockType_[type_]; }
-
-    void setHitBlockTopType(int isHitBlockType) { isHitBlockType_[type_] = isHitBlockType; }
-    void setHitBlockRightType(int isHitBlockType) { isHitBlockType_[type_] = isHitBlockType; }
-    void setHitBlockBottomType(int isHitBlockType) { isHitBlockType_[type_] = isHitBlockType; }
-    void setHitBlockLeftType(int isHitBlockType) { isHitBlockType_[type_] = isHitBlockType; }*/
 
     ///ブロックの各面が接しているか
     bool getIsFacingTop() { return isFacing_; }
