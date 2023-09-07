@@ -14,7 +14,7 @@ class CollisionManager {
 	int colAddress_[4] = { 0 };
 
 public:
-	CollisionManager(Player& player,Block***& block , Block*& blockType) :player_(player),block_(block),blockType_(blockType) {};
+	CollisionManager(Player& player,Block***& block , Block& blockType) :player_(player),block_(block),blockType_(blockType) {};
 
 	//当たり判定
 	void playerCollision();

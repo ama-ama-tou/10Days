@@ -1,4 +1,4 @@
-#include "Scene_Select.h"
+ï»¿#include "Scene_Select.h"
 #include "Button.h"
 
 StageNum Scene_Select::getSelectedStage(Vec2 mousePos, int clickState) {
@@ -6,7 +6,7 @@ StageNum Scene_Select::getSelectedStage(Vec2 mousePos, int clickState) {
 		stage_[i].Update(mousePos, clickState);
 
 		if (stage_[i].getIsClicked()) {
-			//‘I‚Î‚ê‚½ƒXƒe[ƒW‚Ì”Ô†‚ğ•Ô‚·
+			//é¸ã°ã‚ŒãŸã‚¹ãƒ†ãƒ¼ã‚¸ã®ç•ªå·ã‚’è¿”ã™
 			return static_cast<StageNum>(i);
 		}
 	}

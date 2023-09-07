@@ -1,6 +1,9 @@
 ﻿#include "Player.h"
 #include <Novice.h>
 void Player::Move(char* keys,char* preKeys) {
+	//移動前の座標を保存しておく
+	prePos_ = pos_;
+
 	//左右の移動
 	
 	if (keys[DIK_A] && !preKeys[DIK_A]) {
