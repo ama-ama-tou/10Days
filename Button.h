@@ -13,6 +13,7 @@ private:
 	bool isClicked_;
 
 	const char* filePass[2];
+	int GH_;
 	
 public:
 

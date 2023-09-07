@@ -17,7 +17,7 @@ void SceneManager::Update() {
 		//シーンが変わったら初期化
 		sceneArr_[sceneNum_]->Load();
 		if (preSceneNum_==SCENE_SELLECT&&sceneNum_==SCENE_GAME) {
-			sceneArr_[SCENE_GAME]->setPlayStage(sceneArr_[SCENE_SELLECT]->getSelectedStage())
+			sceneArr_[SCENE_GAME]->setPlayStage(sceneArr_[SCENE_SELLECT]->getSelectedStage(Vec2 mousePos,int clicState));
 		}
 	}
 
