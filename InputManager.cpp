@@ -1,15 +1,15 @@
-#include "InputManager.h"
+ï»¿#include "InputManager.h"
 #include <Novice.h>
 
-// GetInstance ƒCƒ“ƒXƒ^ƒ“ƒX‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚ÌŠÖ”
+// GetInstance ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®é–¢æ•°
 InputManager* InputManager::GetInstance() {
 	static InputManager instance;
 	return &instance;
 }
 
-// XVˆ—
+// æ›´æ–°å‡¦ç†
 void InputManager::Update() {
-	// ƒL[“ü—Í‚ğó‚¯æ‚é
+	// ã‚­ãƒ¼å…¥åŠ›ã‚’å—ã‘å–ã‚‹
 	memcpy(preKeys_, keys_, 256);
 	Novice::GetHitKeyStateAll(keys_);
 

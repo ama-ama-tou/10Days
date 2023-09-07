@@ -1,24 +1,24 @@
-#include "GameManager.h"
+ï»¿#include "GameManager.h"
 #include<Novice.h>
 
 
 void GameManager::Run() {
 
-	// ƒEƒBƒ“ƒhƒE‚Ì~ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚é‚Ü‚Åƒ‹[ƒv
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®Ã—ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚Œã‚‹ã¾ã§ãƒ«ãƒ¼ãƒ—
 	while (Novice::ProcessMessage() == 0) {
-		// ƒtƒŒ[ƒ€‚ÌŠJŽn
+		// ãƒ•ãƒ¬ãƒ¼ãƒ ã®é–‹å§‹
 		Novice::BeginFrame();
 
 		inputManager_->Update();
 
 
-		//‘I‚Î‚ê‚½ƒV[ƒ“‚Ìˆ—
+		//é¸ã°ã‚ŒãŸã‚·ãƒ¼ãƒ³ã®å‡¦ç†
 		sceneManager_->Update();	
 
-		// ƒtƒŒ[ƒ€‚ÌI—¹
+		// ãƒ•ãƒ¬ãƒ¼ãƒ ã®çµ‚äº†
 		Novice::EndFrame();
 
-		// ESCƒL[‚ª‰Ÿ‚³‚ê‚½‚çƒ‹[ƒv‚ð”²‚¯‚é
+		// ESCã‚­ãƒ¼ãŒæŠ¼ã•ã‚ŒãŸã‚‰ãƒ«ãƒ¼ãƒ—ã‚’æŠœã‘ã‚‹
 		if (inputManager_->GetPreKeys()[DIK_ESCAPE] == 0 && inputManager_->GetKeys()[DIK_ESCAPE] != 0) {
 			break;
 		}

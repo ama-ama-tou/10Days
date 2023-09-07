@@ -1,12 +1,12 @@
-#include "SceneManager.h"
+ï»¿#include "SceneManager.h"
 
 SceneManager::SceneManager() {
-	//ŠeƒV[ƒ“‚Ì”z—ñ
+	//å„ã‚·ãƒ¼ãƒ³ã®é…åˆ—
 	sceneArr_[SCENE_TITLE] = std::make_unique<Scene_Title>();
 	sceneArr_[SCENE_SELLECT] = std::make_unique<Scene_Select>();
 	sceneArr_[SCENE_GAME] = std::make_unique<Scene_Game>();
 
-	//‰ŠúƒV[ƒ“
+	//åˆæœŸã‚·ãƒ¼ãƒ³
 	sceneNum_ = SCENE_TITLE;
 }
 
@@ -14,14 +14,14 @@ void SceneManager::Update() {
 	preSceneNum_ = sceneNum_;
 
 	if (sceneNum_!=preSceneNum_) {
-		//ƒV[ƒ“‚ª•Ï‚í‚Á‚½‚ç‰Šú‰»
+		//ã‚·ãƒ¼ãƒ³ãŒå¤‰ã‚ã£ãŸã‚‰åˆæœŸåŒ–
 		sceneArr_[sceneNum_]->Load();
 	}
 
-	//Œ»İ‚ÌƒV[ƒ“‚ÌXVˆ—
+	//ç¾åœ¨ã®ã‚·ãƒ¼ãƒ³ã®æ›´æ–°å‡¦ç†
 	sceneArr_[sceneNum_]->Update();
 
-	//Œ»İ‚ÌƒV[ƒ“‚Ì•`‰æˆ—
+	//ç¾åœ¨ã®ã‚·ãƒ¼ãƒ³ã®æç”»å‡¦ç†
 	sceneArr_[sceneNum_]->Draw();
 
 

@@ -1,31 +1,31 @@
-#pragma once
+ï»¿#pragma once
 
 class InputManager final {
 private:
-	// ƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒfƒXƒgƒ‰ƒNƒ^‚ğprivate‚Æ‚µ‚ÄŠO•”‚©‚çƒCƒ“ƒXƒ^ƒ“ƒX‚ğì‚ê‚È‚¢‚æ‚¤‚É‚·‚éB
+	// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ»ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’privateã¨ã—ã¦å¤–éƒ¨ã‹ã‚‰ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œã‚Œãªã„ã‚ˆã†ã«ã™ã‚‹ã€‚
 	InputManager() {};
 	~InputManager() {};
 
-	// ƒRƒs[ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ì‹Ö~
+	// ã‚³ãƒ”ãƒ¼ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®ç¦æ­¢
 	InputManager(const InputManager&) = delete;
 
-	// ‘ã“ü‰‰Zq‚ÌƒI[ƒo[ƒ[ƒh‚ğ‹Ö~
+	// ä»£å…¥æ¼”ç®—å­ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰ã‚’ç¦æ­¢
 	const InputManager& operator=(const InputManager&) = delete;
 
-	// ƒƒ“ƒo•Ï” ƒƒ“ƒo•Ï”‚ÍŒã‚ë‚É_‚ğ‚Â‚¯‚Ä‹æ•Ê‚·‚é
+	// ãƒ¡ãƒ³ãƒå¤‰æ•° ãƒ¡ãƒ³ãƒå¤‰æ•°ã¯å¾Œã‚ã«_ã‚’ã¤ã‘ã¦åŒºåˆ¥ã™ã‚‹
 	char keys_[256] = { 0 };
 	char preKeys_[256] = { 0 };
 
 	int num_;
 
 public:
-	// ˆê‚Â‚µ‚©¶¬‚³‚ê‚È‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚É‚ÍGetInstance()ŠÖ”Œo—R‚ÅƒAƒNƒZƒX‚·‚é
+	// ä¸€ã¤ã—ã‹ç”Ÿæˆã•ã‚Œãªã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ã¯GetInstance()é–¢æ•°çµŒç”±ã§ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹
 	static InputManager* GetInstance();
 
 
 	void Update();
 
-	// GetterŒo—R‚ÅƒL[‚Ì“ü—Íó‹µ‚ğæ“¾‚·‚é
+	// GetterçµŒç”±ã§ã‚­ãƒ¼ã®å…¥åŠ›çŠ¶æ³ã‚’å–å¾—ã™ã‚‹
 	char* GetKeys() { return keys_; }
 	char* GetPreKeys() { return preKeys_; }
 };
