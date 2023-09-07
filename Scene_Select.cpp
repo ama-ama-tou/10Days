@@ -46,8 +46,19 @@ void Scene_Select::Load() {
 
 }
 
+void Scene_Select::Update() {
+	if (go2Title.getIsClicked()) {
+		sceneNum = SCENE_TITLE;
+	}
+}
+
 void Scene_Select::Draw() {
 	for (int i = 0; i < 9; i++) {
 		stage_[i].Draw();
+		go2Title.Draw();
 	}
+}
+
+void Scene_Select::Unload() {
+
 }
