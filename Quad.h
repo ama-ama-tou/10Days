@@ -39,11 +39,11 @@ public:
 	//ゲッター/セッター
 	//===============
 	// 4点を一度に更新
-	void setPos(Vec2 ltPos, Vec2 size) {
+	void setPos(Vec2 ltPos) {
 		vertex_[0] = ltPos;
-		vertex_[1] = Vec2(ltPos.x + size.x, ltPos.y);
-		vertex_[2] = Vec2(ltPos.x, ltPos.y + size.y);
-		vertex_[3] = ltPos + size;
+		vertex_[1] = Vec2(ltPos.x + size_.x, ltPos.y);
+		vertex_[2] = Vec2(ltPos.x, ltPos.y + size_.y);
+		vertex_[3] = ltPos + size_;
 	}
 
 	//ローカル座標上
