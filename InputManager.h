@@ -3,7 +3,7 @@
 
 
 enum ClickState {
-	NONE,
+	STATE_NONE,
 	LEFT_CLICK,
 	RIGIHT_CLICK
 };

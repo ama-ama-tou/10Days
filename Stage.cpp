@@ -59,7 +59,7 @@ void Stage::Draw() {
 
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
-			if (block_[c][r]->getType() != NONE) {
+			if (block_[c][r]->getType() !=NONE) {
 				//blockが設置してあればDraw
 				block_[c][r]->Draw();
 			}
