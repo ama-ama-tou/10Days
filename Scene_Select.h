@@ -22,9 +22,6 @@ public:
 	void Draw()override;
 	void Unload()override;
 
-
-
-
 	//=======================
 	//ゲッター
 	//=======================
