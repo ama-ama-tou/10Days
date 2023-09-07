@@ -5,7 +5,6 @@
 //　　座標系クラス
 //==============================
 class Coordinate{
-	
 	Vec2 origin_;
 
 public:

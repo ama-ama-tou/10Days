@@ -6,7 +6,7 @@ private:
 	//================
 	//メンバ変数
 	//================
-	Coordinate localCo_;
+	Coordinate localCo_{Vec2(0.0f,0.0f)};
 	Vec2 vertex_[4];
 	Vec2 size_;
 
@@ -20,6 +20,8 @@ public:
 	//===============
 	//メンバ関数
 	//===============
+	Quad() {};
+
 
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin,int GH, Vec2 imageLtPos, Vec2 imageSize) {
 		vertex_[0] = pos;
