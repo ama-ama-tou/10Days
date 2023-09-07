@@ -19,8 +19,7 @@ public:
 	void Draw()override;
 	void Unload()override;
 
+	//問題点セットできない(未解決)
 	StageNum setPlayStage(StageNum selectedStage){}
-
-
 };
 
