@@ -1,5 +1,7 @@
 ﻿#pragma once
 #include "Quad.h"
+#include "Vec2.h"
+
 enum BlockType {
     NONE,
     N_POLE,//N極
