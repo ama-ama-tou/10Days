@@ -28,7 +28,7 @@ public:
 	//=======================
 	//ゲッター
 	//=======================
-	StageNum getSelectedStage(Vec2 mousePos, int clickState);
+	StageNum getSelectedStage(Vec2 mousePos, int clickState)override;
 
 
 

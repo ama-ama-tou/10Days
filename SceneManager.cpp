@@ -16,6 +16,9 @@ void SceneManager::Update() {
 	if (sceneNum_!=preSceneNum_) {
 		//シーンが変わったら初期化
 		sceneArr_[sceneNum_]->Load();
+		if (preSceneNum_==SCENE_SELLECT&&sceneNum_==SCENE_GAME) {
+			sceneArr_[SCENE_GAME]->setPlayStage(sceneArr_[SCENE_SELLECT]->getSelectedStage())
+		}
 	}
 
 	//現在のシーンの更新処理
