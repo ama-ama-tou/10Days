@@ -29,12 +29,12 @@ void Scene_Select::Load() {
 
 	//ステージセレクトボタン
 	Vec2 selectButtonSize = { 150.0f,150.0f };
-	Vec2 selectButtonSpace = { 100.0f,50.0f };
+	Vec2 selectButtonSpace = { 200.0f,50.0f };
 	Vec2 selectButtonPos[9];
 	for (int i = 0; i < 9; i++) {
 		int selectButtonRow = i / 3;//行番号(0,1,2)
 		int selectButtonCol = i % 3;//列番号(0,1,2)
-		selectButtonPos[i] = Vec2(340.0f + selectButtonCol * (selectButtonSize.x + selectButtonSpace.x),
+		selectButtonPos[i] = Vec2(240.0f + selectButtonCol * (selectButtonSize.x + selectButtonSpace.x),
 								60.0f + selectButtonRow * (selectButtonSize.y + selectButtonSpace.y));
 
 		const char* selectGH = "./Resource/image/obj/button/select.png";

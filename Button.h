@@ -12,15 +12,15 @@ private:
 	bool isInsideMouse_;
 	bool isClicked_;
 
-	const char* filePass[2];
+	const char* filePass_[2];
 	int GH_;
 	
 public:
 
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, const char* GH, const char* clicedGH,Vec2 imageLtPos, Vec2 imageSize) {
 		Quad::Init(pos, size,localCoOrigin, 0, imageLtPos, imageSize);
-		filePass[0] = GH;
-		filePass[1] = clicedGH;
+		filePass_[0] = GH;
+		filePass_[1] = clicedGH;
 	}
 
 	void checkInsideMouse(Vec2 mousepos);
