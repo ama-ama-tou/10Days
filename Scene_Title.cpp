@@ -61,6 +61,12 @@ void Scene_Title::Update() {
 	}
 }
 
+void Scene_Title::Draw() {
+	Button_exit.Draw();
+	Button_goManu.Draw();
+	Button_goSelect.Draw();
+}
+
 
 void Scene_Title::Unload() {
 

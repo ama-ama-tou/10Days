@@ -25,6 +25,7 @@ class Block :
     int isFacingType_[4];
 
 
+
 public:
 
    //=======================
