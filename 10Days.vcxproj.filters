@@ -86,6 +86,9 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>lib</Filter>
     </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -204,5 +207,6 @@
     <ClInclude Include="InputManager.h">
       <Filter>lib</Filter>
     </ClInclude>
+    <ClInclude Include="GameManager.h" />
   </ItemGroup>
 </Project>

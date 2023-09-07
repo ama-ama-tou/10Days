@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Scene.h"
 #include"Stage.h"
 
@@ -19,8 +19,7 @@ public:
 	void Draw()override;
 	void Unload()override;
 
-	StageNum setPlayStage(StageNum selectedStage){}
-
-
+	//問題点セットできない(未解決)
+	StageNum setPlayStage(StageNum selectedStage)override { stageNum = selectedStage; }
 };
 

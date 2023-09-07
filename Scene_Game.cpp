@@ -1,4 +1,4 @@
-#include "Scene_Game.h"
+﻿#include "Scene_Game.h"
 
 Scene_Game::Scene_Game() {
 	stageArr_[STAGE_1ST] = std::make_unique<Stage>("./Resources/csv/stage1.CSV");

@@ -9,7 +9,6 @@ private:
 	//======================
 	//メンバ変数
 	//======================
-
 	Button go2Title;
 
 	Button stage_[9];
@@ -29,7 +28,7 @@ public:
 	//=======================
 	//ゲッター
 	//=======================
-	StageNum getSelectedStage(Vec2 mousePos, int clickState);
+	StageNum getSelectedStage(Vec2 mousePos, int clickState)override;
 
 
 
