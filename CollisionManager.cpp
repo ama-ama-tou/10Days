@@ -92,10 +92,12 @@ void  CollisionManager::blockCollision() {
 				block_[colAddress_[1]][rowAddress_[1] - 1]->getType() == block_[colAddress_[0]][rowAddress_[0]]->getType()) { //右上の1個上と今のブロック
 				///反発させる
 
+
 			} else if (block_[colAddress_[0]][rowAddress_[0] - 1]->getType() != block_[colAddress_[0]][rowAddress_[0]]->getType() && //左上の1個上と今のブロック
 					   block_[colAddress_[1]][rowAddress_[1] - 1]->getType() != block_[colAddress_[0]][rowAddress_[0]]->getType()) { //右上の1個上と今のブロック
 				if (block_[colAddress_[0]][rowAddress_[0] - 1]->getType() == S_POLE) {
 					///くっつかせる(カウントする)
+
 
 				} else if (block_[colAddress_[0]][rowAddress_[0] - 1]->getType() == WALL) {
 					///止める
