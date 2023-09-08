@@ -7,7 +7,6 @@ class CollisionManager {
 	Player player_;
 	Player* playerPos_;
 	Block*** block_;
-	Block blockType_;
 
 	//各頂点の番地
 	int rowAddress_[4] = { 0 };
