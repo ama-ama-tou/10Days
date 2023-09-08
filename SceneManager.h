@@ -8,14 +8,12 @@
 class SceneManager {
 private:
 
-	
 	std::unique_ptr<Scene> sceneArr_[3];
 
 	int sceneNum_;
 	int preSceneNum_;
 
 public:
-
 	SceneManager();
 
 	void Update();
