@@ -42,6 +42,8 @@ public :
 	virtual void Draw() = 0;
 	virtual void Unload() = 0;
 
+	int getSceneNum() { return sceneNum; }
+
 	virtual void setPlayStage(StageNum selectedStage)=0;
 	virtual StageNum getSelectedStage() = 0;
 };
