@@ -44,9 +44,6 @@
     <Filter Include="Game\Manager\InputManager">
       <UniqueIdentifier>{6db3b4b6-ba09-43cf-ad9f-2c222ae9ffdc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Manager\GameManager">
-      <UniqueIdentifier>{8b8e6968-083b-47b7-8831-819da0027c69}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\DirectXCommon.cpp">
@@ -92,6 +89,9 @@
     <ClCompile Include="Stage.cpp">
       <Filter>Game\Scene\Stage</Filter>
     </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
     <ClCompile Include="CollisionManager.cpp">
       <Filter>Game\Manager\CollisionManager</Filter>
     </ClCompile>
@@ -100,9 +100,6 @@
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Game\Manager\InputManager</Filter>
-    </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Game\Manager\GameManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +210,7 @@
     <ClInclude Include="Stage.h">
       <Filter>Game\Scene\Stage</Filter>
     </ClInclude>
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="CollisionManager.h">
       <Filter>Game\Manager\CollisionManager</Filter>
     </ClInclude>
@@ -221,9 +219,6 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Game\Manager\InputManager</Filter>
-    </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Game\Manager\GameManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
