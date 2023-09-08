@@ -51,7 +51,7 @@ class Stage {
 
 	CollisionManager* collision;
 
-	bool isClear;
+	bool isClear_;
 	//リセットするか
 	bool isReset_;
 
@@ -83,7 +83,7 @@ public:
 
 	void Unload() {};
 
-	bool getIsClear() { return isClear; }
+	bool getIsClear() { return isClear_; }
 
 
 

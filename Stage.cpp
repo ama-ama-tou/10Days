@@ -58,10 +58,6 @@ void Stage::Update(char* keys, char* preKeys) {
 
 	}
 
-	if (/*reset条件*/) {
-		isReset_ = true;
-	}
-
 }
 
 void Stage::Draw() {
