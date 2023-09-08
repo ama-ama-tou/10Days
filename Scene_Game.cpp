@@ -18,6 +18,9 @@ Scene_Game::Scene_Game() {
 
 }
 
+Scene_Game::~Scene_Game() {
+}
+
 void Scene_Game::Load() {
 		stageArr_[stageNum]->Init();
 }

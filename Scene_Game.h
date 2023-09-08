@@ -13,6 +13,7 @@ class Scene_Game:
 
 public:
 	Scene_Game();
+	~Scene_Game();
 	void Load()override;
 	void Update()override;
 	void Draw()override;
