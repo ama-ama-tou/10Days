@@ -26,6 +26,7 @@ enum SceneNum {
 	SCENE_MENU,
 	SCENE_SELLECT,
 	SCENE_GAME,
+	SCENE_MENU
 };
 
 class Scene{
