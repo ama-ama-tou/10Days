@@ -37,6 +37,8 @@ void Stage::Init() {
 		Vec2(0.0f, 0.0f),//imageLtPos
 		blockImageSize
 	);
+	
+	isClear_ = false;
 }
 
 void Stage::Update(char* keys, char* preKeys) {
@@ -55,7 +57,7 @@ void Stage::Update(char* keys, char* preKeys) {
 	}
 
 	if (playerHasBlockNum== NSBlockNum_) {
-
+		isClear_ = true;
 	}
 
 }
