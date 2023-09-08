@@ -40,7 +40,7 @@ void Scene_Select::Load() {
 		const char* selectGH = "./Resource/image/obj/button/select.png";
 		const char* selectClickedGH = "./Resource/image/obj/button/selectClickedGH.png";
 
-		stage_[9].Init(selectButtonPos[i], selectButtonSize, Vec2(0.0f, 0.0f),
+		stage_[i].Init(selectButtonPos[i], selectButtonSize, Vec2(0.0f, 0.0f),
 			selectGH, selectClickedGH,
 			Vec2(0.0f, 0.0f), selectButtonSize);
 	}
