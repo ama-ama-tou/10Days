@@ -124,8 +124,8 @@ void  CollisionManager::blockCollision() {
 
 	//頂点の番地の計算
 	for (int vertexNum = 0; vertexNum < 4; vertexNum++) {
-		rowAddress_[vertexNum] = blockType_.CalcuRowAddress(vertexNum);
-		colAddress_[vertexNum] = blockType_.CalcuColAddress(vertexNum);
+		rowAddress_[vertexNum] = block_[0][0]->CalcuRowAddress(vertexNum);
+		colAddress_[vertexNum] = block_[0][0]->CalcuColAddress(vertexNum);
 	}
 
 	///----------各頂点の番地からどの面が接しているかの判定----------///
