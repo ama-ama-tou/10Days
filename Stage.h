@@ -38,19 +38,20 @@ class Stage {
 	//ファイルを読み込んだもの
 	std::vector<std::vector<int>> stageCsv_;
 
-
 	Block*** block_;
 	//block_の要素数
 	int row_;
 	int col_;
 
-	
 	//N極,S極の数の和()
 	int NSBlockNum_;
+	
+	int playerHasBlockNum{0};
+
 
 	CollisionManager* collision;
 
-
+	bool isClear;
 	//リセットするか
 	bool isReset_;
 
@@ -71,8 +72,7 @@ public:
 			block_[i] = new Block*[row_];
 		}
 		
-		collision = new CollisionManager{*player_,block_};
-
+		collision = new CollisionManager{*player_,block_,row_,col_};
 	}
 
 	void Init();
@@ -82,6 +82,10 @@ public:
 	void Draw();
 
 	void Unload() {};
+
+	bool getIsClear() { return isClear; }
+
+
 
 };
 

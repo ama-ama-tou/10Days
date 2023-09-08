@@ -42,11 +42,20 @@ void Stage::Init() {
 void Stage::Update(char* keys, char* preKeys) {
 
 	player_->Update(keys, preKeys);
-	//コリジョンマネージャーの追加
-	//blockのlocalCoordinateの更新の処理(必要なら)
 	
-	if (/*clear条件*/) {
-		
+	collision->playerCollision();
+	collision->blockCollision();
+
+	for (int c = 0; c < col_; c++) {
+		for (int r = 0; r < row_; r++) {
+			if (block_[c][r]->getIsHadBlock()) {
+				playerHasBlockNum++;
+			}
+		}
+	}
+
+	if (playerHasBlockNum== NSBlockNum_) {
+
 	}
 
 	if (/*reset条件*/) {
