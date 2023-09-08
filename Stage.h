@@ -20,8 +20,7 @@ enum StageNum {
 	STAGE_12TH,
 	STAGE_13TH,
 	STAGE_14TH,
-	STAGE_15TH,
-
+	STAGE_15TH
 };
 
 class Stage {
