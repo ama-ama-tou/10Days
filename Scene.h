@@ -35,7 +35,7 @@ protected:
 
 public :
 
-	virtual ~Scene()=0;
+	virtual ~Scene(){};
 
 	virtual void Load() = 0;
 	virtual void Update() = 0;
