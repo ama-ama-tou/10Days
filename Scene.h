@@ -35,6 +35,8 @@ protected:
 
 public :
 
+	virtual ~Scene()=0;
+
 	virtual void Load() = 0;
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
