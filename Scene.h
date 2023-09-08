@@ -45,5 +45,5 @@ public :
 	virtual void setPlayStage(StageNum selectedStage)=0;
 	virtual StageNum getSelectedStage() = 0;
 };
-Scene::~Scene() {};
 
+int Scene::sceneNum = SCENE_TITLE;
