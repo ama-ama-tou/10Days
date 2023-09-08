@@ -3,7 +3,7 @@
 #include <sstream>
 #include <vector>
 
-std::vector<std::vector<int>>LoadCsv(const std::string& csvFilePath){
+static std::vector<std::vector<int>>LoadCsv(const std::string& csvFilePath){
     std::vector<std::vector<int>> intArray;
     std::ifstream file(csvFilePath);
     std::string line, value;
