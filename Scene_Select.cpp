@@ -52,7 +52,7 @@ void Scene_Select::Update() {
 	inputManager->Update();
 
 	if (go2Title.getIsClicked()) {
-		sceneNum = SCENE_TITLE;
+		Scene::sceneNum = SCENE_TITLE;
 	}
 }
 
