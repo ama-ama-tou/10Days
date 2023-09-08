@@ -10,8 +10,8 @@
 ///プレイヤーの当たり判定
 void CollisionManager::playerCollision() {
 
-	for (int i = 0; i < 12; i++) {
-		for (int j = 0; j < 12; j++)
+	for (int i = 0; i < maxCol_; i++) {
+		for (int j = 0; j < maxRow_; j++)
 		{
 			block_[i][j]->getType();
 		}
@@ -115,8 +115,8 @@ void CollisionManager::playerCollision() {
 
 ///ブロックとブロック
 void  CollisionManager::blockCollision() {
-	for (int i = 0; i < 12; i++) {
-		for (int j = 0; j < 12; j++)
+	for (int i = 0; i < maxCol_; i++) {
+		for (int j = 0; j < maxRow_; j++)
 		{
 			block_[i][j]->getType();
 		}
