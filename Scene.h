@@ -23,7 +23,6 @@ enum StageNum {
 
 enum SceneNum {
 	SCENE_TITLE,
-	SCENE_MENU,
 	SCENE_SELLECT,
 	SCENE_GAME,
 };
@@ -35,7 +34,7 @@ protected:
 
 public :
 
-	virtual ~Scene()=0;
+	virtual ~Scene(){};
 
 	virtual void Load() = 0;
 	virtual void Update() = 0;
