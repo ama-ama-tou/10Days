@@ -13,7 +13,7 @@ class CollisionManager {
 	int colAddress_[4] = { 0 };
 
 public:
-	CollisionManager(Player& player,Block***& block , Block& blockType) :player_(player),block_(block)　{};
+	CollisionManager(Player& player,Block***& block) :player_(player),block_(block){};
 
 	//当たり判定
 	void playerCollision();
