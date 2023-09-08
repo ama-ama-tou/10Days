@@ -71,7 +71,7 @@ public:
 			block_[i] = new Block*[row_];
 		}
 		
-		collision = new CollisionManager{player_,block_,col_,row_ };
+		collision = new CollisionManager{*player_,block_};
 
 	}
 
