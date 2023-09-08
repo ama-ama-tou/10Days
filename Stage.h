@@ -48,6 +48,9 @@ class Stage {
 	//N極,S極の数の和()
 	int NSBlockNum_;
 
+	CollisionManager* collision;
+
+
 	//リセットするか
 	bool isReset_;
 
@@ -55,15 +58,20 @@ class Stage {
 public:
 
 	Stage(const std::string& csvFilePath) :csvFilePath_(csvFilePath) {
+		//csvデータ読み込み
 		stageCsv_ = LoadCsv(csvFilePath);
 
-		row_ = static_cast<int>(stageCsv_.size());
-		col_ = static_cast<int>(stageCsv_[0].size());
+		//csvデータのサイズを入力
+		row_ = static_cast<int>(stageCsv_[0].size());
+		col_ = static_cast<int>(stageCsv_.size());
 
+		//それぞれ動的配列の確保
 		block_ = new Block** [col_];
 		for (int i = 0; i < col_; i++) {
 			block_[i] = new Block*[row_];
 		}
+		
+		collision = new CollisionManager{player_,block_,col_,row_ };
 
 	}
 
