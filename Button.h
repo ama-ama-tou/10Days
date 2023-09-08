@@ -23,6 +23,7 @@ public:
 		Quad::Init(pos, size,localCoOrigin, 0, imageLtPos, imageSize);
 		filePass_[0] = GH;
 		filePass_[1] = clicedGH;
+
 	}
 
 	void checkInsideMouse(Vec2 mousepos);
