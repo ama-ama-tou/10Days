@@ -39,6 +39,7 @@ void Stage::Init() {
 	);
 	
 	isClear_ = false;
+	isReset_ = false;
 }
 
 void Stage::Update(char* keys, char* preKeys) {
