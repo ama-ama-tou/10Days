@@ -3,23 +3,23 @@
 #include"Vec2.h"
 #include"Stage.h"
 
-//enum StageNum {
-//	STAGE_1ST,
-//	STAGE_2ND,
-//	STAGE_3RD,
-//	STAGE_4TH,
-//	STAGE_5TH,
-//	STAGE_6TH,
-//	STAGE_7TH,
-//	STAGE_8TH,
-//	STAGE_9TH,
-//	STAGE_10TH,
-//	STAGE_11TH,
-//	STAGE_12TH,
-//	STAGE_13TH,
-//	STAGE_14TH,
-//	STAGE_15TH,
-//};
+enum StageNum {
+	STAGE_1ST,
+	STAGE_2ND,
+	STAGE_3RD,
+	STAGE_4TH,
+	STAGE_5TH,
+	STAGE_6TH,
+	STAGE_7TH,
+	STAGE_8TH,
+	STAGE_9TH,
+	STAGE_10TH,
+	STAGE_11TH,
+	STAGE_12TH,
+	STAGE_13TH,
+	STAGE_14TH,
+	STAGE_15TH,
+};
 
 enum SceneNum {
 	SCENE_TITLE,
