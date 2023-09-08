@@ -13,7 +13,8 @@ SceneManager::SceneManager() {
 void SceneManager::Update() {
 	preSceneNo_ = sceneNo_;
 
-	
+	sceneNo_ = sceneArr_[sceneNo_]->getSceneNum();
+
 	if (sceneNo_!=preSceneNo_) {
 		//シーンが変わったら初期化
 		sceneArr_[sceneNo_]->Load();
@@ -28,7 +29,5 @@ void SceneManager::Update() {
 
 	//現在のシーンの描画処理
 	sceneArr_[sceneNo_]->Draw();
-
-
 }
 
