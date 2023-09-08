@@ -46,3 +46,4 @@ public :
 	virtual StageNum getSelectedStage() = 0;
 };
 
+int Scene::sceneNum = SCENE_TITLE;
