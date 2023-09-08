@@ -23,6 +23,7 @@ enum StageNum {
 
 enum SceneNum {
 	SCENE_TITLE,
+	SCENE_MENU,
 	SCENE_SELLECT,
 	SCENE_GAME,
 };
