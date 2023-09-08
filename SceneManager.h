@@ -10,8 +10,8 @@ private:
 
 	std::unique_ptr<Scene> sceneArr_[3];
 
-	int sceneNum_;
-	int preSceneNum_;
+	int sceneNo_;
+	int preSceneNo_;
 
 public:
 	SceneManager();
