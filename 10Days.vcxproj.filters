@@ -101,6 +101,9 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Game\Manager\InputManager</Filter>
     </ClCompile>
+    <ClCompile Include="Scene_Menu.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -219,6 +222,9 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Game\Manager\InputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Menu.h">
+      <Filter>Game\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

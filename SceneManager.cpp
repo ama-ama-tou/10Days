@@ -3,6 +3,7 @@
 SceneManager::SceneManager() {
 	//各シーンの配列
 	sceneArr_[SCENE_TITLE] = std::make_unique<Scene_Title>();
+	sceneArr_[SCENE_MENU] = std::make_unique<Scene_Menu>();
 	sceneArr_[SCENE_SELLECT] = std::make_unique<Scene_Select>();
 	sceneArr_[SCENE_GAME] = std::make_unique<Scene_Game>();
 
