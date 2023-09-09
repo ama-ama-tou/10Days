@@ -12,7 +12,7 @@ SceneManager::SceneManager() {
 
 void SceneManager::Update() {
 	preSceneNo_ = sceneNo_;
-
+	
 	sceneNo_ = sceneArr_[sceneNo_]->getSceneNum();
 
 	if (sceneNo_!=preSceneNo_) {
