@@ -10,7 +10,5 @@ private:
 public:
 	GameManager() {};
 	void Run();
-
-
 };
 
