@@ -16,6 +16,7 @@ Scene_Game::Scene_Game() {
 
 	stageNum = STAGE_1ST;
 
+	sceneNum = SCENE_GAME;
 }
 
 Scene_Game::~Scene_Game() {
@@ -29,7 +30,7 @@ void Scene_Game::Update() {
 	inputManager->Update();
 	stageArr_[stageNum]->Update(inputManager->GetKeys(), inputManager->GetPreKeys());
 	if (stageArr_[stageNum]->getIsClear()) {
-		Scene::sceneNum=SCENE_SELLECT;
+		Scene::sceneNum=SCENE_SELECT;
 	}
 
 }

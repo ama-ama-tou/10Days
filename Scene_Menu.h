@@ -8,15 +8,15 @@ private:
 
 
 public:
-	Scene_Menu() {};
+	Scene_Menu() { sceneNum = SCENE_MENU; };
 
 	void Load()override;
 	void Update()override;
 	void Draw()override;
 	void Unload()override;
 
-	void setPlayStage(StageNum selectedStage) { selectedStage; }
-	StageNum getSelectedStage() { return STAGE_1ST; }
+	void setPlayStage(StageNum selectedStage)override { selectedStage; }
+	StageNum getSelectedStage()override { return STAGE_1ST; }
 
 
 };

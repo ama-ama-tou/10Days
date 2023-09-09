@@ -12,6 +12,9 @@ private:
 	Button Button_goManu;
 	Button Button_exit;
 
+public:
+	Scene_Title() { sceneNum = SCENE_TITLE; }
+
 	void Load()override;
 
 	void Update()override;
