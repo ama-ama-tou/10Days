@@ -15,6 +15,7 @@ StageNum Scene_Select::getSelectedStage() {
 }
 
 void Scene_Select::Load() {
+
 	//=================
 	//ボタン初期化
 	//=================

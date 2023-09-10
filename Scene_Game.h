@@ -9,6 +9,9 @@ class Scene_Game:
 	int stageNum;
 	int preStageNum;
 
+	int SH_;
+	int VH_;
+
 	std::unique_ptr<Stage> stageArr_[12];
 
 public:

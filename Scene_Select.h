@@ -12,7 +12,7 @@ private:
 	Button go2Title;
 	
 	Button stage_[9];
-	
+
 public:
 	//======================
 	//メンバ関数
