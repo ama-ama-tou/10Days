@@ -6,10 +6,10 @@ class Scene_Clear :
 private:
     
     //==================
-    //ƒƒ“ƒo•Ï”
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
     //==================
 
-    //ƒNƒŠƒA‰æ‘œ
+    //ã‚¯ãƒªã‚¢ç”»åƒ
     Vec2 clearImagePos_[3];
     Vec2 clearImageSize;
     Vec2 clearImageVertex_[3][4];
