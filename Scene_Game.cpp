@@ -30,6 +30,10 @@ void Scene_Game::Update() {
 	inputManager->Update();
 	stageArr_[stageNum]->Update(inputManager->GetKeys(), inputManager->GetPreKeys());
 	if (stageArr_[stageNum]->getIsClear()) {
+
+		////
+
+
 		Scene::sceneNum=SCENE_SELECT;
 	}
 

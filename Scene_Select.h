@@ -10,7 +10,7 @@ private:
 	//メンバ変数
 	//======================
 	Button go2Title;
-
+	
 	Button stage_[9];
 	
 public:
@@ -30,8 +30,6 @@ public:
 	StageNum getSelectedStage()override;
 	//使わない
 	void setPlayStage(StageNum selectedStage)override { selectedStage; }
-	
-
 
 
 };

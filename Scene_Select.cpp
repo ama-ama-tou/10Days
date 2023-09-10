@@ -1,5 +1,6 @@
 ﻿#include "Scene_Select.h"
 #include "Button.h"
+#include "Scene_Title.h"
 
 StageNum Scene_Select::getSelectedStage() {
 	for (int i = 0; i < 9; i++) {
@@ -54,6 +55,14 @@ void Scene_Select::Update() {
 	if (go2Title.getIsClicked()) {
 		Scene::sceneNum = SCENE_TITLE;
 	}
+
+	for (int i = 0; i < 9; i++) {
+		if (stage_[i].getIsClicked()) {
+			Scene::sceneNum = SCENE_GAME;
+		}
+	}
+
+
 }
 
 void Scene_Select::Draw() {
