@@ -25,7 +25,8 @@ Scene_Game::~Scene_Game() {
 void Scene_Game::Load() {
 
 	SH_ = Novice::LoadAudio("./Resource/BGM/play.mo3");
-	VH_ = -1;
+	VH_ = -1;	
+
 
 	stageArr_[stageNum]->Init();
 }

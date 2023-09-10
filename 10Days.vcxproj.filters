@@ -107,6 +107,9 @@
     <ClCompile Include="GameManager.cpp">
       <Filter>Game\Manager\GameManager</Filter>
     </ClCompile>
+    <ClCompile Include="Scene_Clear.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -230,6 +233,9 @@
     </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>Game\Manager\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Clear.h">
+      <Filter>Game\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
