@@ -12,6 +12,9 @@ private:
 	Button Button_goManu;
 	Button Button_exit;
 
+	int SH_;
+	int VH_;
+
 public:
 	Scene_Title() { sceneNum = SCENE_TITLE; }
 
