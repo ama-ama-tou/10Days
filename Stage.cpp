@@ -51,6 +51,12 @@ void Stage::Update(char* keys, char* preKeys) {
 	collision->playerCollision();
 	collision->blockCollision();
 
+	//デバック用
+	collision->Draw();
+
+
+
+
 	for (int c = 0; c < col_; c++) {
 		for (int r = 0; r < row_; r++) {
 			if (block_[c][r].getIsHadBlock()) {

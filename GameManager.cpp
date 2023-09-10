@@ -11,7 +11,6 @@ void GameManager::Run() {
 
 		inputManager_->Update();
 
-
 		//選ばれたシーンの処理
 		sceneManager_->Update();
 
