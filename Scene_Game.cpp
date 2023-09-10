@@ -23,7 +23,11 @@ Scene_Game::~Scene_Game() {
 }
 
 void Scene_Game::Load() {
-		stageArr_[stageNum]->Init();
+
+	SH_ = Novice::LoadAudio("./Resource/BGM/play.mo3");
+	VH_ = -1;
+
+	stageArr_[stageNum]->Init();
 }
 
 void Scene_Game::Update() {
@@ -40,7 +44,15 @@ void Scene_Game::Update() {
 }
 
 void Scene_Game::Draw() {
+
+	//bgmを鳴らす
+	if (Novice::IsPlayingAudio(VH_)==0||VH_==-1) {
+		VH_ = Novice::PlayAudio(SH_, true, 0.5f);
+	}
+
 	stageArr_[stageNum]->Draw();
 }
 
-void Scene_Game::Unload() {};
+void Scene_Game::Unload() {
+	Novice::StopAudio(VH_);
+};
