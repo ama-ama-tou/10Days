@@ -43,13 +43,9 @@ void Scene_Title::Load() {
 		Vec2(0.0f, 0.0f), buttonSize);
 
 	Vec2 exitButtonPos{ menuButtonPos.x,menuButtonPos.y + 50.0f };
-	
+
 	const char* exitGH = "./Resources/image/obj/button/exit.png";
 	const char* exitClickedGH = "./Resources/image/obj/button/exitClicked.png";
-	
-
-	const char* exitGH = "./Resource/image/obj/button/exit.png";
-	const char* exitClickedGH = "./Resource/image/obj/button/exitClicked.png";
 
 	Button_exit.Init(exitButtonPos, buttonSize, Vec2(0.0f, 0.0f),
 		exitGH, exitClickedGH, Vec2(0.0f, 0.0f), buttonSize);
