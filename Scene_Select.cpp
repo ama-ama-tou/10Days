@@ -23,8 +23,8 @@ void Scene_Select::Load() {
 	//タイトル画面に戻るボタン
 	Vec2 goTitlePos = Vec2(50.0f,670.0f);
 	Vec2 goTitleButtonSize{ 100,50.0f };
-	const char* goTitleGH = "./Resource/image/obj/button/goTitleButton.png";
-	const char* goTitleClickedGH = "./Resource/image/obj/button/goTitleClickedButton.png";
+	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
+	const char* goTitleClickedGH = "./Resources/image/obj/button/goTitleClickedButton.png";
 	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
 		goTitleGH, goTitleClickedGH,
 		Vec2(0.0f, 0.0f), goTitleButtonSize);
@@ -39,8 +39,8 @@ void Scene_Select::Load() {
 		selectButtonPos[i] = Vec2(240.0f + selectButtonCol * (selectButtonSize.x + selectButtonSpace.x),
 								60.0f + selectButtonRow * (selectButtonSize.y + selectButtonSpace.y));
 
-		const char* selectGH = "./Resource/image/obj/button/select.png";
-		const char* selectClickedGH = "./Resource/image/obj/button/selectClickedGH.png";
+		const char* selectGH = "./Resources/image/obj/button/select.png";
+		const char* selectClickedGH = "./Resources/image/obj/button/selectClickedGH.png";
 
 		stage_[i].Init(selectButtonPos[i], selectButtonSize, Vec2(0.0f, 0.0f),
 			selectGH, selectClickedGH,
