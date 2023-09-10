@@ -6,7 +6,7 @@ class Player {
 	//================
 	//メンバ変数
 	//================
-	Coordinate localCo_;
+	Coordinate localCo_{Vec2( 0.0f,0.0f )};
 	Vec2 pos_;
 	Vec2 size_;
 
@@ -33,6 +33,8 @@ public:
 	//メンバ関数
 	//===============
 	
+	Player() {  };
+
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, Vec2 imageLtPos, Vec2 imageSize) {
 		size_ = size;
 
@@ -48,7 +50,7 @@ public:
 
 		localCo_.setOrigin(localCoOrigin);
 
-		GH_ =Novice::LoadTexture("./Resource/image/character/player.png");
+		GH_ = Novice::LoadTexture("./Resources/image/character/player.png");
 		imageLtPos_ = imageLtPos;
 		imageSize_ = imageSize; 
 	}
@@ -92,6 +94,10 @@ public:
 	//保存用pos(左上座標)
 	Vec2 getPrePos() { return prePos_; }
 	void setPrePos(Vec2 prePos) { prePos_ = prePos; }
+
+	//サイズ
+	Vec2 getSize() { return size_; }
+	void setSize(Vec2 size) { size_ = size; }
 	 
 	//ローカル座標上
 	Vec2 getLtVertex() { return vertex_[0]; }

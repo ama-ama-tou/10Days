@@ -1,6 +1,8 @@
 ﻿#include "Player.h"
 #include <Novice.h>
 void Player::Move(char* keys,char* preKeys) {
+	pos_ = vertex_[0];
+
 	//移動前の座標を保存しておく
 	prePos_ = pos_;
 
@@ -29,7 +31,7 @@ void Player::Move(char* keys,char* preKeys) {
 int Player::CalcuRowAddress(int vertexNum){
 	int row;
 	if (vertexNum == 0) {
-		row = static_cast<int>(vertex_[vertexNum].x / size_.x); //左上の場合
+		row = static_cast<int>(getLtVertex().x / getSize().x); //左上の場合
 
 	} else {
 		row = static_cast<int>((vertex_[vertexNum].x - 1) / size_.x); //それ以外の場合-1する必要がある

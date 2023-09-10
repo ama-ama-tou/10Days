@@ -13,14 +13,14 @@ class Stage {
 	Coordinate stageCo_{ kFieldLtPos };
 
 	//プレイヤー
-	Player* player_;
+	Player player_;
 
 	//ロードするファイル
 	const std::string& csvFilePath_;
 	//ファイルを読み込んだもの
 	std::vector<std::vector<int>> stageCsv_;
 
-	Block*** block_;
+	Block** block_;
 	//block_の要素数
 	int row_;
 	int col_;
@@ -39,7 +39,7 @@ class Stage {
 
 
 public:
-
+	
 	Stage(const std::string& csvFilePath) :csvFilePath_(csvFilePath) {
 		//csvデータ読み込み
 		stageCsv_ = LoadCsv(csvFilePath);
@@ -49,12 +49,23 @@ public:
 		col_ = static_cast<int>(stageCsv_.size());
 
 		//それぞれ動的配列の確保
-		block_ = new Block** [col_];
+		block_ = new Block* [col_] ;
 		for (int i = 0; i < col_; i++) {
-			block_[i] = new Block*[row_];
+			block_[i] = new Block[row_]{};
 		}
 		
-		collision = new CollisionManager{*player_,block_,row_,col_};
+	}
+
+	~Stage(){
+		for (int i = 0; i < col_; i++) {
+			
+			delete block_[i];
+			}
+			
+		delete[] block_;
+
+		
+		delete collision;
 	}
 
 	void Init();

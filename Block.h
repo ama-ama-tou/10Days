@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Quad.h"
 #include "Vec2.h"
+#include <Novice.h>
 
 enum BlockType {
     NONE,
@@ -20,6 +21,8 @@ class Block :
     int isHit_;
     BlockType type_;
 
+    int testType_;
+
     ///ブロックの各面がブロックと接しているか
     bool isFacing_;
 
@@ -30,14 +33,15 @@ class Block :
     bool isHadBlock_;
 
 public:
-
+    Block() {
+      }
    //=======================
    //メンバ関数
    //=======================
     void Init(int MaxCol, int MaxRow, 
         int colNum, int rowNum,
         Vec2 localCoOrigin,
-        Vec2 imageLtPos, Vec2 imageSize,BlockType whatType);
+        Vec2 imageLtPos, Vec2 imageSize);
 
     void Update();
 
@@ -54,8 +58,7 @@ public:
     void setPrePos(Vec2 prePos) { prePos_ = prePos; }
 
     BlockType getType() { return type_; }
-    void setType(BlockType type) { type_ = type; }
-
+    void setType(int type);
     int getHitting() { return isHit_; }
     void setHitting(int isHit) { isHit_ = isHit; }
 

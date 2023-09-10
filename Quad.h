@@ -31,6 +31,8 @@ public:
 
 		localCo_.setOrigin(localCoOrigin);
 
+		size_ = size;
+
 		GH_ = GH;
 		imageLtPos_ = imageLtPos;
 		imageSize_ = imageSize;

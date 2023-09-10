@@ -5,7 +5,7 @@
 class GameManager {
 private:
 	InputManager* inputManager_ = InputManager::GetInstance();
-	SceneManager* sceneManager_{};
+	SceneManager* sceneManager_=new SceneManager();
 
 public:
 	GameManager() {};

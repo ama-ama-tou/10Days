@@ -4,20 +4,8 @@
 
 void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 	Vec2 localCoOrigin,
-	Vec2 imageLtPos, Vec2 imageSize, BlockType whatType) {
+	Vec2 imageLtPos, Vec2 imageSize) {
 
-	type_ = whatType;
-
-	//typeに合わせてGHを変更
-	if (type_ ==NONE) {
-		GH_ = 0;
-	} else if (type_==N_POLE) {
-		GH_ = Novice::LoadTexture("./Resources/image/character/nPole.png");
-	} else if (type_==S_POLE) {
-		GH_ = Novice::LoadTexture("./Resources/image/character/sPole.png");
-	} else if (type_==WALL) {
-		GH_ = Novice::LoadTexture("./Resources/image/obj/wall.png");
-	}
 
 	Vec2 size;
 	size.x = kFieldSize.x / static_cast<float>(MaxRow);
@@ -26,6 +14,20 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 	Vec2 pos;
 	pos.x = rowNum * size.x;
 	pos.y = colNum * size.y;
+
+
+	
+
+	//typeに合わせてGHを変更
+	/*if (type_ ==NONE) {
+		GH_ = 0;
+	} else if (type_==N_POLE) {
+		GH_ = Novice::LoadTexture("./Resources/image/character/nPole.png");
+	} else if (type_==S_POLE) {
+		GH_ = Novice::LoadTexture("./Resources/image/character/sPole.png");
+	} else if (type_==WALL) {
+		GH_ = Novice::LoadTexture("./Resources/image/obj/wall.png");
+	}*/
 
 
 	Quad::Init(pos, size, 
@@ -66,3 +68,24 @@ int Block::CalcuColAddress(int vertexNum) {
 	}
 	return col;
 }
+
+void Block::setType(int type) {
+	
+	if (type == 0) {
+		GH_ = 0;
+		testType_ = NONE;
+	} else if (type == 1) {
+		testType_ = N_POLE;
+		GH_ = Novice::LoadTexture("./Resources/image/character/nPole.png");
+	} else if (type == 2) {
+		testType_ = S_POLE;
+		GH_ = Novice::LoadTexture("./Resources/image/character/sPole.png");
+	} else if (type == 3) {
+		testType_ = WALL;
+		GH_ = Novice::LoadTexture("./Resources/image/obj/wall.png");
+	} else{
+		GH_ = 0;
+		testType_ = NONE;
+	}
+}
+
