@@ -9,22 +9,25 @@ class Scene_Clear :
 	//==============
 
 	//クリアの文字
-	Vec2 clearPos_;
+	Vec2 clearPos_[3];
 	Vec2 clearSize_;
-	Vec2 clearVertex_[4];
+	Vec2 clearVertex_[3][4];
 
-	int clearGH_;
-	int roatedClearGH_;
+	int clearGH_[3];
+	int roatedClearGH_[3];
 	bool isRoated_;
+	int roatedCount_;
 
 	//周りの円
 	Vec2 elementPos_[50];
 	float inisialElementRadius_[50];
 	float currentElementRadius_[50];
+	Vec2 elementSpeed_[50];
 	bool isDisaappear_;
+	unsigned int elementColor_;
 
 	//クリア画像の後ろのライン
-	Vec2 LINEpOS_;
+	Vec2 linePos_;
 	Vec2 lineSize_;
 	Vec2 lineVertex_[4];
 	int lineGH_;
