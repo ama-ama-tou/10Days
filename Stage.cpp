@@ -55,8 +55,6 @@ void Stage::Update(char* keys, char* preKeys) {
 
 	player_.Update(keys, preKeys);
 
-
-
 	for (int c = 0; c < col_; c++) {
 		for (int r = 0; r < row_; r++) {
 			if (block_[r][c].getIsHadBlock()) {
