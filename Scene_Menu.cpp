@@ -2,6 +2,11 @@
 
 void Scene_Menu::Load() {
 
+
+
+
+
+
 }
 
 void Scene_Menu::Update() {

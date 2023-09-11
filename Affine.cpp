@@ -1,4 +1,4 @@
-#include "Affine.h"
+﻿#include "Affine.h"
 
 Vec2 Translation(Vec2& target, Vec2 trans) {
 	Matrix3x3 translation{

@@ -35,7 +35,6 @@ int Player::CalcuRowAddress(int vertexNum) {
 	int row;
 	if (vertexNum == 0) {
 		row = static_cast<int>(getLtVertex().x / size_.x); //左上の場合
-
 	} else {
 		row = static_cast<int>((vertex_[vertexNum].x - 1) / size_.x); //それ以外の場合-1する必要がある
 	}

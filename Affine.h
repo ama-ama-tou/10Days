@@ -1,34 +1,34 @@
-#pragma once
+ï»¿#pragma once
 #include"Vec2.h"
 #include"Matrix3x3.h"
 
 /// <summary>
-/// •½sˆÚ“®
+/// å¹³è¡Œç§»å‹•
 /// </summary>
-/// <param name="target">‘ÎÛ</param>
-/// <param name="trans">ˆÚ“®‹——£</param>
+/// <param name="target">å¯¾è±¡</param>
+/// <param name="trans">ç§»å‹•è·é›¢</param>
 /// <returns></returns>
 Vec2 Translation(Vec2& target, Vec2 trans);
 /// <summary>
-/// Šg‘åk¬
+/// æ‹¡å¤§ç¸®å°
 /// </summary>
-/// <param name="target">‘ÎÛ</param>
-/// <param name="scale">Šgk—¦</param>
+/// <param name="target">å¯¾è±¡</param>
+/// <param name="scale">æ‹¡ç¸®ç‡</param>
 /// <returns></returns>
 Vec2 Scaling(Vec2& target, Vec2 scale);
 /// <summary>
-/// ‰ñ“]
+/// å›è»¢
 /// </summary>
-/// <param name="target">‘ÎÛ</param>
-/// <param name="theta">theta“x‰ñ“]‚·‚é(1“x‚Å)</param>
+/// <param name="target">å¯¾è±¡</param>
+/// <param name="theta">thetaåº¦å›è»¢ã™ã‚‹(1åº¦ã§)</param>
 /// <returns></returns>
 Vec2 Rotating(Vec2& target, float theta);
 /// <summary>
-/// ƒAƒtƒBƒ“•ÏŠ·
+/// ã‚¢ãƒ•ã‚£ãƒ³å¤‰æ›
 /// </summary>
-/// <param name="target">‘ÎÛ</param>
-/// <param name="target2origine">‘ÎÛ‚©‚ç•ÏŠ·Œ´“_‚Ü‚Å‚Ì‹——£</param>
-/// <param name="scale">Šgk—¦</param>
-/// <param name="theta">theta“x‰ñ“]‚·‚é(1“x‚Å)</param>
+/// <param name="target">å¯¾è±¡</param>
+/// <param name="target2origine">å¯¾è±¡ã‹ã‚‰å¤‰æ›åŸç‚¹ã¾ã§ã®è·é›¢</param>
+/// <param name="scale">æ‹¡ç¸®ç‡</param>
+/// <param name="theta">thetaåº¦å›è»¢ã™ã‚‹(1åº¦ã§)</param>
 /// <returns></returns>
 Vec2 Affine(Vec2& target, Vec2 target2origine, Vec2 scale, float theta);
