@@ -12,11 +12,9 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 	Vec2 size(static_cast<float>(x), static_cast<float>(y));
 	
 	Vec2 pos;
-	pos.x = rowNum * getSize().x;
-	pos.y = colNum * getSize().y;
+	pos.x = rowNum * size.x;
+	pos.y = colNum * size.y;
 
-
-	
 
 	//typeに合わせてGHを変更
 	/*if (type_ ==NONE) {

@@ -13,12 +13,13 @@ void Stage::Init() {
 			block_[r][c].setType(stageCsv_[r][c]);
 
 			block_[r][c].Init(
-				col_, row_, r, c,
+				col_, row_,
+				r, c,
 				stageCo_.getOrigin(),
 				Vec2(0.0f, 0.0f),//imageLtPos
 				blockImageSize
 			);
-			if (stageCsv_[r][c] == 1 || stageCsv_[r][c] == 2) {
+				if (stageCsv_[r][c] == 1 || stageCsv_[r][c] == 2) {
 				NSBlockNum_++;
 			}
 			if (stageCsv_[r][c] == 9) {
