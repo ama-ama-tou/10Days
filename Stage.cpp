@@ -46,6 +46,7 @@ void Stage::Init() {
 }
 
 void Stage::Update(char* keys, char* preKeys) {
+	player_.Update(keys, preKeys);
 
 	collision->playerCollision(player_, block_);
 	collision->blockCollision(player_, block_);
@@ -53,7 +54,8 @@ void Stage::Update(char* keys, char* preKeys) {
 	//デバック用
 	collision->Draw();
 
-	player_.Update(keys, preKeys);
+	
+
 
 	for (int c = 0; c < col_; c++) {
 		for (int r = 0; r < row_; r++) {
