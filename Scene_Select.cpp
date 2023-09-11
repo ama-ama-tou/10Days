@@ -47,6 +47,9 @@ void Scene_Select::Load() {
 			Vec2(0.0f, 0.0f), selectButtonSize);
 	}
 
+	//ステージセレクトの効果音
+	stageSelectSH_ = Novice::LoadAudio("./Resources/sound/SE/stageSelect.png");
+	stageSelectVH_ = -1;
 }
 
 void Scene_Select::Update() {
@@ -67,6 +70,13 @@ void Scene_Select::Update() {
 }
 
 void Scene_Select::Draw() {
+	//効果音を鳴らす
+	for (int i = 0; i < 9; i++) {
+		if (stage_[i].getIsClicked()) {
+
+		}
+	}
+
 	for (int i = 0; i < 9; i++) {
 		stage_[i].Draw();
 		go2Title.Draw();

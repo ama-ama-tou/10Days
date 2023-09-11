@@ -170,11 +170,14 @@ void Scene_Clear::Update() {
 
 void Scene_Clear::Draw() {
 
-
-	//効果音を鳴らす
-	if (Novice::IsPlayingAudio(clearSH_)==false) {
-		Novice::PlayAudio(clearSH_, false, 0.5f);
+	if (soundCount_<=0) {
+		//効果音を鳴らす
+		if (Novice::IsPlayingAudio(clearSH_) == false) {
+			Novice::PlayAudio(clearSH_, false, 0.5f);
+			soundCount_++;
+		}
 	}
+	
 
 	//lineの描画
 	Novice::DrawQuad(
