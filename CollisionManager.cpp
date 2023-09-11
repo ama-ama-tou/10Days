@@ -23,7 +23,7 @@ void CollisionManager::playerCollision() {
 	for (int vertexNum = 0; vertexNum < 4; vertexNum++) {
 		if (vertexNum == 0) {
 
-			Vec2 vertexTest = player_.getLtVertex();:@
+			Vec2 vertexTest = player_.getLtVertex();
 
 			Novice::ScreenPrintf(800, 10, "vertex[0].x:%f", player_.getLtVertex().y);
 			rowAddress_[vertexNum] = static_cast<int>(player_.getLtVertex().y / player_.getSize().y);
