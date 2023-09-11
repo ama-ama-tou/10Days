@@ -12,8 +12,8 @@ class CollisionManager {
 	int rowAddress_[4] = { 0 };
 	int colAddress_[4] = { 0 };
 
-	const int maxRow_ = 12;
-	const int maxCol_ = 12;
+	int maxRow_ = 12;
+	int maxCol_ = 12;
 
 	//ブロックの各頂点の番地
 	int bLtRowAddress_[12][12] = { 0 };
