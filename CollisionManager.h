@@ -18,6 +18,13 @@ class CollisionManager {
 	//ブロックの各頂点の番地
 	int bLtRowAddress_[12][12] = { 0 };
 	int bRtRowAddress_[12][12] = { 0 };
+	int bLbRowAddress_[12][12] = { 0 };
+	int bRbRowAddress_[12][12] = { 0 };
+
+	int bLtColAddress_[12][12] = { 0 };
+	int bRtColAddress_[12][12] = { 0 };
+	int bLbColAddress_[12][12] = { 0 };
+	int bRbColAddress_[12][12] = { 0 };
 
 public:
 	CollisionManager(const int& maxRow, const int& maxCol) {
