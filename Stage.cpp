@@ -107,6 +107,7 @@ void Stage::Init() {
 void Stage::Update(char* keys, char* preKeys) {
 	player_.Update(keys, preKeys);
 
+
 	collision->playerCollision(player_, block_);
 	collision->blockCollision(player_, block_);
 

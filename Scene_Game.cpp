@@ -16,7 +16,7 @@ Scene_Game::Scene_Game() {
 
 	stageNum = STAGE_1ST;
 
-	
+	sceneNum = SCENE_GAME;
 }
 
 Scene_Game::~Scene_Game() {
