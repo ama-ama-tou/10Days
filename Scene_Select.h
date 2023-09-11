@@ -21,7 +21,7 @@ public:
 	//======================
 	//メンバ関数
 	//======================
-	Scene_Select() { sceneNum = SCENE_SELECT; };
+	Scene_Select() { };
 
 	void Load()override;
 	void Update()override;
