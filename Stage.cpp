@@ -138,7 +138,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 void Stage::Draw() {
 
-	for (int i = 0; i < 50; i++) {
+	for (int i = 0; i < 30; i++) {
 		Novice::DrawQuad(
 			static_cast<int>(bkQuadVertex_[0][i].x),
 			static_cast<int>(bkQuadVertex_[0][i].y),
