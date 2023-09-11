@@ -40,19 +40,26 @@ class Stage {
 
 
 	//背景の四角（赤色）
-	Vec2 bkRedQuadPos_[50];
-	Vec2 bkRedQuadSize_[50];
-	Vec2 bkRedQuadVertex_[4][50];
-	Vec2 bkRedQuadSpeed_[50];
-	Vec2 bkRedQuadScaleValue_[50];
-	Vec2 bkRedQuadMinScale_[50];
-	Vec2 bkRedQuadMaxScale_[50];
+	Vec2 bkRedQuadPos_[20];
+	Vec2 bkRedQuadSize_[20];
+	Vec2 bkRedQuadVertex_[4][20];
+	Vec2 bkRedQuadSpeed_[20];
+	Vec2 bkRedQuadScaleValue_[20];
+	Vec2 bkRedQuadMinScale_[20];
+	Vec2 bkRedQuadMaxScale_[20];
 	int bkRedQuadColor_;
-	int redSubtractiveColor_;
+	int subtractiveColor_;
 	int bkGH_;
 
 	//背景の四角（青色）
-
+	Vec2 bkBlueQuadPos_[20];
+	Vec2 bkBlueQuadSize_[20];
+	Vec2 bkBlueQuadVertex_[4][20];
+	Vec2 bkBlueQuadSpeed_[20];
+	Vec2 bkBlueQuadScaleValue_[20];
+	Vec2 bkBlueQuadMinScale_[20];
+	Vec2 bkBlueQuadMaxScale_[20];
+	int bkBlueQuadColor_;
 
 public:
 	

@@ -79,6 +79,7 @@ void Stage::Init() {
 		//===================
 		//青色の四角
 		//==================
+		
 		//座標をランダムで設定
 		bkRedQuadPos_[i] = { static_cast<float>(rand() % 1280),static_cast<float>(rand() % 720) };
 		//サイズをランダムで設定
@@ -124,8 +125,16 @@ void Stage::Update(char* keys, char* preKeys) {
 		isClear_ = true;
 	}
 
+
+	
+
 	//背景の動き
 	for (int i = 0; i < 50; i++) {
+		
+	//===================
+	//赤色の四角
+	//==================
+
 		//quadの移動
 		bkRedQuadPos_[i] += bkRedQuadSpeed_[i];
 
@@ -158,6 +167,43 @@ void Stage::Update(char* keys, char* preKeys) {
 			bkRedQuadPos_[i].y = static_cast<float>(rand() % 720);
 		}
 
+
+	//===================
+	//青色の四角
+	//==================
+
+		//quadの移動
+		bkBlueQuadPos_[i] += bkBlueQuadSpeed_[i];
+
+		//座標の更新
+		bkBlueQuadVertex_[0][i] = { bkBlueQuadPos_[i].x - bkBlueQuadSize_[i].x,bkBlueQuadPos_[i].y - bkBlueQuadSize_[i].y };
+		bkBlueQuadVertex_[1][i] = { bkBlueQuadPos_[i].x + bkBlueQuadSize_[i].x,bkBlueQuadPos_[i].y - bkBlueQuadSize_[i].y };
+		bkBlueQuadVertex_[2][i] = { bkBlueQuadPos_[i].x - bkBlueQuadSize_[i].x,bkBlueQuadPos_[i].y + bkBlueQuadSize_[i].y };
+		bkBlueQuadVertex_[3][i] = { bkBlueQuadPos_[i].x + bkBlueQuadSize_[i].x,bkBlueQuadPos_[i].y + bkBlueQuadSize_[i].y };
+
+		//拡縮
+		bkBlueQuadSize_[i] += bkBlueQuadScaleValue_[i];
+		if (bkBlueQuadSize_[i] += bkBlueQuadScaleValue_[i]) {
+			bkBlueQuadScaleValue_[i] *= Vec2(-1, -1);
+		} else if (bkBlueQuadSize_[i] <= bkBlueQuadMinScale_[i]) {
+			bkBlueQuadScaleValue_[i] *= Vec2(-1, -1);
+		}
+
+		//色の制御
+		bkBlueQuadColor_ += subtractiveColor_;
+		if (bkBlueQuadColor_ == 0x000000dd) {
+			subtractiveColor_ *= -1;
+		} else if (bkBlueQuadColor_ == 0x000000aa) {
+			subtractiveColor_ *= -1;
+		}
+
+		//画面外に出たら再スポーン
+		if (bkBlueQuadPos_[i].x >= 1280.0f || bkBlueQuadPos_[i].x <= 0.0f ||
+			bkBlueQuadPos_[i] >= 720.0f || bkBlueQuadPos_[i].y <= 0.0f) {
+			bkBlueQuadPos_[i].x = static_cast<float>(rand() % 1280);
+			bkBlueQuadPos_[i].y = static_cast<float>(rand() % 720);
+		}
+
 	}
 
 
@@ -165,6 +211,9 @@ void Stage::Update(char* keys, char* preKeys) {
 
 void Stage::Draw() {
 
+	//===================
+	//背景の四角
+	//==================
 	for (int i = 0; i < 30; i++) {
 		Novice::DrawQuad(
 			static_cast<int>(bkRedQuadVertex_[0][i].x),
@@ -177,6 +226,19 @@ void Stage::Draw() {
 			static_cast<int>(bkRedQuadVertex_[3][i].y),
 			0, 0, 32, 32, bkGH_,
 			bkRedQuadColor_
+		);
+
+		Novice::DrawQuad(
+			static_cast<int>(bkBlueQuadVertex_[0][i].x),
+			static_cast<int>(bkBlueQuadVertex_[0][i].y),
+			static_cast<int>(bkBlueQuadVertex_[1][i].x),
+			static_cast<int>(bkBlueQuadVertex_[1][i].y),
+			static_cast<int>(bkBlueQuadVertex_[2][i].x),
+			static_cast<int>(bkBlueQuadVertex_[2][i].y),
+			static_cast<int>(bkBlueQuadVertex_[3][i].x),
+			static_cast<int>(bkBlueQuadVertex_[3][i].y),
+			0, 0, 32, 32, bkGH_,
+			bkBlueQuadColor_
 		);
 	}
 	
