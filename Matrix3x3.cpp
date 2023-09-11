@@ -1,10 +1,10 @@
-#include "Matrix3x3.h"
+ï»¿#include "Matrix3x3.h"
 
 /// <summary>
-/// s—ñ“¯m‚ÌŠ|‚¯Z
+/// è¡Œåˆ—åŒå£«ã®æ›ã‘ç®—
 /// </summary>
-/// <param name="L">¶•Ó</param>
-/// <param name="R">‰E•Ó</param>
+/// <param name="L">å·¦è¾º</param>
+/// <param name="R">å³è¾º</param>
 /// <returns></returns>
 Matrix3x3 operator*(const Matrix3x3& L, const Matrix3x3& R) {
 
@@ -21,10 +21,10 @@ Matrix3x3 operator*(const Matrix3x3& L, const Matrix3x3& R) {
 }
 
 /// <summary>
-/// ©ŒÈ‘ã“ü”Å‚ÌæZ‰‰Zq
+/// è‡ªå·±ä»£å…¥ç‰ˆã®ä¹—ç®—æ¼”ç®—å­
 /// </summary>
-/// <param name="L">¶•Ó</param>
-/// <param name="R">‰E•Ó</param>
+/// <param name="L">å·¦è¾º</param>
+/// <param name="R">å³è¾º</param>
 /// <returns></returns>
 Matrix3x3& operator*=(Matrix3x3& L, const Matrix3x3& R) {
     L = L * R;
