@@ -140,14 +140,14 @@ void Stage::Draw() {
 
 	for (int i = 0; i < 50; i++) {
 		Novice::DrawQuad(
-			static_cast<int>(localCo_.screenFromOrigin(bkQuadVertex_[0][i]).x),
-			static_cast<int>(localCo_.screenFromOrigin(bkQuadVertex_[0][i]).y),
-			static_cast<int>(localCo_.screenFromOrigin(bkQuadVertex_[1][i]).x),
-			static_cast<int>(localCo_.screenFromOrigin(bkQuadVertex_[1][i]).y),
-			static_cast<int>(localCo_.screenFromOrigin(bkQuadVertex_[2][i]).x),
-			static_cast<int>(localCo_.screenFromOrigin(bkQuadVertex_[2][i]).y),
-			static_cast<int>(localCo_.screenFromOrigin(bkQuadVertex_[3][i]).x),
-			static_cast<int>(localCo_.screenFromOrigin(bkQuadVertex_[3][i]).y),
+			static_cast<int>(bkQuadVertex_[0][i].x),
+			static_cast<int>(bkQuadVertex_[0][i].y),
+			static_cast<int>(bkQuadVertex_[1][i].x),
+			static_cast<int>(bkQuadVertex_[1][i].y),
+			static_cast<int>(bkQuadVertex_[2][i].x),
+			static_cast<int>(bkQuadVertex_[2][i].y),
+			static_cast<int>(bkQuadVertex_[3][i].x),
+			static_cast<int>(bkQuadVertex_[3][i].y),
 			0, 0, 32, 32, bkGH_,
 			bkQuadColor_
 		);

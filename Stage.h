@@ -5,7 +5,6 @@
 #include"LoadCSV.h"
 #include"base.h"
 #include"Vec2.h"
-#include"Coordinate.h"
 
 class Stage {
 
@@ -41,7 +40,7 @@ class Stage {
 
 
 	//背景の動き
-	Coordinate localCo_;
+//	Coordinate localCo_;
 	Vec2 bkQuadPos_[50];
 	Vec2 bkQuadSize_[50];
 	Vec2 bkQuadVertex_[4][50];
