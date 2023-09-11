@@ -1,12 +1,15 @@
 ﻿#pragma once
 #include "Scene.h"
 #include "Vec2.h"
+#include "Coordinate.h"
 class Scene_Clear :
 	public Scene {
 
 	//===============
 	//メンバ変数
 	//==============
+
+	Coordinate localCo_;
 
 	//クリアの文字
 	Vec2 clearPos_[3];
@@ -49,6 +52,11 @@ public:
 	void Update();
 	void Draw();
 	void Unload();
+
+	//===================
+	//ゲッター/セッター
+	//==================
+
 
 };
 
