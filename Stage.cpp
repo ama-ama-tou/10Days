@@ -99,8 +99,6 @@ void Stage::Init() {
 		} while (bkBlueQuadSpeed_[i] == 0);
 
 		bkBlueQuadColor_ = 0x000000aa;
-		//引いて薄くさせる色
-		subtractiveColor_ = 0x00000001;
 	}
 }
 

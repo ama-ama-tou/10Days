@@ -9,7 +9,7 @@ SceneManager::SceneManager() {
 	//初期シーン
 	sceneNo_ = SCENE_TITLE;
 
-	bg.Init(Vec2(0.0f, 0.0f), kFieldSize, 0x7d7b83ff);
+	bg.Init(Vec2(0.0f, 0.0f),kWindowSize, 0x7d7b83ff);
 }
 
 void SceneManager::Update() {
