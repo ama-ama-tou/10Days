@@ -1,6 +1,6 @@
-#pragma once
+ï»¿#pragma once
 #include"Vec2.h"
-/// <summary>/// ‰æ‘œ‚ğg‚í‚È‚¢lŠpŒ` /// </summary>
+/// <summary>/// ç”»åƒã‚’ä½¿ã‚ãªã„å››è§’å½¢ /// </summary>
 struct Box {
 	Vec2 pos_;
 	Vec2 size_;
@@ -8,7 +8,7 @@ struct Box {
 	unsigned int color_;
 
 	///
-	///	ƒƒ“ƒoŠÖ”
+	///	ãƒ¡ãƒ³ãƒé–¢æ•°
 	/// 
 
 	void Init(Vec2 pos, Vec2 size, unsigned int color) {
