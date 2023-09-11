@@ -12,8 +12,8 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 	setSize(Vec2(static_cast<float>(x), static_cast<float>(y)));
 	
 	Vec2 pos;
-	pos.x = rowNum * size.x;
-	pos.y = colNum * size.y;
+	pos.x = rowNum * getSize().x;
+	pos.y = colNum * getSize().y;
 
 
 	
