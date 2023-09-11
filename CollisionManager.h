@@ -4,9 +4,9 @@
 #include<vector>
 
 class CollisionManager {
-	Player player_;
+	/*Player player_;
 	
-	Block** block_;
+	Block** block_;*/
 
 	//各頂点の番地
 	int rowAddress_[4] = { 0 };
@@ -20,17 +20,16 @@ class CollisionManager {
 	int bRtRowAddress_[12][12] = { 0 };
 
 public:
-	CollisionManager(Player& player,Block**& block, const int& maxRow, const int& maxCol) {
-		player_ = player;
-		block_ = block;
+	CollisionManager(const int& maxRow, const int& maxCol) {
+	
 		maxRow_	= maxRow;
 		maxCol_ = maxCol;
 	};
 
 	//当たり判定
-	void playerCollision();
+	void playerCollision(Player& player , Block**& block);
 
-	void blockCollision();
+	void blockCollision(Block**& block);
 
 	void Draw();
 

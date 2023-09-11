@@ -10,7 +10,7 @@
 
 
 ///プレイヤーの当たり判定
-void CollisionManager::playerCollision() {
+void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 
 	for (int r = 0; r < maxCol_; r++) {
 		for (int c = 0; c < maxRow_; c++)
@@ -80,13 +80,13 @@ void CollisionManager::playerCollision() {
 			}
 		}
 	}
-	//else {
-	//	if (block_[colAddress_[1]][rowAddress_[1]].getType() !=NONE && //右上(今の座標)
-	//		block_[colAddress_[2]][rowAddress_[2]].getType() !=NONE) { //右下(今の座標)
-	//		//戻す
-	//		player_.setPos(player_.getPrePos());
-	//	}
-	//}
+	
+	//左上がの番地の値がNONEじゃないとき元の座標に戻す
+	if (block_[rowAddress_[1]][colAddress_[1]].getType() != NONE && //左上(今の座標)
+		block_[rowAddress_[2]][colAddress_[2]].getType() != NONE) { //右上(今の座標)
+		//戻す
+		player_.setPos(player_.getPrePos());
+	}
 
 	//下の面
 	if (!player_.getIsFacingBottom()) {
@@ -103,13 +103,13 @@ void CollisionManager::playerCollision() {
 			}
 		}
 	}
-	//else {
-	//	if (block_[colAddress_[2]][rowAddress_[2]].getType() !=NONE && //右下(今の座標)
-	//		block_[colAddress_[3]][rowAddress_[3]].getType() !=NONE) { //左下(今の座標)
-	//		//戻す
-	//		player_.setPos(player_.getPrePos());
-	//	}
-	//}
+	
+	//左上がの番地の値がNONEじゃないとき元の座標に戻す
+	if (block_[rowAddress_[2]][colAddress_[2]].getType() != NONE && //左上(今の座標)
+		block_[rowAddress_[3]][colAddress_[3]].getType() != NONE) { //右上(今の座標)
+		//戻す
+		player_.setPos(player_.getPrePos());
+	}
 
 	//左の面
 	if (!player_.getIsFacingBottom()) {
@@ -126,17 +126,17 @@ void CollisionManager::playerCollision() {
 			}
 		}
 	}
-	//else {
-	//	if (block_[colAddress_[3]][rowAddress_[3]].getType() !=NONE && //左下(今の座標)
-	//		block_[colAddress_[0]][rowAddress_[0]].getType() !=NONE) { //左上(今の座標)
-	//		//戻す
-	//		player_.setPos(player_.getPrePos());
-	//	}
-	//}
+
+	//左上がの番地の値がNONEじゃないとき元の座標に戻す
+	if (block_[rowAddress_[3]][colAddress_[3]].getType() != NONE && //左上(今の座標)
+		block_[rowAddress_[0]][colAddress_[0]].getType() != NONE) { //右上(今の座標)
+		//戻す
+		player_.setPos(player_.getPrePos());
+	}
 };
 
 ///ブロックとブロック
-void  CollisionManager::blockCollision() {
+void  CollisionManager::blockCollision(Block**& block_) {
 	for (int i = 0; i < maxCol_; i++) {
 		for (int j = 0; j < maxRow_; j++){
 			block_[i][j].getType();
