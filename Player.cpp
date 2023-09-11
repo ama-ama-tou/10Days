@@ -25,11 +25,13 @@ void Player::Move(char* keys, char* preKeys) {
 	}
 
 	vertex_[0] = pos_;
-	vertex_[1] = Vec2(pos_.x + size_, pos_.y);
+	vertex_[1] = Vec2(pos_.x + size_.x, pos_.y);
 	vertex_[2] = Vec2(pos_.x, pos_.y + size_.y);
 	vertex_[3] = Vec2(pos_.x + size_.x, pos_.y + size_.y);
 
 
+	vertex_[0] = getLtVertex();
+	vertex_[1] = getRtVertex();
 }
 
 int Player::CalacRowAddress(int vertexNum) {

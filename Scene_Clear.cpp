@@ -1,4 +1,4 @@
-#include "Scene_Clear.h"
+﻿#include "Scene_Clear.h"
 #include <stdlib.h>
 #include <time.h>
 
@@ -70,7 +70,7 @@ void Scene_Clear::Update() {
 
 	float heightIncrease = 0.5f;
 
-	int steps = 100.0f;
+	int steps = 100;
 	float scaleFactor = 0.5f;
 
 	//================
