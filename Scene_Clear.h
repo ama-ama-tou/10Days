@@ -9,7 +9,7 @@ class Scene_Clear :
 	//メンバ変数
 	//==============
 
-	Coordinate localCo_;
+	Coordinate localCo_{ Vec2(0.0f,0.0f) };
 
 	//クリアの文字
 	Vec2 clearPos_[3];
@@ -54,15 +54,20 @@ public:
 	//===================
 	//メンバ関数
 	//==================
-	void Load();
-	void Update();
-	void Draw();
-	void Unload();
+	void Load()override;
+	void Update()override;
+	void Draw()override;
+	void Unload()override;
 
 	//===================
 	//ゲッター/セッター
 	//==================
 
+
+
+	///使わない
+	StageNum getSelectedStage()override { return STAGE_1ST; }
+	void setPlayStage(StageNum selectedStage)override { selectedStage; }
 
 };
 

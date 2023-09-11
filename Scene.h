@@ -25,11 +25,13 @@ enum SceneNum {
 	SCENE_TITLE,
 	SCENE_SELECT,
 	SCENE_GAME,
+	SCENE_CLEAR
 };
 
 class Scene{
 protected:
 	InputManager* inputManager = InputManager::GetInstance();
+
 	static int sceneNum;
 
 public :
@@ -47,4 +49,4 @@ public :
 	virtual StageNum getSelectedStage() = 0;
 };
 
-inline int Scene::sceneNum = SCENE_TITLE;
+

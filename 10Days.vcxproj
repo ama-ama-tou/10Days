@@ -101,6 +101,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Block.cpp" />
+    <ClCompile Include="box.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\DirectXCommon.cpp" />
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\WinApp.cpp" />
@@ -115,6 +116,7 @@
     <ClCompile Include="Matrix3x3.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Quad.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Scene_Clear.cpp" />
     <ClCompile Include="Scene_Game.cpp" />
@@ -168,6 +170,7 @@
     <ClInclude Include="Scene_Title.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Vec2.h" />
+    <ClInclude Include="box.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
