@@ -9,7 +9,7 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 	int x= static_cast<int>(kFieldSize.x / MaxRow);
 	int y = static_cast<int>(kFieldSize.y / MaxCol);
 
-	setSize(Vec2(static_cast<float>(x), static_cast<float>(y)));
+	Vec2 size(static_cast<float>(x), static_cast<float>(y));
 	
 	Vec2 pos;
 	pos.x = rowNum * getSize().x;
