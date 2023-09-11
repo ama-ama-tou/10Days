@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "Vec2.h"
 
-
 enum ClickState {
 	STATE_NONE,
 	LEFT_CLICK,
