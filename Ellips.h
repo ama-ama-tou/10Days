@@ -16,7 +16,7 @@ public:
 	//===============
 	//ƒƒ“ƒoŠÖ”
 	//===============
-	void Init(Vec2 pos,Vec2 radius,float angle,unsigned int color) {
+	void Init(Vec2 pos,float radius,float angle,unsigned int color) {
 		pos_ = pos;
 		radius_ = radius;
 		angle_ = angle;
