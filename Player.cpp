@@ -23,6 +23,7 @@ void Player::Move(char* keys, char* preKeys) {
 	} else if (keys[DIK_S] && !preKeys[DIK_S]) {
 		pos_.y += speed_;
 	}
+
 	vertex_[0] = pos_;
 	vertex_[1] = Vec2(pos_.x + size_, pos_.y);
 	vertex_[2] = Vec2(pos_.x, pos_.y + size_.y);
@@ -31,23 +32,24 @@ void Player::Move(char* keys, char* preKeys) {
 
 }
 
-int Player::CalcuRowAddress(int vertexNum) {
+int Player::CalacRowAddress(int vertexNum) {
 	int row;
 	if (vertexNum == 0) {
-		row = static_cast<int>(getLtVertex().x / size_.x); //左上の場合
+		row = static_cast<int>(vertex_[vertexNum].y / size_.y); //左上の場合
+
 	} else {
-		row = static_cast<int>((vertex_[vertexNum].x - 1) / size_.x); //それ以外の場合-1する必要がある
+		row = static_cast<int>((vertex_[vertexNum].y - 1) / size_.y); //それ以外の場合-1する必要がある
 	}
 	return row;
 }
 
-int Player::CalcuColAddress(int vertexNum) {
+int Player::CalacColAddress(int vertexNum) {
 	int col;
 	if (vertexNum == 0) {
-		col = static_cast<int>(vertex_[vertexNum].y / size_.y); //左上の場合
+		col = static_cast<int>(vertex_[vertexNum].x / size_.x); //左上の場合
 
 	} else {
-		col = static_cast<int>((vertex_[vertexNum].y - 1) / size_.y); //それ以外の場合-1する必要がある
+		col = static_cast<int>((vertex_[vertexNum].x - 1) / size_.x); //それ以外の場合-1する必要がある
 	}
 	return col;
 }
@@ -77,6 +79,20 @@ void Player::Draw() {
 		WHITE
 	);
 
-	Novice::ScreenPrintf(10, 360, "vertex_[0]:%f", vertex_[0].x);
-	Novice::ScreenPrintf(10, 380, "vertex_[0]:%f", vertex_[0].y);
+	Novice::ScreenPrintf(10, 300, "player.pos.x:%f", pos_.x);
+	Novice::ScreenPrintf(10, 320, "player.pos.y:%f", pos_.y);
+
+	Novice::ScreenPrintf(10, 360, "vertex_[0].x:%f(leftTop)", vertex_[0].x);
+	Novice::ScreenPrintf(10, 380, "vertex_[0].y:%f(leftTop)", vertex_[0].y);
+
+	Novice::ScreenPrintf(10, 410, "vertex_[1].x:%f(rightTop)", vertex_[1].x);
+	Novice::ScreenPrintf(10, 430, "vertex_[1].y:%f(rightTop)", vertex_[1].y);
+
+	Novice::ScreenPrintf(10, 460, "vertex_[2].x:%f(leftBottom)", vertex_[2].x);
+	Novice::ScreenPrintf(10, 480, "vertex_[2].y:%f(leftBottom)", vertex_[2].y);
+
+	Novice::ScreenPrintf(10, 510, "vertex_[3].x:%f(rightBottom)", vertex_[3].x);
+	Novice::ScreenPrintf(10, 530, "vertex_[3].y:%f(rightBottom)", vertex_[3].y);
+
+	
 }

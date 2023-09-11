@@ -49,7 +49,7 @@ void Stage::Update(char* keys, char* preKeys) {
 	player_.Update(keys, preKeys);
 
 	collision->playerCollision();
-	collision->blockCollision();
+	//collision->blockCollision();
 
 	//デバック用
 	collision->Draw();

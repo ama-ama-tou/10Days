@@ -58,8 +58,8 @@ public:
 	void Draw();
 	void Move(char* keys,char* preKeys);
 
-	int CalcuRowAddress(int vertexNum);
-	int CalcuColAddress(int vertexNum);
+	int CalacRowAddress(int vertexNum);
+	int CalacColAddress(int vertexNum);
 
 	//===============
 	//ゲッター/セッター
