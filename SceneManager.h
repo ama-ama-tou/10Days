@@ -4,6 +4,8 @@
 #include"Scene_Select.h"
 #include"Scene_Game.h"
 #include"InputManager.h"
+#include"box.h"
+
 
 class SceneManager {
 private:
@@ -12,6 +14,10 @@ private:
 
 	int sceneNo_;
 	int preSceneNo_;
+
+	//バックグラウンド
+	Box bg;
+
 
 public:
 	SceneManager();
