@@ -34,8 +34,6 @@ public:
 	//メンバ関数
 	//===============
 	
-	Player() {  };
-
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, Vec2 imageLtPos, Vec2 imageSize) {
 		size_ = size;
 

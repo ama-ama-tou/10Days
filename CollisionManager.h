@@ -20,7 +20,12 @@ class CollisionManager {
 	int bRtRowAddress_[12][12] = { 0 };
 
 public:
-	CollisionManager(Player& player,Block**& block, const int& maxRow, const int& maxCol) ;
+	CollisionManager(Player& player,Block**& block, const int& maxRow, const int& maxCol) {
+		player_ = player;
+		block_ = block;
+		maxRow_	= maxRow;
+		maxCol_ = maxCol;
+	};
 
 	//当たり判定
 	void playerCollision();
