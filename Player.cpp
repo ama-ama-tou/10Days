@@ -32,7 +32,7 @@ void Player::Move(char* keys, char* preKeys) {
 int Player::CalcuRowAddress(int vertexNum) {
 	int row;
 	if (vertexNum == 0) {
-		row = static_cast<int>(getLtVertex().x / getSize().x); //左上の場合
+		row = static_cast<int>(getLtVertex().x / size_.x); //左上の場合
 
 	} else {
 		row = static_cast<int>((vertex_[vertexNum].x - 1) / size_.x); //それ以外の場合-1する必要がある
@@ -75,4 +75,7 @@ void Player::Draw() {
 		GH_,
 		WHITE
 	);
+
+	Novice::ScreenPrintf(10, 360, "vertex_[0]:%f", vertex_[0].x);
+	Novice::ScreenPrintf(10, 380, "vertex_[0]:%f", vertex_[0].y);
 }
