@@ -8,7 +8,7 @@
 class Stage {
 
 	//何ステージか
-	static int stageNum_;
+	static inline int stageNum_;
 
 	Coordinate stageCo_{ kFieldLtPos };
 

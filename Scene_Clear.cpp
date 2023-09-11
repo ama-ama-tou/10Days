@@ -1,4 +1,4 @@
-#include "Scene_Clear.h"
+﻿#include "Scene_Clear.h"
 #include <stdlib.h>
 #include <time.h>
 
