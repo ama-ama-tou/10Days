@@ -61,7 +61,7 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 	if (block_[rowAddress_[0]][colAddress_[0]].getType() != NONE && //左上(今の座標)
 		block_[rowAddress_[1]][colAddress_[1]].getType() != NONE) { //右上(今の座標)
 		//戻す
-		player_.setPos(player_.getPrePos());
+		player_.pointInit(player_.getPrePos());
 	}
 
 
@@ -85,7 +85,7 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 	if (block_[rowAddress_[1]][colAddress_[1]].getType() != NONE && //左上(今の座標)
 		block_[rowAddress_[2]][colAddress_[2]].getType() != NONE) { //右上(今の座標)
 		//戻す
-		player_.setPos(player_.getPrePos());
+		player_.pointInit(player_.getPrePos());
 	}
 
 	//下の面
@@ -108,7 +108,7 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 	if (block_[rowAddress_[2]][colAddress_[2]].getType() != NONE && //左上(今の座標)
 		block_[rowAddress_[3]][colAddress_[3]].getType() != NONE) { //右上(今の座標)
 		//戻す
-		player_.setPos(player_.getPrePos());
+		player_.pointInit(player_.getPrePos());
 	}
 
 	//左の面
@@ -131,7 +131,7 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 	if (block_[rowAddress_[3]][colAddress_[3]].getType() != NONE && //左上(今の座標)bLtColAddress[i][j] - 1
 		block_[rowAddress_[0]][colAddress_[0]].getType() != NONE) { //右上(今の座標)
 		//戻す
-		player_.setPos(player_.getPrePos());
+		player_.pointInit(player_.getPrePos());
 	}
 };
 
@@ -214,7 +214,7 @@ void  CollisionManager::blockCollision(Player& player_ ,Block**& block_) {
 						//持たれているブロックか判定する
 						if (!block_[colAddress_[1]][rowAddress_[1] + 1].getIsHadBlock()) {
 							//1個先のブロックの左上座標を2個先にする
-							block_[colAddress_[0]][rowAddress_[0] + 1].setPos(block_[colAddress_[0]][rowAddress_[0] + 2].getPos());
+							block_[colAddress_[0]][rowAddress_[0] + 1].pointInit(block_[colAddress_[0]][rowAddress_[0] + 2].getPos());
 						}
 
 					} else {
@@ -240,7 +240,7 @@ void  CollisionManager::blockCollision(Player& player_ ,Block**& block_) {
 				if (block_[colAddress_[1]][rowAddress_[1]].getType() != NONE && //右上
 					block_[colAddress_[2]][rowAddress_[2]].getType() != NONE) { //右下
 					//左頂点を元の位置に戻す
-					block_[colAddress_[0]][rowAddress_[0]].setPos(block_[colAddress_[0]][rowAddress_[0]].getPrePos());
+					block_[colAddress_[0]][rowAddress_[0]].pointInit(block_[colAddress_[0]][rowAddress_[0]].getPrePos());
 				}
 			}
 
@@ -254,7 +254,7 @@ void  CollisionManager::blockCollision(Player& player_ ,Block**& block_) {
 						//持たれているブロックか判定する
 						if (!block_[colAddress_[2] + 1][rowAddress_[2]].getIsHadBlock()) {
 							//1個先のブロックのposを奥に移動させる
-							block_[colAddress_[0] + 1][rowAddress_[0]].setPos(block_[colAddress_[0] + 2][rowAddress_[0]].getPos());
+							block_[colAddress_[0] + 1][rowAddress_[0]].pointInit(block_[colAddress_[0] + 2][rowAddress_[0]].getPos());
 						}
 
 					} else {
@@ -281,7 +281,7 @@ void  CollisionManager::blockCollision(Player& player_ ,Block**& block_) {
 				if (block_[colAddress_[2]][rowAddress_[2]].getType() != NONE && //右下
 					block_[colAddress_[3]][rowAddress_[3]].getType() != NONE) { //左下
 					//左頂点を元の位置に戻す
-					block_[colAddress_[0]][rowAddress_[0]].setPos(block_[colAddress_[0]][rowAddress_[0]].getPrePos());
+					block_[colAddress_[0]][rowAddress_[0]].pointInit(block_[colAddress_[0]][rowAddress_[0]].getPrePos());
 				}
 			}
 
@@ -295,7 +295,7 @@ void  CollisionManager::blockCollision(Player& player_ ,Block**& block_) {
 						//持たれているブロックか判定する
 						if (!block_[colAddress_[3]][rowAddress_[3] - 1].getIsHadBlock()) {
 							//1個先のブロックのposを奥に移動させる
-							block_[colAddress_[0]][rowAddress_[0] - 1].setPos(block_[colAddress_[0]][rowAddress_[0] - 2].getPos());
+							block_[colAddress_[0]][rowAddress_[0] - 1].pointInit(block_[colAddress_[0]][rowAddress_[0] - 2].getPos());
 						}
 
 					} else {
@@ -320,7 +320,7 @@ void  CollisionManager::blockCollision(Player& player_ ,Block**& block_) {
 				if (block_[colAddress_[3]][rowAddress_[3]].getType() != NONE && //左下
 					block_[colAddress_[0]][rowAddress_[0]].getType() != NONE) { //左上
 					//左頂点を元の位置に戻す
-					block_[colAddress_[0]][rowAddress_[0]].setPos(block_[colAddress_[0]][rowAddress_[0]].getPrePos());
+					block_[colAddress_[0]][rowAddress_[0]].pointInit(block_[colAddress_[0]][rowAddress_[0]].getPrePos());
 				}
 			}
 		}

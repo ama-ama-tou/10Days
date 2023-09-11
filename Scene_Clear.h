@@ -47,6 +47,8 @@ class Scene_Clear :
 	//効果音
 	int clearSH_;
 	int clearVH_;
+	bool isRang_;
+
 
 public:
 	//===================

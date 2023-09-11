@@ -9,11 +9,11 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 	int x= static_cast<int>(kFieldSize.x / MaxRow);
 	int y = static_cast<int>(kFieldSize.y / MaxCol);
 
-	setSize(Vec2(static_cast<float>(x), static_cast<float>(y)));
+	Vec2 size(static_cast<float>(x), static_cast<float>(y));
 	
 	Vec2 pos;
-	pos.x = rowNum * size.x;
-	pos.y = colNum * size.y;
+	pos.x = rowNum * getSize().x;
+	pos.y = colNum * getSize().y;
 
 
 	
@@ -37,7 +37,7 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 
 
 void Block::Update() {
-	Quad::setPos(pos_);
+	Quad::pointInit(pos_);
 }
 
 
