@@ -62,6 +62,7 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 		block_[rowAddress_[1]][colAddress_[1]].getType() != NONE) { //右上(今の座標)
 		//戻す
 		player_.pointInit(player_.getPrePos());
+		player_.setPos(player_.getPrePos());
 	}
 
 
