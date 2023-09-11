@@ -8,7 +8,7 @@
 class Stage {
 
 	//何ステージか
-	static int stageNum;
+	static int stageNum_;
 
 	Coordinate stageCo_{ kFieldLtPos };
 
@@ -40,24 +40,27 @@ class Stage {
 
 public:
 	
-	Stage(const std::string& csvFilePath) :csvFilePath_(csvFilePath) {
+	Stage(int stageNum,const std::string& csvFilePath) :csvFilePath_(csvFilePath) {
+		
+		stageNum_ = stageNum;
+		
 		//csvデータ読み込み
 		stageCsv_ = LoadCsv(csvFilePath);
 
 		//csvデータのサイズを入力
-		row_ = static_cast<int>(stageCsv_[0].size());
-		col_ = static_cast<int>(stageCsv_.size());
+		row_ = static_cast<int>(stageCsv_.size());
+		col_ = static_cast<int>(stageCsv_[0].size());
 
 		//それぞれ動的配列の確保
-		block_ = new Block* [col_] ;
-		for (int i = 0; i < col_; i++) {
-			block_[i] = new Block[row_]{};
+		block_ = new Block* [row_] ;
+		for (int i = 0; i < row_; i++) {
+			block_[i] = new Block[col_]{};
 		}
 		
 	}
 
 	~Stage(){
-		for (int i = 0; i < col_; i++) {
+		for (int i = 0; i < row_; i++) {
 			
 			delete block_[i];
 			}
@@ -78,7 +81,7 @@ public:
 
 	bool getIsClear() { return isClear_; }
 
-
+	int getStageNum() { return stageNum_; }
 
 };
 

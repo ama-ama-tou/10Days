@@ -1,38 +1,40 @@
 ﻿#include "Player.h"
 #include "InputManager.h"
 #include <Novice.h>
-void Player::Move(char* keys,char* preKeys) {
+
+void Player::Move(char* keys, char* preKeys) {
 	pos_ = vertex_[0];
 
 	//移動前の座標を保存しておく
 	prePos_ = pos_;
 
 	//左右の移動
-	
+
 	if (keys[DIK_A] && !preKeys[DIK_A]) {
-		pos_.x += speed_;
-	} else if (keys[DIK_D] && !preKeys[DIK_D]) {
 		pos_.x -= speed_;
+	} else if (keys[DIK_D] && !preKeys[DIK_D]) {
+		pos_.x += speed_;
 	}
 
 	//上下の移動
-	
+
 	if (keys[DIK_W] && !preKeys[DIK_W]) {
 		pos_.y -= speed_;
 	} else if (keys[DIK_S] && !preKeys[DIK_S]) {
 		pos_.y += speed_;
 	}
-
 	vertex_[0] = pos_;
-	vertex_[1] = Vec2(pos_.x + size_.x, pos_.y);
+	vertex_[1] = Vec2(pos_.x + size_, pos_.y);
 	vertex_[2] = Vec2(pos_.x, pos_.y + size_.y);
 	vertex_[3] = Vec2(pos_.x + size_.x, pos_.y + size_.y);
+
+
 }
 
-int Player::CalcuRowAddress(int vertexNum){
+int Player::CalcuRowAddress(int vertexNum) {
 	int row;
 	if (vertexNum == 0) {
-		row = static_cast<int>(getLtVertex().x / getSize().x); //左上の場合
+		row = static_cast<int>(getLtVertex().x / size_.x); //左上の場合
 
 	} else {
 		row = static_cast<int>((vertex_[vertexNum].x - 1) / size_.x); //それ以外の場合-1する必要がある
@@ -40,7 +42,7 @@ int Player::CalcuRowAddress(int vertexNum){
 	return row;
 }
 
-int Player::CalcuColAddress(int vertexNum){
+int Player::CalcuColAddress(int vertexNum) {
 	int col;
 	if (vertexNum == 0) {
 		col = static_cast<int>(vertex_[vertexNum].y / size_.y); //左上の場合
@@ -53,7 +55,7 @@ int Player::CalcuColAddress(int vertexNum){
 
 
 void Player::Update(char* keys, char* preKeys) {
-	Player::Move(keys, preKeys);
+	Move(keys, preKeys);
 }
 
 
@@ -75,4 +77,7 @@ void Player::Draw() {
 		GH_,
 		WHITE
 	);
+
+	Novice::ScreenPrintf(10, 360, "vertex_[0]:%f", vertex_[0].x);
+	Novice::ScreenPrintf(10, 380, "vertex_[0]:%f", vertex_[0].y);
 }

@@ -8,20 +8,20 @@ void Stage::Init() {
 
 	Vec2 playerStartPos = { 0.0f, 0.0f };
 
-	for (int c = 0; c < col_; c++) {
-		for (int r = 0; r < row_; r++) {
-			block_[c][r].setType(stageCsv_[c][r]);
+	for (int r = 0; r < row_; r++) {
+		for (int c = 0; c < col_; c++) {
+			block_[r][c].setType(stageCsv_[r][c]);
 
-			block_[c][r].Init(
+			block_[r][c].Init(
 				col_, row_, c, r,
 				stageCo_.getOrigin(),
 				Vec2(0.0f, 0.0f),//imageLtPos
 				blockImageSize
 			);
-			if (stageCsv_[c][r] == 1 || stageCsv_[c][r] == 2) {
+			if (stageCsv_[r][c] == 1 || stageCsv_[r][c] == 2) {
 				NSBlockNum_++;
 			}
-			if (stageCsv_[c][r] == 9) {
+			if (stageCsv_[r][c] == 9) {
 				playerStartPos.x = block_[0][0].getSize().x * r;
 				playerStartPos.y = block_[0][0].getSize().y * c;
 			}
@@ -51,9 +51,15 @@ void Stage::Update(char* keys, char* preKeys) {
 	collision->playerCollision();
 	collision->blockCollision();
 
+	//デバック用
+	collision->Draw();
+
+
+
+
 	for (int c = 0; c < col_; c++) {
 		for (int r = 0; r < row_; r++) {
-			if (block_[c][r].getIsHadBlock()) {
+			if (block_[r][c].getIsHadBlock()) {
 				playerHasBlockNum++;
 			}
 		}
