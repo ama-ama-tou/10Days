@@ -8,7 +8,7 @@
 class Stage {
 
 	//何ステージか
-	static int stageNum;
+	static int stageNum_;
 
 	Coordinate stageCo_{ kFieldLtPos };
 
@@ -40,7 +40,10 @@ class Stage {
 
 public:
 	
-	Stage(const std::string& csvFilePath) :csvFilePath_(csvFilePath) {
+	Stage(int stageNum,const std::string& csvFilePath) :csvFilePath_(csvFilePath) {
+		
+		stageNum_ = stageNum;
+		
 		//csvデータ読み込み
 		stageCsv_ = LoadCsv(csvFilePath);
 
@@ -78,7 +81,7 @@ public:
 
 	bool getIsClear() { return isClear_; }
 
-
+	int getStageNum() { return stageNum_; }
 
 };
 
