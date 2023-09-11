@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include"Vec2.h"
 /// <summary>/// 画像を使わない四角形 /// </summary>
 struct Box {

@@ -38,7 +38,7 @@ public:
 
 	void blockCollision(Player& player, Block**& block);
 
-	void Draw();
+	void Draw(Block**& block_);
 
 	//===============
 	//ゲッター/セッター

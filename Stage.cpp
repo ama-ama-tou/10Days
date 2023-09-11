@@ -22,7 +22,7 @@ void Stage::Init() {
 				Vec2(0.0f, 0.0f),//imageLtPos
 				blockImageSize
 			);
-				if (stageCsv_[r][c] == 1 || stageCsv_[r][c] == 2) {
+			if (stageCsv_[r][c] == 1 || stageCsv_[r][c] == 2) {
 				NSBlockNum_++;
 			}
 			if (stageCsv_[r][c] == 9) {
@@ -47,6 +47,9 @@ void Stage::Init() {
 
 	collision = new CollisionManager(row_, col_);
 
+
+	//背景画像
+	bkGH_ = Novice::LoadTexture("white1x1.png");
 
 	//背景の動きの初期化
 
@@ -107,10 +110,20 @@ void Stage::Update(char* keys, char* preKeys) {
 	collision->playerCollision(player_, block_);
 	collision->blockCollision(player_, block_);
 
-	//デバック用
-	collision->Draw();
+	for (int r = 0; r < row_; r++) {
+		for (int c = 0; c < col_; c++) {
+			if (block_[r][c].getType() != WALL) {
+				if (block_[r][c].getIsHadBlock() == true) {
+					block_[r][c].Update(player_.getScreenLtVertex());
+				}
+			}
+		}
+	}
 
-	
+	//デバック用
+	collision->Draw(block_);
+
+
 
 
 	for (int c = 0; c < col_; c++) {
@@ -241,7 +254,7 @@ void Stage::Draw() {
 			bkBlueQuadColor_
 		);
 	}
-	
+
 
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {

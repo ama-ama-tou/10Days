@@ -1,4 +1,4 @@
-#include"box.h"
+﻿#include"box.h"
 #include<Novice.h>
 
 void Box::Draw() {
