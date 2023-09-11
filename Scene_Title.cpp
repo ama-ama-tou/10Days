@@ -3,7 +3,7 @@
 
 void Scene_Title::Load() {
 	//title画面のBGM
-	backgroundSH_ = Novice::LoadAudio("./Resources/sount/BGM/title.mp3");
+	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/title.mp3");
 	backgroundVH_ = -1;
 
 	//titleBar初期化
