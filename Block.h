@@ -33,7 +33,13 @@ class Block :
     bool isHadBlock_;
 
 public:
-    Block() {}
+    Block() {
+        GH_ = 0;
+        for (int i = 0; i < 4; i++) {
+            isFacingType_[i] = false;
+        }
+
+    }
    //=======================
    //メンバ関数
    //=======================
