@@ -62,6 +62,13 @@ void Scene_Clear::Load() {
 	flashGH_ = Novice::LoadTexture("white1x1.png");
 	flashColor_ = 0xffffffff;
 	isFlash_ = false;
+
+	//===============
+	//クリア演出の効果音
+	//===============
+	clearSH_ = Novice::LoadAudio("./Resources/sound/SE/clear.mp3");
+	clearVH_ = -1;
+
 }
 
 void Scene_Clear::Update() {
@@ -162,6 +169,12 @@ void Scene_Clear::Update() {
 
 
 void Scene_Clear::Draw() {
+
+
+	//効果音を鳴らす
+	if (Novice::IsPlayingAudio(clearSH_)==false) {
+		Novice::PlayAudio(clearSH_, false, 0.5f);
+	}
 
 	//lineの描画
 	Novice::DrawQuad(

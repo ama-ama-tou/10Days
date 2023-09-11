@@ -44,6 +44,10 @@ class Scene_Clear :
 	int flashGH_;
 	bool isFlash_;
 
+	//効果音
+	int clearSH_;
+	int clearVH_;
+
 public:
 	//===================
 	//メンバ関数
