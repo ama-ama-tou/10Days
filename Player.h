@@ -8,9 +8,11 @@ class Player
 	//================
 	//メンバ変数
 	//================
-	
+
+	Vec2 pos_;
+
 	float speed_;
-	
+
 	Vec2 prePos_;
 
 	//接っしているかどうか
@@ -23,28 +25,30 @@ public:
 	//===============
 	//メンバ関数
 	//===============
-	
+
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, Vec2 imageLtPos, Vec2 imageSize) {
-		
+
 		int x = static_cast<int>(size.x);
 		int y = static_cast<int>(size.y);
-		
+
 		size.x = static_cast<float>(x);
 		size.y = static_cast<float>(y);
+
+		pos_ = pos;
 
 		prePos_ = pos;
 
 		//1マスずつ進める
 		speed_ = static_cast<float>(size);
 
-		int GH= Novice::LoadTexture("./Resources/image/character/player.png");
+		int GH = Novice::LoadTexture("./Resources/image/character/player.png");
 
 		Quad::Init(pos, size, localCoOrigin, GH, imageLtPos, imageSize);
 	}
 
 	void Update(char* keys, char* preKeys);
 	void Draw();
-	void Move(char* keys,char* preKeys);
+	void Move(char* keys, char* preKeys);
 
 	int CalacRowAddress(int vertexNum);
 	int CalacColAddress(int vertexNum);
@@ -73,6 +77,9 @@ public:
 	void setIsFacingRight(bool isFacing) { isFacing_[1] = isFacing; }
 	void setIsFacingBottom(bool isFacing) { isFacing_[2] = isFacing; }
 	void setIsFacingLeft(bool isFacing) { isFacing_[3] = isFacing; }
+
+	Vec2 getPos() { return pos_; }
+	void setPos(Vec2 pos) { pos_ = pos; }
 
 	//保存用pos(左上座標)
 	Vec2 getPrePos() { return prePos_; }

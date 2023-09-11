@@ -37,7 +37,7 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 
 
 void Block::Update() {
-	Quad::setPos(pos_);
+	Quad::pointInit(pos_);
 }
 
 
