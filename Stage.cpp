@@ -13,7 +13,7 @@ void Stage::Init() {
 			block_[r][c].setType(stageCsv_[r][c]);
 
 			block_[r][c].Init(
-				col_, row_, c, r,
+				col_, row_, r, c,
 				stageCo_.getOrigin(),
 				Vec2(0.0f, 0.0f),//imageLtPos
 				blockImageSize
@@ -22,8 +22,8 @@ void Stage::Init() {
 				NSBlockNum_++;
 			}
 			if (stageCsv_[r][c] == 9) {
-				playerStartPos.x = block_[0][0].getSize().x * r;
-				playerStartPos.y = block_[0][0].getSize().y * c;
+				playerStartPos.x = block_[0][0].getSize().x * c;
+				playerStartPos.y = block_[0][0].getSize().y * r;
 			}
 		}
 	}
@@ -49,7 +49,7 @@ void Stage::Update(char* keys, char* preKeys) {
 	player_.Update(keys, preKeys);
 
 	collision->playerCollision();
-	//collision->blockCollision();
+	collision->blockCollision();
 
 	//デバック用
 	collision->Draw();

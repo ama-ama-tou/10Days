@@ -8,25 +8,24 @@
 /*4頂点は実際に当たっているのではなく、
 　4辺から見た各方向の1個先ブロックの値を見て判定*/
 
-///コンストラクタ
-CollisionManager::CollisionManager(Player& player_, Block**& block_, const int& maxRow_, const int& maxCol_)
-{
-}
 
 ///プレイヤーの当たり判定
 void CollisionManager::playerCollision() {
 
-	for (int i = 0; i < maxCol_; i++) {
-		for (int j = 0; j < maxRow_; j++)
+	for (int r = 0; r < maxCol_; r++) {
+		for (int c = 0; c < maxRow_; c++)
 		{
-			block_[i][j].getType();
+			block_[r][c].getType();
 		}
 	}
 
 	//頂点の番地の計算
 	for (int vertexNum = 0; vertexNum < 4; vertexNum++) {
 		if (vertexNum == 0) {
-			//Novice::ScreenPrintf()
+
+			Vec2 vertexTest = player_.getLtVertex();
+
+			Novice::ScreenPrintf(800, 10, "vertex[0].x:%f", player_.getLtVertex().y);
 			rowAddress_[vertexNum] = static_cast<int>(player_.getLtVertex().y / player_.getSize().y);
 			colAddress_[vertexNum] = static_cast<int>(player_.getLtVertex().x / player_.getSize().x);
 		} else if(vertexNum == 1){

@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 #include "Vec2.h"
 #include "Coordinate.h"
 
 class Ellips {
 private:
 	//================
-	//ƒƒ“ƒo•Ï”
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
 	//===============
 	Coordinate localCo_{ Vec2(0.0f,0.0f) };
 	Vec2 pos_;
@@ -14,9 +14,9 @@ private:
 	unsigned int color_;
 public:
 	//===============
-	//ƒƒ“ƒoŠÖ”
+	//ãƒ¡ãƒ³ãƒé–¢æ•°
 	//===============
-	void Init(Vec2 pos,Vec2 radius,float angle,unsigned int color) {
+	void Init(Vec2 pos,float radius,float angle,unsigned int color) {
 		pos_ = pos;
 		radius_ = radius;
 		angle_ = angle;
@@ -26,14 +26,14 @@ public:
 
 
 	//===============
-	//ƒQƒbƒ^[/ƒZƒbƒ^[
+	//ã‚²ãƒƒã‚¿ãƒ¼/ã‚»ãƒƒã‚¿ãƒ¼
 	//===============
 
-	//ƒ[ƒJƒ‹À•Wã
+	//ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ä¸Š
 	Vec2 getPos() { return pos_; }
 	void setPos(Vec2 pos) { pos_ = pos; }
 
-	//ƒXƒNƒŠ[ƒ“À•Wã
+	//ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ä¸Š
 	Vec2 getScreenPos() { return localCo_.screenFromOrigin(pos_); }
 
 

@@ -1,10 +1,10 @@
-#include "Scene_Clear.h"
+ï»¿#include "Scene_Clear.h"
 #include <stdlib.h>
 #include <time.h>
 
 void Scene_Clear::Load() {
 
-	//ƒNƒŠƒA‰æ‘œ
+	//ã‚¯ãƒªã‚¢ç”»åƒ
 	clearSize_ = { 64.0f,64.0f };
 	for (int i = 0; i < 3; i++) {
 		clearPos_[i] = { (1280.0f / 2.0f - clearSize_.x * 2.0f) + (clearSize_ * 2.0f * i),720.0f / 2.0f };
@@ -24,23 +24,23 @@ void Scene_Clear::Load() {
 	isRoated_ = false;
 	roatedCount_ = 0;
 
-	//ü‚è‚ÌŠÛ
+	//å‘¨ã‚Šã®ä¸¸
 	srand((unsigned int)time(NULL));
 	for (int i = 0; i < 50; i++) {
-		//ƒGƒŒƒƒ“ƒg‚ÌÀ•W‚ğƒ‰ƒ“ƒ_ƒ€‚Åİ’è
+		//ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã®åº§æ¨™ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã§è¨­å®š
 		elementPos_[i].x = static_cast<float>(rand() % 1280);
 		elementPos_[i].y = static_cast<float>(rand() % 720);
-		//ƒGƒŒƒƒ“ƒg‚Ì”¼Œa‚ğƒ‰ƒ“ƒ_ƒ€‚Åİ’è
+		//ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã®åŠå¾„ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã§è¨­å®š
 		inisialElementRadius_[i] = static_cast<float>(rand() % 11 + 30);
 		currentElementRadius_[i] = inisialElementRadius_[i];
-		//ƒXƒs[ƒh‚ğƒ‰ƒ“ƒ_ƒ€‚Åİ’è
+		//ã‚¹ãƒ”ãƒ¼ãƒ‰ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã§è¨­å®š
 		elementSpeed_[i].x = static_cast<float>(rand() % 3 - 1);
 		elementSpeed_[i].y = static_cast<float>(rand() % 3 - 1);
 	}
 	elementColor_ = 0xffffffaa;
 	isDisaappear_ = false;
 
-	//ƒNƒŠƒA‚ÌŒã‚ë‚Ìƒ‰ƒCƒ“
+	//ã‚¯ãƒªã‚¢ã®å¾Œã‚ã®ãƒ©ã‚¤ãƒ³
 	linePos_ = { 0.0f,720.0f / 2.0f };
 	lineSize_ = { 1280.9f,3.0f };
 	lineVertex_[0] = { linePos_.x - lineSize_.x / 2.0f,linePos_.y - lineSize_.y / 2.0f };
@@ -51,7 +51,7 @@ void Scene_Clear::Load() {
 	lineGH_ = Novice::LoadTexture("white1x1.png");
 	lineColor_ = 0xfef263ff;
 
-	//ƒtƒ‰ƒbƒVƒ…
+	//ãƒ•ãƒ©ãƒƒã‚·ãƒ¥
 	flashPos_ = { 0.0f,0.0f };
 	flashSize_ = { 1280.0f,720.0f };
 	flashVertex_[0] = flashPos_;
