@@ -1,6 +1,6 @@
-#pragma once
+ï»¿#pragma once
 /// <summary>
-/// 3*3‚Ìs—ñ
+/// 3*3ã®è¡Œåˆ—
 /// </summary>
 struct Matrix3x3 final {
     float m[3][3];
