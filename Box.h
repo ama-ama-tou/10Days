@@ -1,6 +1,6 @@
 #pragma once
 #include"Vec2.h"
-/// <summary>/// 画像を使わない四角形 /// </summary>
+/// <summary>/// 逕ｻ蜒上ｒ菴ｿ繧上↑縺�蝗幄ｧ貞ｽ｢ /// </summary>
 struct Box {
 	Vec2 pos_;
 	Vec2 size_;
@@ -8,7 +8,7 @@ struct Box {
 	unsigned int color_;
 
 	///
-	///	メンバ関数
+	///	繝｡繝ｳ繝宣未謨ｰ
 	/// 
 
 	void Init(Vec2 pos, Vec2 size, unsigned int color) {
