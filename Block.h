@@ -33,8 +33,7 @@ class Block :
     bool isHadBlock_;
 
 public:
-    Block() {
-      }
+    Block() {}
    //=======================
    //メンバ関数
    //=======================
