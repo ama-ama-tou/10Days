@@ -12,14 +12,14 @@ class CollisionManager {
 	int rowAddress_[4] = { 0 };
 	int colAddress_[4] = { 0 };
 
-	static int maxRow_;
-	static int maxCol_;
+	int maxRow_;
+	int maxCol_;
 
 public:
 	CollisionManager(Player& player,Block**& block, const int& maxRow, const int& maxCol) {
 		player_ = player;
 		block_ = block;
-		maxRow_ = maxRow;
+		maxRow_	= maxRow;
 		maxCol_ = maxCol;
 	};
 
