@@ -29,7 +29,7 @@ public:
 	//当たり判定
 	void playerCollision(Player& player , Block**& block);
 
-	void blockCollision(Block**& block);
+	void blockCollision(Player& player, Block**& block);
 
 	void Draw();
 
