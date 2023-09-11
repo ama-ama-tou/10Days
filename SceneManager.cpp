@@ -8,6 +8,8 @@ SceneManager::SceneManager() {
 
 	//初期シーン
 	sceneNo_ = SCENE_TITLE;
+
+	bg.Init(Vec2(0.0f, 0.0f), kFieldSize, 0x7d7b83ff);
 }
 
 void SceneManager::Update() {
@@ -35,7 +37,7 @@ void SceneManager::Update() {
 
 	///=======================
 	///描画処理
-	
+		bg.Draw();
 		sceneArr_[sceneNo_]->Draw();
 	
 	///=======================
