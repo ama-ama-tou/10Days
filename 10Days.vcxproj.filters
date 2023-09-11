@@ -110,8 +110,11 @@
     <ClCompile Include="Scene_Clear.cpp">
       <Filter>Game\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Ellips.cpp">
-      <Filter>Game\Entitiy</Filter>
+    <ClCompile Include="Affine.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix3x3.cpp">
+      <Filter>KamataEngine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -240,8 +243,7 @@
     <ClInclude Include="Scene_Clear.h">
       <Filter>Game\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Ellips.h">
-      <Filter>Game\Entitiy</Filter>
-    </ClInclude>
+    <ClInclude Include="Affine.h" />
+    <ClInclude Include="Matrix3x3.h" />
   </ItemGroup>
 </Project>
