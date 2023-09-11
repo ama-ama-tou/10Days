@@ -53,13 +53,15 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 			//当たったブロックが壁以外の場合はくっつける
 			if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() != WALL && //左上の1個上
 				block_[rowAddress_[1] - 1][colAddress_[1]].getType() != WALL) { //右上の1個上
+				Vec2 keepPos = block_[rowAddress_[1] - 1][colAddress_[1]].getLtVertex();
 				///ローカル座標に追加するためのブロックの初期化
 				Vec2 resetPos;
 				resetPos.x = 0;
-				resetPos.y = -53;
+				resetPos.y = -32;
 				block_[rowAddress_[0] - 1][colAddress_[0]].pointInit(resetPos);
 				//ローカル座標に追加
 				block_[rowAddress_[0] - 1][colAddress_[0]].setLocalCoOrigin(player_.getScreenLtVertex());
+				block_[rowAddress_[0] - 1][colAddress_[0]].pointInit(keepPos);
 				//プレイヤーの上の面にはもうくっつかない
 				player_.setIsFacingTop(true);
 				//ブロックをプレイヤーに持たせる
@@ -76,6 +78,8 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 			//当たったブロックが壁以外の場合はくっつける
 			if (block_[rowAddress_[1]][colAddress_[1] + 1].getType() != WALL && //右上の1個右
 				block_[rowAddress_[1]][colAddress_[1] + 1].getType() != WALL) { //右下の1個右
+				Vec2 keepPos;
+				keepPos = block_[rowAddress_[1]][colAddress_[1] + 1].getPos();
 				///ローカル座標に追加するための初期化
 				Vec2 resetPos;
 				resetPos.x = 53;
@@ -83,6 +87,7 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 				block_[rowAddress_[0]][colAddress_[0] + 1].pointInit(resetPos);
 				//ローカル座標に追加
 				block_[rowAddress_[1]][colAddress_[1] + 1].setLocalCoOrigin(player_.getScreenLtVertex());
+				block_[rowAddress_[1]][colAddress_[1] + 1].pointInit(keepPos);
 				//プレイヤーの右にはもうつかない
 				player_.setIsFacingRight(true);
 				//ブロックをプレイヤーに持たせる
@@ -115,7 +120,7 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 	}
 
 	//左の面
-	if (!player_.getIsFacingBottom()) {
+	if (!player_.getIsFacingLeft()) {
 		if (block_[rowAddress_[3]][colAddress_[3] - 1].getType() != NONE && //左下の1個左
 			block_[rowAddress_[0]][colAddress_[0] - 1].getType() != NONE) { //左上の1個左
 
@@ -354,7 +359,7 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 
 
 //描画
-void CollisionManager::Draw() {
+void CollisionManager::Draw(Block**& block_) {
 	Novice::ScreenPrintf(10, 10, "rawAddress[0]:%d", rowAddress_[0]);
 	Novice::ScreenPrintf(10, 30, "rawAddress[1]:%d", rowAddress_[1]);
 	Novice::ScreenPrintf(10, 50, "rawAddress[2]:%d", rowAddress_[2]);
@@ -364,5 +369,14 @@ void CollisionManager::Draw() {
 	Novice::ScreenPrintf(180, 30, "colAddress[1]:%d(rightTop)", colAddress_[1]);
 	Novice::ScreenPrintf(180, 50, "colAddress[2]:%d(leftBottom)", colAddress_[2]);
 	Novice::ScreenPrintf(180, 70, "colAddress[3]:%d(rightBottom)", colAddress_[3]);
+
+	for (int r = 0; r < maxRow_; r++) {
+		for (int c = 0; c < maxCol_; c++) {
+			if (block_[r][c].getIsHadBlock() == true) {
+				Novice::ScreenPrintf(10, 250, "isHitBlock[%d][%d]", r, c);
+				Novice::ScreenPrintf(10, 270, "origin:%f", block_[5][4].getLocalCo().getOrigin().x);
+			}
+		}
+	}
 
 }

@@ -48,7 +48,7 @@ public:
         Vec2 localCoOrigin,
         Vec2 imageLtPos, Vec2 imageSize);
 
-    void Update();
+    void Update(Vec2 pos);
 
     int CalcuRowAddress(int vertexNum);
     int CalcuColAddress(int vertexNum);
