@@ -51,7 +51,7 @@ public:
     //ゲッター/セッター
     //=======================
     Vec2 getPos() { return pos_; }
-    void pointInit(Vec2 pos) { pos_ = pos; }
+    void serPos(Vec2 pos) { pos_ = pos; }
 
     Vec2 getPrePos() { return prePos_; }
     void setPrePos(Vec2 prePos) { prePos_ = prePos; }
