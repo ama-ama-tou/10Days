@@ -6,10 +6,10 @@
 class Scene_Menu :
 	public Scene {
 private:
-	Button game;
+	Button back2Game;
 	Button setting;
-	Button reStart;
-	Button backSelect;
+	Button reSet;
+	Button back2Select;
 
 public:
 	Scene_Menu() { sceneNum = SCENE_MENU; };
