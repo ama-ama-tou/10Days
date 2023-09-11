@@ -54,6 +54,12 @@ struct Vec2 final {
         return Vec2(x * other.x, y * other.y);
     }
 
+    Vec2 operator*=(const Vec2& other) {
+        this->x *= other.x;
+        this->y *= other.y;
+        return *this;
+    }
+
     // ベクトルのスカラー除算
     Vec2 operator/(float scalar) const {
         if (scalar != 0) {
