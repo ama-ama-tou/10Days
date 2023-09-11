@@ -110,6 +110,9 @@
     <ClCompile Include="Scene_Clear.cpp">
       <Filter>Game\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Ellips.cpp">
+      <Filter>Game\Entitiy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -236,6 +239,9 @@
     </ClInclude>
     <ClInclude Include="Scene_Clear.h">
       <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Ellips.h">
+      <Filter>Game\Entitiy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

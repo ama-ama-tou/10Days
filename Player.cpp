@@ -1,4 +1,5 @@
 ﻿#include "Player.h"
+#include "InputManager.h"
 #include <Novice.h>
 
 void Player::Move(char* keys, char* preKeys) {
