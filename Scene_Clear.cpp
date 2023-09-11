@@ -4,7 +4,7 @@
 
 void Scene_Clear::Load() {
 
-	//ƒNƒŠƒA‰æ‘œ
+	//ã‚¯ãƒªã‚¢ç”»åƒ
 	clearSize_ = { 64.0f,64.0f };
 	for (int i = 0; i < 3; i++) {
 		clearPos_[i] = { (1280.0f / 2.0f - clearSize_.x * 2.0f) + (clearSize_ * 2.0f * i),720.0f / 2.0f };
@@ -24,23 +24,23 @@ void Scene_Clear::Load() {
 	isRoated_ = false;
 	roatedCount_ = 0;
 
-	//ü‚è‚ÌŠÛ
+	//å‘¨ã‚Šã®ä¸¸
 	srand((unsigned int)time(NULL));
 	for (int i = 0; i < 50; i++) {
-		//ƒGƒŒƒƒ“ƒg‚ÌÀ•W‚ğƒ‰ƒ“ƒ_ƒ€‚Åİ’è
+		//ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã®åº§æ¨™ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã§è¨­å®š
 		elementPos_[i].x = static_cast<float>(rand() % 1280);
 		elementPos_[i].y = static_cast<float>(rand() % 720);
-		//ƒGƒŒƒƒ“ƒg‚Ì”¼Œa‚ğƒ‰ƒ“ƒ_ƒ€‚Åİ’è
+		//ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã®åŠå¾„ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã§è¨­å®š
 		inisialElementRadius_[i] = static_cast<float>(rand() % 11 + 30);
 		currentElementRadius_[i] = inisialElementRadius_[i];
-		//ƒXƒs[ƒh‚ğƒ‰ƒ“ƒ_ƒ€‚Åİ’è
+		//ã‚¹ãƒ”ãƒ¼ãƒ‰ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã§è¨­å®š
 		elementSpeed_[i].x = static_cast<float>(rand() % 3 - 1);
 		elementSpeed_[i].y = static_cast<float>(rand() % 3 - 1);
 	}
 	elementColor_ = 0xffffffaa;
 	isDisaappear_ = false;
 
-	//ƒNƒŠƒA‚ÌŒã‚ë‚Ìƒ‰ƒCƒ“
+	//ã‚¯ãƒªã‚¢ã®å¾Œã‚ã®ãƒ©ã‚¤ãƒ³
 	linePos_ = { 0.0f,720.0f / 2.0f };
 	lineSize_ = { 1280.9f,3.0f };
 	lineVertex_[0] = { linePos_.x - lineSize_.x / 2.0f,linePos_.y - lineSize_.y / 2.0f };
@@ -51,7 +51,7 @@ void Scene_Clear::Load() {
 	lineGH_ = Novice::LoadTexture("white1x1.png");
 	lineColor_ = 0xfef263ff;
 
-	//ƒtƒ‰ƒbƒVƒ…
+	//ãƒ•ãƒ©ãƒƒã‚·ãƒ¥
 	flashPos_ = { 0.0f,0.0f };
 	flashSize_ = { 1280.0f,720.0f };
 	flashVertex_[0] = flashPos_;
@@ -74,7 +74,7 @@ void Scene_Clear::Update() {
 	float scaleFactor = 0.5f;
 
 	//================
-	//ƒtƒ‰ƒbƒVƒ…‚ÌXVˆ—
+	//ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ã®æ›´æ–°å‡¦ç†
 	//================
 
 	flashColor_ = 0x00000003;
@@ -105,57 +105,57 @@ void Scene_Clear::Update() {
 			clearVertex_[i][2].y = clearPos_[i].y + clearSize_.y / 2.0f;
 			clearVertex_[i][3].y = clearPos_[i].y + clearSize_.y / 2.0f;		
 		} else {
-			//‰ñ“]‚ğ~‚ß‚é
+			//å›è»¢ã‚’æ­¢ã‚ã‚‹
 			isRoated_ = false;
 			clearVertex_[i][0] = Vec2(clearPos_[i].x - clearSize_.x / 2.0f, clearPos_[i].y - clearSize_ / 2.0f);
 			clearVertex_[i][1] = Vec2(clearPos_[i].x + clearSize_.x / 2.0f, clearPos_[i].y - clearSize_ / 2.0f);
 			clearVertex_[i][2] = Vec2(clearPos_[i].x - clearSize_.x / 2.0f, clearPos_[i].y + clearSize_ / 2.0f);
 			clearVertex_[i][3] = Vec2(clearPos_[i].x + clearSize_.x / 2.0f, clearPos_[i].y + clearSize_ / 2.0f);
 
-			//‰~‚ğÁ‚·
+			//å††ã‚’æ¶ˆã™
 			elementColor_ = 0x00000000;
 			flashColor_ = 0x00000000;
 		}
 	}
 
 	//================
-	//Clear‰æ–Ê‚Ì‰º‚Ìƒ‰ƒCƒ“
+	//Clearç”»é¢ã®ä¸‹ã®ãƒ©ã‚¤ãƒ³
 	//================
 
 	if (roatedCount_<= 2) {
 		lineSize_.y += heightIncrease;
 	}
-	//À•W‚ÌXV
+	//åº§æ¨™ã®æ›´æ–°
 	lineVertex_[0] = Vec2(linePos_.x - lineSize_.x, linePos_.y - lineSize_.y);
 	lineVertex_[1] = Vec2(linePos_.x + lineSize_.x, linePos_.y - lineSize_.y);
 	lineVertex_[2] = Vec2(linePos_.x - lineSize_.x, linePos_.y + lineSize_.y);
 	lineVertex_[3] = Vec2(linePos_.x + lineSize_.x, linePos_.y + lineSize_.y);
 
 	//=========================
-	//	ü‚è‚Ì‰~‚ÌXVˆ—
+	//	å‘¨ã‚Šã®å††ã®æ›´æ–°å‡¦ç†
 	//========================
 
-	// elementColor_ ‚ª 0x00000000 ‚Ì‚Æ‚«Aˆ—‚ğI—¹
+	// elementColor_ ãŒ 0x00000000 ã®ã¨ãã€å‡¦ç†ã‚’çµ‚äº†
 	if (elementColor_ >= 0x00000001) {
 
 
 		for (int k = 0; k < 50; k++) {
 
-		// ”¼Œa‚ğŠg‘å‚Ü‚½‚Ík¬
+		// åŠå¾„ã‚’æ‹¡å¤§ã¾ãŸã¯ç¸®å°
 			if (steps > 0) {
 				currentElementRadius_[k] += scaleFactor;
 				steps--;
 
-				// ”¼Œa‚ªˆê’è’lˆÈã‚É‚È‚Á‚½‚ç”½“]‚µ‚Äk¬
+				// åŠå¾„ãŒä¸€å®šå€¤ä»¥ä¸Šã«ãªã£ãŸã‚‰åè»¢ã—ã¦ç¸®å°
 				if (currentElementRadius_[k] >= inisialElementRadius_[k] + 10) {
 					scaleFactor = -scaleFactor;
 				}
 			}
-			// À•W‚ÌXV
+			// åº§æ¨™ã®æ›´æ–°
 			elementPos_[k].x += elementSpeed_[k].x;
 			elementPos_[k].y += elementSpeed_[k].y;
 		}
-		// elementColor_ ‚ÌXV
+		// elementColor_ ã®æ›´æ–°
 		elementColor_ -= 0x00000002;
 	}
 }
@@ -163,7 +163,7 @@ void Scene_Clear::Update() {
 
 void Scene_Clear::Draw() {
 
-	//line‚Ì•`‰æ
+	//lineã®æç”»
 	Novice::DrawQuad(
 		static_cast<int>(localCo_.screenFromOrigin(lineVertex_[0]).x),
 		static_cast<int>(localCo_.screenFromOrigin(lineVertex_[0]).y),
@@ -178,7 +178,7 @@ void Scene_Clear::Draw() {
 	);
 
 
-	//ƒGƒŒƒƒ“ƒg‚Ì•`‰æ
+	//ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã®æç”»
 	for (int i = 0; i < 50; i++) {
 		Novice::DrawEllipse(
 			static_cast<int>(localCo_.screenFromOrigin(elementPos_[i]).x),
@@ -189,7 +189,7 @@ void Scene_Clear::Draw() {
 		);
 	}
 
-	//ƒNƒŠƒA‰æ‘œ‚Ì•`‰æ
+	//ã‚¯ãƒªã‚¢ç”»åƒã®æç”»
 
 	for (int i = 0; i < 3; i++) {
 		if (!isRoated_) {
