@@ -24,18 +24,16 @@ public:
 
 
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin,int GH, Vec2 imageLtPos, Vec2 imageSize) {
-		vertex_[0] = pos;
-		vertex_[1] = Vec2(pos.x + size.x, pos.y);
-		vertex_[2] = Vec2(pos.x, pos.y + size.y);
-		vertex_[3] = Vec2(pos.x + size.x, pos.y + size.y);
-
+		size_ = size;
+		
 		localCo_.setOrigin(localCoOrigin);
 
-		size_ = size;
-
 		GH_ = GH;
+
 		imageLtPos_ = imageLtPos;
 		imageSize_ = imageSize;
+
+		pointInit(pos);
 	}
 
 	void Draw();
@@ -43,7 +41,7 @@ public:
 	//ゲッター/セッター
 	//===============
 	// 4点を一度に更新
-	void setPos(Vec2 ltPos) {
+	void pointInit(Vec2 ltPos) {
 		vertex_[0] = ltPos;
 		vertex_[1] = Vec2(ltPos.x + size_.x, ltPos.y);
 		vertex_[2] = Vec2(ltPos.x, ltPos.y + size_.y);

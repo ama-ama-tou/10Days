@@ -118,7 +118,6 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Scene_Clear.cpp" />
     <ClCompile Include="Scene_Game.cpp" />
-    <ClCompile Include="Scene_Menu.cpp" />
     <ClCompile Include="Scene_Select.cpp" />
     <ClCompile Include="Scene_Title.cpp" />
     <ClCompile Include="Stage.cpp" />
@@ -165,7 +164,6 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Scene_Clear.h" />
     <ClInclude Include="Scene_Game.h" />
-    <ClInclude Include="Scene_Menu.h" />
     <ClInclude Include="Scene_Select.h" />
     <ClInclude Include="Scene_Title.h" />
     <ClInclude Include="Stage.h" />

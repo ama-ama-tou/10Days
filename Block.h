@@ -33,7 +33,13 @@ class Block :
     bool isHadBlock_;
 
 public:
-    Block() {}
+    Block() {
+        GH_ = 0;
+        for (int i = 0; i < 4; i++) {
+            isFacingType_[i] = false;
+        }
+
+    }
    //=======================
    //メンバ関数
    //=======================
@@ -51,7 +57,7 @@ public:
     //ゲッター/セッター
     //=======================
     Vec2 getPos() { return pos_; }
-    void setPos(Vec2 pos) { pos_ = pos; }
+    void serPos(Vec2 pos) { pos_ = pos; }
 
     Vec2 getPrePos() { return prePos_; }
     void setPrePos(Vec2 prePos) { prePos_ = prePos; }
