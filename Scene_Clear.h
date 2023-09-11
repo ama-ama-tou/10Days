@@ -9,7 +9,7 @@ class Scene_Clear :
 	//メンバ変数
 	//==============
 
-	Coordinate localCo_;
+	Coordinate localCo_{ Vec2(0.0f,0.0f) };
 
 	//クリアの文字
 	Vec2 clearPos_[3];
