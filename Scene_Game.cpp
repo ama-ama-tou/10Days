@@ -24,7 +24,7 @@ Scene_Game::~Scene_Game() {
 
 void Scene_Game::Load() {
 
-	SH_ = Novice::LoadAudio("./Resources/BGM/play.mp3");
+	SH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
 	VH_ = -1;	
 
 
