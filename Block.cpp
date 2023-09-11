@@ -6,10 +6,12 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 	Vec2 localCoOrigin,
 	Vec2 imageLtPos, Vec2 imageSize) {
 
-
 	Vec2 size;
-	size.x = kFieldSize.x / static_cast<float>(MaxRow);
-	size.y = kFieldSize.y / static_cast<float>(MaxCol);
+	int x = static_cast<int>(size.x);
+	int y = static_cast<int>(size.y);
+
+	size.x = static_cast<float>(x/ MaxRow);
+	size.y = static_cast<float>(y/ MaxCol);
 
 	Vec2 pos;
 	pos.x = rowNum * size.x;
