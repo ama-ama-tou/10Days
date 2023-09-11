@@ -13,6 +13,10 @@ private:
 	
 	Button stage_[9];
 
+	int stageSelectSH_;
+	int stageSelectVH_;
+	bool isRang_;
+
 public:
 	//======================
 	//メンバ関数
