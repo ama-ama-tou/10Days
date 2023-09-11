@@ -1,11 +1,15 @@
 #pragma once
 #include "Scene.h"
+#include"Button.h"
+
+
 class Scene_Menu :
 	public Scene {
 private:
-
-
-
+	Button game;
+	Button setting;
+	Button reStart;
+	Button backSelect;
 
 public:
 	Scene_Menu() { sceneNum = SCENE_MENU; };
