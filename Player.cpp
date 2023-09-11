@@ -51,4 +51,10 @@ void Player::Draw() {
 
 	Novice::ScreenPrintf(10, 510, "vertex_[3].x:%f(rightBottom)", getRbVertex().x);
 	Novice::ScreenPrintf(10, 530, "vertex_[3].y:%f(rightBottom)", getRbVertex().y);
+
+
+	Novice::ScreenPrintf(1000, 300, "faicing_[0]:%d(top)", getIsFacingTop());
+	Novice::ScreenPrintf(1000, 320, "faicing_[1]:%d(right)", getIsFacingRight());
+	Novice::ScreenPrintf(1000, 340, "faicing_[2]:%d(bottom)", getIsFacingBottom());
+	Novice::ScreenPrintf(1000, 360, "faicing_[3]:%d(left)", getIsFacingLeft());
 }

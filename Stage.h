@@ -4,6 +4,7 @@
 #include"CollisionManager.h"
 #include"LoadCSV.h"
 #include"base.h"
+#include"Vec2.h"
 
 class Stage {
 
@@ -37,6 +38,19 @@ class Stage {
 	//リセットするか
 	bool isReset_;
 
+
+	//背景の動き
+//	Coordinate localCo_;
+	Vec2 bkQuadPos_[50];
+	Vec2 bkQuadSize_[50];
+	Vec2 bkQuadVertex_[4][50];
+	Vec2 bkQuadSpeed_[50];
+	Vec2 bkQuadScaleValue_[50];
+	Vec2 bkQuadMinScale_[50];
+	Vec2 bkQuadMaxScale_[50];
+	int bkQuadColor_;
+	int subtractiveColor_;
+	int bkGH_;
 
 public:
 	
