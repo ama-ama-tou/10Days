@@ -53,22 +53,20 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 			//当たったブロックが壁以外の場合はくっつける
 			if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() != WALL && //左上の1個上
 				block_[rowAddress_[1] - 1][colAddress_[1]].getType() != WALL) { //右上の1個上
+				///ローカル座標に追加するためのブロックの初期化
+				Vec2 resetPos;
+				resetPos.x = 0;
+				resetPos.y = -53;
+				block_[rowAddress_[0] - 1][colAddress_[0]].pointInit(resetPos);
 				//ローカル座標に追加
 				block_[rowAddress_[0] - 1][colAddress_[0]].setLocalCoOrigin(player_.getScreenLtVertex());
-
+				//プレイヤーの上の面にはもうくっつかない
 				player_.setIsFacingTop(true);
+				//ブロックをプレイヤーに持たせる
+				block_[rowAddress_[0] - 1][colAddress_[0]].setIsHadBlock(true);
 			}
 		}
 	}
-
-	//左上がの番地の値がNONEじゃないとき元の座標に戻す
-	if (block_[rowAddress_[0]][colAddress_[0]].getType() != NONE && //左上(今の座標)
-		block_[rowAddress_[1]][colAddress_[1]].getType() != NONE) { //右上(今の座標)
-		//戻す
-		player_.pointInit(player_.getPrePos());
-		player_.setPos(player_.getPrePos());
-	}
-
 
 	//右の面
 	if (!player_.getIsFacingRight()) {
@@ -78,19 +76,19 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 			//当たったブロックが壁以外の場合はくっつける
 			if (block_[rowAddress_[1]][colAddress_[1] + 1].getType() != WALL && //右上の1個右
 				block_[rowAddress_[1]][colAddress_[1] + 1].getType() != WALL) { //右下の1個右
-
+				///ローカル座標に追加するための初期化
+				Vec2 resetPos;
+				resetPos.x = 53;
+				resetPos.y = 0;
+				block_[rowAddress_[0]][colAddress_[0] + 1].pointInit(resetPos);
+				//ローカル座標に追加
 				block_[rowAddress_[1]][colAddress_[1] + 1].setLocalCoOrigin(player_.getScreenLtVertex());
-
+				//プレイヤーの右にはもうつかない
 				player_.setIsFacingRight(true);
+				//ブロックをプレイヤーに持たせる
+				block_[rowAddress_[1]][colAddress_[1] + 1].setIsHadBlock(true);
 			}
 		}
-	}
-
-	//左上がの番地の値がNONEじゃないとき元の座標に戻す
-	if (block_[rowAddress_[1]][colAddress_[1]].getType() != NONE && //左上(今の座標)
-		block_[rowAddress_[2]][colAddress_[2]].getType() != NONE) { //右上(今の座標)
-		//戻す
-		player_.pointInit(player_.getPrePos());
 	}
 
 	//下の面
@@ -101,19 +99,19 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 			//当たったブロックが壁以外の場合はくっつける
 			if (block_[rowAddress_[2] + 1][colAddress_[2]].getType() != WALL && //右下の1個右
 				block_[rowAddress_[3] + 1][colAddress_[3]].getType() != WALL) { //左下の1個右
-
+				///ローカル座標に追加するための初期化
+				Vec2 resetPos;
+				resetPos.x = 0;
+				resetPos.y = 53;
+				block_[rowAddress_[2] + 1][colAddress_[2]].pointInit(resetPos);
+				//ローカル座標に追加
 				block_[rowAddress_[2] + 1][colAddress_[2]].setLocalCoOrigin(player_.getScreenLtVertex());
-
+				//プレイヤーの下にはもうつかない
 				player_.setIsFacingBottom(true);
+				//ブロックをプレイヤーに持たせる
+				block_[rowAddress_[2] + 1][colAddress_[2]].setIsHadBlock(true);
 			}
 		}
-	}
-
-	//左上がの番地の値がNONEじゃないとき元の座標に戻す
-	if (block_[rowAddress_[2]][colAddress_[2]].getType() != NONE && //左上(今の座標)
-		block_[rowAddress_[3]][colAddress_[3]].getType() != NONE) { //右上(今の座標)
-		//戻す
-		player_.pointInit(player_.getPrePos());
 	}
 
 	//左の面
@@ -124,19 +122,27 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 			//当たったブロックが壁以外の場合はくっつける
 			if (block_[rowAddress_[3]][colAddress_[3] - 1].getType() != WALL && //左下の1個右
 				block_[rowAddress_[0]][colAddress_[0] - 1].getType() != WALL) { //左上の1個右
-
+				///ローカル座標に追加するための初期化
+				Vec2 resetPos;
+				resetPos.x = -53;
+				resetPos.y = 0;
+				block_[rowAddress_[3]][colAddress_[3] - 1].pointInit(resetPos);
+				//ローカル座標に追加
 				block_[rowAddress_[3]][colAddress_[3] - 1].setLocalCoOrigin(player_.getScreenLtVertex());
-
+				//プレイヤーの左にはもうつかない
 				player_.setIsFacingLeft(true);
+				//ブロックをプレイヤーに持たせる
+				block_[rowAddress_[3]][colAddress_[3] - 1].setIsHadBlock(true);
 			}
 		}
 	}
 
-	//左上がの番地の値がNONEじゃないとき元の座標に戻す
-	if (block_[rowAddress_[3]][colAddress_[3]].getType() != NONE && //左上(今の座標)bLtColAddress[i][j] - 1
-		block_[rowAddress_[0]][colAddress_[0]].getType() != NONE) { //右上(今の座標)
+	//左上の番地がNONEじゃないとき元の座標に戻す
+	if (block_[rowAddress_[0]][colAddress_[0]].getType() == WALL && //左上(今の座標)
+		block_[rowAddress_[1]][colAddress_[1]].getType() == WALL) { //右上(今の座標)
 		//戻す
 		player_.pointInit(player_.getPrePos());
+		player_.setPos(player_.getPrePos());
 	}
 };
 
