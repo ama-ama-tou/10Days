@@ -22,8 +22,12 @@ void Player::Move(char* keys, char* preKeys) {
 	} else if (keys[DIK_S] && !preKeys[DIK_S]) {
 		pos_.y += speed_;
 	}
+	vertex_[0] = pos_;
+	vertex_[1] = Vec2(pos_.x + size_, pos_.y);
+	vertex_[2] = Vec2(pos_.x, pos_.y + size_.y);
+	vertex_[3] = Vec2(pos_.x + size_.x, pos_.y + size_.y);
 
-	setPos(pos_);
+
 }
 
 int Player::CalcuRowAddress(int vertexNum) {
