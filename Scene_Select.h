@@ -15,6 +15,7 @@ private:
 
 	int stageSelectSH_;
 	int stageSelectVH_;
+	bool isRang_;
 
 public:
 	//======================

@@ -3,8 +3,8 @@
 
 void Scene_Title::Load() {
 	//title画面のBGM
-	SH_ = Novice::LoadAudio("./Resources/sount/BGM/title.mp3");
-	VH_ = -1;
+	backgroundSH_ = Novice::LoadAudio("./Resources/sount/BGM/title.mp3");
+	backgroundVH_ = -1;
 
 	//titleBar初期化
 	Vec2 titlePos;
@@ -68,8 +68,8 @@ void Scene_Title::Update() {
 void Scene_Title::Draw() {
 
 		//bgmを鳴らす
-		if (Novice::IsPlayingAudio(SH_) == false) {
-			Novice::PlayAudio(SH_, true, 0.5f);
+	if (Novice::IsPlayingAudio(backgroundSH_) == false) {
+		Novice::PlayAudio(backgroundSH_, true, 0.5f);
 	}
 
 	//ボタンの描画
@@ -80,5 +80,5 @@ void Scene_Title::Draw() {
 
 
 void Scene_Title::Unload() {
-	Novice::StopAudio(VH_);
+	Novice::StopAudio(backgroundVH_);
 }

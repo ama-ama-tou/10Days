@@ -24,8 +24,8 @@ Scene_Game::~Scene_Game() {
 
 void Scene_Game::Load() {
 
-	SH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
-	VH_ = -1;
+	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
+	backgroundVH_ = -1;
 
 
 	stageArr_[stageNum]->Init();
@@ -43,13 +43,13 @@ void Scene_Game::Update() {
 void Scene_Game::Draw() {
 
 	//bgmを鳴らす
-	if (Novice::IsPlayingAudio(SH_) == false) {
-		Novice::PlayAudio(SH_, true, 0.5f);
+	if (Novice::IsPlayingAudio(backgroundSH_) == false) {
+		Novice::PlayAudio(backgroundSH_, true, 0.5f);
 	}
 
 	stageArr_[stageNum]->Draw();
 }
 
 void Scene_Game::Unload() {
-	Novice::StopAudio(VH_);
+	Novice::StopAudio(backgroundVH_);
 };

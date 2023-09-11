@@ -68,6 +68,7 @@ void Scene_Clear::Load() {
 	//===============
 	clearSH_ = Novice::LoadAudio("./Resources/sound/SE/clear.mp3");
 	clearVH_ = -1;
+	isRang_ = false;
 
 }
 
@@ -170,11 +171,11 @@ void Scene_Clear::Update() {
 
 void Scene_Clear::Draw() {
 
-	if (soundCount_<=0) {
+	if (!isRang_) {
 		//効果音を鳴らす
 		if (Novice::IsPlayingAudio(clearSH_) == false) {
 			Novice::PlayAudio(clearSH_, false, 0.5f);
-			soundCount_++;
+			isRang_ = true;
 		}
 	}
 	
