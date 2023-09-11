@@ -41,19 +41,18 @@ void Stage::Init() {
 	isClear_ = false;
 	isReset_ = false;
 
-	collision = new CollisionManager(player_, block_, row_, col_);
+	collision = new CollisionManager(row_, col_);
 }
 
 void Stage::Update(char* keys, char* preKeys) {
 
-	player_.Update(keys, preKeys);
-
-	collision->playerCollision();
-	collision->blockCollision();
+	collision->playerCollision(player_, block_);
+	collision->blockCollision(player_, block_);
 
 	//デバック用
 	collision->Draw();
 
+	player_.Update(keys, preKeys);
 
 
 
