@@ -36,12 +36,12 @@ public:
 	
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, Vec2 imageLtPos, Vec2 imageSize) {
 		
-		Vec2 size;
-		int x = static_cast<int>(size.x);
-		int y = static_cast<int>(size.y);
+		Vec2 changeSize;
+		changeSize.x = (size.x);
+		changeSize.y = (size.y);
 
-		size.x = static_cast<float>(x);
-		size.y = static_cast<float>(y);
+		size.x = static_cast<float>(changeSize.x);
+		size.y = static_cast<float>(changeSize.y);
 		size_ = size;
 
 		prePos_ = pos;
