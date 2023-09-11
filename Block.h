@@ -57,8 +57,8 @@ public:
     Vec2 getPrePos() { return prePos_; }
     void setPrePos(Vec2 prePos) { prePos_ = prePos; }
 
-    BlockType getType() { return type_; }
-    void setType(int type);
+    int getType() { return testType_; }
+    void setType(int testType_);
     int getHitting() { return isHit_; }
     void setHitting(int isHit) { isHit_ = isHit; }
 

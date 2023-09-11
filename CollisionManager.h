@@ -22,5 +22,16 @@ public:
 	void playerCollision();
 
 	void blockCollision();
+
+	void Draw();
+
+	//===============
+	//ゲッター/セッター
+	//===============
+	int getRowAddress(int num) { return rowAddress_[num]; }
+
+	const int getMaxRow() { return maxRow_; }
+	const int getMaxCol() { return maxCol_; }
+
 };
 

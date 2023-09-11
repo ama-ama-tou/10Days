@@ -16,7 +16,6 @@ void InputManager::Update() {
 		clickState_=RIGIHT_CLICK;
 	}
 
-
 	//マウスの位置を受け取る
 	Novice::GetMousePosition(&x_, &y_);
 	// キー入力を受け取る

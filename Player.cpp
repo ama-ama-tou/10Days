@@ -1,21 +1,22 @@
 ﻿#include "Player.h"
 #include <Novice.h>
-void Player::Move(char* keys,char* preKeys) {
+
+void Player::Move(char* keys, char* preKeys) {
 	pos_ = vertex_[0];
 
 	//移動前の座標を保存しておく
 	prePos_ = pos_;
 
 	//左右の移動
-	
+
 	if (keys[DIK_A] && !preKeys[DIK_A]) {
-		pos_.x += speed_;
-	} else if (keys[DIK_D] && !preKeys[DIK_D]) {
 		pos_.x -= speed_;
+	} else if (keys[DIK_D] && !preKeys[DIK_D]) {
+		pos_.x += speed_;
 	}
 
 	//上下の移動
-	
+
 	if (keys[DIK_W] && !preKeys[DIK_W]) {
 		pos_.y -= speed_;
 	} else if (keys[DIK_S] && !preKeys[DIK_S]) {
@@ -25,7 +26,7 @@ void Player::Move(char* keys,char* preKeys) {
 	setPos(pos_);
 }
 
-int Player::CalcuRowAddress(int vertexNum){
+int Player::CalcuRowAddress(int vertexNum) {
 	int row;
 	if (vertexNum == 0) {
 		row = static_cast<int>(getLtVertex().x / getSize().x); //左上の場合
@@ -36,7 +37,7 @@ int Player::CalcuRowAddress(int vertexNum){
 	return row;
 }
 
-int Player::CalcuColAddress(int vertexNum){
+int Player::CalcuColAddress(int vertexNum) {
 	int col;
 	if (vertexNum == 0) {
 		col = static_cast<int>(vertex_[vertexNum].y / size_.y); //左上の場合
@@ -49,7 +50,7 @@ int Player::CalcuColAddress(int vertexNum){
 
 
 void Player::Update(char* keys, char* preKeys) {
-	Player::Move(keys, preKeys);
+	Move(keys, preKeys);
 }
 
 
