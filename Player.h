@@ -21,6 +21,12 @@ class Player
 	//面しているかどうか
 	bool isFacing_[4];
 
+	//移動してる時の音
+	int moveSH_;
+	int moveVH_;
+	int frameCount_;
+	bool isSoundStart_;
+
 public:
 	//===============
 	//メンバ関数
@@ -42,6 +48,11 @@ public:
 		speed_ = static_cast<float>(size);
 
 		int GH = Novice::LoadTexture("./Resources/image/character/player.png");
+
+		moveSH_ = Novice::LoadAudio("./Resources/sound/SE/playerMove.mp3");
+		moveVH_ = -1;
+		frameCount_ = 0;
+		isSoundStart_ = false;
 
 		Quad::Init(pos, size, localCoOrigin, GH, imageLtPos, imageSize);
 	}
