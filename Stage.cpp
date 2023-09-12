@@ -224,7 +224,7 @@ void Stage::Draw() {
 	//===================
 	//背景の四角
 	//==================
-	for (int i = 0; i < 30; i++) {
+	/*for (int i = 0; i < 30; i++) {
 		Novice::DrawQuad(
 			static_cast<int>(bkRedQuadVertex_[0][i].x),
 			static_cast<int>(bkRedQuadVertex_[0][i].y),
@@ -250,7 +250,7 @@ void Stage::Draw() {
 			0, 0, 32, 32, bkGH_,
 			bkBlueQuadColor_
 		);
-	}
+	}*/
 
 
 	for (int r = 0; r < row_; r++) {
