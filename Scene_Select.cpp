@@ -2,17 +2,7 @@
 #include "Button.h"
 #include "Scene_Title.h"
 
-StageNum Scene_Select::getSelectedStage() {
-	for (int i = 0; i < 12; i++) {
-		stage_[i].Update(inputManager->getMousePos(), inputManager->getClickState());
 
-		if (stage_[i].getIsClicked()) {
-			//選ばれたステージの番号を返す
-			return static_cast<StageNum>(i);
-		}
-	}
-	return static_cast<StageNum>(0);
-}
 
 void Scene_Select::Load() {
 
@@ -77,12 +67,11 @@ void Scene_Select::Update() {
 	}
 
 	for (int i = 0; i < 12; i++) {
+		stage_[i].Update(inputManager->getMousePos(), inputManager->getClickState());
 		if (stage_[i].getIsClicked()) {
 			Scene::sceneNum = SCENE_GAME;
 		}
-		stage_[i].Update(inputManager->getMousePos(), inputManager->getClickState());
 	}
-
 }
 
 void Scene_Select::Draw() {
@@ -97,6 +86,7 @@ void Scene_Select::Draw() {
 	for (int i = 0; i < 12; i++) {
 		stage_[i].Draw();
 	}
+
 	go2Title.Draw();
 
 }

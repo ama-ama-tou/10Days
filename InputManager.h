@@ -38,6 +38,7 @@ public:
 
 	Vec2 getMousePos() { return Vec2(static_cast<float>(x_), static_cast<float>(y_)); }
 	int getClickState() { return clickState_; }
+	void setClickState(int clickState) { clickState_ = clickState; }
 
 	// Getter経由でキーの入力状況を取得する
 	char* GetKeys() { return keys_; }

@@ -15,6 +15,8 @@ private:
 	int sceneNo_;
 	int preSceneNo_;
 
+	int stageNo;
+
 	//バックグラウンド
 	Box bg;
 

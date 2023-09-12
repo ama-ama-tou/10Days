@@ -107,7 +107,5 @@ public:
 
 	bool getIsClear() { return isClear_; }
 
-	int getStageNum() { return stageNum_; }
-
 };
 
