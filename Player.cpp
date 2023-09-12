@@ -30,7 +30,7 @@ void Player::Move(char* keys, char* preKeys) {
 		}
 	} else {
 		frameCount_++;
-		if (frameCount_>=14) {
+		if (frameCount_>=13) {
 			isSoundStart_ = false;
 			frameCount_ = 0;
 		}

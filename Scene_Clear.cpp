@@ -40,7 +40,7 @@ void Scene_Clear::Load() {
 	elementColor_ = 0xffffffaa;
 	isDisappear_ = false;
 
-		//クリア画像の後ろのline
+	//クリア画像の後ろのline
 	linePos_ = { 0.0f ,720.0f / 2.0f };
 	lineSize_ = { 1280.0f,3.0f };
 	lineGH_ = Novice::LoadTexture("white1x1.png");
@@ -72,36 +72,41 @@ void Scene_Clear::Load() {
 
 void Scene_Clear::Update() {
 
+	//クリア画像の更新処理
 	float vertexMoveSpeed = 2.0f;
 
+	//幅の増加量
 	float heightIncrease = 0.5f;
 
-	int steps = 100;
-	float scaleFactor = 0.5f;
+	// 拡大・縮小ステップ数と速度
+	int steps = 100;  // ステップ数
+	float scaleFactor = 0.5f;  // 拡大・縮小速度
 
-	//================
-	//フラッシュの更新処理
-	//================
+	//=========================
+	//	フラッシュの更新処理
+	//========================
+
 
 	flashColor_ -= 0x00000003;
 
 	for (int i = 0; i < 3; i++) {
+		//2回回転するまで
 		if (roatedCount_ <= 2) {
 			if (!isRoated_) {
-				if (clearVertex_[i][0] > clearVertex_[i]->x + clearSize_.x / 2.0f) {
+				if (clearVertex_[i][0].x > clearPos_[i].x + clearSize_.x / 2) {
 					isRoated_ = true;
 					clearVertex_[i][0].x = clearPos_[i].x - clearSize_.x / 2.0f;
 					clearVertex_[i][1].x = clearPos_[i].x + clearSize_.x / 2.0f;
 					clearVertex_[i][2].x = clearPos_[i].x - clearSize_.x / 2.0f;
 					clearVertex_[i][3].x = clearPos_[i].x + clearSize_.x / 2.0f;
-
 				}
-			} else if (clearVertex_[i][0].x > clearPos_[i].x + clearSize_.x / 2.0f) {
+			} else if (clearVertex_[i][0].x > clearPos_[i].x + clearSize_.x / 2) {
 				isRoated_ = false;
+				//回転した回数をカウント
 				roatedCount_++;
 			}
 
-			//座標の更新
+			// 座標の更新
 			clearVertex_[i][0].x += vertexMoveSpeed;
 			clearVertex_[i][1].x -= vertexMoveSpeed;
 			clearVertex_[i][2].x += vertexMoveSpeed;
@@ -111,8 +116,10 @@ void Scene_Clear::Update() {
 			clearVertex_[i][1].y = clearPos_[i].y - clearSize_.y / 2.0f;
 			clearVertex_[i][2].y = clearPos_[i].y + clearSize_.y / 2.0f;
 			clearVertex_[i][3].y = clearPos_[i].y + clearSize_.y / 2.0f;
+
+
 		} else {
-			//回転を止める
+			//画面中央まで来たら画像の回転を止める
 			isRoated_ = false;
 			clearVertex_[i][0] = Vec2(clearPos_[i].x - clearSize_.x / 2.0f, clearPos_[i].y - clearSize_.y / 2.0f);
 			clearVertex_[i][1] = Vec2(clearPos_[i].x + clearSize_.x / 2.0f, clearPos_[i].y - clearSize_.y / 2.0f);
@@ -121,10 +128,11 @@ void Scene_Clear::Update() {
 
 			//円を消す
 			elementColor_ = 0x00000000;
+
 			flashColor_ = 0x00000000;
+
 		}
 	}
-
 
 	//=========================
 	//	クリア画像の下のline
@@ -139,6 +147,7 @@ void Scene_Clear::Update() {
 	lineVertex_[3] = Vec2(linePos_.x + lineSize_.x, linePos_.y + lineSize_.y);
 
 
+
 	//=========================
 	//	周りの円の更新処理
 	//========================
@@ -147,7 +156,7 @@ void Scene_Clear::Update() {
 	if (elementColor_ >= 0x00000001) {
 
 
-		for (int k = 0; k < 30; k++) {
+		for (int k = 0; k < 50; k++) {
 
 		// 半径を拡大または縮小
 			if (steps > 0) {
@@ -168,13 +177,12 @@ void Scene_Clear::Update() {
 	}
 }
 
-
 void Scene_Clear::Draw() {
 
 	if (soundCount_ <= 0) {
 		//効果音を鳴らす
 		if (Novice::IsPlayingAudio(clearVH_) == 0 || clearVH_ == -1) {
-			clearVH_=Novice::PlayAudio(clearSH_, false, 0.3f);
+			clearVH_ = Novice::PlayAudio(clearSH_, false, 0.3f);
 			soundCount_++;
 		}
 	}
@@ -219,7 +227,7 @@ void Scene_Clear::Draw() {
 				static_cast<int>(localCo_.screenFromOrigin(clearVertex_[i][2]).y),
 				static_cast<int>(localCo_.screenFromOrigin(clearVertex_[i][3]).x),
 				static_cast<int>(localCo_.screenFromOrigin(clearVertex_[i][3]).y),
-				0, 0, 32, 32,
+				0, 0, 64, 64,
 				clearGH_[i], WHITE
 			);
 		} else {
@@ -232,7 +240,7 @@ void Scene_Clear::Draw() {
 				static_cast<int>(localCo_.screenFromOrigin(clearVertex_[i][2]).y),
 				static_cast<int>(localCo_.screenFromOrigin(clearVertex_[i][3]).x),
 				static_cast<int>(localCo_.screenFromOrigin(clearVertex_[i][3]).y),
-				0, 0, 32, 32,
+				0, 0, 64, 64,
 				roatedClearGH_[i], WHITE
 			);
 		}
