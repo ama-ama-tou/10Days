@@ -75,7 +75,7 @@ void Stage::Init() {
 			bkRedQuadSpeed_[i].y = static_cast<float>(rand() % 3 - 1);
 		} while (bkRedQuadSpeed_[i] == 0);
 
-		bkRedQuadColor_ = 0x000000aa;
+		bkRedQuadColor_ = 0xffb8b8aa;
 		//引いて薄くさせる色
 		subtractiveColor_ = 0x00000001;
 
@@ -98,7 +98,7 @@ void Stage::Init() {
 			bkBlueQuadSpeed_[i].y = static_cast<float>(rand() % 3 - 1);
 		} while (bkBlueQuadSpeed_[i] == 0);
 
-		bkBlueQuadColor_ = 0x000000aa;
+		bkBlueQuadColor_ = 0xb8cfffaa;
 	}
 }
 
@@ -166,9 +166,9 @@ void Stage::Update(char* keys, char* preKeys) {
 
 		//色の制御
 		bkRedQuadColor_ += subtractiveColor_;
-		if (bkRedQuadColor_ == 0x000000dd) {
+		if (bkRedQuadColor_ == 0xffb8b8dd) {
 			subtractiveColor_ *= -1;
-		} else if (bkRedQuadColor_ == 0x000000aa) {
+		} else if (bkRedQuadColor_ == 0xffb8b8aa) {
 			subtractiveColor_ *= -1;
 		}
 
@@ -203,9 +203,9 @@ void Stage::Update(char* keys, char* preKeys) {
 
 		//色の制御
 		bkBlueQuadColor_ += subtractiveColor_;
-		if (bkBlueQuadColor_ == 0x000000dd) {
+		if (bkBlueQuadColor_ == 0xb8cfffdd) {
 			subtractiveColor_ *= -1;
-		} else if (bkBlueQuadColor_ == 0x000000aa) {
+		} else if (bkBlueQuadColor_ == 0xb8cfffaa) {
 			subtractiveColor_ *= -1;
 		}
 
