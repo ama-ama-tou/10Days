@@ -33,6 +33,8 @@ void SceneManager::Update() {
 	
 		sceneArr_[sceneNo_]->Update();
 	
+		exit_ = sceneArr_[sceneNo_]->getIsExitGame();
+
 	///=======================
 
 	///=======================

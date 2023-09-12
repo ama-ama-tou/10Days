@@ -18,9 +18,13 @@ private:
 	//バックグラウンド
 	Box bg;
 
+	bool exit_;
 
 public:
 	SceneManager();
+
+	bool getExit() { return exit_; }
+	void setExit(bool exit) { exit_ = exit; }
 
 	void Update();
 

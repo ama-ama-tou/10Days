@@ -7,6 +7,7 @@ private:
 	InputManager* inputManager_ = InputManager::GetInstance();
 	SceneManager* sceneManager_=new SceneManager();
 
+	
 public:
 	GameManager() {};
 	void Run();
