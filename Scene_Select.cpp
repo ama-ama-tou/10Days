@@ -32,10 +32,12 @@ void Scene_Select::Load() {
 	//ステージセレクトボタン
 	Vec2 selectButtonSize = { 150.0f,150.0f };
 	Vec2 selectButtonSpace = { 200.0f,50.0f };
-	Vec2 selectButtonPos[9];
-	for (int i = 0; i < 9; i++) {
-		int selectButtonRow = i / 3;//行番号(0,1,2)
-		int selectButtonCol = i % 3;//列番号(0,1,2)
+	const int numCols = 4;
+	const int numRows = 3;
+	Vec2 selectButtonPos[numCols*numRows];
+	for (int i = 0; i < numCols * numRows; i++) {
+		int selectButtonRow = i / numCols;//行番号(0,1,2)
+		int selectButtonCol = i % numCols;//列番号(0,1,2,3)
 		selectButtonPos[i] = Vec2(240.0f + selectButtonCol * (selectButtonSize.x + selectButtonSpace.x),
 			60.0f + selectButtonRow * (selectButtonSize.y + selectButtonSpace.y));
 
@@ -78,16 +80,17 @@ void Scene_Select::Draw() {
 		isRang_ = false;
 	}
 
-	for (int i = 0; i < 9; i++) {
+	for (int i = 0; i < 12; i++) {
 		if (stage_[i].getIsClicked()) {
 
 		}
 	}
 
-	for (int i = 0; i < 9; i++) {
+	for (int i = 0; i < 12; i++) {
 		stage_[i].Draw();
-		go2Title.Draw();
 	}
+	go2Title.Draw();
+
 }
 
 void Scene_Select::Unload() {
