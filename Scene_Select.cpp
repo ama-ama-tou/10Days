@@ -32,17 +32,17 @@ void Scene_Select::Load() {
 	//ステージセレクトボタン
 
 	const char* stageGH[12] = { "./Resources/image/obj/button/stage1.png",
-									"./Resources/image/obj/button/stage2.png",
-									"./Resources/image/obj/button/stage3.png",
-									"./Resources/image/obj/button/stage4.png",
-									"./Resources/image/obj/button/stage5.png",
-									"./Resources/image/obj/button/stage6.png",
-									"./Resources/image/obj/button/stage7.png",
-									"./Resources/image/obj/button/stage8.png",
-									"./Resources/image/obj/button/stage9.png",
-									"./Resources/image/obj/button/stage10.png",
-									"./Resources/image/obj/button/stage11.png",
-									"./Resources/image/obj/button/stage12.png",
+								"./Resources/image/obj/button/stage2.png",
+								"./Resources/image/obj/button/stage3.png",
+								"./Resources/image/obj/button/stage4.png",
+								"./Resources/image/obj/button/stage5.png",
+								"./Resources/image/obj/button/stage6.png",
+								"./Resources/image/obj/button/stage7.png",
+								"./Resources/image/obj/button/stage8.png",
+								"./Resources/image/obj/button/stage9.png",
+								"./Resources/image/obj/button/stage10.png",
+								"./Resources/image/obj/button/stage11.png",
+								"./Resources/image/obj/button/stage12.png",
 	};
 
 	Vec2 selectButtonSize = { 150.0f,150.0f };
@@ -95,7 +95,7 @@ void Scene_Select::Draw() {
 		isRang_ = false;
 	}
 
-	for (int i = 0; i < 12; i++) {
+	for (int i = 0; i < 9; i++) {
 		stage_[i].Draw();
 	}
 	go2Title.Draw();
