@@ -26,7 +26,7 @@ void Scene_Clear::Load() {
 
 	//周りの丸
 	srand((unsigned int)time(NULL));
-	for (int i = 0; i < 50; i++) {
+	for (int i = 0; i < 30; i++) {
 		//エレメントの座標をランダムで設定
 		elementPos_[i].x = static_cast<float>(rand() % 1280);
 		elementPos_[i].y = static_cast<float>(rand() % 720);
@@ -157,7 +157,7 @@ void Scene_Clear::Update() {
 	if (elementColor_ >= 0x00000001) {
 
 
-		for (int k = 0; k < 50; k++) {
+		for (int k = 0; k < 30; k++) {
 
 		// 半径を拡大または縮小
 			if (steps > 0) {
