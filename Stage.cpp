@@ -119,6 +119,7 @@ void Stage::Update(char* keys, char* preKeys) {
 			if (block_[r][c].getType() != WALL) {
 				if (block_[r][c].getIsHadBlock() == true) {
 					block_[r][c].Update(player_.getScreenLtVertex());
+					block_[r][c].HitUpdate();
 				}
 			}
 		}
@@ -137,6 +138,8 @@ void Stage::Update(char* keys, char* preKeys) {
 			}
 		}
 	}
+	Novice::ScreenPrintf(10, 500, "hasBlock=%d, goalBlocks=%d", playerHasBlockNum, NSBlockNum_);
+
 
 	if (playerHasBlockNum == NSBlockNum_) {
 		isClear_ = true;

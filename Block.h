@@ -55,6 +55,9 @@ public:
         Vec2 imageLtPos, Vec2 imageSize);
 
     void Update(Vec2 pos);
+    void HitUpdate() {
+        isPreHadBlock_ = isHadBlock_;
+    };
 
     void Draw();
 
