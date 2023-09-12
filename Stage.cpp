@@ -138,9 +138,9 @@ void Stage::Update(char* keys, char* preKeys) {
 		}
 	}
 
-	if (playerHasBlockNum == NSBlockNum_) {
+	/*if (playerHasBlockNum == NSBlockNum_) {
 		isClear_ = true;
-	}
+	}*/
 
 
 
