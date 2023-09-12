@@ -68,7 +68,7 @@ void Stage::Init() {
 		bkRedQuadSize_[i].x = static_cast<float>(rand() % 11 + 10);
 		bkRedQuadSize_[i].y = bkRedQuadSize_[i].x;
 		//最大・最小拡縮量
-		bkRedQuadScaleValue_[i] = Vec2(0.1f, 0.1f);
+		bkRedQuadScaleValue_[i] = { 0.1f,0.1f };
 		bkRedQuadMinScale_[i] = { bkRedQuadSize_[i].x - 5.0f,bkRedQuadSize_[i].y - 5.0f };
 		bkRedQuadMaxScale_[i] = { bkRedQuadSize_[i].x + 5.0f,bkRedQuadSize_[i].y + 5.0f };
 		//スピードをランダムで設定
@@ -92,7 +92,7 @@ void Stage::Init() {
 		bkBlueQuadSize_[i].x = static_cast<float>(rand() % 11 + 10);
 		bkBlueQuadSize_[i].y = bkBlueQuadSize_[i].x;
 		//最大・最小拡縮量
-		bkBlueQuadScaleValue_[i] = Vec2(0.1f, 0.1f);
+		bkBlueQuadScaleValue_[i] = { 0.1f,0.1f };
 		bkBlueQuadMinScale_[i] = { bkBlueQuadSize_[i].x - 5.0f,bkBlueQuadSize_[i].y - 5.0f };
 		bkBlueQuadMaxScale_[i] = { bkBlueQuadSize_[i].x + 5.0f,bkBlueQuadSize_[i].y + 5.0f };
 		//スピードをランダムで設定
@@ -105,6 +105,9 @@ void Stage::Init() {
 		subtractiveColorBlue_[i] = 0x00000001;
 
 	}
+
+	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
+	backgroundVH_ = -1;
 }
 
 void Stage::Update(char* keys, char* preKeys) {
@@ -119,6 +122,7 @@ void Stage::Update(char* keys, char* preKeys) {
 			if (block_[r][c].getType() != WALL) {
 				if (block_[r][c].getIsHadBlock() == true) {
 					block_[r][c].Update(player_.getScreenLtVertex());
+					block_[r][c].HitUpdate();
 				}
 			}
 		}
@@ -131,12 +135,14 @@ void Stage::Update(char* keys, char* preKeys) {
 
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
-			if (block_[r][c].getIsHadBlock() == true && block_[r][c].getIsPreHadBlock() == true) {
+			if (block_[r][c].getIsHadBlock() == true && block_[r][c].getIsPreHadBlock() == false) {
 				//クリア条件
 				playerHasBlockNum++;
 			}
 		}
 	}
+	Novice::ScreenPrintf(10, 500, "hasBlock=%d, goalBlocks=%d", playerHasBlockNum, NSBlockNum_);
+
 
 	/*if (playerHasBlockNum == NSBlockNum_) {
 		isClear_ = true;
@@ -163,7 +169,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 		//拡縮
 		bkRedQuadSize_[i] += bkRedQuadScaleValue_[i];
-		if (bkRedQuadSize_[i] += bkRedQuadScaleValue_[i]) {
+		if (bkRedQuadSize_[i] >= bkRedQuadMaxScale_[i]) {
 			bkRedQuadScaleValue_[i] *= Vec2(-1, -1);
 		} else if (bkRedQuadSize_[i] <= bkRedQuadMinScale_[i]) {
 			bkRedQuadScaleValue_[i] *= Vec2(-1, -1);
@@ -200,7 +206,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 		//拡縮
 		bkBlueQuadSize_[i] += bkBlueQuadScaleValue_[i];
-		if (bkBlueQuadSize_[i] += bkBlueQuadScaleValue_[i]) {
+		if (bkBlueQuadSize_[i] >= bkBlueQuadMaxScale_[i]) {
 			bkBlueQuadScaleValue_[i] *= Vec2(-1, -1);
 		} else if (bkBlueQuadSize_[i] <= bkBlueQuadMinScale_[i]) {
 			bkBlueQuadScaleValue_[i] *= Vec2(-1, -1);
@@ -229,6 +235,11 @@ void Stage::Update(char* keys, char* preKeys) {
 }
 
 void Stage::Draw() {
+
+	//bgmを鳴らす
+	if (Novice::IsPlayingAudio(backgroundSH_) == false) {
+		Novice::PlayAudio(backgroundSH_, true, 0.5f);
+	}
 
 	//===================
 	//背景の四角
@@ -277,3 +288,4 @@ void Stage::Draw() {
 	player_.Draw();
 	
 }
+

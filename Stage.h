@@ -62,6 +62,8 @@ class Stage {
 	int bkBlueQuadColor_[20];
 	int subtractiveColorBlue_[20];
 
+	int backgroundSH_;
+	int backgroundVH_;
 
 public:
 	
@@ -102,7 +104,7 @@ public:
 
 	void Draw();
 
-	void Unload() {};
+	void Unload() { Novice::StopAudio(backgroundVH_); };
 
 	bool getIsClear() { return isClear_; }
 
