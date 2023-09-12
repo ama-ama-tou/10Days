@@ -105,6 +105,9 @@ void Stage::Init() {
 		subtractiveColorBlue_[i] = 0x00000001;
 
 	}
+
+	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
+	backgroundVH_ = -1;
 }
 
 void Stage::Update(char* keys, char* preKeys) {
@@ -233,6 +236,11 @@ void Stage::Update(char* keys, char* preKeys) {
 
 void Stage::Draw() {
 
+	//bgmを鳴らす
+	if (Novice::IsPlayingAudio(backgroundSH_) == false) {
+		Novice::PlayAudio(backgroundSH_, true, 0.5f);
+	}
+
 	//===================
 	//背景の四角
 	//==================
@@ -280,3 +288,4 @@ void Stage::Draw() {
 	player_.Draw();
 	
 }
+

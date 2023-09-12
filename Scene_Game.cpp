@@ -15,8 +15,6 @@ Scene_Game::Scene_Game() {
 	stageArr_[STAGE_12TH] = std::make_unique<Stage>(STAGE_12TH, "./Resources/csv/stage12.csv");
 
 	stageNum_ = STAGE_1ST;
-
-	
 }
 
 Scene_Game::~Scene_Game() {
@@ -24,10 +22,6 @@ Scene_Game::~Scene_Game() {
 }
 
 void Scene_Game::Load() {
-
-	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
-	backgroundVH_ = -1;
-
 
 	stageArr_[stageNum_]->Init();
 }
@@ -44,14 +38,11 @@ void Scene_Game::Update() {
 
 void Scene_Game::Draw() {
 
-	//bgmを鳴らす
-	if (Novice::IsPlayingAudio(backgroundSH_) == false) {
-		Novice::PlayAudio(backgroundSH_, true, 0.5f);
-	}
+	
 
 	stageArr_[stageNum_]->Draw();
 }
 
 void Scene_Game::Unload() {
-	Novice::StopAudio(backgroundVH_);
+	
 };
