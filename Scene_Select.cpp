@@ -77,11 +77,10 @@ void Scene_Select::Update() {
 	}
 
 	for (int i = 0; i < 9; i++) {
-		if (stage_[i].getIsClicked() == true) {
+		if (stage_[i].getIsClicked()) {
 			Scene::sceneNum = SCENE_GAME;
 		}
 	}
-
 
 }
 
