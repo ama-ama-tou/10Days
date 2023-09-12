@@ -24,6 +24,9 @@ void SceneManager::Update() {
 	
 	if (sceneNo_ != preSceneNo_) {
 		if (sceneNo_!=SCENE_SELECT&&preSceneNo_!=SCENE_TITLE) {
+			if (preSceneNo_==SCENE_SELECT) {
+				sceneArr_[SCENE_TITLE]->Unload();
+			}
 			sceneArr_[preSceneNo_]->Unload();
 		}
 		
