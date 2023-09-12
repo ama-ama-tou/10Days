@@ -22,6 +22,7 @@ void Stage::Init() {
 				Vec2(0.0f, 0.0f),//imageLtPos
 				blockImageSize
 			);
+
 			if (stageCsv_[r][c] == 1 || stageCsv_[r][c] == 2) {
 				NSBlockNum_++;
 			}
@@ -118,6 +119,7 @@ void Stage::Update(char* keys, char* preKeys) {
 			if (block_[r][c].getType() != WALL) {
 				if (block_[r][c].getIsHadBlock() == true) {
 					block_[r][c].Update(player_.getScreenLtVertex());
+					block_[r][c].HitUpdate();
 				}
 			}
 		}
@@ -130,12 +132,14 @@ void Stage::Update(char* keys, char* preKeys) {
 
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
-			if (block_[r][c].getIsHadBlock() == true && block_[r][c].getIsPreHadBlock() == true) {
+			if (block_[r][c].getIsHadBlock() == true && block_[r][c].getIsPreHadBlock() == false) {
 				//クリア条件
 				playerHasBlockNum++;
 			}
 		}
 	}
+	Novice::ScreenPrintf(10, 500, "hasBlock=%d, goalBlocks=%d", playerHasBlockNum, NSBlockNum_);
+
 
 	if (playerHasBlockNum == NSBlockNum_) {
 		isClear_ = true;
@@ -151,7 +155,7 @@ void Stage::Update(char* keys, char* preKeys) {
 		//赤色の四角
 		//==================
 
-		//quadの移動
+			//quadの移動
 		bkRedQuadPos_[i] += bkRedQuadSpeed_[i];
 
 		//座標の更新
@@ -188,7 +192,7 @@ void Stage::Update(char* keys, char* preKeys) {
 		//青色の四角
 		//==================
 
-		//quadの移動
+			//quadの移動
 		bkBlueQuadPos_[i] += bkBlueQuadSpeed_[i];
 
 		//座標の更新
@@ -224,7 +228,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 	}
 
-
+	
 }
 
 void Stage::Draw() {
@@ -263,12 +267,16 @@ void Stage::Draw() {
 
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
-			if (block_[r][c].getType() != 0) {
+			if (block_[r][c].getType() != NONE) {
 				//blockが設置してあればDraw
 				block_[r][c].Draw();
+
+				Novice::ScreenPrintf(10, 200, "NSBlockNum:%d", NSBlockNum_);
+				Novice::ScreenPrintf(10, 220, "playerHasBlockNum:%d", playerHasBlockNum);
+
 			}
 		}
 	}
-
 	player_.Draw();
+	
 }

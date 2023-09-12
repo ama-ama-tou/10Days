@@ -57,20 +57,7 @@ void Player::Draw() {
 
 	Quad::Draw();
 
-	Novice::ScreenPrintf(10, 300, "player.pos.x:%f", getLtVertex().x);
-	Novice::ScreenPrintf(10, 320, "player.pos.y:%f", getLtVertex().y);
-
-	Novice::ScreenPrintf(10, 360, "vertex_[0].x:%f(leftTop)", getLtVertex().x);
-	Novice::ScreenPrintf(10, 380, "vertex_[0].y:%f(leftTop)", getLtVertex().y);
-
-	Novice::ScreenPrintf(10, 410, "vertex_[1].x:%f(rightTop)", getRtVertex().x);
-	Novice::ScreenPrintf(10, 430, "vertex_[1].y:%f(rightTop)", getRtVertex().y);
-
-	Novice::ScreenPrintf(10, 460, "vertex_[2].x:%f(leftBottom)", getLbVertex().x);
-	Novice::ScreenPrintf(10, 480, "vertex_[2].y:%f(leftBottom)", getLbVertex().y);
-
-	Novice::ScreenPrintf(10, 510, "vertex_[3].x:%f(rightBottom)", getRbVertex().x);
-	Novice::ScreenPrintf(10, 530, "vertex_[3].y:%f(rightBottom)", getRbVertex().y);
+	
 
 
 	Novice::ScreenPrintf(1000, 300, "faicing_[0]:%d(top)", getIsFacingTop());

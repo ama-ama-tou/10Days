@@ -10,7 +10,7 @@ SceneManager::SceneManager() {
 	sceneNo_ = SCENE_TITLE;
 	sceneArr_[sceneNo_]->Load();
 	
-	bg.Init(Vec2(0.0f, 0.0f),kWindowSize, 0xf0f8ffff);
+	bg.Init(Vec2(0.0f, 0.0f),kWindowSize,/* 0xf0f8ffff*/0x000000ff);
 }
 
 void SceneManager::Update() {
@@ -23,6 +23,12 @@ void SceneManager::Update() {
 	sceneNo_ = sceneArr_[sceneNo_]->getSceneNum();
 	
 	if (sceneNo_ != preSceneNo_) {
+		if (sceneNo_!=SCENE_SELECT&&preSceneNo_!=SCENE_TITLE) {
+			if (preSceneNo_==SCENE_SELECT) {
+				sceneArr_[SCENE_TITLE]->Unload();
+			}
+			sceneArr_[preSceneNo_]->Unload();
+		}
 		
 		//シーンが変わったら初期化
 		sceneArr_[sceneNo_]->Load();
@@ -38,7 +44,7 @@ void SceneManager::Update() {
 
 	///=======================
 	///描画処理
-		bg.Draw();
+		//bg.Draw();
 		sceneArr_[sceneNo_]->Draw();
 		
 	///=======================

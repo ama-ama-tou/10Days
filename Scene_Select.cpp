@@ -60,12 +60,15 @@ void Scene_Select::Load() {
 
 void Scene_Select::Update() {
 
+	
 	if (go2Title.getIsClicked()) {
 		Scene::sceneNum = SCENE_TITLE;
 	}
 
 	for (int i = 0; i < 12; i++) {
+		
 		stage_[i].Update(inputManager->getMousePos(), inputManager->getClickState());
+		
 		if (stage_[i].getIsClicked()) {
 			Scene::stageNum_ = i;
 			Scene::sceneNum = SCENE_GAME;
@@ -91,5 +94,5 @@ void Scene_Select::Draw() {
 }
 
 void Scene_Select::Unload() {
-
+	
 }
