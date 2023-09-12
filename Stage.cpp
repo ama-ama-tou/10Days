@@ -76,9 +76,9 @@ void Stage::Init() {
 			bkRedQuadSpeed_[i].y = static_cast<float>(rand() % 3 - 1);
 		} while (bkRedQuadSpeed_[i] == 0);
 
-		bkRedQuadColor_ = 0xffb8b8aa;
+		bkRedQuadColor_[i] = 0xffb8b8aa;
 		//引いて薄くさせる色
-		subtractiveColorRed_ = 0x00000001;
+		subtractiveColorRed_[i] = 0x00000001;
 
 		//===================
 		//青色の四角
@@ -100,8 +100,8 @@ void Stage::Init() {
 			bkBlueQuadSpeed_[i].y = static_cast<float>(rand() % 3 - 1);
 		} while (bkBlueQuadSpeed_[i] == 0);
 
-		bkBlueQuadColor_ = 0xb8cfffaa;
-		subtractiveColorBlue_ = 0x00000001;
+		bkBlueQuadColor_[i] = 0xb8cfffaa;
+		subtractiveColorBlue_[i] = 0x00000001;
 
 	}
 }
@@ -169,11 +169,11 @@ void Stage::Update(char* keys, char* preKeys) {
 		}
 
 		//色の制御
-		bkRedQuadColor_ += subtractiveColorRed_;
-		if (bkRedQuadColor_ == 0xffb8b8dd) {
-			subtractiveColorRed_ *= -1;
-		} else if (bkRedQuadColor_ == 0xffb8b8aa) {
-			subtractiveColorRed_ *= -1;
+		bkRedQuadColor_[i] += subtractiveColorRed_[i];
+		if (bkRedQuadColor_[i] == 0xffb8b8cc) {
+			subtractiveColorRed_[i] *= -1;
+		} else if (bkRedQuadColor_[i] == 0xffb8b811) {
+			subtractiveColorRed_[i] *= -1;
 		}
 
 		//画面外に出たら再スポーン
@@ -208,11 +208,11 @@ void Stage::Update(char* keys, char* preKeys) {
 
 
 		//色の制御
-		bkBlueQuadColor_ += subtractiveColorBlue_;
-		if (bkBlueQuadColor_ == 0xb8cfffdd) {
-			subtractiveColorBlue_ *= -1;
-		} else if (bkBlueQuadColor_ == 0xb8cfffaa) {
-			subtractiveColorBlue_ *= -1;
+		bkBlueQuadColor_[i] += subtractiveColorBlue_[i];
+		if (bkBlueQuadColor_[i] == 0xb8cfffcc) {
+			subtractiveColorBlue_[i] *= -1;
+		} else if (bkBlueQuadColor_[i] == 0xb8cfff11) {
+			subtractiveColorBlue_[i] *= -1;
 		}
 
 		//画面外に出たら再スポーン
@@ -232,31 +232,31 @@ void Stage::Draw() {
 	//===================
 	//背景の四角
 	//==================
-	for (int i = 0; i < 30; i++) {
+	for (int i = 0; i < 20; i++) {
 		Novice::DrawQuad(
-			static_cast<int>(bkRedQuadVertex_[0][i].x),
-			static_cast<int>(bkRedQuadVertex_[0][i].y),
-			static_cast<int>(bkRedQuadVertex_[1][i].x),
-			static_cast<int>(bkRedQuadVertex_[1][i].y),
-			static_cast<int>(bkRedQuadVertex_[2][i].x),
-			static_cast<int>(bkRedQuadVertex_[2][i].y),
-			static_cast<int>(bkRedQuadVertex_[3][i].x),
-			static_cast<int>(bkRedQuadVertex_[3][i].y),
+			static_cast<int>(bkRedQuadVertex_[i][0].x),
+			static_cast<int>(bkRedQuadVertex_[i][0].y),
+			static_cast<int>(bkRedQuadVertex_[i][1].x),
+			static_cast<int>(bkRedQuadVertex_[i][1].y),
+			static_cast<int>(bkRedQuadVertex_[i][2].x),
+			static_cast<int>(bkRedQuadVertex_[i][2].y),
+			static_cast<int>(bkRedQuadVertex_[i][3].x),
+			static_cast<int>(bkRedQuadVertex_[i][3].y),
 			0, 0, 32, 32, bkGH_,
-			bkRedQuadColor_
+			bkRedQuadColor_[i]
 		);
 
 		Novice::DrawQuad(
-			static_cast<int>(bkBlueQuadVertex_[0][i].x),
-			static_cast<int>(bkBlueQuadVertex_[0][i].y),
-			static_cast<int>(bkBlueQuadVertex_[1][i].x),
-			static_cast<int>(bkBlueQuadVertex_[1][i].y),
-			static_cast<int>(bkBlueQuadVertex_[2][i].x),
-			static_cast<int>(bkBlueQuadVertex_[2][i].y),
-			static_cast<int>(bkBlueQuadVertex_[3][i].x),
-			static_cast<int>(bkBlueQuadVertex_[3][i].y),
+			static_cast<int>(bkBlueQuadVertex_[i][0].x),
+			static_cast<int>(bkBlueQuadVertex_[i][0].y),
+			static_cast<int>(bkBlueQuadVertex_[i][1].x),
+			static_cast<int>(bkBlueQuadVertex_[i][1].y),
+			static_cast<int>(bkBlueQuadVertex_[i][2].x),
+			static_cast<int>(bkBlueQuadVertex_[i][2].y),
+			static_cast<int>(bkBlueQuadVertex_[i][3].x),
+			static_cast<int>(bkBlueQuadVertex_[i][3].y),
 			0, 0, 32, 32, bkGH_,
-			bkBlueQuadColor_
+			bkBlueQuadColor_[i]
 		);
 	}
 
