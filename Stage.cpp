@@ -238,7 +238,7 @@ void Stage::Draw() {
 
 	//bgmを鳴らす
 	if (Novice::IsPlayingAudio(backgroundVH_) == 0 || backgroundVH_ == -1) {
-		Novice::PlayAudio(backgroundSH_, true, 0.5f);
+		backgroundVH_=Novice::PlayAudio(backgroundSH_, true, 0.5f);
 	}
 
 	//===================
