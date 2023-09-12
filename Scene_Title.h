@@ -9,14 +9,16 @@ class Scene_Title:
 private:
 	Quad titleBar;
 	Button Button_goSelect;
-	Button Button_goManu;
+	
 	Button Button_exit;
 
 	int backgroundSH_;
 	int backgroundVH_;
 
+
+
 public:
-	Scene_Title() { sceneNum = SCENE_TITLE; }
+	Scene_Title() {}
 
 	void Load()override;
 
@@ -26,9 +28,5 @@ public:
 
 	void Unload()override;
 	
-	//使わない
-	StageNum getSelectedStage()override { return STAGE_1ST; }
-	void setPlayStage(StageNum selectedStage)override { selectedStage; }
-
 };
 

@@ -10,69 +10,65 @@ void Scene_Title::Load() {
 	Vec2 titlePos;
 	titlePos = Vec2{ 327.0f, 200.0f };
 	Vec2 titleSize{ 625.0f,125.0f };
-	int titleGH = Novice::LoadTexture("./Resources/image/obj/title.png");
+	int titleGH = Novice::LoadTexture("./Resources/image/obj/titleBar.png");
 	Vec2 titleImageSize{ 625.0f,125.0f };
 	titleBar.Init(titlePos, titleSize, Vec2(0.0f, 0.0f),
-		titleGH, Vec2(0.0f, 0.0f), titleImageSize
+		titleGH, Vec2(0.0f, 0.0f), titleImageSize,WHITE
 	);
 
 	//=================
 	//ボタン初期化
 	//=================
 
-	Vec2 goSelectPos = Vec2(titleBar.getScreenLbVertex().x,
-		titleBar.getScreenLbVertex().y + 100.0f);
+	
+	Vec2 buttonSize{ 256.0f,125.0f };
+	Vec2 buttonImageSize = { 512.0f,256.0f };
 
-	//ボタンサイズは統一する
-	Vec2 buttonSize{ 500.0f,100.0f };
+	Vec2 goSelectPos = Vec2((kWindowSize.x / 8.0f)*3.0f,
+		titleBar.getScreenLbVertex().y + buttonSize.y);
+
 	const char* goSelectGH = "./Resources/image/obj/button/goSelectButton.png";
-	const char* goSelectClickedGH = "./Resources/image/obj/button/goSelectCickedButton.png";
 	Button_goSelect.Init(goSelectPos, buttonSize, Vec2(0.0f, 0.0f),
-		goSelectGH, goSelectClickedGH,
-		Vec2(0.0f, 0.0f), buttonSize);
+		goSelectGH, 0x53558bff, 0xe28f8fff,
+		Vec2(0.0f, 0.0f), buttonImageSize);
 
-	//menuボタン
-	Vec2 menuButtonPos{ Button_goSelect.getScreenLbVertex().x,
-		Button_goSelect.getScreenLbVertex().y + 50.0f };
+	
+	Vec2 exitButtonPos{ goSelectPos.x,goSelectPos.y + (buttonSize.y * 1.02f) };
 
-	const char* goMenuGH = "./Resources/image/obj/button/menu.png";
-	const char* goMenuClickedGH = "./Resources/image/obj/button/menuClicked.png";
-
-	Button_goManu.Init(menuButtonPos, buttonSize, Vec2(0.0f, 0.0f),
-		goMenuGH, goMenuClickedGH,
-		Vec2(0.0f, 0.0f), buttonSize);
-
-	Vec2 exitButtonPos{ menuButtonPos.x,menuButtonPos.y + 50.0f };
-
-	const char* exitGH = "./Resources/image/obj/button/exit.png";
-	const char* exitClickedGH = "./Resources/image/obj/button/exitClicked.png";
-
-	Button_exit.Init(exitButtonPos, buttonSize, Vec2(0.0f, 0.0f),
-		exitGH, exitClickedGH, Vec2(0.0f, 0.0f), buttonSize);
+	const char* exitGH = "./Resources/image/obj/button/exitButton.png";
+	
+	Button_exit.Init(exitButtonPos,buttonSize, Vec2(0.0f, 0.0f),
+		exitGH, 0x53558bff, 0xe28f8fff, Vec2(0.0f, 0.0f), buttonImageSize);
 
 }
 
 
 void Scene_Title::Update() {
 	
+	Button_goSelect.Update(inputManager->getMousePos(), inputManager->getClickState());
+	Button_exit.Update(inputManager->getMousePos(), inputManager->getClickState());
+
 	if (Button_goSelect.getIsClicked()) {
+		
 		Scene::sceneNum = SCENE_SELECT;
 	}
 	if (Button_exit.getIsClicked()) {
-	//ゲームを終了させる処理
+		setIsExitGame(true);
 	}
 }
 
 void Scene_Title::Draw() {
 
 		//bgmを鳴らす
-	if (Novice::IsPlayingAudio(backgroundSH_) == false) {
-		Novice::PlayAudio(backgroundSH_, true, 0.5f);
+	if (Novice::IsPlayingAudio(backgroundVH_) == false) {
+		backgroundVH_=Novice::PlayAudio(backgroundSH_, true, 0.1f);
 	}
+
+	titleBar.Draw();
 
 	//ボタンの描画
 	Button_exit.Draw();
-	Button_goManu.Draw();
+	
 	Button_goSelect.Draw();
 }
 

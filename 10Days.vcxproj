@@ -110,6 +110,7 @@
     <ClCompile Include="C:\KamataEngine\DirectXGame\2d\ImGuiManager.cpp" />
     <ClCompile Include="C:\KamataEngine\Adapter\Novice.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="easing.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -123,6 +124,7 @@
     <ClCompile Include="Scene_Select.cpp" />
     <ClCompile Include="Scene_Title.cpp" />
     <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base.h" />
@@ -156,6 +158,7 @@
     <ClInclude Include="C:\KamataEngine\Adapter\Novice.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Coordinate.h" />
+    <ClInclude Include="easing.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="LoadCSV.h" />
@@ -169,6 +172,7 @@
     <ClInclude Include="Scene_Select.h" />
     <ClInclude Include="Scene_Title.h" />
     <ClInclude Include="Stage.h" />
+    <ClInclude Include="Triangle.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="box.h" />
   </ItemGroup>

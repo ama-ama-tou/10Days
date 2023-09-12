@@ -16,7 +16,7 @@ void Quad::Draw() {
 		static_cast<int>(imageSize_.x),
 		static_cast<int>(imageSize_.y),
 		GH_,
-		WHITE
+		color_
 	);
 }
 

@@ -11,7 +11,7 @@ private:
 	//======================
 	Button go2Title;
 	
-	Button stage_[9];
+	Button stage_[12];
 
 	int stageSelectSH_;
 	int stageSelectVH_;
@@ -31,9 +31,7 @@ public:
 	//=======================
 	//ゲッター
 	//=======================
-	StageNum getSelectedStage()override;
-	//使わない
-	void setPlayStage(StageNum selectedStage)override { selectedStage; }
+	
 
 
 };

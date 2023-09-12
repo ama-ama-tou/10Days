@@ -30,13 +30,24 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 
 	Quad::Init(pos, size, 
 		localCoOrigin,
-		GH_, imageLtPos, imageSize);
+		GH_, imageLtPos, imageSize,WHITE);
 }
 
 
 void Block::Update(Vec2 pos) {
 
+	isPreHadBlock_ = isHadBlock_;
+
 	setLocalCoOrigin(pos);
+}
+
+
+void Block::Draw() {
+	if (!isPreHadBlock_ && isHadBlock_) {
+		if (Novice::IsPlayingAudio(VH_)==0||VH_==-1) {
+			VH_ = Novice::PlayAudio(SH_, false, 0.3f);
+		}
+	}
 }
 
 

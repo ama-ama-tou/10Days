@@ -14,12 +14,13 @@ Scene_Game::Scene_Game() {
 	stageArr_[STAGE_11TH] = std::make_unique<Stage>(STAGE_11TH, "./Resources/csv/stage11.csv");
 	stageArr_[STAGE_12TH] = std::make_unique<Stage>(STAGE_12TH, "./Resources/csv/stage12.csv");
 
-	stageNum = STAGE_1ST;
+	stageNum_ = STAGE_1ST;
 
-	sceneNum = SCENE_GAME;
+	
 }
 
 Scene_Game::~Scene_Game() {
+
 }
 
 void Scene_Game::Load() {
@@ -28,16 +29,16 @@ void Scene_Game::Load() {
 	backgroundVH_ = -1;
 
 
-	stageArr_[stageNum]->Init();
+	stageArr_[stageNum_]->Init();
 }
 
 void Scene_Game::Update() {
-	/*inputManager->Update();*/
-	stageArr_[stageNum]->Update(inputManager->GetKeys(), inputManager->GetPreKeys());
+	stageArr_[stageNum_]->Update(inputManager->GetKeys(), inputManager->GetPreKeys());
 	
-	if (stageArr_[stageNum]->getIsClear()) {
+	if (stageArr_[stageNum_]->getIsClear()) {
 		Scene::sceneNum = SCENE_CLEAR;
 	}
+	Novice::ScreenPrintf(100, 100, "stageNum=%d", stageNum_);
 
 }
 
@@ -48,7 +49,7 @@ void Scene_Game::Draw() {
 		Novice::PlayAudio(backgroundSH_, true, 0.5f);
 	}
 
-	stageArr_[stageNum]->Draw();
+	stageArr_[stageNum_]->Draw();
 }
 
 void Scene_Game::Unload() {

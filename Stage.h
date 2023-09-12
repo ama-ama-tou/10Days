@@ -29,8 +29,8 @@ class Stage {
 	//N極,S極の数の和()
 	int NSBlockNum_;
 	
-	int playerHasBlockNum{0};
-
+	//プレイヤーがもっているblockの数
+	int playerHasBlockNum;
 
 	CollisionManager* collision;
 
@@ -42,24 +42,26 @@ class Stage {
 	//背景の四角（赤色）
 	Vec2 bkRedQuadPos_[20];
 	Vec2 bkRedQuadSize_[20];
-	Vec2 bkRedQuadVertex_[4][20];
+	Vec2 bkRedQuadVertex_[20][4];
 	Vec2 bkRedQuadSpeed_[20];
 	Vec2 bkRedQuadScaleValue_[20];
 	Vec2 bkRedQuadMinScale_[20];
 	Vec2 bkRedQuadMaxScale_[20];
-	int bkRedQuadColor_;
-	int subtractiveColor_;
+	int bkRedQuadColor_[20];
+	int subtractiveColorRed_[20];
 	int bkGH_;
 
 	//背景の四角（青色）
 	Vec2 bkBlueQuadPos_[20];
 	Vec2 bkBlueQuadSize_[20];
-	Vec2 bkBlueQuadVertex_[4][20];
+	Vec2 bkBlueQuadVertex_[20][4];
 	Vec2 bkBlueQuadSpeed_[20];
 	Vec2 bkBlueQuadScaleValue_[20];
 	Vec2 bkBlueQuadMinScale_[20];
 	Vec2 bkBlueQuadMaxScale_[20];
-	int bkBlueQuadColor_;
+	int bkBlueQuadColor_[20];
+	int subtractiveColorBlue_[20];
+
 
 public:
 	
@@ -103,8 +105,6 @@ public:
 	void Unload() {};
 
 	bool getIsClear() { return isClear_; }
-
-	int getStageNum() { return stageNum_; }
 
 };
 

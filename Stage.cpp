@@ -22,6 +22,7 @@ void Stage::Init() {
 				Vec2(0.0f, 0.0f),//imageLtPos
 				blockImageSize
 			);
+
 			if (stageCsv_[r][c] == 1 || stageCsv_[r][c] == 2) {
 				NSBlockNum_++;
 			}
@@ -61,7 +62,8 @@ void Stage::Init() {
 		//==================
 
 		//座標をランダムで設定
-		bkRedQuadPos_[i] = { static_cast<float>(rand() % 1280),static_cast<float>(rand() % 720) };
+		bkRedQuadPos_[i].x = static_cast<float>(rand() % 1280);
+		bkRedQuadPos_[i].y = static_cast<float>(rand() % 720);
 		//サイズをランダムで設定
 		bkRedQuadSize_[i].x = static_cast<float>(rand() % 11 + 10);
 		bkRedQuadSize_[i].y = bkRedQuadSize_[i].x;
@@ -75,16 +77,17 @@ void Stage::Init() {
 			bkRedQuadSpeed_[i].y = static_cast<float>(rand() % 3 - 1);
 		} while (bkRedQuadSpeed_[i] == 0);
 
-		bkRedQuadColor_ = 0x000000aa;
+		bkRedQuadColor_[i] = 0xffb8b8aa;
 		//引いて薄くさせる色
-		subtractiveColor_ = 0x00000001;
+		subtractiveColorRed_[i] = 0x00000001;
 
 		//===================
 		//青色の四角
 		//==================
 
 		//座標をランダムで設定
-		bkRedQuadPos_[i] = { static_cast<float>(rand() % 1280),static_cast<float>(rand() % 720) };
+		bkBlueQuadPos_[i].x = static_cast<float>(rand() % 1280);
+		bkBlueQuadPos_[i].y = static_cast<float>(rand() % 720);
 		//サイズをランダムで設定
 		bkBlueQuadSize_[i].x = static_cast<float>(rand() % 11 + 10);
 		bkBlueQuadSize_[i].y = bkBlueQuadSize_[i].x;
@@ -98,7 +101,9 @@ void Stage::Init() {
 			bkBlueQuadSpeed_[i].y = static_cast<float>(rand() % 3 - 1);
 		} while (bkBlueQuadSpeed_[i] == 0);
 
-		bkBlueQuadColor_ = 0x000000aa;
+		bkBlueQuadColor_[i] = 0xb8cfffaa;
+		subtractiveColorBlue_[i] = 0x00000001;
+
 	}
 }
 
@@ -123,9 +128,11 @@ void Stage::Update(char* keys, char* preKeys) {
 	collision->Draw(block_);
 
 
-	/*for (int r = 0; r < col_; r++) {
-		for (int c = 0; c < row_; c++) {
-			if (block_[r][c].getIsHadBlock() == true) {
+
+	for (int r = 0; r < row_; r++) {
+		for (int c = 0; c < col_; c++) {
+			if (block_[r][c].getIsHadBlock() == true && block_[r][c].getIsPreHadBlock() == true) {
+				//クリア条件
 				playerHasBlockNum++;
 			}
 		}
@@ -139,7 +146,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 
 	//背景の動き
-	for (int i = 0; i < 50; i++) {
+	for (int i = 0; i < 20; i++) {
 
 		//===================
 		//赤色の四角
@@ -149,10 +156,10 @@ void Stage::Update(char* keys, char* preKeys) {
 		bkRedQuadPos_[i] += bkRedQuadSpeed_[i];
 
 		//座標の更新
-		bkRedQuadVertex_[0][i] = { bkRedQuadPos_[i].x - bkRedQuadSize_[i].x,bkRedQuadPos_[i].y - bkRedQuadSize_[i].y };
-		bkRedQuadVertex_[1][i] = { bkRedQuadPos_[i].x + bkRedQuadSize_[i].x,bkRedQuadPos_[i].y - bkRedQuadSize_[i].y };
-		bkRedQuadVertex_[2][i] = { bkRedQuadPos_[i].x - bkRedQuadSize_[i].x,bkRedQuadPos_[i].y + bkRedQuadSize_[i].y };
-		bkRedQuadVertex_[3][i] = { bkRedQuadPos_[i].x + bkRedQuadSize_[i].x,bkRedQuadPos_[i].y + bkRedQuadSize_[i].y };
+		bkRedQuadVertex_[i][0] = { bkRedQuadPos_[i].x - bkRedQuadSize_[i].x,bkRedQuadPos_[i].y - bkRedQuadSize_[i].y };
+		bkRedQuadVertex_[i][1] = { bkRedQuadPos_[i].x + bkRedQuadSize_[i].x,bkRedQuadPos_[i].y - bkRedQuadSize_[i].y };
+		bkRedQuadVertex_[i][2] = { bkRedQuadPos_[i].x - bkRedQuadSize_[i].x,bkRedQuadPos_[i].y + bkRedQuadSize_[i].y };
+		bkRedQuadVertex_[i][3] = { bkRedQuadPos_[i].x + bkRedQuadSize_[i].x,bkRedQuadPos_[i].y + bkRedQuadSize_[i].y };
 
 		//拡縮
 		bkRedQuadSize_[i] += bkRedQuadScaleValue_[i];
@@ -163,11 +170,11 @@ void Stage::Update(char* keys, char* preKeys) {
 		}
 
 		//色の制御
-		bkRedQuadColor_ += subtractiveColor_;
-		if (bkRedQuadColor_ == 0x000000dd) {
-			subtractiveColor_ *= -1;
-		} else if (bkRedQuadColor_ == 0x000000aa) {
-			subtractiveColor_ *= -1;
+		bkRedQuadColor_[i] += subtractiveColorRed_[i];
+		if (bkRedQuadColor_[i] == 0xffb8b8cc) {
+			subtractiveColorRed_[i] *= -1;
+		} else if (bkRedQuadColor_[i] == 0xffb8b811) {
+			subtractiveColorRed_[i] *= -1;
 		}
 
 		//画面外に出たら再スポーン
@@ -186,10 +193,10 @@ void Stage::Update(char* keys, char* preKeys) {
 		bkBlueQuadPos_[i] += bkBlueQuadSpeed_[i];
 
 		//座標の更新
-		bkBlueQuadVertex_[0][i] = { bkBlueQuadPos_[i].x - bkBlueQuadSize_[i].x,bkBlueQuadPos_[i].y - bkBlueQuadSize_[i].y };
-		bkBlueQuadVertex_[1][i] = { bkBlueQuadPos_[i].x + bkBlueQuadSize_[i].x,bkBlueQuadPos_[i].y - bkBlueQuadSize_[i].y };
-		bkBlueQuadVertex_[2][i] = { bkBlueQuadPos_[i].x - bkBlueQuadSize_[i].x,bkBlueQuadPos_[i].y + bkBlueQuadSize_[i].y };
-		bkBlueQuadVertex_[3][i] = { bkBlueQuadPos_[i].x + bkBlueQuadSize_[i].x,bkBlueQuadPos_[i].y + bkBlueQuadSize_[i].y };
+		bkBlueQuadVertex_[i][0] = { bkBlueQuadPos_[i].x - bkBlueQuadSize_[i].x,bkBlueQuadPos_[i].y - bkBlueQuadSize_[i].y };
+		bkBlueQuadVertex_[i][1] = { bkBlueQuadPos_[i].x + bkBlueQuadSize_[i].x,bkBlueQuadPos_[i].y - bkBlueQuadSize_[i].y };
+		bkBlueQuadVertex_[i][2] = { bkBlueQuadPos_[i].x - bkBlueQuadSize_[i].x,bkBlueQuadPos_[i].y + bkBlueQuadSize_[i].y };
+		bkBlueQuadVertex_[i][3] = { bkBlueQuadPos_[i].x + bkBlueQuadSize_[i].x,bkBlueQuadPos_[i].y + bkBlueQuadSize_[i].y };
 
 		//拡縮
 		bkBlueQuadSize_[i] += bkBlueQuadScaleValue_[i];
@@ -199,12 +206,14 @@ void Stage::Update(char* keys, char* preKeys) {
 			bkBlueQuadScaleValue_[i] *= Vec2(-1, -1);
 		}
 
+
+
 		//色の制御
-		bkBlueQuadColor_ += subtractiveColor_;
-		if (bkBlueQuadColor_ == 0x000000dd) {
-			subtractiveColor_ *= -1;
-		} else if (bkBlueQuadColor_ == 0x000000aa) {
-			subtractiveColor_ *= -1;
+		bkBlueQuadColor_[i] += subtractiveColorBlue_[i];
+		if (bkBlueQuadColor_[i] == 0xb8cfffcc) {
+			subtractiveColorBlue_[i] *= -1;
+		} else if (bkBlueQuadColor_[i] == 0xb8cfff11) {
+			subtractiveColorBlue_[i] *= -1;
 		}
 
 		//画面外に出たら再スポーン
@@ -216,7 +225,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 	}
 
-
+	
 }
 
 void Stage::Draw() {
@@ -224,38 +233,38 @@ void Stage::Draw() {
 	//===================
 	//背景の四角
 	//==================
-	/*for (int i = 0; i < 30; i++) {
+	for (int i = 0; i < 20; i++) {
 		Novice::DrawQuad(
-			static_cast<int>(bkRedQuadVertex_[0][i].x),
-			static_cast<int>(bkRedQuadVertex_[0][i].y),
-			static_cast<int>(bkRedQuadVertex_[1][i].x),
-			static_cast<int>(bkRedQuadVertex_[1][i].y),
-			static_cast<int>(bkRedQuadVertex_[2][i].x),
-			static_cast<int>(bkRedQuadVertex_[2][i].y),
-			static_cast<int>(bkRedQuadVertex_[3][i].x),
-			static_cast<int>(bkRedQuadVertex_[3][i].y),
+			static_cast<int>(bkRedQuadVertex_[i][0].x),
+			static_cast<int>(bkRedQuadVertex_[i][0].y),
+			static_cast<int>(bkRedQuadVertex_[i][1].x),
+			static_cast<int>(bkRedQuadVertex_[i][1].y),
+			static_cast<int>(bkRedQuadVertex_[i][2].x),
+			static_cast<int>(bkRedQuadVertex_[i][2].y),
+			static_cast<int>(bkRedQuadVertex_[i][3].x),
+			static_cast<int>(bkRedQuadVertex_[i][3].y),
 			0, 0, 32, 32, bkGH_,
-			bkRedQuadColor_
+			bkRedQuadColor_[i]
 		);
 
 		Novice::DrawQuad(
-			static_cast<int>(bkBlueQuadVertex_[0][i].x),
-			static_cast<int>(bkBlueQuadVertex_[0][i].y),
-			static_cast<int>(bkBlueQuadVertex_[1][i].x),
-			static_cast<int>(bkBlueQuadVertex_[1][i].y),
-			static_cast<int>(bkBlueQuadVertex_[2][i].x),
-			static_cast<int>(bkBlueQuadVertex_[2][i].y),
-			static_cast<int>(bkBlueQuadVertex_[3][i].x),
-			static_cast<int>(bkBlueQuadVertex_[3][i].y),
+			static_cast<int>(bkBlueQuadVertex_[i][0].x),
+			static_cast<int>(bkBlueQuadVertex_[i][0].y),
+			static_cast<int>(bkBlueQuadVertex_[i][1].x),
+			static_cast<int>(bkBlueQuadVertex_[i][1].y),
+			static_cast<int>(bkBlueQuadVertex_[i][2].x),
+			static_cast<int>(bkBlueQuadVertex_[i][2].y),
+			static_cast<int>(bkBlueQuadVertex_[i][3].x),
+			static_cast<int>(bkBlueQuadVertex_[i][3].y),
 			0, 0, 32, 32, bkGH_,
-			bkBlueQuadColor_
+			bkBlueQuadColor_[i]
 		);
 	}*/
 
 
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
-			if (block_[r][c].getType() != 0) {
+			if (block_[r][c].getType() != NONE) {
 				//blockが設置してあればDraw
 				block_[r][c].Draw();
 
@@ -265,6 +274,6 @@ void Stage::Draw() {
 			}
 		}
 	}
-
 	player_.Draw();
+	
 }

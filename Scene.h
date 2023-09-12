@@ -15,10 +15,10 @@ enum StageNum {
 	STAGE_9TH,
 	STAGE_10TH,
 	STAGE_11TH,
-	STAGE_12TH,
+	STAGE_12TH/*,
 	STAGE_13TH,
 	STAGE_14TH,
-	STAGE_15TH,
+	STAGE_15TH,*/
 };
 
 enum SceneNum {
@@ -29,10 +29,15 @@ enum SceneNum {
 };
 
 class Scene{
+private:
+
+	bool isExitGame_;
+
 protected:
 	InputManager* inputManager = InputManager::GetInstance();
 
 	static int sceneNum;
+	static int stageNum_;
 
 public :
 
@@ -45,8 +50,9 @@ public :
 
 	int getSceneNum() { return sceneNum; }
 
-	virtual void setPlayStage(StageNum selectedStage)=0;
-	virtual StageNum getSelectedStage() = 0;
+	bool getIsExitGame() { return isExitGame_; }
+	void setIsExitGame(bool exit) { isExitGame_ = exit; }
+
 };
 
 
