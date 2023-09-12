@@ -4,6 +4,7 @@
 struct Triangle {
 	Vec2 pos_;
 
+	void Draw() {}
 
 
 
