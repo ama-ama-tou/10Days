@@ -10,7 +10,7 @@ void Scene_Title::Load() {
 	Vec2 titlePos;
 	titlePos = Vec2{ 327.0f, 200.0f };
 	Vec2 titleSize{ 625.0f,125.0f };
-	int titleGH = Novice::LoadTexture("./Resources/image/obj/title.png");
+	int titleGH = Novice::LoadTexture("./Resources/image/obj/titleBar.png");
 	Vec2 titleImageSize{ 625.0f,125.0f };
 	titleBar.Init(titlePos, titleSize, Vec2(0.0f, 0.0f),
 		titleGH, Vec2(0.0f, 0.0f), titleImageSize
