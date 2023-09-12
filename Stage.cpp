@@ -144,9 +144,11 @@ void Stage::Update(char* keys, char* preKeys) {
 	Novice::ScreenPrintf(10, 500, "hasBlock=%d, goalBlocks=%d", playerHasBlockNum, NSBlockNum_);
 
 
-	/*if (playerHasBlockNum == NSBlockNum_) {
+	if (playerHasBlockNum == NSBlockNum_) {
+		
+
 		isClear_ = true;
-	}*/
+	}
 
 
 
@@ -238,7 +240,7 @@ void Stage::Draw() {
 
 	//bgmを鳴らす
 	if (Novice::IsPlayingAudio(backgroundVH_) == 0 || backgroundVH_ == -1) {
-		backgroundVH_=Novice::PlayAudio(backgroundSH_, true, 0.5f);
+		backgroundVH_=Novice::PlayAudio(backgroundSH_, true, 0.3f);
 	}
 
 	//===================

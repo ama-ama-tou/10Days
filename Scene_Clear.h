@@ -14,7 +14,7 @@ class Scene_Clear :
 	//クリアの文字
 	Vec2 clearPos_[3];
 	Vec2 clearSize_;
-	Vec2 clearVertex_[3][4];
+	Vec2 clearVertex_[4][3];
 
 	int clearGH_[3];
 	int roatedClearGH_[3];
@@ -26,7 +26,7 @@ class Scene_Clear :
 	float inisialElementRadius_[50];
 	float currentElementRadius_[50];
 	Vec2 elementSpeed_[50];
-	bool isDisaappear_;
+	bool isDisappear_;
 	unsigned int elementColor_;
 
 	//クリア画像の後ろのライン
@@ -47,8 +47,8 @@ class Scene_Clear :
 	//効果音
 	int clearSH_;
 	int clearVH_;
+	int soundCount_;
 	bool isRang_;
-
 
 public:
 	//===================
