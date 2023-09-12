@@ -16,7 +16,7 @@ private:
 	int backgroundVH_;
 
 public:
-	Scene_Title() { sceneNum = SCENE_TITLE; }
+	Scene_Title() {}
 
 	void Load()override;
 
