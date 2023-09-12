@@ -31,16 +31,16 @@ void Scene_Select::Load() {
 	//ステージセレクトボタン
 
 	const char* stageGH[12] = { "./Resources/image/obj/button/stage1.png",
-									"./Resources/image/obj/button/stage2.png"
-									"./Resources/image/obj/button/stage3.png"
-									"./Resources/image/obj/button/stage4.png"
-									"./Resources/image/obj/button/stage5.png"
-									"./Resources/image/obj/button/stage6.png"
-									"./Resources/image/obj/button/stage7.png"
-									"./Resources/image/obj/button/stage8.png"
-									"./Resources/image/obj/button/stage9.png"
-									"./Resources/image/obj/button/stage10.png"
-									"./Resources/image/obj/button/stage11.png"
+									"./Resources/image/obj/button/stage2.png",
+									"./Resources/image/obj/button/stage3.png",
+									"./Resources/image/obj/button/stage4.png",
+									"./Resources/image/obj/button/stage5.png",
+									"./Resources/image/obj/button/stage6.png",
+									"./Resources/image/obj/button/stage7.png",
+									"./Resources/image/obj/button/stage8.png",
+									"./Resources/image/obj/button/stage9.png",
+									"./Resources/image/obj/button/stage10.png",
+									"./Resources/image/obj/button/stage11.png",
 									"./Resources/image/obj/button/stage12.png"
 	};
 
@@ -63,7 +63,7 @@ void Scene_Select::Load() {
 	}
 
 	//ステージセレクトの効果音
-	stageSelectSH_ = Novice::LoadAudio("./Resources/sound/SE/stageSelect.png");
+	stageSelectSH_ = Novice::LoadAudio("./Resources/sound/SE/select.mp3");
 	stageSelectVH_ = -1;
 	isRang_ = false;
 }
