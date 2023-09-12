@@ -224,8 +224,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 	}
 
-	Novice::ScreenPrintf(100, 100, "stageNum=%d", stageNum_);
-
+	
 }
 
 void Stage::Draw() {

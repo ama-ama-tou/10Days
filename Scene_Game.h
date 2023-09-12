@@ -6,7 +6,6 @@
 class Scene_Game:
 	public Scene {
 
-	int stageNum;
 	int preStageNum;
 
 	int backgroundSH_;
