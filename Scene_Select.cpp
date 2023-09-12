@@ -42,7 +42,7 @@ void Scene_Select::Load() {
 									"./Resources/image/obj/button/stage9.png",
 									"./Resources/image/obj/button/stage10.png",
 									"./Resources/image/obj/button/stage11.png",
-									"./Resources/image/obj/button/stage12.png"
+									"./Resources/image/obj/button/stage12.png",
 	};
 
 	Vec2 selectButtonSize = { 150.0f,150.0f };
