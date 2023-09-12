@@ -22,10 +22,10 @@ class Scene_Clear :
 	int roatedCount_;
 
 	//周りの円
-	Vec2 elementPos_[50];
-	float inisialElementRadius_[50];
-	float currentElementRadius_[50];
-	Vec2 elementSpeed_[50];
+	Vec2 elementPos_[30];
+	float inisialElementRadius_[30];
+	float currentElementRadius_[30];
+	Vec2 elementSpeed_[30];
 	bool isDisappear_;
 	unsigned int elementColor_;
 
