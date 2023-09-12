@@ -16,6 +16,8 @@ private:
 	//画像サイズ(表示する)
 	Vec2 imageSize_;
 
+	unsigned int color_;
+
 public:
 	//===============
 	//メンバ関数
@@ -23,13 +25,13 @@ public:
 	Quad() {};
 
 
-	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin,int GH, Vec2 imageLtPos, Vec2 imageSize) {
+	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin,int GH, Vec2 imageLtPos, Vec2 imageSize,unsigned int color) {
 		size_ = size;
 		
 		localCo_.setOrigin(localCoOrigin);
 
 		GH_ = GH;
-
+		color_ = color;
 		imageLtPos_ = imageLtPos;
 		imageSize_ = imageSize;
 
@@ -75,4 +77,6 @@ public:
 	Vec2 getSize() { return size_; }
 	void setSize(Vec2 size) { size_ = size; }
 
+	int getColor() { return color_; }
+	void setColor(unsigned int color) { color_ = color; }
 };
