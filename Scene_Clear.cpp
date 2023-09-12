@@ -7,7 +7,7 @@ void Scene_Clear::Load() {
 	//クリア画像
 	clearSize_ = { 64.0f,64.0f };
 	for (int i = 0; i < 3; i++) {
-		clearPos_[i] = { (1280.0f / 2.0f - clearSize_.x * 2.0f) + (clearSize_ * 2.0f * i),720.0f / 2.0f };
+		clearPos_[i] = { (1280.0f / 2.0f - clearSize_.x * 2.0f) + (clearSize_.x * 2.0f * i), 720.0f / 2.0f };
 		clearVertex_[i][0] = Vec2(clearPos_[i].x - clearSize_.x, clearPos_[i].y - clearSize_.y);
 		clearVertex_[i][1] = Vec2(clearPos_[i].x + clearSize_.x, clearPos_[i].y - clearSize_.y);
 		clearVertex_[i][2] = Vec2(clearPos_[i].x - clearSize_.x, clearPos_[i].y + clearSize_.y);
@@ -147,7 +147,7 @@ void Scene_Clear::Update() {
 	if (elementColor_ >= 0x00000001) {
 
 
-		for (int k = 0; k < 50; k++) {
+		for (int k = 0; k < 30; k++) {
 
 		// 半径を拡大または縮小
 			if (steps > 0) {
@@ -196,7 +196,7 @@ void Scene_Clear::Draw() {
 
 
 	//エレメントの描画
-	for (int i = 0; i < 50; i++) {
+	for (int i = 0; i < 30; i++) {
 		Novice::DrawEllipse(
 			static_cast<int>(localCo_.screenFromOrigin(elementPos_[i]).x),
 			static_cast<int>(localCo_.screenFromOrigin(elementPos_[i]).y),

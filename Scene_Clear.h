@@ -14,7 +14,7 @@ class Scene_Clear :
 	//クリアの文字
 	Vec2 clearPos_[3];
 	Vec2 clearSize_;
-	Vec2 clearVertex_[4][3];
+	Vec2 clearVertex_[3][4];
 
 	int clearGH_[3];
 	int roatedClearGH_[3];
