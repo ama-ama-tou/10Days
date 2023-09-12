@@ -11,7 +11,7 @@ private:
 	//======================
 	Button go2Title;
 	
-	Button stage_[9];
+	Button stage_[12];
 
 	int stageSelectSH_;
 	int stageSelectVH_;
