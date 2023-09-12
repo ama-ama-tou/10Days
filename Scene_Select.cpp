@@ -1,7 +1,6 @@
 ﻿#include "Scene_Select.h"
 #include "Button.h"
 #include "Scene_Title.h"
-#include "InputManager.h"
 
 
 
@@ -12,8 +11,8 @@ void Scene_Select::Load() {
 	//=================
 
 	//タイトル画面に戻るボタン
-	Vec2 goTitlePos = Vec2(50.0f, 50.0f);
-	Vec2 goTitleButtonSize{ 256.0f,100.0f };
+	Vec2 goTitlePos = Vec2(20.0f, 10.0f);
+	Vec2 goTitleButtonSize{ 256,96.0f };
 	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
 	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
 		goTitleGH, WHITE, WHITE,
@@ -22,17 +21,17 @@ void Scene_Select::Load() {
 	//ステージセレクトボタン
 
 	const char* stageGH[12] = { "./Resources/image/obj/button/stage1.png",
-									"./Resources/image/obj/button/stage2.png",
-									"./Resources/image/obj/button/stage3.png",
-									"./Resources/image/obj/button/stage4.png",
-									"./Resources/image/obj/button/stage5.png",
-									"./Resources/image/obj/button/stage6.png",
-									"./Resources/image/obj/button/stage7.png",
-									"./Resources/image/obj/button/stage8.png",
-									"./Resources/image/obj/button/stage9.png",
-									"./Resources/image/obj/button/stage10.png",
-									"./Resources/image/obj/button/stage11.png",
-									"./Resources/image/obj/button/stage12.png",
+								"./Resources/image/obj/button/stage2.png",
+								"./Resources/image/obj/button/stage3.png",
+								"./Resources/image/obj/button/stage4.png",
+								"./Resources/image/obj/button/stage5.png",
+								"./Resources/image/obj/button/stage6.png",
+								"./Resources/image/obj/button/stage7.png",
+								"./Resources/image/obj/button/stage8.png",
+								"./Resources/image/obj/button/stage9.png",
+								"./Resources/image/obj/button/stage10.png",
+								"./Resources/image/obj/button/stage11.png",
+								"./Resources/image/obj/button/stage12.png",
 	};
 
 	Vec2 selectButtonSize = { 150.0f,150.0f };
@@ -44,7 +43,7 @@ void Scene_Select::Load() {
 		int selectButtonRow = i / numCols;//行番号(0,1,2)
 		int selectButtonCol = i % numCols;//列番号(0,1,2,3)
 		selectButtonPos[i] = Vec2(115.0f + selectButtonCol * (selectButtonSize.x + selectButtonSpace.x),
-			85.0f + selectButtonRow * (selectButtonSize.y + selectButtonSpace.y));
+			175.0f + selectButtonRow * (selectButtonSize.y + selectButtonSpace.y));
 
 
 
