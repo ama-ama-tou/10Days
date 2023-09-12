@@ -10,7 +10,7 @@ SceneManager::SceneManager() {
 	sceneNo_ = SCENE_TITLE;
 	sceneArr_[sceneNo_]->Load();
 	
-	bg.Init(Vec2(0.0f, 0.0f),kWindowSize, 0x7d7b83ff);
+	bg.Init(Vec2(0.0f, 0.0f),kWindowSize, 0xf0f8ffff);
 }
 
 void SceneManager::Update() {
