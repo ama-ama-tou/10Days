@@ -28,6 +28,11 @@ class CollisionManager {
 	int bLbColAddress_[12][12] = { 0 };
 	int bRbColAddress_[12][12] = { 0 };
 
+	int rbro_;
+	int cbro_;
+
+	bool isHit_;
+
 	//保存用の変数
 	Vec2 bLtPreVertex_[12][12] = {};
 
