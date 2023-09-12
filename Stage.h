@@ -49,7 +49,7 @@ class Stage {
 	Vec2 bkRedQuadMinScale_[20];
 	Vec2 bkRedQuadMaxScale_[20];
 	int bkRedQuadColor_;
-	int subtractiveColor_;
+	int subtractiveColorRed_;
 	int bkGH_;
 
 	//背景の四角（青色）
@@ -61,6 +61,7 @@ class Stage {
 	Vec2 bkBlueQuadMinScale_[20];
 	Vec2 bkBlueQuadMaxScale_[20];
 	int bkBlueQuadColor_;
+	int subtractiveColorBlue_;
 
 
 public:
