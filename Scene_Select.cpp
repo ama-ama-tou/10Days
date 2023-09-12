@@ -31,17 +31,31 @@ void Scene_Select::Load() {
 	//ステージセレクトボタン
 	Vec2 selectButtonSize = { 150.0f,150.0f };
 	Vec2 selectButtonSpace = { 200.0f,50.0f };
-	Vec2 selectButtonPos[9];
-	for (int i = 0; i < 9; i++) {
-		int selectButtonRow = i / 3;//行番号(0,1,2)
-		int selectButtonCol = i % 3;//列番号(0,1,2)
+	const int numCols = 4;
+	const int numRows = 3;
+	Vec2 selectButtonPos[numCols*numRows];
+	for (int i = 0; i < numCols * numRows; i++) {
+		int selectButtonRow = i / numCols;//行番号(0,1,2)
+		int selectButtonCol = i % numCols;//列番号(0,1,2,3)
 		selectButtonPos[i] = Vec2(240.0f + selectButtonCol * (selectButtonSize.x + selectButtonSpace.x),
 			60.0f + selectButtonRow * (selectButtonSize.y + selectButtonSpace.y));
 
-		const char* selectGH = "./Resources/image/obj/button/select.png";
+		const char* stageGH[12] = { "./Resources/image/obj/button/stage1.png",
+									"./Resources/image/obj/button/stage2.png"
+									"./Resources/image/obj/button/stage3.png"
+									"./Resources/image/obj/button/stage4.png"
+									"./Resources/image/obj/button/stage5.png"
+									"./Resources/image/obj/button/stage6.png"
+									"./Resources/image/obj/button/stage7.png"
+									"./Resources/image/obj/button/stage8.png"
+									"./Resources/image/obj/button/stage9.png"
+									"./Resources/image/obj/button/stage10.png"
+									"./Resources/image/obj/button/stage11.png"
+									"./Resources/image/obj/button/stage12.png"
+									};
 		
 		stage_[i].Init(selectButtonPos[i], selectButtonSize, Vec2(0.0f, 0.0f),
-			selectGH, WHITE,WHITE,
+			stageGH[i], ,
 			Vec2(0.0f, 0.0f), selectButtonSize);
 	}
 
@@ -77,16 +91,11 @@ void Scene_Select::Draw() {
 		isRang_ = false;
 	}
 
-	for (int i = 0; i < 9; i++) {
-		if (stage_[i].getIsClicked()) {
-
-		}
-	}
-
-	for (int i = 0; i < 9; i++) {
+	for (int i = 0; i < 12; i++) {
 		stage_[i].Draw();
-		go2Title.Draw();
 	}
+	go2Title.Draw();
+
 }
 
 void Scene_Select::Unload() {
