@@ -32,6 +32,11 @@ class Block :
     //ブロックを持っているかいないか
     bool isHadBlock_;
 
+    //ブロックがくっついたときの効果音
+    int SH_;
+    int VH_;
+    bool isPreHadBlock_;
+
 public:
     Block() {
         GH_ = 0;
@@ -49,6 +54,8 @@ public:
         Vec2 imageLtPos, Vec2 imageSize);
 
     void Update(Vec2 pos);
+
+    void Draw();
 
     int CalcuRowAddress(int vertexNum);
     int CalcuColAddress(int vertexNum);
