@@ -22,6 +22,7 @@ void Stage::Init() {
 				Vec2(0.0f, 0.0f),//imageLtPos
 				blockImageSize
 			);
+
 			if (stageCsv_[r][c] == 1 || stageCsv_[r][c] == 2) {
 				NSBlockNum_++;
 			}
@@ -263,12 +264,12 @@ void Stage::Draw() {
 
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
-			if (block_[r][c].getType() != 0) {
+			if (block_[r][c].getType() != NONE) {
 				//blockが設置してあればDraw
 				block_[r][c].Draw();
 			}
 		}
 	}
-
 	player_.Draw();
+	
 }
