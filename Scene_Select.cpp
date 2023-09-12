@@ -95,7 +95,7 @@ void Scene_Select::Draw() {
 		isRang_ = false;
 	}
 
-	for (int i = 0; i < 9; i++) {
+	for (int i = 0; i < 12; i++) {
 		stage_[i].Draw();
 	}
 	go2Title.Draw();
