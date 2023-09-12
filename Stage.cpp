@@ -84,7 +84,7 @@ void Stage::Init() {
 		//==================
 
 		//座標をランダムで設定
-		bkRedQuadPos_[i] = { static_cast<float>(rand() % 1280),static_cast<float>(rand() % 720) };
+		bkBlueQuadPos_[i] = { static_cast<float>(rand() % 1280),static_cast<float>(rand() % 720) };
 		//サイズをランダムで設定
 		bkBlueQuadSize_[i].x = static_cast<float>(rand() % 11 + 10);
 		bkBlueQuadSize_[i].y = bkBlueQuadSize_[i].x;
@@ -141,13 +141,13 @@ void Stage::Update(char* keys, char* preKeys) {
 
 
 	//背景の動き
-	for (int i = 0; i < 50; i++) {
+	for (int i = 0; i < 20; i++) {
 
 		//===================
 		//赤色の四角
 		//==================
 
-			//quadの移動
+		//quadの移動
 		bkRedQuadPos_[i] += bkRedQuadSpeed_[i];
 
 		//座標の更新
