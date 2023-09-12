@@ -54,7 +54,7 @@ public:
 		frameCount_ = 0;
 		isSoundStart_ = false;
 
-		Quad::Init(pos, size, localCoOrigin, GH, imageLtPos, imageSize);
+		Quad::Init(pos, size, localCoOrigin, GH, imageLtPos, imageSize,WHITE);
 	}
 
 	void Update(char* keys, char* preKeys);
