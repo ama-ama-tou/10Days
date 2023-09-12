@@ -1,9 +1,10 @@
 ﻿#include "Scene_Select.h"
 #include "Button.h"
 #include "Scene_Title.h"
+#include "InputManager.h"
 
 StageNum Scene_Select::getSelectedStage() {
-	for (int i = 0; i < 9; i++) {
+	for (int i = 0; i < 12; i++) {
 		stage_[i].Update(inputManager->getMousePos(), inputManager->getClickState());
 
 		if (stage_[i].getIsClicked()) {
@@ -21,11 +22,11 @@ void Scene_Select::Load() {
 	//=================
 
 	//タイトル画面に戻るボタン
-	Vec2 goTitlePos = Vec2(50.0f, 670.0f);
+	Vec2 goTitlePos = Vec2(50.0f, 50.0f);
 	Vec2 goTitleButtonSize{ 100,50.0f };
 	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
 	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
-		goTitleGH,WHITE,WHITE,
+		goTitleGH, WHITE, WHITE,
 		Vec2(0.0f, 0.0f), goTitleButtonSize);
 
 	//ステージセレクトボタン
@@ -48,17 +49,17 @@ void Scene_Select::Load() {
 	Vec2 selectButtonSpace = { 150.0f,50.0f };
 	const int numCols = 4;
 	const int numRows = 3;
-	Vec2 selectButtonPos[numCols*numRows];
+	Vec2 selectButtonPos[numCols * numRows];
 	for (int i = 0; i < numCols * numRows; i++) {
 		int selectButtonRow = i / numCols;//行番号(0,1,2)
 		int selectButtonCol = i % numCols;//列番号(0,1,2,3)
 		selectButtonPos[i] = Vec2(115.0f + selectButtonCol * (selectButtonSize.x + selectButtonSpace.x),
 			85.0f + selectButtonRow * (selectButtonSize.y + selectButtonSpace.y));
 
-		
-		
+
+
 		stage_[i].Init(selectButtonPos[i], selectButtonSize, Vec2(0.0f, 0.0f),
-			stageGH[i], WHITE,WHITE,
+			stageGH[i], WHITE, WHITE,
 			Vec2(0.0f, 0.0f), selectButtonSize);
 	}
 
@@ -76,10 +77,11 @@ void Scene_Select::Update() {
 		Scene::sceneNum = SCENE_TITLE;
 	}
 
-	for (int i = 0; i < 9; i++) {
+	for (int i = 0; i < 12; i++) {
 		if (stage_[i].getIsClicked()) {
 			Scene::sceneNum = SCENE_GAME;
 		}
+		stage_[i].Update(inputManager->getMousePos(), inputManager->getClickState());
 	}
 
 
