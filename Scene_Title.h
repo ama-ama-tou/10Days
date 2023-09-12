@@ -9,7 +9,7 @@ class Scene_Title:
 private:
 	Quad titleBar;
 	Button Button_goSelect;
-	Button Button_goManu;
+	
 	Button Button_exit;
 
 	int backgroundSH_;
