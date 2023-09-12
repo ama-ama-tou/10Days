@@ -231,13 +231,13 @@ void Stage::Update(char* keys, char* preKeys) {
 
 	}
 
-	
+
 }
 
 void Stage::Draw() {
 
 	//bgmを鳴らす
-	if (Novice::IsPlayingAudio(backgroundSH_) == false) {
+	if (Novice::IsPlayingAudio(backgroundVH_) == 0 || backgroundVH_ == -1) {
 		Novice::PlayAudio(backgroundSH_, true, 0.5f);
 	}
 
@@ -286,6 +286,6 @@ void Stage::Draw() {
 		}
 	}
 	player_.Draw();
-	
+
 }
 
