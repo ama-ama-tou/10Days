@@ -31,9 +31,7 @@ public:
 	//=======================
 	//ゲッター
 	//=======================
-	StageNum getSelectedStage()override;
-	//使わない
-	void setPlayStage(StageNum selectedStage)override { selectedStage; }
+	
 
 
 };

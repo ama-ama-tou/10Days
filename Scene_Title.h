@@ -28,9 +28,5 @@ public:
 
 	void Unload()override;
 	
-	//使わない
-	StageNum getSelectedStage()override { return STAGE_1ST; }
-	void setPlayStage(StageNum selectedStage)override { selectedStage; }
-
 };
 
