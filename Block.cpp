@@ -30,7 +30,7 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 
 	Quad::Init(pos, size, 
 		localCoOrigin,
-		GH_, imageLtPos, imageSize);
+		GH_, imageLtPos, imageSize,WHITE);
 }
 
 
