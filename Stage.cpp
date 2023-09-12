@@ -136,7 +136,7 @@ void Stage::Update(char* keys, char* preKeys) {
 				playerHasBlockNum++;
 			}
 		}
-	}*/
+	}
 
 	if (playerHasBlockNum == NSBlockNum_) {
 		isClear_ = true;
@@ -259,7 +259,7 @@ void Stage::Draw() {
 			0, 0, 32, 32, bkGH_,
 			bkBlueQuadColor_[i]
 		);
-	}*/
+	}
 
 
 	for (int r = 0; r < row_; r++) {
