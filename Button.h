@@ -19,29 +19,15 @@ private:
 	unsigned int color_;
 	unsigned int colorAfterClick_;
 	
-	//easing計算
-	float currentTime_;
-	float t;
+
 	
 public:
 
 	Button() {};
 
-	/// <summary>
-	/// 初期化
-	/// </summary>
-	/// <param name="pos"></param>
-	/// <param name="size"></param>
-	/// <param name="localCoOrigin"></param>
-	/// <param name="GH"></param>
-	/// <param name="color">alpha値を含まない</param>
-	/// <param name="colorAfterClicked">alpha値を含まない</param>
-	/// <param name="imageLtPos"></param>
-	/// <param name="imageSize"></param>
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, const char* GH,unsigned int color,unsigned int colorAfterClicked,Vec2 imageLtPos, Vec2 imageSize) {
 		
-		currentTime_ = 0.0f;
-
+		
 		colorBeforeClick_ = color;
 		color_ = colorBeforeClick_;
 		colorAfterClick_ = colorAfterClicked;
@@ -53,9 +39,6 @@ public:
 
 	void checkInsideMouse(Vec2 mousepos);
 
-	
-	void colorChange();
-	
 	void Update(Vec2 mousePos, int clickState);
 
 	void Draw();

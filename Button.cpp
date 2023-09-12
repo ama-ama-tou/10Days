@@ -10,43 +10,25 @@ void Button::checkInsideMouse(Vec2 mousePos) {
 	isInsideMouse_ = (inSide && above);
 }
 
-void Button::colorChange() {
-	
-	t = currentTime_ / 1.0f;
-	color_ = static_cast<int>(colorBeforeClick_ + (colorAfterClick_ - colorBeforeClick_) * easeInOutQuart(t));
-	Quad::setColor(color_+0xff);
-}
-
 
 
 void Button::Update(Vec2 mousePos, int clickState) {
 	Button::checkInsideMouse(mousePos);
 
-	colorChange();
-
+	
 	if (isInsideMouse_) {
-		if (currentTime_<1.0f) {
-			//colorAfterClickへ移動
-			currentTime_ += 1.0f / 60.0f;//1秒間
-		}
-		
+		Quad::setColor(colorAfterClick_);
 
 		if (clickState==1) {
 			//右クリックされたとき
 			isClicked_ = true;
 		}
 	} else {
-		if (currentTime_<0.0f) {
-			//colorBeforeClickへ移動
-			currentTime_ -= 1.0f / 60.0f;//1秒間
-		}
-
-
+		Quad::setColor(colorBeforeClick_);
 	}
 }
 
 void Button::Draw() {
-	
 	Quad::Draw();
 }
 

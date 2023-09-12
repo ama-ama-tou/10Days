@@ -20,6 +20,8 @@ void SceneManager::Update() {
 	//前フレームのシーンナンバーを保存
 	preSceneNo_ = sceneNo_;
 	
+	sceneNo_ = sceneArr_[sceneNo_]->getSceneNum();
+
 	
 	if (sceneNo_ != preSceneNo_) {
 		if (preSceneNo_ == SCENE_SELECT && sceneNo_ == SCENE_GAME) {
@@ -30,8 +32,7 @@ void SceneManager::Update() {
 		sceneArr_[sceneNo_]->Load();
 	}
 	
-	sceneNo_ = sceneArr_[sceneNo_]->getSceneNum();
-
+	
 
 		sceneArr_[sceneNo_]->Update();
 	

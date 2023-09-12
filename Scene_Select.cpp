@@ -55,7 +55,7 @@ void Scene_Select::Load() {
 									};
 		
 		stage_[i].Init(selectButtonPos[i], selectButtonSize, Vec2(0.0f, 0.0f),
-			stageGH[i], ,
+			stageGH[i], WHITE,WHITE,
 			Vec2(0.0f, 0.0f), selectButtonSize);
 	}
 

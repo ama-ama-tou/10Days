@@ -28,7 +28,7 @@ void Scene_Title::Load() {
 
 	const char* goSelectGH = "./Resources/image/obj/button/goSelectButton.png";
 	Button_goSelect.Init(goSelectPos, buttonSize, Vec2(0.0f, 0.0f),
-		goSelectGH, 0x53558b, 0xe28f8f,
+		goSelectGH, 0x53558bff, 0xe28f8fff,
 		Vec2(0.0f, 0.0f), buttonSize);
 
 	Vec2 exitButtonPos{ goSelectPos.x,goSelectPos.y + (buttonSize.y * 0.4f) };
@@ -36,7 +36,7 @@ void Scene_Title::Load() {
 	const char* exitGH = "./Resources/image/obj/button/exitButton.png";
 	
 	Button_exit.Init(exitButtonPos, buttonSize, Vec2(0.0f, 0.0f),
-		exitGH, 0x53558b, 0xe28f8f, Vec2(0.0f, 0.0f), buttonSize);
+		exitGH, 0x53558bff, 0xe28f8fff, Vec2(0.0f, 0.0f), buttonSize);
 
 }
 
@@ -53,6 +53,7 @@ void Scene_Title::Update() {
 		setIsExitGame(true);
 	}
 	Novice::ScreenPrintf(10, 10, "titleBar= %f,%f", titleBar.getScreenLtVertex().x, titleBar.getScreenLtVertex().y);
+	Novice::ScreenPrintf(10, 20, "color=%d", Button_goSelect.getColor());
 }
 
 void Scene_Title::Draw() {
