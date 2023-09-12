@@ -20,22 +20,25 @@ void Scene_Title::Load() {
 	//ボタン初期化
 	//=================
 
-	Vec2 goSelectPos = Vec2(titleBar.getScreenLbVertex().x,
-		titleBar.getScreenLbVertex().y + 100.0f);
-
 	//ボタンサイズは統一する
-	Vec2 buttonSize{ 500.0f,100.0f };
+	Vec2 buttonSize{ 245.0f,45.0f };
+
+	Vec2 goSelectPos = Vec2((kWindowSize.x / 8.0f)*3.0f,
+		titleBar.getScreenLbVertex().y + buttonSize.y);
+
+	
+
 	const char* goSelectGH = "./Resources/image/obj/button/goSelectButton.png";
 	Button_goSelect.Init(goSelectPos, buttonSize, Vec2(0.0f, 0.0f),
 		goSelectGH, 0x53558bff, 0xe28f8fff,
 		Vec2(0.0f, 0.0f), buttonSize);
 
-	Vec2 exitButtonPos{ menuButtonPos.x,menuButtonPos.y + 50.0f };
+	Vec2 exitButtonPos{ goSelectPos.x,goSelectPos.y + (buttonSize.y * 0.4f) };
 
-	const char* exitGH = "./Resources/image/obj/button/exit.png";
+	const char* exitGH = "./Resources/image/obj/button/exitButton.png";
 	
 	Button_exit.Init(exitButtonPos, buttonSize, Vec2(0.0f, 0.0f),
-		exitGH, 0x, 0x, Vec2(0.0f, 0.0f), buttonSize);
+		exitGH, 0x53558bff, 0xe28f8fff, Vec2(0.0f, 0.0f), buttonSize);
 
 }
 
@@ -59,7 +62,7 @@ void Scene_Title::Draw() {
 
 	//ボタンの描画
 	Button_exit.Draw();
-	Button_goManu.Draw();
+	
 	Button_goSelect.Draw();
 }
 

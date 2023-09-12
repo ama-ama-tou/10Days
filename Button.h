@@ -1,6 +1,7 @@
-#pragma once
+﻿#pragma once
 #include "Quad.h"
 #include <Vec2.h>
+#include<Novice.h>
 
 class Button :
 	public Quad {
@@ -12,7 +13,7 @@ private:
 	bool isInsideMouse_;
 	bool isClicked_;
 
-	const char* filePass_;
+	int GH_;
 
 	unsigned int colorBeforeClick_;
 	unsigned int color_;
@@ -34,8 +35,8 @@ public:
 		color_ = colorBeforeClick_;
 		colorAfterClick_ = colorAfterClicked;
 
-		filePass_ = GH;
-		int GH_ = Novice::LoadTexture(filePass_);
+		GH_ = Novice::LoadTexture(GH);
+		
 		Quad::Init(pos, size, localCoOrigin, GH_, imageLtPos, imageSize,color_);
 	}
 
