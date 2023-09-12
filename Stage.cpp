@@ -126,7 +126,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
-			if (block_[r][c].getIsHadBlock()) {
+			if (block_[r][c].getIsHadBlock() == true && block_[r][c].getIsPreHadBlock() == true) {
 				//クリア条件
 				playerHasBlockNum++;
 			}

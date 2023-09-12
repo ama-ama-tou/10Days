@@ -29,13 +29,9 @@ class Stage {
 	//N極,S極の数の和()
 	int NSBlockNum_;
 
-	//前フレームでプレイヤーがそのブロックを持っていたか。
-	//blockと同じ数
-	bool** prePlayerHasBlocks;
-
-
+	
 	//プレイヤーがもっているblockの数
-	int playerHadBlockNum;
+	int playerHasBlockNum;
 
 	CollisionManager* collision;
 

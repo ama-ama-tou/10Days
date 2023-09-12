@@ -31,11 +31,12 @@ class Block :
 
     //ブロックを持っているかいないか
     bool isHadBlock_;
+    bool isPreHadBlock_;
 
     //ブロックがくっついたときの効果音
     int SH_;
     int VH_;
-    bool isPreHadBlock_;
+   
 
 public:
     Block() {
@@ -76,6 +77,8 @@ public:
 
     bool getIsHadBlock() { return isHadBlock_; }
     void setIsHadBlock(bool isHadBlock) { isHadBlock_ = isHadBlock; }
+    bool getIsPreHadBlock() { return isPreHadBlock_; }
+    //void setIsPreHadBlock(bool ){} セットしてはいけない
 
     ///ブロックの各面が接しているか
     bool getIsFacingTop() { return isFacing_; }
