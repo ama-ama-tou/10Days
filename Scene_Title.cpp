@@ -54,8 +54,6 @@ void Scene_Title::Update() {
 	if (Button_exit.getIsClicked()) {
 		setIsExitGame(true);
 	}
-	Novice::ScreenPrintf(10, 10, "titleBar= %f,%f", titleBar.getScreenLtVertex().x, titleBar.getScreenLtVertex().y);
-	Novice::ScreenPrintf(10, 20, "color=%d", Button_goSelect.getColor());
 }
 
 void Scene_Title::Draw() {
