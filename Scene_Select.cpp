@@ -26,7 +26,7 @@ void Scene_Select::Load() {
 	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
 	const char* goTitleClickedGH = "./Resources/image/obj/button/goTitleClickedButton.png";
 	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
-		goTitleGH, goTitleClickedGH,
+		goTitleGH,,
 		Vec2(0.0f, 0.0f), goTitleButtonSize);
 
 	//ステージセレクトボタン
@@ -40,10 +40,9 @@ void Scene_Select::Load() {
 			60.0f + selectButtonRow * (selectButtonSize.y + selectButtonSpace.y));
 
 		const char* selectGH = "./Resources/image/obj/button/select.png";
-		const char* selectClickedGH = "./Resources/image/obj/button/selectClickedGH.png";
-
+		
 		stage_[i].Init(selectButtonPos[i], selectButtonSize, Vec2(0.0f, 0.0f),
-			selectGH, selectClickedGH,
+			selectGH, ,
 			Vec2(0.0f, 0.0f), selectButtonSize);
 	}
 

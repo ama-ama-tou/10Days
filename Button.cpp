@@ -27,7 +27,7 @@ void Button::Update(Vec2 mousePos, int clickState) {
 	if (isInsideMouse_) {
 		if (currentTime_<1.0f) {
 			//colorAfterClickへ移動
-			currentTime_ += 1.0 / 60.0f;//1秒間
+			currentTime_ += 1.0f / 60.0f;//1秒間
 		}
 		
 
@@ -38,7 +38,7 @@ void Button::Update(Vec2 mousePos, int clickState) {
 	} else {
 		if (currentTime_<0.0f) {
 			//colorBeforeClickへ移動
-			currentTime_ -= 1.0 / 60.0f;//1秒間
+			currentTime_ -= 1.0f / 60.0f;//1秒間
 		}
 
 
