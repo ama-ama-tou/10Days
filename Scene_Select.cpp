@@ -31,7 +31,7 @@ void Scene_Select::Load() {
 
 	//ステージセレクトボタン
 	Vec2 selectButtonSize = { 150.0f,150.0f };
-	Vec2 selectButtonSpace = { 200.0f,50.0f };
+	Vec2 selectButtonSpace = { 150.0f,50.0f };
 	const int numCols = 4;
 	const int numRows = 3;
 	Vec2 selectButtonPos[numCols*numRows];
