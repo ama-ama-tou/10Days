@@ -28,7 +28,6 @@ class Stage {
 
 	//N極,S極の数の和()
 	int NSBlockNum_;
-
 	
 	//プレイヤーがもっているblockの数
 	int playerHasBlockNum;
