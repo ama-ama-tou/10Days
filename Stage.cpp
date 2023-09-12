@@ -61,7 +61,8 @@ void Stage::Init() {
 		//==================
 
 		//座標をランダムで設定
-		bkRedQuadPos_[i] = { static_cast<float>(rand() % 1280),static_cast<float>(rand() % 720) };
+		bkRedQuadPos_[i].x = static_cast<float>(rand() % 1280);
+		bkRedQuadPos_[i].y = static_cast<float>(rand() % 720);
 		//サイズをランダムで設定
 		bkRedQuadSize_[i].x = static_cast<float>(rand() % 11 + 10);
 		bkRedQuadSize_[i].y = bkRedQuadSize_[i].x;
@@ -84,7 +85,8 @@ void Stage::Init() {
 		//==================
 
 		//座標をランダムで設定
-		bkBlueQuadPos_[i] = { static_cast<float>(rand() % 1280),static_cast<float>(rand() % 720) };
+		bkBlueQuadPos_[i].x = static_cast<float>(rand() % 1280);
+		bkBlueQuadPos_[i].y = static_cast<float>(rand() % 720);
 		//サイズをランダムで設定
 		bkBlueQuadSize_[i].x = static_cast<float>(rand() % 11 + 10);
 		bkBlueQuadSize_[i].y = bkBlueQuadSize_[i].x;

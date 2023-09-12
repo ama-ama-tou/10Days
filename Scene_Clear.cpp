@@ -13,13 +13,13 @@ void Scene_Clear::Load() {
 		clearVertex_[i][2] = Vec2(clearPos_[i].x - clearSize_.x, clearPos_[i].y + clearSize_.y);
 		clearVertex_[i][3] = Vec2(clearPos_[i].x + clearSize_.x, clearPos_[i].y + clearSize_.y);
 	}
-	clearGH_[0] = Novice::LoadTexture("./Resources/image/font/clear1");
-	clearGH_[1] = Novice::LoadTexture("./Resources/image/font/clear2");
-	clearGH_[2] = Novice::LoadTexture("./Resources/image/font/clear3");
+	clearGH_[0] = Novice::LoadTexture("./Resources/image/font/clear1.png");
+	clearGH_[1] = Novice::LoadTexture("./Resources/image/font/clear2.png");
+	clearGH_[2] = Novice::LoadTexture("./Resources/image/font/clear3.png");
 
-	roatedClearGH_[0] = Novice::LoadTexture("./Resources/image/font/roatedClear1");
-	roatedClearGH_[1] = Novice::LoadTexture("./Resources/image/font/roatedClear2");
-	roatedClearGH_[2] = Novice::LoadTexture("./Resources/image/font/roatedClear3");
+	roatedClearGH_[0] = Novice::LoadTexture("./Resources/image/font/roatedClear1.png");
+	roatedClearGH_[1] = Novice::LoadTexture("./Resources/image/font/roatedClear2.png");
+	roatedClearGH_[2] = Novice::LoadTexture("./Resources/image/font/roatedClear3.png");
 
 	isRoated_ = false;
 	roatedCount_ = 0;
