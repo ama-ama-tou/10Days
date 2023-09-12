@@ -68,7 +68,7 @@ void Scene_Select::Update() {
 	for (int i = 0; i < 12; i++) {
 		stage_[i].Update(inputManager->getMousePos(), inputManager->getClickState());
 		if (stage_[i].getIsClicked()) {
-			setStageNum(i);
+			Scene::stageNum_ = i;
 			Scene::sceneNum = SCENE_GAME;
 		}
 	}

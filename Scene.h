@@ -32,14 +32,13 @@ class Scene{
 private:
 
 	bool isExitGame_;
-	static int stageNum_;
-
 
 protected:
 	InputManager* inputManager = InputManager::GetInstance();
 
 	static int sceneNum;
-	
+	static int stageNum_;
+
 public :
 
 	virtual ~Scene(){};
@@ -50,9 +49,6 @@ public :
 	virtual void Unload() = 0;
 
 	int getSceneNum() { return sceneNum; }
-
-	int getStageNum() { return stageNum_; }
-	void setStageNum(int stageNum) { stageNum_ = stageNum; }
 
 	bool getIsExitGame() { return isExitGame_; }
 	void setIsExitGame(bool exit) { isExitGame_ = exit; }
