@@ -299,96 +299,96 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 
 
 				///下の面
-				if (block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c]].getType() != WALL) {
+				//if (block_[bLtRowAddress_][bLtColAddress_].getType() != WALL) {
 
-					if (block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c]].getIsHadBlock() == false) {
-						if (block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c]].getIsFacingBottom() != true) {
+				//	if (block_[bLtRowAddress_][bLtColAddress_[r][c]].getIsHadBlock() == false) {
+				//		if (block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c]].getIsFacingBottom() != true) {
 
-							if (block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].getType() != NONE && //右下の1個下
-								block_[bLbRowAddress_[r][c] + 1][bLbColAddress_[r][c]].getType() != NONE) { //左下の1個下
-								//面しているブロックの種類を判断
-								if (block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].getType() == block_[bRbColAddress_[r][c]][bRbRowAddress_[r][c]].getType() && //右下の1個上と今のブロック
-									block_[bLbRowAddress_[r][c] + 1][bLbColAddress_[r][c]].getType() == block_[bLbColAddress_[r][c]][bLbRowAddress_[r][c]].getType()) { //左下の1個上と今のブロック
-									//持たれているブロックか判定する
-									if (!block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].getIsHadBlock()) {
-										//1個先のブロックのposを奥に移動させる
-										block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].pointInit(block_[bRbRowAddress_[r][c] + 2][bRbColAddress_[r][c]].getPos());
-									}
+				//			if (block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].getType() != NONE && //右下の1個下
+				//				block_[bLbRowAddress_[r][c] + 1][bLbColAddress_[r][c]].getType() != NONE) { //左下の1個下
+				//				//面しているブロックの種類を判断
+				//				if (block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].getType() == block_[bRbColAddress_[r][c]][bRbRowAddress_[r][c]].getType() && //右下の1個上と今のブロック
+				//					block_[bLbRowAddress_[r][c] + 1][bLbColAddress_[r][c]].getType() == block_[bLbColAddress_[r][c]][bLbRowAddress_[r][c]].getType()) { //左下の1個上と今のブロック
+				//					//持たれているブロックか判定する
+				//					if (!block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].getIsHadBlock()) {
+				//						//1個先のブロックのposを奥に移動させる
+				//						block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].pointInit(block_[bRbRowAddress_[r][c] + 2][bRbColAddress_[r][c]].getPos());
+				//					}
 
-								} else {
-									if (block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].getType() == S_POLE || block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].getType() == N_POLE) {
-										//持たれているブロックか判定する
-										if (block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].getIsHadBlock() != block_[bRbRowAddress_[r][c]][bRbColAddress_[r][c]].getIsHadBlock()) {
+				//				} else {
+				//					if (block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].getType() == S_POLE || block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].getType() == N_POLE) {
+				//						//持たれているブロックか判定する
+				//						if (block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].getIsHadBlock() != block_[bRbRowAddress_[r][c]][bRbColAddress_[r][c]].getIsHadBlock()) {
 
-											///ローカル座標に追加するための初期化
-											Vec2 resetPos;
-											resetPos.x = 0;
-											resetPos.y = 53;
-											block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].pointInit(resetPos);
-											//ローカル座標に追加
-										//	block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].setLocalCoOrigin(player_.getScreenLtVertex());
-											//ブロックを持たせる
-											block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].setIsHadBlock(true);
-											//面している
-											block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].setIsFacingBottom(true);
+				//							///ローカル座標に追加するための初期化
+				//							Vec2 resetPos;
+				//							resetPos.x = 0;
+				//							resetPos.y = 53;
+				//							block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].pointInit(resetPos);
+				//							//ローカル座標に追加
+				//						//	block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].setLocalCoOrigin(player_.getScreenLtVertex());
+				//							//ブロックを持たせる
+				//							block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].setIsHadBlock(true);
+				//							//面している
+				//							block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].setIsFacingBottom(true);
 
-										}
+				//						}
 
-									} else if (block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].getType() == WALL) {
-										//WALLの時はFacingをtrueにするだけでいい
-										block_[bRbRowAddress_[r][c]][bRbColAddress_[r][c]].setIsFacingBottom(true);
+				//					} else if (block_[bRbRowAddress_[r][c] + 1][bRbColAddress_[r][c]].getType() == WALL) {
+				//						//WALLの時はFacingをtrueにするだけでいい
+				//						block_[bRbRowAddress_[r][c]][bRbColAddress_[r][c]].setIsFacingBottom(true);
 
-									}
-								}
-							}
-						}
-					}
-				}
+				//					}
+				//				}
+				//			}
+				//		}
+				//	}
+				//}
 
-				///左の面
-				if (block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c]].getType() != WALL) {
+				/////左の面
+				//if (block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c]].getType() != WALL) {
 
-					if (block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c]].getIsHadBlock() == false) {
-						if (block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c]].getIsFacingBottom() != true) {
+				//	if (block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c]].getIsHadBlock() == false) {
+				//		if (block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c]].getIsFacingBottom() != true) {
 
-							if (block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].getType() != NONE && //左下の1個左
-								block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c] - 1].getType() != NONE) { //左上の1個左
-								//面しているブロックの種類を判断
-								if (block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].getType() == block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c]].getType() && //左下の1個上と今のブロック
-									block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c] - 1].getType() == block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c]].getType()) { //左上の1個上と今のブロック
-									//持たれているブロックか判定する
-									if (block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].getIsHadBlock() != true) {
-										//1個先のブロックのposを奥に移動させる
-										block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].pointInit(block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 2].getPos());
-									}
+				//			if (block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].getType() != NONE && //左下の1個左
+				//				block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c] - 1].getType() != NONE) { //左上の1個左
+				//				//面しているブロックの種類を判断
+				//				if (block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].getType() == block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c]].getType() && //左下の1個上と今のブロック
+				//					block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c] - 1].getType() == block_[bLtRowAddress_[r][c]][bLtColAddress_[r][c]].getType()) { //左上の1個上と今のブロック
+				//					//持たれているブロックか判定する
+				//					if (block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].getIsHadBlock() != true) {
+				//						//1個先のブロックのposを奥に移動させる
+				//						block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].pointInit(block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 2].getPos());
+				//					}
 
-								} else {
-									if (block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].getType() == S_POLE || block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].getType() == N_POLE) {
-										//持たれているブロックか判定する
-										if (block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].getIsHadBlock() != block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c]].getIsHadBlock()) {
+				//				} else {
+				//					if (block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].getType() == S_POLE || block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].getType() == N_POLE) {
+				//						//持たれているブロックか判定する
+				//						if (block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].getIsHadBlock() != block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c]].getIsHadBlock()) {
 
-											///ローカル座標に追加するための初期化
-											Vec2 resetPos;
-											resetPos.x = -53;
-											resetPos.y = 0;
-											block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].pointInit(resetPos);
-											//ローカル座標に追加
-											//block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].setLocalCoOrigin(player_.getScreenLtVertex());
-											//ブロックを持たせる
-											block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].setIsHadBlock(true);
-											//面している
-											block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].setIsFacingLeft(true);
+				//							///ローカル座標に追加するための初期化
+				//							Vec2 resetPos;
+				//							resetPos.x = -53;
+				//							resetPos.y = 0;
+				//							block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].pointInit(resetPos);
+				//							//ローカル座標に追加
+				//							//block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].setLocalCoOrigin(player_.getScreenLtVertex());
+				//							//ブロックを持たせる
+				//							block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].setIsHadBlock(true);
+				//							//面している
+				//							block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].setIsFacingLeft(true);
 
-										}
-									} else if (block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].getType() == WALL) {
-										//WALLの時はFacingをtrueにするだけでいい
-										block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c]].setIsFacingLeft(true);
-									}
-								}
-							}
-						}
-					}
-				}
+				//						}
+				//					} else if (block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c] - 1].getType() == WALL) {
+				//						//WALLの時はFacingをtrueにするだけでいい
+				//						block_[bLbRowAddress_[r][c]][bLbColAddress_[r][c]].setIsFacingLeft(true);
+				//					}
+				//				}
+				//			}
+				//		}
+				//	}
+				//}
 
 
 				//今の頂点が壁に侵入したら1f前に戻す
