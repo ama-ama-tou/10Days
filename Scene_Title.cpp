@@ -49,6 +49,7 @@ void Scene_Title::Update() {
 	Button_exit.Update(inputManager->getMousePos(), inputManager->getClickState());
 
 	if (Button_goSelect.getIsClicked()) {
+		
 		Scene::sceneNum = SCENE_SELECT;
 	}
 	if (Button_exit.getIsClicked()) {

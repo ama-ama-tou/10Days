@@ -37,7 +37,7 @@ protected:
 	InputManager* inputManager = InputManager::GetInstance();
 
 	static int sceneNum;
-	static int stageNum;
+	static int stageNum_;
 
 public :
 
@@ -49,7 +49,6 @@ public :
 	virtual void Unload() = 0;
 
 	int getSceneNum() { return sceneNum; }
-	int getStageNum() { return stageNum; }
 
 	bool getIsExitGame() { return isExitGame_; }
 	void setIsExitGame(bool exit) { isExitGame_ = exit; }
