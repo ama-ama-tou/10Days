@@ -24,9 +24,8 @@ void Scene_Select::Load() {
 	Vec2 goTitlePos = Vec2(50.0f, 670.0f);
 	Vec2 goTitleButtonSize{ 100,50.0f };
 	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
-	const char* goTitleClickedGH = "./Resources/image/obj/button/goTitleClickedButton.png";
 	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
-		goTitleGH,,
+		goTitleGH,WHITE,WHITE,
 		Vec2(0.0f, 0.0f), goTitleButtonSize);
 
 	//ステージセレクトボタン

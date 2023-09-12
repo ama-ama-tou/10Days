@@ -27,6 +27,17 @@ public:
 
 	Button() {};
 
+	/// <summary>
+	/// 初期化
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <param name="size"></param>
+	/// <param name="localCoOrigin"></param>
+	/// <param name="GH"></param>
+	/// <param name="color">alpha値を含まない</param>
+	/// <param name="colorAfterClicked">alpha値を含まない</param>
+	/// <param name="imageLtPos"></param>
+	/// <param name="imageSize"></param>
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, const char* GH,unsigned int color,unsigned int colorAfterClicked,Vec2 imageLtPos, Vec2 imageSize) {
 		
 		currentTime_ = 0.0f;
@@ -37,7 +48,7 @@ public:
 
 		GH_ = Novice::LoadTexture(GH);
 		
-		Quad::Init(pos, size, localCoOrigin, GH_, imageLtPos, imageSize,color_);
+		Quad::Init(pos, size, localCoOrigin, GH_, imageLtPos, imageSize,color_+0xff);
 	}
 
 	void checkInsideMouse(Vec2 mousepos);

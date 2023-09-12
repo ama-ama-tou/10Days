@@ -123,7 +123,7 @@
       <Filter>Game\lib\myMath</Filter>
     </ClCompile>
     <ClCompile Include="Triangle.cpp">
-      <Filter>KamataEngine</Filter>
+      <Filter>Game\Entitiy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +256,8 @@
     <ClInclude Include="easing.h">
       <Filter>Game\lib\myMath</Filter>
     </ClInclude>
-    <ClInclude Include="Triangle.h" />
+    <ClInclude Include="Triangle.h">
+      <Filter>Game\Entitiy</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

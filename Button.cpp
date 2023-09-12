@@ -14,7 +14,7 @@ void Button::colorChange() {
 	
 	t = currentTime_ / 1.0f;
 	color_ = static_cast<int>(colorBeforeClick_ + (colorAfterClick_ - colorBeforeClick_) * easeInOutQuart(t));
-	Quad::setColor(color_);
+	Quad::setColor(color_+0xff);
 }
 
 
