@@ -47,6 +47,9 @@
     <Filter Include="Game\Manager\GameManager">
       <UniqueIdentifier>{e67f2d7f-2226-4642-9f5d-c43088b53ffd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\lib\myMath">
+      <UniqueIdentifier>{66333841-8055-4c15-b3c5-3cf7e0b85325}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\DirectXCommon.cpp">
@@ -115,6 +118,9 @@
     </ClCompile>
     <ClCompile Include="box.cpp">
       <Filter>Game\Entitiy</Filter>
+    </ClCompile>
+    <ClCompile Include="easing.cpp">
+      <Filter>Game\lib\myMath</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -243,6 +249,9 @@
     <ClInclude Include="Matrix3x3.h" />
     <ClInclude Include="box.h">
       <Filter>Game\Entitiy</Filter>
+    </ClInclude>
+    <ClInclude Include="easing.h">
+      <Filter>Game\lib\myMath</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

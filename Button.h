@@ -12,18 +12,24 @@ private:
 	bool isInsideMouse_;
 	bool isClicked_;
 
-	const char* filePass_[2];
-	int GH_;
+	const char* filePass_;
+
+	unsigned int color_;
+	unsigned int colorAfterClicked_;
+	
 	
 public:
 
 	Button() {};
 
-	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, const char* GH, const char* clicedGH,Vec2 imageLtPos, Vec2 imageSize) {
-		Quad::Init(pos, size,localCoOrigin, 0, imageLtPos, imageSize);
-		filePass_[0] = GH;
-		filePass_[1] = clicedGH;
+	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, const char* GH,unsigned int color,unsigned int colorAfterClicked,Vec2 imageLtPos, Vec2 imageSize) {
+		
+		color_ = color;
+		colorAfterClicked_ = colorAfterClicked;
 
+		filePass_ = GH;
+		int GH_ = Novice::LoadTexture(filePass_);
+		Quad::Init(pos, size, localCoOrigin, GH_, imageLtPos, imageSize,color);
 	}
 
 	void checkInsideMouse(Vec2 mousepos);
