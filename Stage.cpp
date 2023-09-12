@@ -201,6 +201,8 @@ void Stage::Update(char* keys, char* preKeys) {
 			bkBlueQuadScaleValue_[i] *= Vec2(-1, -1);
 		}
 
+
+
 		//色の制御
 		bkBlueQuadColor_ += subtractiveColor_;
 		if (bkBlueQuadColor_ == 0xb8cfffdd) {

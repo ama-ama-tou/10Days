@@ -29,18 +29,8 @@ void Scene_Select::Load() {
 		Vec2(0.0f, 0.0f), goTitleButtonSize);
 
 	//ステージセレクトボタン
-	Vec2 selectButtonSize = { 150.0f,150.0f };
-	Vec2 selectButtonSpace = { 150.0f,50.0f };
-	const int numCols = 4;
-	const int numRows = 3;
-	Vec2 selectButtonPos[numCols*numRows];
-	for (int i = 0; i < numCols * numRows; i++) {
-		int selectButtonRow = i / numCols;//行番号(0,1,2)
-		int selectButtonCol = i % numCols;//列番号(0,1,2,3)
-		selectButtonPos[i] = Vec2(115.0f + selectButtonCol * (selectButtonSize.x + selectButtonSpace.x),
-			85.0f + selectButtonRow * (selectButtonSize.y + selectButtonSpace.y));
 
-		const char* stageGH[12] = { "./Resources/image/obj/button/stage1.png",
+	const char* stageGH[12] = { "./Resources/image/obj/button/stage1.png",
 									"./Resources/image/obj/button/stage2.png"
 									"./Resources/image/obj/button/stage3.png"
 									"./Resources/image/obj/button/stage4.png"
@@ -52,7 +42,20 @@ void Scene_Select::Load() {
 									"./Resources/image/obj/button/stage10.png"
 									"./Resources/image/obj/button/stage11.png"
 									"./Resources/image/obj/button/stage12.png"
-									};
+	};
+
+	Vec2 selectButtonSize = { 150.0f,150.0f };
+	Vec2 selectButtonSpace = { 150.0f,50.0f };
+	const int numCols = 4;
+	const int numRows = 3;
+	Vec2 selectButtonPos[numCols*numRows];
+	for (int i = 0; i < numCols * numRows; i++) {
+		int selectButtonRow = i / numCols;//行番号(0,1,2)
+		int selectButtonCol = i % numCols;//列番号(0,1,2,3)
+		selectButtonPos[i] = Vec2(115.0f + selectButtonCol * (selectButtonSize.x + selectButtonSpace.x),
+			85.0f + selectButtonRow * (selectButtonSize.y + selectButtonSpace.y));
+
+		
 		
 		stage_[i].Init(selectButtonPos[i], selectButtonSize, Vec2(0.0f, 0.0f),
 			stageGH[i], WHITE,WHITE,
