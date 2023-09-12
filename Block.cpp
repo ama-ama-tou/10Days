@@ -48,6 +48,8 @@ void Block::Draw() {
 			VH_ = Novice::PlayAudio(SH_, false, 0.3f);
 		}
 	}
+
+	Quad::Draw();
 }
 
 
