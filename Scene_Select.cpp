@@ -1,7 +1,6 @@
 ﻿#include "Scene_Select.h"
 #include "Button.h"
 #include "Scene_Title.h"
-#include "InputManager.h"
 
 StageNum Scene_Select::getSelectedStage() {
 	for (int i = 0; i < 12; i++) {
