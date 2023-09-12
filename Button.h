@@ -18,7 +18,7 @@ private:
 	unsigned int color_;
 	unsigned int colorAfterClick_;
 	
-	//easingŒvZ
+	//easingè¨ˆç®—
 	float currentTime_;
 	float t;
 	
