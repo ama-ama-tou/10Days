@@ -82,7 +82,7 @@ void Stage::Init() {
 		//===================
 		//青色の四角
 		//==================
-		
+
 		//座標をランダムで設定
 		bkRedQuadPos_[i] = { static_cast<float>(rand() % 1280),static_cast<float>(rand() % 720) };
 		//サイズをランダムで設定
@@ -123,31 +123,29 @@ void Stage::Update(char* keys, char* preKeys) {
 	collision->Draw(block_);
 
 
-
-
-	for (int c = 0; c < col_; c++) {
-		for (int r = 0; r < row_; r++) {
-			if (block_[r][c].getIsHadBlock()) {
+	/*for (int r = 0; r < col_; r++) {
+		for (int c = 0; c < row_; c++) {
+			if (block_[r][c].getIsHadBlock() == true) {
 				playerHasBlockNum++;
 			}
 		}
-	}
+	}*/
 
 	if (playerHasBlockNum == NSBlockNum_) {
 		isClear_ = true;
 	}
 
 
-	
+
 
 	//背景の動き
 	for (int i = 0; i < 50; i++) {
-		
-	//===================
-	//赤色の四角
-	//==================
 
-		//quadの移動
+		//===================
+		//赤色の四角
+		//==================
+
+			//quadの移動
 		bkRedQuadPos_[i] += bkRedQuadSpeed_[i];
 
 		//座標の更新
@@ -155,7 +153,7 @@ void Stage::Update(char* keys, char* preKeys) {
 		bkRedQuadVertex_[1][i] = { bkRedQuadPos_[i].x + bkRedQuadSize_[i].x,bkRedQuadPos_[i].y - bkRedQuadSize_[i].y };
 		bkRedQuadVertex_[2][i] = { bkRedQuadPos_[i].x - bkRedQuadSize_[i].x,bkRedQuadPos_[i].y + bkRedQuadSize_[i].y };
 		bkRedQuadVertex_[3][i] = { bkRedQuadPos_[i].x + bkRedQuadSize_[i].x,bkRedQuadPos_[i].y + bkRedQuadSize_[i].y };
-		
+
 		//拡縮
 		bkRedQuadSize_[i] += bkRedQuadScaleValue_[i];
 		if (bkRedQuadSize_[i] += bkRedQuadScaleValue_[i]) {
@@ -180,11 +178,11 @@ void Stage::Update(char* keys, char* preKeys) {
 		}
 
 
-	//===================
-	//青色の四角
-	//==================
+		//===================
+		//青色の四角
+		//==================
 
-		//quadの移動
+			//quadの移動
 		bkBlueQuadPos_[i] += bkBlueQuadSpeed_[i];
 
 		//座標の更新
@@ -260,6 +258,10 @@ void Stage::Draw() {
 			if (block_[r][c].getType() != 0) {
 				//blockが設置してあればDraw
 				block_[r][c].Draw();
+
+				Novice::ScreenPrintf(10, 200, "NSBlockNum:%d", NSBlockNum_);
+				Novice::ScreenPrintf(10, 220, "playerHasBlockNum:%d", playerHasBlockNum);
+
 			}
 		}
 	}

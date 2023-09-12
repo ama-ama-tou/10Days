@@ -37,7 +37,7 @@ void SceneManager::Update() {
 
 	///=======================
 	///描画処理
-		bg.Draw();
+		//bg.Draw();
 		sceneArr_[sceneNo_]->Draw();
 	
 	///=======================
