@@ -42,7 +42,7 @@ void Scene_Select::Load() {
 									"./Resources/image/obj/button/stage9.png",
 									"./Resources/image/obj/button/stage10.png",
 									"./Resources/image/obj/button/stage11.png",
-									"./Resources/image/obj/button/stage12.png",
+									"./Resources/image/obj/button/stage12.png"
 	};
 
 	Vec2 selectButtonSize = { 150.0f,150.0f };
@@ -64,7 +64,7 @@ void Scene_Select::Load() {
 	}
 
 	//ステージセレクトの効果音
-	stageSelectSH_ = Novice::LoadAudio("./Resources/sound/SE/stageSelect.png");
+	stageSelectSH_ = Novice::LoadAudio("./Resources/sound/SE/select.mp3");
 	stageSelectVH_ = -1;
 	isRang_ = false;
 }
@@ -83,7 +83,6 @@ void Scene_Select::Update() {
 		}
 		stage_[i].Update(inputManager->getMousePos(), inputManager->getClickState());
 	}
-
 
 }
 
