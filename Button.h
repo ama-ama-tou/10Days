@@ -14,9 +14,13 @@ private:
 
 	const char* filePass_;
 
+	unsigned int colorBeforeClick_;
 	unsigned int color_;
-	unsigned int colorAfterClicked_;
+	unsigned int colorAfterClick_;
 	
+	//easingåvéZ
+	float currentTime_;
+	float t;
 	
 public:
 
@@ -24,16 +28,22 @@ public:
 
 	void Init(Vec2 pos, Vec2 size, Vec2 localCoOrigin, const char* GH,unsigned int color,unsigned int colorAfterClicked,Vec2 imageLtPos, Vec2 imageSize) {
 		
-		color_ = color;
-		colorAfterClicked_ = colorAfterClicked;
+		currentTime_ = 0.0f;
+
+		colorBeforeClick_ = color;
+		color_ = colorBeforeClick_;
+		colorAfterClick_ = colorAfterClicked;
 
 		filePass_ = GH;
 		int GH_ = Novice::LoadTexture(filePass_);
-		Quad::Init(pos, size, localCoOrigin, GH_, imageLtPos, imageSize,color);
+		Quad::Init(pos, size, localCoOrigin, GH_, imageLtPos, imageSize,color_);
 	}
 
 	void checkInsideMouse(Vec2 mousepos);
 
+	
+	void colorChange();
+	
 	void Update(Vec2 mousePos, int clickState);
 
 	void Draw();

@@ -1,3 +1,3 @@
 #pragma once
 
-float easeInOutQuart(float start,float t, float goal);
+float easeInOutQuart(float t);
