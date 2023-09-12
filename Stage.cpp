@@ -67,7 +67,7 @@ void Stage::Init() {
 		bkRedQuadSize_[i].x = static_cast<float>(rand() % 11 + 10);
 		bkRedQuadSize_[i].y = bkRedQuadSize_[i].x;
 		//最大・最小拡縮量
-		bkRedQuadScaleValue_[i] = Vec2(0.1f, 0.1f);
+		bkRedQuadScaleValue_[i] = { 0.1f,0.1f };
 		bkRedQuadMinScale_[i] = { bkRedQuadSize_[i].x - 5.0f,bkRedQuadSize_[i].y - 5.0f };
 		bkRedQuadMaxScale_[i] = { bkRedQuadSize_[i].x + 5.0f,bkRedQuadSize_[i].y + 5.0f };
 		//スピードをランダムで設定
@@ -91,7 +91,7 @@ void Stage::Init() {
 		bkBlueQuadSize_[i].x = static_cast<float>(rand() % 11 + 10);
 		bkBlueQuadSize_[i].y = bkBlueQuadSize_[i].x;
 		//最大・最小拡縮量
-		bkBlueQuadScaleValue_[i] = Vec2(0.1f, 0.1f);
+		bkBlueQuadScaleValue_[i] = { 0.1f,0.1f };
 		bkBlueQuadMinScale_[i] = { bkBlueQuadSize_[i].x - 5.0f,bkBlueQuadSize_[i].y - 5.0f };
 		bkBlueQuadMaxScale_[i] = { bkBlueQuadSize_[i].x + 5.0f,bkBlueQuadSize_[i].y + 5.0f };
 		//スピードをランダムで設定
