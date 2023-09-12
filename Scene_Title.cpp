@@ -35,7 +35,7 @@ void Scene_Title::Load() {
 
 	Vec2 exitButtonPos{ goSelectPos.x,goSelectPos.y + (buttonSize.y * 0.4f) };
 
-	const char* exitGH = "./Resources/image/obj/button/exit.png";
+	const char* exitGH = "./Resources/image/obj/button/exitButton.png";
 	
 	Button_exit.Init(exitButtonPos, buttonSize, Vec2(0.0f, 0.0f),
 		exitGH, 0x53558bff, 0xe28f8fff, Vec2(0.0f, 0.0f), buttonSize);
