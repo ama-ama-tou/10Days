@@ -162,7 +162,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 		//拡縮
 		bkRedQuadSize_[i] += bkRedQuadScaleValue_[i];
-		if (bkRedQuadSize_[i] += bkRedQuadScaleValue_[i]) {
+		if (bkRedQuadSize_[i] >= bkRedQuadMaxScale_[i]) {
 			bkRedQuadScaleValue_[i] *= Vec2(-1, -1);
 		} else if (bkRedQuadSize_[i] <= bkRedQuadMinScale_[i]) {
 			bkRedQuadScaleValue_[i] *= Vec2(-1, -1);
@@ -199,7 +199,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 		//拡縮
 		bkBlueQuadSize_[i] += bkBlueQuadScaleValue_[i];
-		if (bkBlueQuadSize_[i] += bkBlueQuadScaleValue_[i]) {
+		if (bkBlueQuadSize_[i] >= bkBlueQuadMaxScale_[i]) {
 			bkBlueQuadScaleValue_[i] *= Vec2(-1, -1);
 		} else if (bkBlueQuadSize_[i] <= bkBlueQuadMinScale_[i]) {
 			bkBlueQuadScaleValue_[i] *= Vec2(-1, -1);
