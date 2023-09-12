@@ -99,13 +99,12 @@ void Stage::Init() {
 		} while (bkBlueQuadSpeed_[i] == 0);
 
 		bkBlueQuadColor_ = 0x000000aa;
-		//引いて薄くさせる色
-		subtractiveColor_ = 0x00000001;
 	}
 }
 
 void Stage::Update(char* keys, char* preKeys) {
 	player_.Update(keys, preKeys);
+
 
 	collision->playerCollision(player_, block_);
 	collision->blockCollision(player_, block_);

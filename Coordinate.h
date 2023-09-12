@@ -15,6 +15,11 @@ public:
 		return target+=origin_;
 	}
 
+	//試作(aoi)
+	Vec2 OriginFromScreen(Vec2 target) {
+		return target -= origin_;
+	}
+
 	//=========================
 	//ゲッター/セッター
 	//=========================

@@ -8,6 +8,8 @@ class CollisionManager {
 	
 	Block** block_;*/
 
+	Quad quad_;
+
 	//各頂点の番地
 	int rowAddress_[4] = { 0 };
 	int colAddress_[4] = { 0 };
@@ -25,6 +27,9 @@ class CollisionManager {
 	int bRtColAddress_[12][12] = { 0 };
 	int bLbColAddress_[12][12] = { 0 };
 	int bRbColAddress_[12][12] = { 0 };
+
+	//保存用の変数
+	Vec2 bLtPreVertex_[12][12] = {};
 
 public:
 	CollisionManager(const int& maxRow, const int& maxCol) {
@@ -47,6 +52,9 @@ public:
 
 	const int getMaxRow() { return maxRow_; }
 	const int getMaxCol() { return maxCol_; }
+
+	Vec2 getBLtPreVertex() { return quad_.getLtVertex(); }
+	void setBLtPreVertex(Vec2 vertex, int r, int c) { bLtPreVertex_[r][c] = vertex; }
 
 };
 
