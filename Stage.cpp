@@ -82,7 +82,7 @@ void Stage::Init() {
 		//===================
 		//青色の四角
 		//==================
-		
+
 		//座標をランダムで設定
 		bkRedQuadPos_[i] = { static_cast<float>(rand() % 1280),static_cast<float>(rand() % 720) };
 		//サイズをランダムで設定
@@ -124,10 +124,10 @@ void Stage::Update(char* keys, char* preKeys) {
 
 
 
-
-	for (int c = 0; c < col_; c++) {
-		for (int r = 0; r < row_; r++) {
-			if (block_[r][c].getIsHadBlock()) {
+	for (int r = 0; r < row_; r++) {
+		for (int c = 0; c < col_; c++) {
+			if (block_[r][c].getIsHadBlock() == true && block_[r][c].getIsPreHadBlock() == true) {
+				//クリア条件
 				playerHasBlockNum++;
 			}
 		}
@@ -138,16 +138,16 @@ void Stage::Update(char* keys, char* preKeys) {
 	}
 
 
-	
+
 
 	//背景の動き
 	for (int i = 0; i < 50; i++) {
-		
-	//===================
-	//赤色の四角
-	//==================
 
-		//quadの移動
+		//===================
+		//赤色の四角
+		//==================
+
+			//quadの移動
 		bkRedQuadPos_[i] += bkRedQuadSpeed_[i];
 
 		//座標の更新
@@ -155,7 +155,7 @@ void Stage::Update(char* keys, char* preKeys) {
 		bkRedQuadVertex_[1][i] = { bkRedQuadPos_[i].x + bkRedQuadSize_[i].x,bkRedQuadPos_[i].y - bkRedQuadSize_[i].y };
 		bkRedQuadVertex_[2][i] = { bkRedQuadPos_[i].x - bkRedQuadSize_[i].x,bkRedQuadPos_[i].y + bkRedQuadSize_[i].y };
 		bkRedQuadVertex_[3][i] = { bkRedQuadPos_[i].x + bkRedQuadSize_[i].x,bkRedQuadPos_[i].y + bkRedQuadSize_[i].y };
-		
+
 		//拡縮
 		bkRedQuadSize_[i] += bkRedQuadScaleValue_[i];
 		if (bkRedQuadSize_[i] += bkRedQuadScaleValue_[i]) {
@@ -180,11 +180,11 @@ void Stage::Update(char* keys, char* preKeys) {
 		}
 
 
-	//===================
-	//青色の四角
-	//==================
+		//===================
+		//青色の四角
+		//==================
 
-		//quadの移動
+			//quadの移動
 		bkBlueQuadPos_[i] += bkBlueQuadSpeed_[i];
 
 		//座標の更新

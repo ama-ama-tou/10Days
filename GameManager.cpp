@@ -14,11 +14,13 @@ void GameManager::Run() {
 		//選ばれたシーンの処理
 		sceneManager_->Update();
 
+
+
 		// フレームの終了
 		Novice::EndFrame();
 
-		// ESCキーが押されたらループを抜ける
-		if (inputManager_->GetPreKeys()[DIK_ESCAPE] == 0 && inputManager_->GetKeys()[DIK_ESCAPE] != 0) {
+		// ループを抜ける
+		if (sceneManager_->getExit()) {
 			break;
 		}
 	}

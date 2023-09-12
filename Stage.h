@@ -28,9 +28,10 @@ class Stage {
 
 	//N極,S極の数の和()
 	int NSBlockNum_;
-	
-	int playerHasBlockNum{0};
 
+	
+	//プレイヤーがもっているblockの数
+	int playerHasBlockNum;
 
 	CollisionManager* collision;
 
@@ -60,6 +61,7 @@ class Stage {
 	Vec2 bkBlueQuadMinScale_[20];
 	Vec2 bkBlueQuadMaxScale_[20];
 	int bkBlueQuadColor_;
+
 
 public:
 	

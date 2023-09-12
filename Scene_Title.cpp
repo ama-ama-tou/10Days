@@ -49,7 +49,7 @@ void Scene_Title::Update() {
 		Scene::sceneNum = SCENE_SELECT;
 	}
 	if (Button_exit.getIsClicked()) {
-	//ゲームを終了させる処理
+		setIsExitGame(true);
 	}
 }
 

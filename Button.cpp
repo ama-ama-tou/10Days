@@ -13,7 +13,7 @@ void Button::checkInsideMouse(Vec2 mousePos) {
 void Button::colorChange() {
 	
 	t = currentTime_ / 1.0f;
-	color_ = colorBeforeClick_ + (colorAfterClick_ - colorBeforeClick_) * easeInOutQuart(t);
+	color_ = static_cast<int>(colorBeforeClick_ + (colorAfterClick_ - colorBeforeClick_) * easeInOutQuart(t));
 	Quad::setColor(color_);
 }
 
