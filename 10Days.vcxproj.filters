@@ -122,6 +122,9 @@
     <ClCompile Include="easing.cpp">
       <Filter>Game\lib\myMath</Filter>
     </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -253,5 +256,6 @@
     <ClInclude Include="easing.h">
       <Filter>Game\lib\myMath</Filter>
     </ClInclude>
+    <ClInclude Include="Triangle.h" />
   </ItemGroup>
 </Project>

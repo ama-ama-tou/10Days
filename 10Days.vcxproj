@@ -124,6 +124,7 @@
     <ClCompile Include="Scene_Select.cpp" />
     <ClCompile Include="Scene_Title.cpp" />
     <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Scene_Select.h" />
     <ClInclude Include="Scene_Title.h" />
     <ClInclude Include="Stage.h" />
+    <ClInclude Include="Triangle.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="box.h" />
   </ItemGroup>

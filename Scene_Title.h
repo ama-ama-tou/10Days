@@ -15,6 +15,8 @@ private:
 	int backgroundSH_;
 	int backgroundVH_;
 
+
+
 public:
 	Scene_Title() {}
 
