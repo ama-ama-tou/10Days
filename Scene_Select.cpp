@@ -41,10 +41,22 @@ void Scene_Select::Load() {
 		selectButtonPos[i] = Vec2(240.0f + selectButtonCol * (selectButtonSize.x + selectButtonSpace.x),
 			60.0f + selectButtonRow * (selectButtonSize.y + selectButtonSpace.y));
 
-		const char* selectGH = "./Resources/image/obj/button/select.png";
+		const char* stageGH[12] = { "./Resources/image/obj/button/stage1.png",
+									"./Resources/image/obj/button/stage2.png"
+									"./Resources/image/obj/button/stage3.png"
+									"./Resources/image/obj/button/stage4.png"
+									"./Resources/image/obj/button/stage5.png"
+									"./Resources/image/obj/button/stage6.png"
+									"./Resources/image/obj/button/stage7.png"
+									"./Resources/image/obj/button/stage8.png"
+									"./Resources/image/obj/button/stage9.png"
+									"./Resources/image/obj/button/stage10.png"
+									"./Resources/image/obj/button/stage11.png"
+									"./Resources/image/obj/button/stage12.png"
+									};
 		
 		stage_[i].Init(selectButtonPos[i], selectButtonSize, Vec2(0.0f, 0.0f),
-			selectGH, ,
+			stageGH[i], ,
 			Vec2(0.0f, 0.0f), selectButtonSize);
 	}
 
@@ -78,12 +90,6 @@ void Scene_Select::Draw() {
 			stageSelectVH_ = Novice::PlayAudio(stageSelectSH_, false, 0.5f);
 		}
 		isRang_ = false;
-	}
-
-	for (int i = 0; i < 12; i++) {
-		if (stage_[i].getIsClicked()) {
-
-		}
 	}
 
 	for (int i = 0; i < 12; i++) {
