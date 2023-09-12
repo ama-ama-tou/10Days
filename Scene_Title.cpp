@@ -20,23 +20,25 @@ void Scene_Title::Load() {
 	//ボタン初期化
 	//=================
 
-	//ボタンサイズは統一する
-	Vec2 buttonSize{ 500.0f,100.0f };
+	
+	Vec2 buttonSize{ 256.0f,125.0f };
+	Vec2 buttonImageSize = { 512.0f,256.0f };
 
 	Vec2 goSelectPos = Vec2((kWindowSize.x / 8.0f)*3.0f,
 		titleBar.getScreenLbVertex().y + buttonSize.y);
 
 	const char* goSelectGH = "./Resources/image/obj/button/goSelectButton.png";
 	Button_goSelect.Init(goSelectPos, buttonSize, Vec2(0.0f, 0.0f),
-		goSelectGH, 0x53558b, 0xe28f8f,
-		Vec2(0.0f, 0.0f), buttonSize);
+		goSelectGH, 0x53558bff, 0xe28f8fff,
+		Vec2(0.0f, 0.0f), buttonImageSize);
 
-	Vec2 exitButtonPos{ goSelectPos.x,goSelectPos.y + (buttonSize.y * 0.4f) };
+	
+	Vec2 exitButtonPos{ goSelectPos.x,goSelectPos.y + (buttonSize.y * 1.02f) };
 
 	const char* exitGH = "./Resources/image/obj/button/exitButton.png";
 	
-	Button_exit.Init(exitButtonPos, buttonSize, Vec2(0.0f, 0.0f),
-		exitGH, 0x53558b, 0xe28f8f, Vec2(0.0f, 0.0f), buttonSize);
+	Button_exit.Init(exitButtonPos,buttonSize, Vec2(0.0f, 0.0f),
+		exitGH, 0x53558bff, 0xe28f8fff, Vec2(0.0f, 0.0f), buttonImageSize);
 
 }
 
@@ -53,13 +55,14 @@ void Scene_Title::Update() {
 		setIsExitGame(true);
 	}
 	Novice::ScreenPrintf(10, 10, "titleBar= %f,%f", titleBar.getScreenLtVertex().x, titleBar.getScreenLtVertex().y);
+	Novice::ScreenPrintf(10, 20, "color=%d", Button_goSelect.getColor());
 }
 
 void Scene_Title::Draw() {
 
 		//bgmを鳴らす
 	if (Novice::IsPlayingAudio(backgroundVH_) == false) {
-		backgroundVH_=Novice::PlayAudio(backgroundSH_, true, 0.0f);
+		backgroundVH_=Novice::PlayAudio(backgroundSH_, true, 0.1f);
 	}
 
 	titleBar.Draw();
