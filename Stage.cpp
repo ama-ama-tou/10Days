@@ -121,7 +121,7 @@ void Stage::Update(char* keys, char* preKeys) {
 		for (int c = 0; c < col_; c++) {
 			if (block_[r][c].getType() != WALL) {
 				if (block_[r][c].getIsHadBlock() == true) {
-					block_[r][c].Update(player_.getScreenLtVertex());
+					block_[r][c].Update(player_.getScreenLtVertex(), block_[r][c].getType());
 					block_[r][c].HitUpdate();
 				}
 			}
