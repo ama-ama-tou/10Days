@@ -186,9 +186,6 @@ void Stage::Update(char* keys, char* preKeys) {
 	}
 
 
-	
-
-
 	//背景の動き
 	for (int i = 0; i < 20; i++) {
 
