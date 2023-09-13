@@ -1,7 +1,7 @@
 ﻿#include "Scene_Select.h"
 #include "Button.h"
 #include "Scene_Title.h"
-
+#include"base.h"
 
 
 void Scene_Select::Load() {
@@ -17,7 +17,7 @@ void Scene_Select::Load() {
 	
 	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
 	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
-		goTitleGH, 0x53558bff, WHITE,
+		goTitleGH, k, WHITE,
 		Vec2(0.0f, 0.0f), goTitleButtonImageSize);
 
 	//ステージセレクトボタン
