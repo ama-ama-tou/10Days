@@ -19,15 +19,16 @@ void Scene_Select::Load() {
 
 
 
-	////タイトル画面に戻るボタン
-	//Vec2 goTitlePos = Vec2(20.0f, 10.0f);
-	//Vec2 goTitleButtonImageSize{512.0f,256.0f};
-	//Vec2 goTitleButtonSize{256.0f,128.0f};
-	//
-	//const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
-	//go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
-	//	goTitleGH, 0x53558bff, WHITE,
-	//	Vec2(0.0f, 0.0f), goTitleButtonImageSize);
+	//タイトル画面に戻るボタン
+	Vec2 goTitlePos = Vec2(20.0f, 10.0f);
+	Vec2 goTitleButtonImageSize{512.0f,256.0f};
+	Vec2 goTitleButtonSize{256.0f,128.0f};
+	
+	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
+	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
+		goTitleGH, 0x53558bff, WHITE,
+		Vec2(0.0f, 0.0f), goTitleButtonImageSize);
+
 
 	//ステージセレクトボタン
 	const char* stageGH[12] = { "./Resources/image/obj/button/stage1.png",
@@ -102,7 +103,7 @@ void Scene_Select::Draw() {
 		stage_[i].Draw();
 	}
 
-//	go2Title.Draw();
+	go2Title.Draw();
 	selectBar_.Draw();
 }
 
