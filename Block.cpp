@@ -15,6 +15,7 @@ void Block::Init(int MaxCol, int MaxRow, int colNum, int rowNum,
 	pos.x = rowNum * size.x;
 	pos.y = colNum * size.y;
 
+	isGetting_ = false;
 
 	//typeに合わせてGHを変更
 	/*if (type_ ==NONE) {
@@ -27,6 +28,7 @@ void Block::Init(int MaxCol, int MaxRow, int colNum, int rowNum,
 		GH_ = Novice::LoadTexture("./Resources/image/obj/wall.png");
 	}*/
 
+	isHadCount_ = 0;
 
 	Quad::Init(pos, size,
 		localCoOrigin,

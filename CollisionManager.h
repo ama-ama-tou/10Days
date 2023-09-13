@@ -26,7 +26,7 @@ class CollisionManager {
 
 	bool initKeep_;
 
-	int isGet_;
+	int isGet_ = { 0 };
 
 public:
 	CollisionManager(const int& maxRow, const int& maxCol) {
@@ -40,8 +40,7 @@ public:
 
 	void blockCollision(Player& player, Block**& block);
 
-	void Draw(Block**& block_);
-
+	
 	//===============
 	//ゲッター/セッター
 	//===============
