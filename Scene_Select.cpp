@@ -60,20 +60,65 @@ void Scene_Select::Load() {
 
 void Scene_Select::Update() {
 
-	
+
 	if (go2Title.getIsClicked()) {
 		Scene::sceneNum = SCENE_TITLE;
 	}
 
 	for (int i = 0; i < 12; i++) {
-		
 		stage_[i].Update(inputManager->getMousePos(), inputManager->getClickState());
-		
-		if (stage_[i].getIsClicked()) {
-			Scene::stageNum_ = i;
-			Scene::sceneNum = SCENE_GAME;
-		}
 	}
+#pragma region selctUpdate
+
+	if (stage_[STAGE_1ST].getIsClicked()) {
+		Scene::stageNum_ = STAGE_1ST;
+		Scene::sceneNum = SCENE_GAME;
+	}
+	if (stage_[STAGE_2ND].getIsClicked()) {
+		Scene::stageNum_ = STAGE_2ND;
+		Scene::sceneNum = SCENE_GAME;
+	}
+	if (stage_[STAGE_3RD].getIsClicked()) {
+		Scene::stageNum_ = STAGE_3RD;
+		Scene::sceneNum = SCENE_GAME;
+	}
+	if (stage_[STAGE_4TH].getIsClicked()) {
+		Scene::stageNum_ = STAGE_4TH;
+		Scene::sceneNum = SCENE_GAME;
+	}
+	if (stage_[STAGE_5TH].getIsClicked()) {
+		Scene::stageNum_ = STAGE_5TH;
+		Scene::sceneNum = SCENE_GAME;
+	}
+	if (stage_[STAGE_6TH].getIsClicked()) {
+		Scene::stageNum_ = STAGE_6TH;
+		Scene::sceneNum = SCENE_GAME;
+	}
+	if (stage_[STAGE_7TH].getIsClicked()) {
+		Scene::stageNum_ = STAGE_7TH;
+		Scene::sceneNum = SCENE_GAME;
+	}
+	if (stage_[STAGE_8TH].getIsClicked()) {
+		Scene::stageNum_ = STAGE_8TH;
+		Scene::sceneNum = SCENE_GAME;
+	}
+	if (stage_[STAGE_9TH].getIsClicked()) {
+		Scene::stageNum_ = STAGE_9TH;
+		Scene::sceneNum = SCENE_GAME;
+	}
+	if (stage_[STAGE_10TH].getIsClicked()) {
+		Scene::stageNum_ = STAGE_10TH;
+		Scene::sceneNum = SCENE_GAME;
+	}
+	if (stage_[STAGE_11TH].getIsClicked()) {
+		Scene::stageNum_ = STAGE_11TH;
+		Scene::sceneNum = SCENE_GAME;
+	}
+	if (stage_[STAGE_12TH].getIsClicked()) {
+		Scene::stageNum_ = STAGE_12TH;
+		Scene::sceneNum = SCENE_GAME;
+	}
+#pragma endregion
 }
 
 void Scene_Select::Draw() {
@@ -94,5 +139,5 @@ void Scene_Select::Draw() {
 }
 
 void Scene_Select::Unload() {
-	
+
 }
