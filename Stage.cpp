@@ -96,8 +96,8 @@ void Stage::Init() {
 		//==================
 
 		//座標をランダムで設定
-		bkBlueQuadPos_[i].x = static_cast<float>(rand() % 1280 - kFieldLtPos.x) ;
-		bkBlueQuadPos_[i].y = static_cast<float>(rand() % 720 + kFieldLtPos.y) ;
+		bkBlueQuadPos_[i].x = static_cast<float>(rand() % 1280 - kFieldLtPos.x);
+		bkBlueQuadPos_[i].y = static_cast<float>(rand() % 720 + kFieldLtPos.y);
 		//サイズをランダムで設定
 		bkBlueQuadSize_[i].x = static_cast<float>(rand() % 11 + 10);
 		bkBlueQuadSize_[i].y = bkBlueQuadSize_[i].x;
@@ -134,7 +134,7 @@ void Stage::Update(char* keys, char* preKeys) {
 		isRang_ = true;
 	}
 
-	
+
 
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
@@ -157,7 +157,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 	player_.Update(keys, preKeys);
 
-	
+
 
 	collision->playerCollision(player_, block_);
 	collision->blockCollision(player_, block_);
@@ -280,7 +280,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 }
 
-void Stage::Tutorial(char* keys, char* preKeys,int clickState) {
+void Stage::Tutorial(char* keys, char* preKeys, int clickState) {
 	if (isTutorial) {
 		if ((keys[DIK_RETURN] && !preKeys[DIK_RETURN]) || clickState == 1) {
 			page++;
@@ -381,4 +381,3 @@ void Stage::TutorialDraw() {
 	Stage::Draw();
 
 }
-
