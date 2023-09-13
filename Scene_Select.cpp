@@ -124,7 +124,7 @@ void Scene_Select::Update() {
 
 	// triangleの座標を更新
 	trianglePos_.x = stage_[selectNum_].getLtVertex().x + 30.0f;
-	trianglePos_.y = stage_[selectNum_].getLtVertex().y;
+	trianglePos_.y = stage_[selectNum_].getLtVertex().y - 30.0f;
 
 
 
