@@ -67,5 +67,5 @@ void Scene_Game::Draw() {
 }
 
 void Scene_Game::Unload() {
-
+	stageArr_[stageNum_]->Unload();
 };
