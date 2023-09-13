@@ -78,7 +78,7 @@ void Scene_Game::Draw() {
 	goSelect_.Draw();
 	
 	if (stageNum_ == STAGE_1ST) {
-		stageArr_[stageNum_]->TutorialDraw();
+		stageArr_[STAGE_1ST]->TutorialDraw();
 	} else {
 		stageArr_[stageNum_]->Draw();
 	}

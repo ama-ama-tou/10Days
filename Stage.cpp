@@ -7,10 +7,10 @@
 
 void Stage::Init() {
 
-	isTutorial = false;
+	isTutorial = true;
 	page = 0;
 	explanation.Init(kFieldLtPos, kFieldSize, Vec2(0.0f, 0.0f),
-		Novice::LoadTexture("./Resources/image/obj/button/stage1.png"),
+		Novice::LoadTexture("./Resources/image/obj/tutorial.png"),
 		Vec2(0.0f, 0.0f), Vec2(1000.0f, 1000.0f), WHITE
 	);
 
@@ -182,12 +182,6 @@ void Stage::Update(char* keys, char* preKeys) {
 	//デバック用
 	collision->Draw(block_);
 
-
-
-	if (playerHasBlockNum == NSBlockNum_) {
-		isClear_ = true;
-	}
-
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
 			if (block_[r][c].getIsPreHadBlock() == false && block_[r][c].getIsHadBlock() == true) {
@@ -196,6 +190,7 @@ void Stage::Update(char* keys, char* preKeys) {
 			}
 		}
 	}
+
 	Novice::ScreenPrintf(10, 500, "hasBlock=%d, goalBlocks=%d", playerHasBlockNum, NSBlockNum_);
 
 
@@ -295,11 +290,17 @@ void Stage::Tutorial(char* keys, char* preKeys, int clickState) {
 		if ((keys[DIK_SPACE] && !preKeys[DIK_SPACE]) || clickState == 2) {
 			page--;
 		}
+		
+		if (page<0) {
+			page = 0;
+		}
+
+		explanation.setImageLtPos(Vec2(explanation.getImageSize().x * page,
+			0.0f));
+
 		if (page > 2) {
 			isTutorial = false;
 		}
-		explanation.setImageLtPos(Vec2(explanation.getImageSize().x * page,
-			explanation.getImageSize().y * page));
 
 	} else {
 		Stage::Update(keys, preKeys);
@@ -370,6 +371,8 @@ void Stage::Draw() {
 
 void Stage::TutorialDraw() {
 
+	Stage::Draw();
+
 	if (isTutorial) {
 		Novice::DrawBox(
 			static_cast<int>(kFieldLtPos.x),
@@ -377,12 +380,10 @@ void Stage::TutorialDraw() {
 			static_cast<int>(kFieldSize.x),
 			static_cast<int>(kFieldSize.y),
 			0.0f,
-			0x00000077,
+			0x000000f7,
 			kFillModeSolid
 		);
 		explanation.Draw();
 	}
-	Stage::Draw();
-
 }
 
