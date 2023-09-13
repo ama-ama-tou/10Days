@@ -20,7 +20,7 @@ void Scene_Select::Load() {
 
 	//タイトル画面に戻るボタン
 	Vec2 goTitlePos = Vec2(20.0f, 10.0f);
-	Vec2 goTitleButtonImageSize{512.0f,256.0f};
+	Vec2 goTitleButtonImageSize{760.0f,220.0f};
 	Vec2 goTitleButtonSize{256.0f,128.0f};
 	
 	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
