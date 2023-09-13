@@ -42,19 +42,6 @@ void Scene_Game::Load() {
 }
 
 void Scene_Game::Update() {
-	stageArr_[stageNum_]->Update(inputManager->GetKeys(), inputManager->GetPreKeys());
-	
-	//ボタンの更新
-	goSelect_.Update(inputManager->getMousePos(), inputManager->getClickState());
-
-	if (goSelect_.getISInsideMouse() == true) {
-		if (goSelect_.getIsClicked() == true) {
-			Scene::sceneNum = SCENE_SELECT;
-		}
-	}
-
-
-
 	if (stageNum_ == STAGE_1ST) {
 		stageArr_[STAGE_1ST]->Tutorial(inputManager->GetKeys(), inputManager->GetPreKeys(), inputManager->getClickState());
 	} else {
