@@ -186,8 +186,7 @@ void Stage::Update(char* keys, char* preKeys) {
 	}
 
 
-		isClear_ = true;
-	}
+	
 
 
 	//背景の動き
