@@ -126,6 +126,7 @@ void Scene_Select::Update() {
 
 	for (int i = 0; i < 12; i++) {
 		stage_[i].Update(inputManager->getMousePos(), inputManager->getClickState());
+		selectNum_ = i;
 
 		//三角のポジションの移動
 
