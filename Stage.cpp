@@ -363,9 +363,6 @@ void Stage::Draw() {
 				//blockが設置してあればDraw
 				block_[r][c].Draw();
 
-				Novice::ScreenPrintf(10, 200, "NSBlockNum:%d", NSBlockNum_);
-				Novice::ScreenPrintf(10, 220, "playerHasBlockNum:%d", playerHasBlockNum);
-
 			}
 		}
 	}
