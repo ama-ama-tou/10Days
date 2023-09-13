@@ -71,9 +71,9 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 					block_[rowAddress_[0] - 1][colAddress_[0]].setIsHadBlock(true);
 
 					block_[rowAddress_[0] - 1][colAddress_[0]].setIsHadCount(block_[rowAddress_[0] - 1][colAddress_[0]].getIsHadCount() + 1);
-					/*if (block_[rowAddress_[0] - 1][colAddress_[0]].getGetting() == false) {
+					if (block_[rowAddress_[0] - 1][colAddress_[0]].getGetting() == false) {
 						block_[rowAddress_[0] - 1][colAddress_[0]].setIsGetting(true);
-					}*/
+					}
 
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingTopType(1);
@@ -115,9 +115,9 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 
 					block_[rowAddress_[1]][colAddress_[1] + 1].setIsHadCount(block_[rowAddress_[1]][colAddress_[1] + 1].getIsHadBlock()+ 1);
 
-					/*if (block_[rowAddress_[1]][colAddress_[1] + 1].getGetting() == false) {
+					if (block_[rowAddress_[1]][colAddress_[1] + 1].getGetting() == false) {
 						block_[rowAddress_[1]][colAddress_[1] + 1].setIsGetting(true);
-					}*/
+					}
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingRightType(1);
 					} else if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == S_POLE) {
@@ -151,9 +151,9 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 
 					block_[rowAddress_[3] + 1][colAddress_[3]].setIsHadCount(block_[rowAddress_[3] + 1][colAddress_[3]].getIsHadBlock() + 1);
 
-					/*if (block_[rowAddress_[3] + 1][colAddress_[3]].getGetting() == false) {
+					if (block_[rowAddress_[3] + 1][colAddress_[3]].getGetting() == false) {
 						block_[rowAddress_[3] + 1][colAddress_[3]].setIsGetting(true);
-					}*/
+					}
 
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingBottomType(1);
@@ -188,9 +188,9 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 
 					block_[rowAddress_[0]][colAddress_[0] - 1].setIsHadCount(block_[rowAddress_[0]][colAddress_[0] - 1].getIsHadBlock()+ 1);
 
-					/*if (block_[rowAddress_[0]][colAddress_[0] - 1].getGetting() == false) {
+					if (block_[rowAddress_[0]][colAddress_[0] - 1].getGetting() == false) {
 						block_[rowAddress_[0]][colAddress_[0] - 1].setIsGetting(true);
-					}*/
+					}
 
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingLeftType(1);
