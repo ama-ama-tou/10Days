@@ -491,40 +491,15 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 
 //描画
 void CollisionManager::Draw(Block**& block_) {
-	Novice::ScreenPrintf(10, 10, "rawAddress[0]:%d", rowAddress_[0]);
-	Novice::ScreenPrintf(10, 30, "rawAddress[1]:%d", rowAddress_[1]);
-	Novice::ScreenPrintf(10, 50, "rawAddress[2]:%d", rowAddress_[2]);
-	Novice::ScreenPrintf(10, 70, "rawAddress[3]:%d", rowAddress_[3]);
-
-	Novice::ScreenPrintf(180, 10, "colAddress[0]:%d(leftTop)", colAddress_[0]);
-	Novice::ScreenPrintf(180, 30, "colAddress[1]:%d(rightTop)", colAddress_[1]);
-	Novice::ScreenPrintf(180, 50, "colAddress[2]:%d(leftBottom)", colAddress_[2]);
-	Novice::ScreenPrintf(180, 70, "colAddress[3]:%d(rightBottom)", colAddress_[3]);
-
+	
 	for (int r = 0; r < maxRow_; r++) {
 		for (int c = 0; c < maxCol_; c++) {
 			if (block_[r][c].getIsHadBlock() == true) {
-				Novice::ScreenPrintf(10, 200 + (r * 20), "isHitBlock[%d][%d]", r, c);
-				Novice::ScreenPrintf(10, 200 + (r * 20), "isHitBlock[%d][%d]", r, c);
-				Novice::ScreenPrintf(10, 270 + (r * 20), "origin.x:%f", block_[r][c].getLtVertex().x);
-				Novice::ScreenPrintf(200, 270, "origin.y:%f", block_[r][c].getLocalCo().getOrigin().y);
-
-				Novice::ScreenPrintf(200, 270, "origin.y:%f", block_[r][c].getLocalCo().getOrigin().y);
-
-				Novice::ScreenPrintf(10, 600, "vertex[0].x:%f", block_[r][c].getScreenLtVertex().x);
-
+			
 
 			}
 		}
 	}
 
-	Novice::ScreenPrintf(10, 620, "colAddress_[0]:%d", colAddress_[0]);
-	Novice::ScreenPrintf(170, 620, "rowAddress_[0]:%d", rowAddress_[0] - 1);
-	Novice::ScreenPrintf(10, 640, "colAddress_[1]:%d", colAddress_[1]);
-	Novice::ScreenPrintf(170, 640, "rowAddress_[1]:%d", rowAddress_[1] - 1);
-	Novice::ScreenPrintf(10, 660, "colAddress_[2]:%d", colAddress_[2]);
-	Novice::ScreenPrintf(170, 660, "rowAddress_[2]:%d", rowAddress_[2] - 1);
-	Novice::ScreenPrintf(10, 680, "colAddress_[3]:%d", colAddress_[3]);
-	Novice::ScreenPrintf(170, 680, "rowAddress_[3]:%d", rowAddress_[3] - 1);
 
 }
