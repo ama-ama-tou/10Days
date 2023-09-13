@@ -73,6 +73,9 @@ public:
 	Vec2 getImageLtPos() { return imageLtPos_; }
 	void setImageLtPos(Vec2 imageLtPos) { imageLtPos_ = imageLtPos; }
 
+	Vec2 getImageSize() { return imageSize_; }
+	void setImageSize(Vec2 imageSize) { imageSize_ = imageSize; }
+
 	///サイズ
 	Vec2 getSize() { return size_; }
 	void setSize(Vec2 size) { size_ = size; }

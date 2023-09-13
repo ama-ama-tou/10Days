@@ -119,9 +119,6 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Game\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Tutorial.cpp">
-      <Filter>Game\Scene\Stage</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -252,9 +249,6 @@
     </ClInclude>
     <ClInclude Include="easing.h">
       <Filter>Game\lib\myMath</Filter>
-    </ClInclude>
-    <ClInclude Include="Tutorial.h">
-      <Filter>Game\Scene\Stage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

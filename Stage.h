@@ -5,11 +5,15 @@
 #include"LoadCSV.h"
 #include"base.h"
 #include"Vec2.h"
+#include"Button.h"
+#include"Scene.h"
 
 class Stage {
-
-	//何ステージか
-	int stageNum_;
+	// チュートリアル用-------
+	bool isTutorial;
+	Quad explanation;
+	int page;
+	//---------------------
 
 	Coordinate stageCo_{ kFieldLtPos };
 
@@ -37,6 +41,8 @@ class Stage {
 	bool isClear_;
 	//リセットするか
 	bool isReset_;
+
+	
 
 
 	//背景の四角（赤色）
@@ -72,9 +78,7 @@ class Stage {
 
 public:
 	
-	Stage(int stageNum,const std::string& csvFilePath) :csvFilePath_(csvFilePath) {
-		
-		stageNum_ = stageNum;
+	Stage(const std::string& csvFilePath) :csvFilePath_(csvFilePath) {
 		
 		//csvデータ読み込み
 		stageCsv_ = LoadCsv(csvFilePath);
@@ -106,8 +110,10 @@ public:
 	void Init();
 
 	void Update(char* keys,char*preKeys);
+	void Tutorial(char* keys, char* preKeys,int clickState);
 
 	void Draw();
+	void TutorialDraw();
 
 	void Unload() { Novice::StopAudio(backgroundVH_); };
 

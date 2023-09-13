@@ -20,8 +20,8 @@ void Scene_Select::Load() {
 
 	//タイトル画面に戻るボタン
 	Vec2 goTitlePos = Vec2(20.0f, 10.0f);
-	Vec2 goTitleButtonImageSize{512.0f,256.0f};
-	Vec2 goTitleButtonSize{256.0f,128.0f};
+	Vec2 goTitleButtonImageSize{760.0f,220.0f};
+	Vec2 goTitleButtonSize{190.0f,55.0f};
 	
 	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
 	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
@@ -89,33 +89,41 @@ void Scene_Select::Update() {
 
 
 
-	//キーボードでの移動
-	if (selectNum_ != 3 && selectNum_ != 7 && selectNum_ != 11) {
-		if (inputManager->GetKeys()[DIK_RIGHT] && inputManager->GetPreKeys()[DIK_RIGHT] == false) {
-			selectNum_++;
-			trianglePos_.x = stage_[selectNum_].getLtVertex().x + 30.0f;
+	// キーボードでの移動
+	if (inputManager->GetKeys()[DIK_RIGHT] && inputManager->GetPreKeys()[DIK_RIGHT] == false) {
+		selectNum_++;
+		if (selectNum_ % 4 == 0) {
+			// 右端から右に移動したら左端に
+			selectNum_ -= 4;
 		}
+		trianglePos_.x = stage_[selectNum_].getLtVertex().x + 30.0f;
 	}
 
-	if (selectNum_ != 0 && selectNum_ != 4 && selectNum_ != 8) {
-		if (inputManager->GetKeys()[DIK_LEFT] && inputManager->GetPreKeys()[DIK_LEFT] == false) {
-			selectNum_--;
-			trianglePos_.x = stage_[selectNum_].getLtVertex().x + 30.0f;
+	if (inputManager->GetKeys()[DIK_LEFT] && inputManager->GetPreKeys()[DIK_LEFT] == false) {
+		selectNum_--;
+		if (selectNum_ < 0) {
+			// 左端から左に移動したら右端に
+			selectNum_ += 4;
 		}
+		trianglePos_.x = stage_[selectNum_].getLtVertex().x + 30.0f;
 	}
 
-	//キーボードでの移動
-	if (selectNum_ != 0 && selectNum_ != 1 && selectNum_ != 2 && selectNum_ != 3 ) {
-		if (inputManager->GetKeys()[DIK_UP] && inputManager->GetPreKeys()[DIK_UP] == false) {
-			selectNum_ -= 3;
-			trianglePos_.y = stage_[selectNum_].getLtVertex().y;
+	if (inputManager->GetKeys()[DIK_UP] && inputManager->GetPreKeys()[DIK_UP] == false) {
+		selectNum_ -= 3;
+		if (selectNum_ < 0) {
+			// 上端から上に移動したら下端に
+			selectNum_ += 12;
 		}
+		trianglePos_.y = stage_[selectNum_].getLtVertex().y;
 	}
-	if (selectNum_ != 8 && selectNum_ != 9 && selectNum_ != 10 && selectNum_ != 11) {
-		if (inputManager->GetKeys()[DIK_DOWN] && inputManager->GetPreKeys()[DIK_DOWN] == false) {
-			selectNum_ += 3;
-			trianglePos_.y = stage_[selectNum_].getLtVertex().y;
+
+	if (inputManager->GetKeys()[DIK_DOWN] && inputManager->GetPreKeys()[DIK_DOWN] == false) {
+		selectNum_ += 3;
+		if (selectNum_ >= 12) {
+			// 下端から下に移動したら上端に
+			selectNum_ -= 12;
 		}
+		trianglePos_.y = stage_[selectNum_].getLtVertex().y;
 	}
 
 
@@ -127,22 +135,23 @@ void Scene_Select::Update() {
 
 	for (int i = 0; i < 12; i++) {
 		stage_[i].Update(inputManager->getMousePos(), inputManager->getClickState());
-		selectNum_ = i;
+		
 
 		//三角のポジションの移動
-
-
 		//マウスでの移動
 		if (stage_[i].getISInsideMouse() == true) {
 			trianglePos_.x = stage_[i].getLtVertex().x + 30.0f;
 			trianglePos_.y = stage_[i].getLtVertex().y - 30.0f;
+			selectNum_ = i;
+
+			if (stage_[i].getIsClicked()) {
+
+				Scene::stageNum_ = i;
+				Scene::sceneNum = SCENE_GAME;
+			}
 		}
 
-		if (stage_[i].getIsClicked()) {
-
-			Scene::stageNum_ = i;
-			Scene::sceneNum = SCENE_GAME;
-		}
+	
 	}
 
 	//選んでるステージを示す三角

@@ -8,7 +8,7 @@ class Scene_Game:
 
 	int preStageNum;
 
-	
+	Button goSelect_;
 
 	std::unique_ptr<Stage> stageArr_[12];
 
