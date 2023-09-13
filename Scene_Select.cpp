@@ -138,20 +138,20 @@ void Scene_Select::Update() {
 		
 
 		//三角のポジションの移動
-
-
 		//マウスでの移動
 		if (stage_[i].getISInsideMouse() == true) {
 			trianglePos_.x = stage_[i].getLtVertex().x + 30.0f;
 			trianglePos_.y = stage_[i].getLtVertex().y - 30.0f;
 			selectNum_ = i;
+
+			if (stage_[i].getIsClicked()) {
+
+				Scene::stageNum_ = i;
+				Scene::sceneNum = SCENE_GAME;
+			}
 		}
 
-		if (stage_[i].getIsClicked()) {
-
-			Scene::stageNum_ = i;
-			Scene::sceneNum = SCENE_GAME;
-		}
+	
 	}
 
 	//選んでるステージを示す三角
