@@ -134,8 +134,6 @@ void Stage::Update(char* keys, char* preKeys) {
 		isRang_ = true;
 	}
 
-
-
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
 			if (block_[r][c].getType() != WALL) {
