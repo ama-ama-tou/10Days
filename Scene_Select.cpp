@@ -12,11 +12,12 @@ void Scene_Select::Load() {
 
 	//タイトル画面に戻るボタン
 	Vec2 goTitlePos = Vec2(20.0f, 10.0f);
-	Vec2 goTitleButtonSize{ 256,96.0f };
-	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
+	Vec2 goTitleButtonSize{ 128.0f,48.0f };
+	Vec2 goTitleButtonImageSize = Vec2(512.0f, 256.0f);
+	const char* goTitleGH = "./Resources/image/obj/button/goSelectButton.png";
 	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
-		goTitleGH, WHITE, WHITE,
-		Vec2(0.0f, 0.0f), goTitleButtonSize);
+	goTitleGH, WHITE, WHITE,
+	Vec2(0.0f, 0.0f), goTitleButtonImageSize);
 
 	//ステージセレクトボタン
 
