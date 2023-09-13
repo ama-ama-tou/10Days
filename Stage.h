@@ -8,9 +8,6 @@
 
 class Stage {
 
-	//何ステージか
-	int stageNum_;
-
 	Coordinate stageCo_{ kFieldLtPos };
 
 	//プレイヤー
@@ -72,9 +69,7 @@ class Stage {
 
 public:
 	
-	Stage(int stageNum,const std::string& csvFilePath) :csvFilePath_(csvFilePath) {
-		
-		stageNum_ = stageNum;
+	Stage(const std::string& csvFilePath) :csvFilePath_(csvFilePath) {
 		
 		//csvデータ読み込み
 		stageCsv_ = LoadCsv(csvFilePath);

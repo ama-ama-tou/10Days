@@ -4,6 +4,14 @@
 #include "Vec2.h"
 
 void Stage::Init() {
+
+	isTutorial = false;
+	page = 0;
+	explanation.Init(kFieldLtPos, kFieldSize, Vec2(0.0f, 0.0f),
+		Novice::LoadTexture("./Resources/image/obj/tutorial.png"),
+		Vec2(0.0f, 0.0f), Vec2(1000.0f, 1000.0f), WHITE
+	);
+
 	//--------------------------------
 	//ブロックの初期
 	//--------------------------------
@@ -258,6 +266,26 @@ void Stage::Update(char* keys, char* preKeys) {
 
 }
 
+void Stage::Tutorial(char* keys, char* preKeys,int clickState) {
+	if (isTutorial) {
+		if ((keys[DIK_RETURN] && !preKeys[DIK_RETURN]) || clickState == 1) {
+			page++;
+		}
+		if ((keys[DIK_SPACE] && !preKeys[DIK_SPACE]) || clickState == 2) {
+			page--;
+		}
+		if (page > 2) {
+			isTutorial = false;
+		}
+		explanation.setImageLtPos(Vec2(explanation.getImageSize().x * page,
+			explanation.getImageSize().y * page));
+
+	} else {
+		Stage::Update(keys, preKeys);
+	}
+
+}
+
 void Stage::Draw() {
 
 	//効果音を鳴らす
@@ -319,6 +347,24 @@ void Stage::Draw() {
 		}
 	}
 	player_.Draw();
+
+}
+
+void Stage::TutorialDraw() {
+
+	if (isTutorial) {
+		Novice::DrawBox(
+			static_cast<int>(kFieldLtPos.x),
+			static_cast<int>(kFieldLtPos.y),
+			static_cast<int>(kFieldSize.x),
+			static_cast<int>(kFieldSize.y),
+			0.0f,
+			0x00000077,
+			kFillModeSolid
+		);
+		explanation.Draw();
+	}
+	Stage::Draw();
 
 }
 
