@@ -145,11 +145,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 	player_.Update(keys, preKeys);
 
-	for (int r = 0; r < row_; r++) {
-		for (int c = 0; c < col_; c++) {
-			block_[r][c].Keep();
-		}
-	}
+	
 
 	collision->playerCollision(player_, block_);
 	collision->blockCollision(player_, block_);

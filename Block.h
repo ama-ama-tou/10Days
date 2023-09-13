@@ -134,7 +134,7 @@ public:
 	void setIsFacingLeft(bool isFacing) { isFacing_ = isFacing; }
 
 
-	//
+	//各頂点のアドレスを保存
 	int getRowKeepTop() { return rowKeepTop_; }
 	int getRowKeepRight() { return rowKeepRight_; }
 	int getRowKeepBottom() { return rowKeepBottom_; }
@@ -155,6 +155,7 @@ public:
 	void setColKeepBottom(int colKeepBottom) { colKeepBottom_ = colKeepBottom; }
 	void setColKeepLeft(int colKeepLeft) { colKeepLeft_ = colKeepLeft; }
 
+	//各頂点の座標の保存
 	Vec2 getKeepLtVer() { return keepLtVer_; }
 	Vec2 getKeepRtVer() { return keepRtVer_; }
 	Vec2 getKeepLbVer() { return keepLbVer_; }
@@ -181,7 +182,7 @@ public:
 	void setIsFacingLeftType(int isFacing) { isFacingType_[3] = isFacing; }
 
 
-	//
+	//各頂点のアドレス
 	int getBLtRowAddress() { return bLtRowAddress_; }
 	int getBRtRowAddress() { return bRtRowAddress_; }
 	int getBLbRowAddress() { return bLbRowAddress_; }

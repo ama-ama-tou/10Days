@@ -199,6 +199,7 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 			for (int i = 0; i < maxRow_; i++) {
 				for (int j = 0; j < maxCol_; j++) {
 					block_[i][j].getPreType();
+					block_[r][c].Keep();
 				}
 			}
 
@@ -223,11 +224,14 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 							block_[r][c].setBRbRowAddress(static_cast<int>((block_[r][c].getScreenRbVertex().y - kFieldLtPos.y - 1) / block_[r][c].getSize().y));
 						}
 					}
-				}
 
+					for (int i = 0; i < maxRow_; i++) {
+						for (int j = 0; j < maxCol_; j++) {
+							block_[i][j].getPreType();
+							block_[r][c].Keep();
+						}
+					}
 
-
-				
 					///前フレームの位置
 					int keep = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getType();
 
@@ -236,7 +240,7 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 
 					///今のアドレスを更新
 					block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].setType(keep);
-				
+
 					Vec2 keepCo;
 					///入手したときの座標
 					keepCo.x = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getLtVertex().x;
@@ -248,6 +252,7 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 					///今の座標に入手した時の座標を入れる
 					block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].setLtVertex(keepCo);
 
+				}
 					
 				
 
