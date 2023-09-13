@@ -119,6 +119,7 @@ void Scene_Select::Update() {
 		Scene::sceneNum = SCENE_GAME;
 	}
 #pragma endregion
+
 }
 
 void Scene_Select::Draw() {
