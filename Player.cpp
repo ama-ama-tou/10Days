@@ -2,6 +2,7 @@
 #include "InputManager.h"
 #include <Novice.h>
 
+
 void Player::Move(char* keys, char* preKeys) {
 	
 	//移動前の座標を保存しておく
@@ -14,9 +15,13 @@ void Player::Move(char* keys, char* preKeys) {
 		if (keys[DIK_A] && !preKeys[DIK_A]) {
 			pos_.x -= speed_;
 			isSoundStart_ = true;
+
+
 		} else if (keys[DIK_D] && !preKeys[DIK_D]) {
 			pos_.x += speed_;
 			isSoundStart_ = true;
+
+			
 		}
 
 		//上下の移動
@@ -24,9 +29,13 @@ void Player::Move(char* keys, char* preKeys) {
 		if (keys[DIK_W] && !preKeys[DIK_W]) {
 			pos_.y -= speed_;
 			isSoundStart_ = true;
+
+			
 		} else if (keys[DIK_S] && !preKeys[DIK_S]) {
 			pos_.y += speed_;
 			isSoundStart_ = true;
+
+			
 		}
 	} else {
 		frameCount_++;

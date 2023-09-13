@@ -124,6 +124,17 @@ void Stage::Update(char* keys, char* preKeys) {
 		isRang_ = true;
 	}
 
+	for (int r = 0; r < row_; r++) {
+		for (int c = 0; c < col_; c++) {
+			if (block_[r][c].getType() != WALL) {
+				if (block_[r][c].getIsHadBlock() == true) {
+					block_[r][c].setType(block_[r][c].getType());
+					block_[r][c].Update(player_.getScreenLtVertex());
+					block_[r][c].HitUpdate();
+				}
+			}
+		}
+	}
 
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
@@ -145,6 +156,8 @@ void Stage::Update(char* keys, char* preKeys) {
 					
 				}
 			}
+
+			
 		}
 	}
 
@@ -169,6 +182,8 @@ void Stage::Update(char* keys, char* preKeys) {
 
 
 	if (playerHasBlockNum == NSBlockNum_) {
+		isClear_ = true;
+	}
 
 
 		isClear_ = true;

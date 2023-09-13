@@ -27,6 +27,20 @@ class Player
 	int frameCount_;
 	bool isSoundStart_;
 
+	///プレイヤーの上辺が持っていいるブロックの種類
+	int isFacingTopType_;
+	int isFacingRightType_;
+	int isFacingBottomType_;
+	int isFacingLeftType_;
+
+
+	int rKeepTop_;
+	int cKeepTop_;
+
+	bool switch_;
+
+	bool isSwitch_;
+	
 public:
 	//===============
 	//メンバ関数
@@ -78,6 +92,18 @@ public:
 	void setIsHitRb(bool isHit) { isHit_ = isHit; }
 	void setIsHitLb(bool isHit) { isHit_ = isHit; }
 
+	int getRkeepTop() { return rKeepTop_; }
+	void setRkeepTop(int ad) { rKeepTop_ = ad; }
+
+	int getCkeepTop() { return cKeepTop_; }
+	void setCkeepTop(int ad) { cKeepTop_ = ad; }
+
+	bool getSwitch() { return switch_; }
+	void setSwitch(bool switchA) { switch_ = switchA; }
+
+	bool getIsSwitch() { return isSwitch_; }
+	void setIsSwitch(bool switchA) { isSwitch_ = switchA; }
+
 	//どの面が接しているか(上→右→下→左)
 	bool getIsFacingTop() { return isFacing_[0]; }
 	bool getIsFacingRight() { return isFacing_[1]; }
@@ -88,6 +114,17 @@ public:
 	void setIsFacingRight(bool isFacing) { isFacing_[1] = isFacing; }
 	void setIsFacingBottom(bool isFacing) { isFacing_[2] = isFacing; }
 	void setIsFacingLeft(bool isFacing) { isFacing_[3] = isFacing; }
+
+	///どの面がどの種類と接しているか(上→右→下→左)
+	int getIsFacingTopType() { return isFacingTopType_; }
+	int getIsFacingRightType() { return isFacingRightType_; }
+	int getIsFacingBottomType() { return isFacingBottomType_; }
+	int getIsFacingLeftType() { return isFacingLeftType_; }
+
+	void setIsFacingTopType(int isFacing) { isFacingTopType_ = isFacing; }
+	void setIsFacingRightType(int isFacing) { isFacingRightType_ = isFacing; }
+	void setIsFacingBottomType(int isFacing) { isFacingBottomType_ = isFacing; }
+	void setIsFacingLeftType(int isFacing) { isFacingLeftType_ = isFacing; }
 
 	Vec2 getPos() { return pos_; }
 	void setPos(Vec2 pos) { pos_ = pos; }

@@ -1,7 +1,6 @@
 ﻿#include "CollisionManager.h"
-#include "player.h"
 #include "Vec2.h"
-#include "Block.h"
+#include "base.h"
 #include <Novice.h>
 
 
@@ -68,6 +67,20 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 					player_.setIsFacingTop(true);
 					//ブロックをプレイヤーに持たせる
 					block_[rowAddress_[0] - 1][colAddress_[0]].setIsHadBlock(true);
+
+					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
+						player_.setIsFacingTopType(1);
+
+						player_.setRkeepTop(rowAddress_[0] - 1);
+						player_.setCkeepTop(colAddress_[0]);
+						player_.setSwitch(true);
+						player_.setIsSwitch(true);
+
+						/*block_[rowAddress_[0] - 1][colAddress_[0]].setTypeReset(N_POLE, rowAddress_[0] - 1, colAddress_[0]);*/
+					} else if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == S_POLE) {
+						player_.setIsFacingTopType(2);
+						/*block_[rowAddress_[0] - 1][colAddress_[0]].setTypeReset(S_POLE, rowAddress_[0] - 1, colAddress_[0]);*/
+					}
 				}
 			}
 		}
@@ -93,6 +106,12 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 					player_.setIsFacingRight(true);
 					//ブロックをプレイヤーに持たせる
 					block_[rowAddress_[1]][colAddress_[1] + 1].setIsHadBlock(true);
+
+					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
+						player_.setIsFacingRightType(1);
+					} else if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == S_POLE) {
+						player_.setIsFacingRightType(2);
+					}
 				}
 			}
 		}
@@ -118,6 +137,12 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 					player_.setIsFacingBottom(true);
 					//ブロックをプレイヤーに持たせる
 					block_[rowAddress_[2] + 1][colAddress_[2]].setIsHadBlock(true);
+
+					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
+						player_.setIsFacingBottomType(1);
+					} else if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == S_POLE) {
+						player_.setIsFacingBottomType(2);
+					}
 				}
 			}
 		}
@@ -143,6 +168,14 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 					player_.setIsFacingLeft(true);
 					//ブロックをプレイヤーに持たせる
 					block_[rowAddress_[3]][colAddress_[3] - 1].setIsHadBlock(true);
+
+					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
+						player_.setIsFacingLeftType(1);
+
+					} else if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == S_POLE) {
+						player_.setIsFacingLeftType(2);
+
+					}
 				}
 			}
 		}
@@ -156,234 +189,275 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 		player_.setPos(player_.getPrePos());
 		player_.pointInit(player_.getPos());
 	}
-
-
 };
 
 ///ブロックとブロック
 void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 	for (int r = 0; r < maxRow_; r++) {
 		for (int c = 0; c < maxCol_; c++) {
-			block_[r][c].getType();
-		}
-	}
 
-	for (int r = 0; r < maxRow_; r++) {
-		for (int c = 0; c < maxCol_; c++) {
+			//block_[r][c].Update(player_.getScreenLtVertex(), block_[r][c].getType());
+			for (int i = 0; i < maxRow_; i++) {
+				for (int j = 0; j < maxCol_; j++) {
+					block_[i][j].getPreType();
+				}
+			}
+
+
+
 			if (block_[r][c].getIsHadBlock() == true) {
-				block_[r][c].Update(player_.getScreenLtVertex());
-			}
 
-			//頂点の番地の計算
-			if (block_[r][c].getType() == N_POLE || block_[r][c].getType() == S_POLE) {
-				for (int vertexNum = 0; vertexNum < 4; vertexNum++) {
-					if (vertexNum == 0) {
-						bLtColAddress_ = static_cast<int>(block_[r][c].getScreenLtVertex().x / block_[r][c].getSize().x) - 6;
-						bLtRowAddress_ = static_cast<int>(block_[r][c].getScreenLtVertex().y / block_[r][c].getSize().y);
-					} else if (vertexNum == 1) {
-						bRtColAddress_ = static_cast<int>((block_[r][c].getScreenRtVertex().x - 5) / block_[r][c].getSize().x) - 6;
-						bRtRowAddress_ = static_cast<int>(block_[r][c].getScreenRtVertex().y / block_[r][c].getSize().y);
-					} else if (vertexNum == 2) {
-						bLbColAddress_ = static_cast<int>(block_[r][c].getScreenLbVertex().x / block_[r][c].getSize().x) - 6;
-						bLbRowAddress_ = static_cast<int>((block_[r][c].getScreenLbVertex().y - 1) / block_[r][c].getSize().y) - 1;
-					} else if (vertexNum == 3) {
-						bRbColAddress_ = static_cast<int>((block_[r][c].getScreenRbVertex().x - 3) / block_[r][c].getSize().x) - 6;
-						bRbRowAddress_ = static_cast<int>((block_[r][c].getScreenRbVertex().y - 3) / block_[r][c].getSize().y) - 1;
-					}
-				}
-			}
-
-
-			if (block_[r][c].getType() != WALL && block_[r][c].getType() != NONE) {
-				///----------各頂点の番地からどの面が接しているかの判定----------///
-				///上の面
-
-				if (block_[bLtRowAddress_][bLtColAddress_].getIsFacingTop() != true) {
-
-					if (block_[bLtRowAddress_ - 1][bLtColAddress_].getType() != NONE && //左上の1個上
-						block_[bRtRowAddress_ - 1][bRtColAddress_].getType() != NONE) { //右上の1個上
-						//面しているブロックの種類を判断
-						if (block_[bLtRowAddress_ - 1][bLtColAddress_].getType() == block_[bLtRowAddress_][bLtColAddress_].getType() && //左上の1個上と今のブロック
-							block_[bRtRowAddress_ - 1][bRtColAddress_].getType() == block_[bRtRowAddress_][bRtColAddress_].getType()) { //右上の1個上と今のブロック
-							//持たれているブロックか判定する
-							if (!block_[bLtRowAddress_ - 1][bLtColAddress_].getIsHadBlock()) {
-								//反発させる
-								block_[bLtRowAddress_ - 1][bLtColAddress_].pointInit(block_[bLtRowAddress_ - 2][bLtColAddress_].getPos());
-							}
-
-						} else {
-							if (block_[bLtRowAddress_ - 1][bLtColAddress_].getType() == S_POLE || block_[bLtRowAddress_ - 1][bLtColAddress_].getType() == N_POLE) {
-								//持たれているブロックか判定する
-								if (block_[bLtRowAddress_ - 1][bLtColAddress_].getIsHadBlock() != true) {
-									
-										///ローカル座標に追加するための初期化
-										int aa = (bRtColAddress_)-colAddress_[0];
-										int bb = (bRtRowAddress_ - 1) - rowAddress_[0];
-
-										Vec2 resetPos = block_[bRtRowAddress_ - 1][bRtColAddress_].getLtVertex();
-										resetPos.x = 0 + aa * 53.0f;
-										resetPos.y = bb * 53.0f;
-										block_[bLtRowAddress_ - 1][bLtColAddress_].pointInit(resetPos);
-										//ローカル座標に追加
-										block_[bLtRowAddress_ - 1][bLtColAddress_].setLocalCoOrigin(player_.getScreenLtVertex());
-										//ブロックを持たせる
-										block_[bLtRowAddress_ - 1][bLtColAddress_].setIsHadBlock(true);
-										//面している
-										block_[bLtRowAddress_ - 1][bLtColAddress_].setIsFacingTop(true);
-								}
-							} 
+				//頂点の番地の計算
+				if (block_[r][c].getType() == N_POLE || block_[r][c].getType() == S_POLE) {
+					for (int vertexNum = 0; vertexNum < 4; vertexNum++) {
+						if (vertexNum == 0) {
+							block_[r][c].setBLtColAddress(static_cast<int>((block_[r][c].getScreenLtVertex().x - kFieldLtPos.x) / block_[r][c].getSize().x));
+							block_[r][c].setBLtRowAddress(static_cast<int>((block_[r][c].getScreenLtVertex().y - kFieldLtPos.y) / block_[r][c].getSize().y));
+						} else if (vertexNum == 1) {
+							block_[r][c].setBRtColAddress(static_cast<int>((block_[r][c].getScreenRtVertex().x - kFieldLtPos.x - 1) / block_[r][c].getSize().x));
+							block_[r][c].setBRtRowAddress(static_cast<int>((block_[r][c].getScreenRtVertex().y - kFieldLtPos.y) / block_[r][c].getSize().y));
+						} else if (vertexNum == 2) {
+							block_[r][c].setBLbColAddress(static_cast<int>((block_[r][c].getScreenLbVertex().x - kFieldLtPos.x) / block_[r][c].getSize().x));
+							block_[r][c].setBLbRowAddress(static_cast<int>((block_[r][c].getScreenLbVertex().y - kFieldLtPos.y - 1) / block_[r][c].getSize().y)) ;
+						} else if (vertexNum == 3) {
+							block_[r][c].setBRbColAddress(static_cast<int>((block_[r][c].getScreenRbVertex().x - kFieldLtPos.x - 1) / block_[r][c].getSize().x));
+							block_[r][c].setBRbRowAddress(static_cast<int>((block_[r][c].getScreenRbVertex().y - kFieldLtPos.y - 1) / block_[r][c].getSize().y));
 						}
 					}
 				}
 
 
-				///右の面
-				if (block_[bRtRowAddress_][bRtColAddress_].getIsFacingRight() != true) {
 
-					if (block_[bRtRowAddress_][bRtColAddress_ + 1].getType() != NONE && //右上の1個右
-						block_[bRbRowAddress_][bRbColAddress_ + 1].getType() != NONE) { //右下の1個右
-						///面しているブロックの種類を判断
-						if (block_[bRtRowAddress_][bRtColAddress_ + 1].getType() == block_[bRtRowAddress_][bRtColAddress_ + 1].getType() && //右上の1個上と今のブロック
-							block_[bRbRowAddress_][bRbColAddress_ + 1].getType() == block_[bRbRowAddress_][bRbColAddress_ + 1].getType()) { //右下の1個上と今のブロック
-							//持たれているブロックか判定する
-							if (!block_[bRtRowAddress_][bRtColAddress_ + 1].getIsHadBlock()) {
-								//1個先のブロックの左上座標を2個先にする
-								block_[bRtRowAddress_][bRtColAddress_ + 1].pointInit(block_[bRtRowAddress_][bRtColAddress_ + 2].getPos());
-							} else {
-								if (block_[bRtRowAddress_][bRtColAddress_ + 1].getType() == S_POLE || block_[bRtRowAddress_][bRtColAddress_ + 1].getType() == N_POLE) {
-									///持たれているブロックか判定する
-									if (block_[bRtRowAddress_][bRtColAddress_ + 1].getIsHadBlock() != true) {
+				if (player_.getIsSwitch() == true) {
+					///前フレームの位置
+					int keep = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getType();
 
-										///ローカル座標に追加するための初期化
-										int aa = (bRtColAddress_ + 1) - colAddress_[0];
-										int bb = (bRtRowAddress_)-rowAddress_[0];
+					///前フレームのアドレスを更新
+					block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].setType(block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType());
 
-										Vec2 resetPos = block_[bRtRowAddress_][bRtColAddress_ + 1].getLtVertex();
-										resetPos.x = 0 + aa * 53.0f;
-										resetPos.y = bb * 53.0f;
-										block_[bRtRowAddress_][bRtColAddress_ + 1].pointInit(resetPos);
-										///ローカル座標に追加
-										block_[bRtRowAddress_][bRtColAddress_ + 1].setLocalCoOrigin(player_.getScreenLtVertex());
-										//ブロックを持たせる
-										block_[bRtRowAddress_][bRtColAddress_ + 1].setIsHadBlock(true);
-										//面している
-										block_[bRtRowAddress_][bRtColAddress_ + 1].setIsFacingRight(true);
+					///今のアドレスを更新
+					block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].setType(keep);
 
+					player_.setIsSwitch(false);
+				}
+
+				if (player_.getSwitch() == true) {
+					Vec2 keepCo;
+					///入手したときの座標
+					keepCo.x = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getLtVertex().x;
+					keepCo.y = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getLtVertex().y;
+
+					///入手したときの座標に動いていない座標ができる
+					block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].setLtVertex(block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getLtVertex());
+
+					///今の座標に入手した時の座標を入れる
+					block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].setLtVertex(keepCo);
+
+					player_.setSwitch(false);
+				}
+
+				if (block_[r][c].getType() == N_POLE || block_[r][c].getType() == S_POLE) {
+					if (block_[r][c].getType() != WALL && block_[r][c].getType() != NONE) {
+						///----------各頂点の番地からどの面が接しているかの判定----------///
+						///上の面
+						if (block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getIsFacingTop() != true) {
+							if (block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType() != WALL) {
+
+								/*------------------------------反発------------------------------*/
+								//面しているブロックの種類を判断
+								if (block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getType() == block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType() && //左上の1個上と今のブロック
+									block_[block_[r][c].getBRtRowAddress() - 1][block_[r][c].getBRtColAddress()].getType() == block_[block_[r][c].getBRtRowAddress()][block_[r][c].getBRtColAddress()].getType()) { //右上の1個上と今のブロック
+									//反発させる
+									block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].pointInit(block_[block_[r][c].getBLtRowAddress() - 2][block_[r][c].getBLtColAddress()].getPos());
+
+
+
+								} else {
+
+									/*------------------------------くっつける------------------------------*/
+									if (block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getType() == S_POLE || 
+										block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getType() == N_POLE) {
+										//持たれているブロックか判定する
+										if (block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getIsHadBlock() != true) {
+											if (block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType() != 
+												block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType()) {
+												///ローカル座標に追加するための初期化
+												int aa = (block_[r][c].getBLtRowAddress())-colAddress_[0];
+												int bb = (block_[r][c].getBLtRowAddress() - 1) - rowAddress_[0];
+												Vec2 resetPos = block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getLtVertex();
+												resetPos.x = 0 + aa * 53.0f;
+												resetPos.y = bb * 53.0f;
+												block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].pointInit(resetPos);
+												//ローカル座標に追加
+												block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].setLocalCoOrigin(player_.getScreenLtVertex());
+												//ブロックを持たせる
+												block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].setIsHadBlock(true);
+												//面している
+												block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].setIsFacingTop(true);
+											}
+										}
 									}
-
-								} 
-							}
-						}
-
-					}
-				} else if (block_[bRtRowAddress_][bRtColAddress_ + 1].getType() == NONE) {
-					block_[bRtRowAddress_][bRtColAddress_].setIsFacingRight(false);
-				}
-
-
-
-				///下の面
-				if (block_[bLtRowAddress_][bLtColAddress_].getIsFacingBottom() != true) {
-
-					if (block_[bRbRowAddress_ + 1][bRbColAddress_].getType() != NONE && //右下の1個下
-						block_[bLbRowAddress_ + 1][bLbColAddress_].getType() != NONE) { //左下の1個下
-						//面しているブロックの種類を判断
-						if (block_[bRbRowAddress_ + 1][bRbColAddress_].getType() == block_[bRbColAddress_][bRbRowAddress_].getType() && //右下の1個上と今のブロック
-							block_[bLbRowAddress_ + 1][bLbColAddress_].getType() == block_[bLbColAddress_][bLbRowAddress_].getType()) { //左下の1個上と今のブロック
-							//持たれているブロックか判定する
-							if (!block_[bRbRowAddress_ + 1][bRbColAddress_].getIsHadBlock()) {
-								//1個先のブロックのposを奥に移動させる
-								block_[bRbRowAddress_ + 1][bRbColAddress_].pointInit(block_[bRbRowAddress_ + 2][bRbColAddress_].getPos());
-							}
-
-						} else {
-							if (block_[bRbRowAddress_ + 1][bRbColAddress_].getType() == S_POLE || block_[bRbRowAddress_ + 1][bRbColAddress_].getType() == N_POLE) {
-								//持たれているブロックか判定する
-								if (block_[bRbRowAddress_ + 1][bRbColAddress_].getIsHadBlock() != true) {
-
-									///ローカル座標に追加するための初期化
-									int aa = (bRtColAddress_)-colAddress_[0];
-									int bb = (bRtRowAddress_ + 1) - rowAddress_[0];
-
-									Vec2 resetPos = block_[bRbRowAddress_ + 1][bRbColAddress_].getLtVertex();
-									resetPos.x = 0 + aa * 53.0f;
-									resetPos.y = bb * 53.0f;
-									block_[bRbRowAddress_ + 1][bRbColAddress_].pointInit(resetPos);
-									//ローカル座標に追加
-									block_[bRbRowAddress_ + 1][bRbColAddress_].setLocalCoOrigin(player_.getScreenLtVertex());
-									//ブロックを持たせる
-									block_[bRbRowAddress_ + 1][bRbColAddress_].setIsHadBlock(true);
-									//面している
-									block_[bRbRowAddress_ + 1][bRbColAddress_].setIsFacingBottom(true);
-
 								}
-
-							} 
-						}
-					}
-				}
-
-
-
-				///左の面
-				if (block_[bLtRowAddress_][bLtColAddress_].getIsFacingBottom() != true) {
-
-					if (block_[bLbRowAddress_][bLbColAddress_ - 1].getType() != NONE && //左下の1個左
-						block_[bLtRowAddress_][bLtColAddress_ - 1].getType() != NONE) { //左上の1個左
-						//面しているブロックの種類を判断
-						if (block_[bLbRowAddress_][bLbColAddress_ - 1].getType() == block_[bLbRowAddress_][bLbColAddress_].getType() && //左下の1個上と今のブロック
-							block_[bLtRowAddress_][bLtColAddress_ - 1].getType() == block_[bLtRowAddress_][bLtColAddress_].getType()) { //左上の1個上と今のブロック
-							//持たれているブロックか判定する
-							if (block_[bLbRowAddress_][bLbColAddress_ - 1].getIsHadBlock() != true) {
-								//1個先のブロックのposを奥に移動させる
-								block_[bLbRowAddress_][bLbColAddress_ - 1].pointInit(block_[bLbRowAddress_][bLbColAddress_ - 2].getPos());
 							}
-
-						} else {
-							if (block_[bLbRowAddress_][bLbColAddress_ - 1].getType() == S_POLE || block_[bLbRowAddress_][bLbColAddress_ - 1].getType() == N_POLE) {
-								//持たれているブロックか判定する
-								if (block_[bLbRowAddress_][bLbColAddress_ - 1].getIsHadBlock() != true) {
-
-									///ローカル座標に追加するための初期化
-									int aa = (bRtColAddress_ - 1) - colAddress_[0];
-									int bb = (bRtRowAddress_)-rowAddress_[0];
-
-									Vec2 resetPos = block_[bRbRowAddress_][bRbColAddress_ - 1].getLtVertex();
-									resetPos.x = 0 + aa * 53.0f;
-									resetPos.y = bb * 53.0f;
-									block_[bLbRowAddress_][bLbColAddress_ - 1].pointInit(resetPos);
-									//ローカル座標に追加
-									block_[bLbRowAddress_][bLbColAddress_ - 1].setLocalCoOrigin(player_.getScreenLtVertex());
-									//ブロックを持たせる
-									block_[bLbRowAddress_][bLbColAddress_ - 1].setIsHadBlock(true);
-									//面している
-									block_[bLbRowAddress_][bLbColAddress_ - 1].setIsFacingLeft(true);
-
-								}
-							} 
 						}
-					}
-				}
-
-				//ブロックが壁に当たったときの処理
-				for (int i = 0; i < maxRow_; i++) {
-					for (int j = 0; j < maxCol_; j++) {
-						if (block_[i][j].getType() == N_POLE || block_[i][j].getType() == S_POLE) {
 
 
-							rbro_ = static_cast<int>(block_[i][j].getScreenLtVertex().y / 53.0f);
-							cbro_ = static_cast<int>(block_[i][j].getScreenLtVertex().x / 53.0f) - 6;
+						/////右の面
+						//if (block_[bRtRowAddress_][bRtColAddress_].getIsFacingRight() != true) {
+						//	if (block_[bLtRowAddress_][bLtColAddress_].getType() != WALL) {
+						//			///面しているブロックの種類を判断
+						//		if (block_[bRtRowAddress_][bRtColAddress_ + 1].getType() == block_[bRtRowAddress_][bRtColAddress_].getType() && //右上の1個右と今のブロック
+						//			block_[bRbRowAddress_][bRbColAddress_ + 1].getType() == block_[bRbRowAddress_][bRbColAddress_].getType()) { //右下の1個右と今のブロック
+						//			if (block_[bLtRowAddress_][bLtColAddress_].getType() != NONE) {
+						//				//1個先のブロックの左上座標を2個先にする
+						//				block_[bRtRowAddress_][bRtColAddress_ + 1].pointInit(block_[bRtRowAddress_][bRtColAddress_ + 2].getPos());
+						//			}
+						//		} else {
+						//			if (block_[bRtRowAddress_][bRtColAddress_ + 1].getType() == S_POLE ||
+						//				block_[bRtRowAddress_][bRtColAddress_ + 1].getType() == N_POLE) {
+						//						///持たれているブロックか判定する
+						//				if (block_[bRtRowAddress_][bRtColAddress_ + 1].getIsHadBlock() != true) {
+						//					if (block_[bRtRowAddress_][bRtColAddress_ + 1].getType() != block_[bRtRowAddress_][bRtColAddress_].getType() && //右上の1個右と今のブロック
+						//						block_[bRbRowAddress_][bRbColAddress_ + 1].getType() != block_[bRbRowAddress_][bRbColAddress_].getType()) {
+						//						///ローカル座標に追加するための初期化
+						//						int aa = (bRtColAddress_ + 1) - colAddress_[0];
+						//						int bb = (bRtRowAddress_)-rowAddress_[0];
+						//						Vec2 resetPos = block_[bRtRowAddress_][bRtColAddress_ + 1].getLtVertex();
+						//						resetPos.x = 0 + aa * 53.0f;
+						//						resetPos.y = bb * 53.0f;
+						//						block_[bRtRowAddress_][bRtColAddress_ + 1].pointInit(resetPos);
+						//						///ローカル座標に追加
+						//						block_[bRtRowAddress_][bRtColAddress_ + 1].setLocalCoOrigin(player_.getScreenLtVertex());
+						//						//ブロックを持たせる
+						//						block_[bRtRowAddress_][bRtColAddress_ + 1].setIsHadBlock(true);
+						//						//面している
+						//						block_[bRtRowAddress_][bRtColAddress_ + 1].setIsFacingRight(true);
+						//					}
+						//				}
+
+						//			}
+						//		}
+						//	}
+						//} else if (block_[bRtRowAddress_][bRtColAddress_ + 1].getType() == NONE) {
+						//	block_[bRtRowAddress_][bRtColAddress_].setIsFacingRight(false);
+						//}
 
 
-							if (block_[rbro_][cbro_].getType() == WALL) {
 
-								player_.setPos(player_.getPrePos());
-								player_.pointInit(player_.getPos());
+						/////下の面
+						//if (block_[bLtRowAddress_][bLtColAddress_].getIsFacingBottom() != true) {
+						//	if (block_[bLtRowAddress_][bLtColAddress_].getType() != WALL) {
+						//			//面しているブロックの種類を判断
+						//		if (block_[bRbRowAddress_ + 1][bRbColAddress_].getType() == block_[bRbColAddress_][bRbRowAddress_].getType() && //右下の1個上と今のブロック
+						//			block_[bLbRowAddress_ + 1][bLbColAddress_].getType() == block_[bLbColAddress_][bLbRowAddress_].getType()) { //左下の1個上と今のブロック
+						//			//1個先のブロックのposを奥に移動させる
+						//			block_[bRbRowAddress_ + 1][bRbColAddress_].pointInit(block_[bRbRowAddress_ + 2][bRbColAddress_].getPos());
+						//		} else {
+						//			if (block_[bRbRowAddress_ + 1][bRbColAddress_].getType() == S_POLE ||
+						//				block_[bRbRowAddress_ + 1][bRbColAddress_].getType() == N_POLE) {
+						//				//持たれているブロックか判定する
+						//				if (block_[bRbRowAddress_][bRbColAddress_].getType() == NONE) {
+						//					if (block_[bRbRowAddress_ + 1][bRbColAddress_].getIsHadBlock() != true) {
+						//						///ローカル座標に追加するための初期化
+						//						int aa = (bRtColAddress_)-colAddress_[0];
+						//						int bb = (bRtRowAddress_ + 1) - rowAddress_[0];
+						//						Vec2 resetPos = block_[bRbRowAddress_ + 1][bRbColAddress_].getLtVertex();
+						//						resetPos.x = 0 + aa * 53.0f;
+						//						resetPos.y = bb * 53.0f;
+						//						block_[bRbRowAddress_ + 1][bRbColAddress_].pointInit(resetPos);
+						//						//ローカル座標に追加
+						//						block_[bRbRowAddress_ + 1][bRbColAddress_].setLocalCoOrigin(player_.getScreenLtVertex());
+						//						//ブロックを持たせる
+						//						block_[bRbRowAddress_ + 1][bRbColAddress_].setIsHadBlock(true);
+						//						//面している
+						//						block_[bRbRowAddress_ + 1][bRbColAddress_].setIsFacingBottom(true);
+						//					}
+						//				}
+						//			}
+						//		}
+						//	}
+						//}
+
+
+
+						/////左の面
+						//if (block_[bLtRowAddress_][bLtColAddress_].getIsFacingLeft() != true) {
+						//	if (block_[bLtRowAddress_][bLtColAddress_].getType() != WALL) {
+						//			//面しているブロックの種類を判断
+						//		if (block_[bLbRowAddress_][bLbColAddress_ - 1].getType() == block_[bLbRowAddress_][bLbColAddress_].getType() && //左下の1個上と今のブロック
+						//			block_[bLtRowAddress_][bLtColAddress_ - 1].getType() == block_[bLtRowAddress_][bLtColAddress_].getType()) { //左上の1個上と今のブロック
+						//			//1個先のブロックのposを奥に移動させる
+						//			block_[bLbRowAddress_][bLbColAddress_ - 1].pointInit(block_[bLbRowAddress_][bLbColAddress_ - 2].getPos());
+						//		} else {
+						//			if (block_[bLbRowAddress_][bLbColAddress_ - 1].getType() == S_POLE ||
+						//				block_[bLbRowAddress_][bLbColAddress_ - 1].getType() == N_POLE) {
+						//					//持たれているブロックか判定する
+						//				if (block_[bLbRowAddress_][bLbColAddress_ - 1].getIsHadBlock() != true) {
+						//					///ローカル座標に追加するための初期化
+						//					int aa = (bRtColAddress_ - 1) - colAddress_[0];
+						//					int bb = (bRtRowAddress_)-rowAddress_[0];
+
+						//					Vec2 resetPos = block_[bRbRowAddress_][bRbColAddress_ - 1].getLtVertex();
+						//					resetPos.x = 0 + aa * 53.0f;
+						//					resetPos.y = bb * 53.0f;
+						//					block_[bLbRowAddress_][bLbColAddress_ - 1].pointInit(resetPos);
+						//					//ローカル座標に追加
+						//					block_[bLbRowAddress_][bLbColAddress_ - 1].setLocalCoOrigin(player_.getScreenLtVertex());
+
+						//					//ブロックを持たせる
+						//					block_[bLbRowAddress_][bLbColAddress_ - 1].setIsHadBlock(true);
+
+						//					//面している
+						//					block_[bLbRowAddress_][bLbColAddress_ - 1].setIsFacingLeft(true);
+						//				}
+						//			}
+						//		}
+						//	}
+						//}
+
+						//ブロックが壁に当たったときの処理
+						for (int i = 0; i < maxRow_; i++) {
+							for (int j = 0; j < maxCol_; j++) {
+								if (block_[i][j].getType() == N_POLE || block_[i][j].getType() == S_POLE) {
+
+
+									rbro_ = static_cast<int>(block_[i][j].getScreenLtVertex().y / 53.0f);
+									cbro_ = static_cast<int>(block_[i][j].getScreenLtVertex().x / 53.0f) - 6;
+
+
+									if (block_[rbro_][cbro_].getType() == WALL) {
+
+										player_.setPos(player_.getPrePos());
+										player_.pointInit(player_.getPos());
+									}
+								}
 							}
 						}
 					}
 				}
 			}
+
+			///保存
+			block_[r][c].Keep();
+
+
+			/*block_[r][c].setRowKeepTop(bLtRowAddress_);
+			block_[r][c].setRowKeepRight(bRtRowAddress_);
+			block_[r][c].setRowKeepBottom(bLbRowAddress_);
+			block_[r][c].setRowKeepLeft(bRbRowAddress_);
+
+			block_[r][c].setColKeepTop(bLtColAddress_);
+			block_[r][c].setColKeepRight(bRtColAddress_);
+			block_[r][c].setColKeepBottom(bLbColAddress_);
+			block_[r][c].setColKeepLeft(bRbColAddress_);
+
+			block_[r][c].setKeepLtVer(block_[r][c].getLtVertex());
+			block_[r][c].setKeepRtVer(block_[r][c].getRtVertex());
+			block_[r][c].setKeepLbVer(block_[r][c].getLbVertex());
+			block_[r][c].setKeepRbVer(block_[r][c].getRbVertex());
+
+			block_[r][c].setKeepIsHadBlock(block_[r][c].getIsHadBlock());*/
+
 		}
 	}
 };
@@ -413,18 +487,18 @@ void CollisionManager::Draw(Block**& block_) {
 
 				Novice::ScreenPrintf(10, 600, "vertex[0].x:%f", block_[r][c].getScreenLtVertex().x);
 
-				Novice::ScreenPrintf(10, 620, "bRtRowAddress_:%d", bRtRowAddress_);
-				Novice::ScreenPrintf(10, 640, "bRtColAddress_:%d", bRtColAddress_);
 
-				Novice::ScreenPrintf(10, 660, "bRbRowAddress_:%d", bRbRowAddress_);
-				Novice::ScreenPrintf(10, 680, "bRbColAddress_:%d", bRbColAddress_);
-
-				Novice::ScreenPrintf(170, 620, "bLtRowAddress_:%d", bLtRowAddress_);
-				Novice::ScreenPrintf(170, 640, "bLtColAddress_:%d", bLtColAddress_);
-				Novice::ScreenPrintf(170, 660, "bLbRowAddress_:%d", bLbRowAddress_);
-				Novice::ScreenPrintf(170, 680, "bLbColAddress_:%d", bLbColAddress_);
 			}
 		}
 	}
+
+	Novice::ScreenPrintf(10, 620, "colAddress_[0]:%d", colAddress_[0]);
+	Novice::ScreenPrintf(170, 620, "rowAddress_[0]:%d", rowAddress_[0] - 1);
+	Novice::ScreenPrintf(10, 640, "colAddress_[1]:%d", colAddress_[1]);
+	Novice::ScreenPrintf(170, 640, "rowAddress_[1]:%d", rowAddress_[1] - 1);
+	Novice::ScreenPrintf(10, 660, "colAddress_[2]:%d", colAddress_[2]);
+	Novice::ScreenPrintf(170, 660, "rowAddress_[2]:%d", rowAddress_[2] - 1);
+	Novice::ScreenPrintf(10, 680, "colAddress_[3]:%d", colAddress_[3]);
+	Novice::ScreenPrintf(170, 680, "rowAddress_[3]:%d", rowAddress_[3] - 1);
 
 }

@@ -110,20 +110,17 @@
     <ClCompile Include="Scene_Clear.cpp">
       <Filter>Game\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Matrix3x3.cpp">
-      <Filter>KamataEngine</Filter>
-    </ClCompile>
     <ClCompile Include="box.cpp">
       <Filter>Game\Entitiy</Filter>
     </ClCompile>
     <ClCompile Include="easing.cpp">
       <Filter>Game\lib\myMath</Filter>
     </ClCompile>
-    <ClCompile Include="Triangle.cpp">
-      <Filter>Game\Entitiy</Filter>
-    </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial.cpp">
+      <Filter>Game\Scene\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -256,8 +253,8 @@
     <ClInclude Include="easing.h">
       <Filter>Game\lib\myMath</Filter>
     </ClInclude>
-    <ClInclude Include="Triangle.h">
-      <Filter>Game\Entitiy</Filter>
+    <ClInclude Include="Tutorial.h">
+      <Filter>Game\Scene\Stage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
