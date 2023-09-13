@@ -127,7 +127,7 @@ void Scene_Select::Update() {
 
 	for (int i = 0; i < 12; i++) {
 		stage_[i].Update(inputManager->getMousePos(), inputManager->getClickState());
-		selectNum_ = i;
+		
 
 		//三角のポジションの移動
 
@@ -136,6 +136,7 @@ void Scene_Select::Update() {
 		if (stage_[i].getISInsideMouse() == true) {
 			trianglePos_.x = stage_[i].getLtVertex().x + 30.0f;
 			trianglePos_.y = stage_[i].getLtVertex().y - 30.0f;
+			selectNum_ = i;
 		}
 
 		if (stage_[i].getIsClicked()) {
