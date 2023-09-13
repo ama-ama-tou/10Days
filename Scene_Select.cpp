@@ -7,6 +7,13 @@
 void Scene_Select::Load() {
 
 	//=================
+	//セレクトbarの初期化
+	//=================
+
+	Vec2 BarPos = Vec2()
+
+
+	//=================
 	//ボタン初期化
 	//=================
 
@@ -80,8 +87,8 @@ void Scene_Select::Update() {
 void Scene_Select::Draw() {
 	//効果音を鳴らす
 	if (isRang_) {
-		if (Novice::IsPlayingAudio(stageSelectVH_) == 0 || stageSelectSH_ == -1) {
-			stageSelectVH_ = Novice::PlayAudio(stageSelectSH_, false, 0.5f);
+		if (Novice::IsPlayingAudio(stageSelectVH_) == 0 || stageSelectVH_ == -1) {
+			stageSelectVH_ = Novice::PlayAudio(stageSelectSH_, false, 0.3f);
 		}
 		isRang_ = false;
 	}

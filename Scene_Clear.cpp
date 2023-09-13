@@ -4,6 +4,8 @@
 
 void Scene_Clear::Load() {
 
+
+
 	//クリア画像
 	clearSize_ = { 64.0f,64.0f };
 	for (int i = 0; i < 3; i++) {
