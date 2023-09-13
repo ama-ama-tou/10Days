@@ -92,7 +92,7 @@ void Scene_Game::Draw() {
 		}
 	}
 	
-
+	reset.Draw();
 	goSelect_.Draw();
 
 	if (stageNum_ == STAGE_1ST) {
