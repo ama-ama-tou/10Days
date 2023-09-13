@@ -113,7 +113,17 @@ public:
 	void Draw();
 	void TutorialDraw();
 
-	void Unload() {  };
+	void Unload() {
+		for (int i = 0; i < row_; i++) {
+
+			delete block_[i];
+		}
+
+		delete[] block_;
+
+
+		delete collision;
+	};
 
 	bool getIsClear() { return isClear_; }
 

@@ -68,11 +68,6 @@ void Scene_Game::Update() {
 	}
 	
 
-	if ((!inputManager->GetKeys()[DIK_SPACE] && inputManager->GetPreKeys()[DIK_SPACE])||reset.getIsClicked()) {
-		stageArr_[stageNum_]->Init();
-	}
-
-
 	if (stageNum_ == STAGE_1ST) {
 		stageArr_[STAGE_1ST]->Tutorial(inputManager->GetKeys(), inputManager->GetPreKeys(), inputManager->getClickState());
 	} else {
@@ -84,6 +79,12 @@ void Scene_Game::Update() {
 		Novice::StopAudio(backgroundVH_);
 		isRang_ = true;
 	}
+
+	if ((!inputManager->GetKeys()[DIK_SPACE] && inputManager->GetPreKeys()[DIK_SPACE]) || reset.getIsClicked()) {
+		stageArr_[stageNum_]->Unload();
+		stageArr_[stageNum_]->Init();
+	}
+
 
 }
 
