@@ -183,12 +183,6 @@ void Stage::Update(char* keys, char* preKeys) {
 	//デバック用
 	collision->Draw(block_);
 
-
-
-	if (playerHasBlockNum == NSBlockNum_) {
-		isClear_ = true;
-	}
-
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
 			if (block_[r][c].getIsPreHadBlock() == false && block_[r][c].getIsHadBlock() == true) {
@@ -197,6 +191,7 @@ void Stage::Update(char* keys, char* preKeys) {
 			}
 		}
 	}
+
 	Novice::ScreenPrintf(10, 500, "hasBlock=%d, goalBlocks=%d", playerHasBlockNum, NSBlockNum_);
 
 
