@@ -39,7 +39,7 @@ void Scene_Game::Load() {
 
 	///リセットボタン
 	const char* resetGH = "./Resources/image/obj/button/reset.png";
-	Vec2 resetPos{ 20.0f,250.0f };
+	Vec2 resetPos{ 20.0f,80.0f };
 	Vec2 resetImageSize{ 760.0f,220.0f };
 	Vec2 resetSize{ 190.0f,55.0f };
 	reset.Init(resetPos, resetSize, Vec2(0.0f, 0.0f),
