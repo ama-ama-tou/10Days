@@ -1,4 +1,4 @@
-﻿#include "Scene_Select.h"
+#include "Scene_Select.h"
 #include "Button.h"
 #include "Scene_Title.h"
 #include "InputManager.h"
