@@ -1,26 +1,32 @@
-﻿#include "Scene_Select.h"
+#include "Scene_Select.h"
 #include "Button.h"
 #include "Scene_Title.h"
-#include"base.h"
+#include "InputManager.h"
 
 
 void Scene_Select::Load() {
 
+	
+	//ステージセレクトバーの初期化
+	Vec2 titleBarPos = Vec2(1000.0f,10.0f);
+	Vec2 titleBarImageSize{ 512.0f,256.0f };
+	Vec2 titleBarSize{ 256.0f,128.0f };
+	int titleBarGH = Novice::LoadTexture("./Resources/image/obj/selectBar.png");
+
+	selectBar_.Init(titleBarPos, titleBarSize, Vec2(0.0f, 0.0f),
+		titleBarGH, Vec2(0.0f, 0.0f), titleBarImageSize, WHITE);
 
 
-	//=================
-	//ボタン初期化
-	//=================
 
-	//タイトル画面に戻るボタン
-	Vec2 goTitlePos = Vec2(20.0f, 30.0f);
-	Vec2 goTitleButtonImageSize{ 760.0f,220.0f };
-	Vec2 goTitleButtonSize{ 190.0f,55.0f };
-
-	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
-	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
-		goTitleGH, kBeforeColor, kAfterColor,
-		Vec2(0.0f, 0.0f), goTitleButtonImageSize);
+	////タイトル画面に戻るボタン
+	//Vec2 goTitlePos = Vec2(20.0f, 10.0f);
+	//Vec2 goTitleButtonImageSize{512.0f,256.0f};
+	//Vec2 goTitleButtonSize{256.0f,128.0f};
+	//
+	//const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
+	//go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
+	//	goTitleGH, 0x53558bff, WHITE,
+	//	Vec2(0.0f, 0.0f), goTitleButtonImageSize);
 
 	//ステージセレクトボタン
 	const char* stageGH[12] = { "./Resources/image/obj/button/stage1.png",
@@ -45,7 +51,7 @@ void Scene_Select::Load() {
 	for (int i = 0; i < numCols * numRows; i++) {
 		int selectButtonRow = i / numCols;//行番号(0,1,2)
 		int selectButtonCol = i % numCols;//列番号(0,1,2,3)
-		selectButtonPos[i] = Vec2(115.0f + selectButtonCol * (selectButtonSize.x + selectButtonSpace.x),
+		selectButtonPos[i] = Vec2(150.0f + selectButtonCol * (selectButtonSize.x + selectButtonSpace.x),
 			175.0f + selectButtonRow * (selectButtonSize.y + selectButtonSpace.y));
 
 
@@ -69,6 +75,9 @@ void Scene_Select::Update() {
 		Scene::sceneNum = SCENE_TITLE;
 	}
 
+	if (inputManager->GetKeys()[DIK_ESCAPE] && inputManager->GetPreKeys()[DIK_ESCAPE] == 0) {
+		Scene::sceneNum = SCENE_TITLE;
+	}
 
 	for (int i = 0; i < 12; i++) {
 		stage_[i].Update(inputManager->getMousePos(), inputManager->getClickState());
@@ -92,8 +101,8 @@ void Scene_Select::Draw() {
 		stage_[i].Draw();
 	}
 
-	go2Title.Draw();
-
+//	go2Title.Draw();
+	selectBar_.Draw();
 }
 
 void Scene_Select::Unload() {
