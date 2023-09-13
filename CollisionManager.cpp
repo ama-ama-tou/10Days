@@ -1,7 +1,5 @@
 ﻿#include "CollisionManager.h"
-#include "player.h"
 #include "Vec2.h"
-#include "Block.h"
 #include "base.h"
 #include <Novice.h>
 
@@ -213,17 +211,17 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 				if (block_[r][c].getType() == N_POLE || block_[r][c].getType() == S_POLE) {
 					for (int vertexNum = 0; vertexNum < 4; vertexNum++) {
 						if (vertexNum == 0) {
-							bLtColAddress_ = static_cast<int>((block_[r][c].getScreenLtVertex().x - kFieldLtPos.x) / block_[r][c].getSize().x);
-							bLtRowAddress_ = static_cast<int>((block_[r][c].getScreenLtVertex().y - kFieldLtPos.y) / block_[r][c].getSize().y);
+							block_[r][c].setBLtColAddress(static_cast<int>((block_[r][c].getScreenLtVertex().x - kFieldLtPos.x) / block_[r][c].getSize().x));
+							block_[r][c].setBLtRowAddress(static_cast<int>((block_[r][c].getScreenLtVertex().y - kFieldLtPos.y) / block_[r][c].getSize().y));
 						} else if (vertexNum == 1) {
-							bRtColAddress_ = static_cast<int>((block_[r][c].getScreenRtVertex().x - kFieldLtPos.x - 1) / block_[r][c].getSize().x);
-							bRtRowAddress_ = static_cast<int>((block_[r][c].getScreenRtVertex().y - kFieldLtPos.y) / block_[r][c].getSize().y);
+							block_[r][c].setBRtColAddress(static_cast<int>((block_[r][c].getScreenRtVertex().x - kFieldLtPos.x - 1) / block_[r][c].getSize().x));
+							block_[r][c].setBRtRowAddress(static_cast<int>((block_[r][c].getScreenRtVertex().y - kFieldLtPos.y) / block_[r][c].getSize().y));
 						} else if (vertexNum == 2) {
-							bLbColAddress_ = static_cast<int>((block_[r][c].getScreenLbVertex().x - kFieldLtPos.x) / block_[r][c].getSize().x);
-							bLbRowAddress_ = static_cast<int>((block_[r][c].getScreenLbVertex().y - kFieldLtPos.y - 1) / block_[r][c].getSize().y);
+							block_[r][c].setBLbColAddress(static_cast<int>((block_[r][c].getScreenLbVertex().x - kFieldLtPos.x) / block_[r][c].getSize().x));
+							block_[r][c].setBLbRowAddress(static_cast<int>((block_[r][c].getScreenLbVertex().y - kFieldLtPos.y - 1) / block_[r][c].getSize().y)) ;
 						} else if (vertexNum == 3) {
-							bRbColAddress_ = static_cast<int>((block_[r][c].getScreenRbVertex().x - kFieldLtPos.x - 1) / block_[r][c].getSize().x);
-							bRbRowAddress_ = static_cast<int>((block_[r][c].getScreenRbVertex().y - kFieldLtPos.y - 1) / block_[r][c].getSize().y);
+							block_[r][c].setBRbColAddress(static_cast<int>((block_[r][c].getScreenRbVertex().x - kFieldLtPos.x - 1) / block_[r][c].getSize().x));
+							block_[r][c].setBRbRowAddress(static_cast<int>((block_[r][c].getScreenRbVertex().y - kFieldLtPos.y - 1) / block_[r][c].getSize().y));
 						}
 					}
 				}
@@ -235,10 +233,10 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 					int keep = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getType();
 
 					///前フレームのアドレスを更新
-					block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].setType(block_[bLtRowAddress_][bLtColAddress_].getType());
+					block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].setType(block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType());
 
 					///今のアドレスを更新
-					block_[bLtRowAddress_][bLtColAddress_].setType(keep);
+					block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].setType(keep);
 
 					player_.setIsSwitch(false);
 				}
@@ -250,10 +248,10 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 					keepCo.y = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getLtVertex().y;
 
 					///入手したときの座標に動いていない座標ができる
-					block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].setLtVertex(block_[bLtRowAddress_][bLtColAddress_].getLtVertex());
+					block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].setLtVertex(block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getLtVertex());
 
 					///今の座標に入手した時の座標を入れる
-					block_[bLtRowAddress_][bLtColAddress_].setLtVertex(keepCo);
+					block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].setLtVertex(keepCo);
 
 					player_.setSwitch(false);
 				}
@@ -262,38 +260,40 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 					if (block_[r][c].getType() != WALL && block_[r][c].getType() != NONE) {
 						///----------各頂点の番地からどの面が接しているかの判定----------///
 						///上の面
-						if (block_[bLtRowAddress_][bLtColAddress_].getIsFacingTop() != true) {
-							if (block_[bLtRowAddress_][bLtColAddress_].getType() != WALL) {
+						if (block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getIsFacingTop() != true) {
+							if (block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType() != WALL) {
 
 								/*------------------------------反発------------------------------*/
 								//面しているブロックの種類を判断
-								if (block_[bLtRowAddress_ - 1][bLtColAddress_].getType() == block_[bLtRowAddress_][bLtColAddress_].getType() && //左上の1個上と今のブロック
-									block_[bRtRowAddress_ - 1][bRtColAddress_].getType() == block_[bRtRowAddress_][bRtColAddress_].getType()) { //右上の1個上と今のブロック
+								if (block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getType() == block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType() && //左上の1個上と今のブロック
+									block_[block_[r][c].getBRtRowAddress() - 1][block_[r][c].getBRtColAddress()].getType() == block_[block_[r][c].getBRtRowAddress()][block_[r][c].getBRtColAddress()].getType()) { //右上の1個上と今のブロック
 									//反発させる
-									block_[bLtRowAddress_ - 1][bLtColAddress_].pointInit(block_[bLtRowAddress_ - 2][bLtColAddress_].getPos());
+									block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].pointInit(block_[block_[r][c].getBLtRowAddress() - 2][block_[r][c].getBLtColAddress()].getPos());
 
 
 
 								} else {
 
 									/*------------------------------くっつける------------------------------*/
-									if (block_[bLtRowAddress_ - 1][bLtColAddress_].getType() == S_POLE || block_[bLtRowAddress_ - 1][bLtColAddress_].getType() == N_POLE) {
+									if (block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getType() == S_POLE || 
+										block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getType() == N_POLE) {
 										//持たれているブロックか判定する
-										if (block_[bLtRowAddress_ - 1][bLtColAddress_].getIsHadBlock() != true) {
-											if (block_[bLtRowAddress_][bLtColAddress_].getType() != block_[bLtRowAddress_ - 1][bLtColAddress_].getType()) {
+										if (block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getIsHadBlock() != true) {
+											if (block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType() != 
+												block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType()) {
 												///ローカル座標に追加するための初期化
-												int aa = (bRtColAddress_)-colAddress_[0];
-												int bb = (bRtRowAddress_ - 1) - rowAddress_[0];
-												Vec2 resetPos = block_[bRtRowAddress_ - 1][bRtColAddress_].getLtVertex();
+												int aa = (block_[r][c].getBLtRowAddress())-colAddress_[0];
+												int bb = (block_[r][c].getBLtRowAddress() - 1) - rowAddress_[0];
+												Vec2 resetPos = block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getLtVertex();
 												resetPos.x = 0 + aa * 53.0f;
 												resetPos.y = bb * 53.0f;
-												block_[bLtRowAddress_ - 1][bLtColAddress_].pointInit(resetPos);
+												block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].pointInit(resetPos);
 												//ローカル座標に追加
-												block_[bLtRowAddress_ - 1][bLtColAddress_].setLocalCoOrigin(player_.getScreenLtVertex());
+												block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].setLocalCoOrigin(player_.getScreenLtVertex());
 												//ブロックを持たせる
-												block_[bLtRowAddress_ - 1][bLtColAddress_].setIsHadBlock(true);
+												block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].setIsHadBlock(true);
 												//面している
-												block_[bLtRowAddress_ - 1][bLtColAddress_].setIsFacingTop(true);
+												block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].setIsFacingTop(true);
 											}
 										}
 									}
@@ -438,22 +438,25 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 			}
 
 			///保存
-			block_[r][c].setRowKeepTop(block_[r][c].getLtVertex());
-			block_[r][c].setRowKeepRight(block_[r][c].getRtVertex());
-			block_[r][c].setRowKeepBottom(block_[r][c].getLbVertex());
-			block_[r][c].setRowKeepLeft(block_[r][c].getRbVertex());
+			block_[r][c].Keep();
 
-			block_[r][c].setColKeepTop(block_[r][c].getLtVertex());
-			block_[r][c].setColKeepRight(block_[r][c].getRtVertex());
-			block_[r][c].setColKeepBottom(block_[r][c].getLbVertex());
-			block_[r][c].setColKeepLeft(block_[r][c].getRbVertex());
+
+			/*block_[r][c].setRowKeepTop(bLtRowAddress_);
+			block_[r][c].setRowKeepRight(bRtRowAddress_);
+			block_[r][c].setRowKeepBottom(bLbRowAddress_);
+			block_[r][c].setRowKeepLeft(bRbRowAddress_);
+
+			block_[r][c].setColKeepTop(bLtColAddress_);
+			block_[r][c].setColKeepRight(bRtColAddress_);
+			block_[r][c].setColKeepBottom(bLbColAddress_);
+			block_[r][c].setColKeepLeft(bRbColAddress_);
 
 			block_[r][c].setKeepLtVer(block_[r][c].getLtVertex());
 			block_[r][c].setKeepRtVer(block_[r][c].getRtVertex());
 			block_[r][c].setKeepLbVer(block_[r][c].getLbVertex());
 			block_[r][c].setKeepRbVer(block_[r][c].getRbVertex());
 
-			block_[r][c].setKeepIsHadBlock(block_[r][c].getIsHadBlock());
+			block_[r][c].setKeepIsHadBlock(block_[r][c].getIsHadBlock());*/
 
 		}
 	}

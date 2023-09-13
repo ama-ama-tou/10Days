@@ -38,6 +38,17 @@ class Block :
 	int SH_;
 	int VH_;
 
+	//ブロックの各頂点の番地
+	int bLtRowAddress_;
+	int bRtRowAddress_;
+	int bLbRowAddress_;
+	int bRbRowAddress_;
+
+	int bLtColAddress_;
+	int bRtColAddress_;
+	int bLbColAddress_;
+	int bRbColAddress_;
+
 	///保存用変数
 	int rowKeepTop_;
 	int rowKeepRight_;
@@ -79,6 +90,7 @@ public:
 
 	void Draw();
 
+	void Keep();
 	
 	int CalcuRowAddress(int vertexNum);
 	int CalcuColAddress(int vertexNum);
@@ -167,5 +179,27 @@ public:
 	void setIsFacingRightType(int isFacing) { isFacingType_[1] = isFacing; }
 	void setIsFacingBottomType(int isFacing) { isFacingType_[2] = isFacing; }
 	void setIsFacingLeftType(int isFacing) { isFacingType_[3] = isFacing; }
+
+
+	//
+	int getBLtRowAddress() { return bLtRowAddress_; }
+	int getBRtRowAddress() { return bRtRowAddress_; }
+	int getBLbRowAddress() { return bLbRowAddress_; }
+	int getBRbRowAddress() { return bRbRowAddress_; }
+
+	void setBLtRowAddress(int ad) { bLtRowAddress_ = ad; }
+	void setBRtRowAddress(int ad) { bRtRowAddress_ = ad; }
+	void setBLbRowAddress(int ad) { bLbRowAddress_ = ad; }
+	void setBRbRowAddress(int ad) { bRbRowAddress_ = ad; }
+
+	int getBLtColAddress() { return bLtColAddress_; }
+	int getBRtColAddress() { return bRtColAddress_; }
+	int getBLbColAddress() { return bLbColAddress_; }
+	int getBRbColAddress() { return bRbColAddress_; }
+
+	void setBLtColAddress(int ad) { bLtColAddress_ = ad; }
+	void setBRtColAddress(int ad) { bRtColAddress_ = ad; }
+	void setBLbColAddress(int ad) { bLbColAddress_ = ad; }
+	void setBRbColAddress(int ad) { bRbColAddress_ = ad; }
 };
 
