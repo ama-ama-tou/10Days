@@ -161,7 +161,7 @@ void Block::setType(int type) {
 		testType_ = S_POLE;
 		GH_ = Novice::LoadTexture("./Resources/image/character/sPole.png");
 	} else if (type == 3) {
-		testType_ = WALL;
+		testType_ = 3;
 		GH_ = Novice::LoadTexture("./Resources/image/obj/wall.png");
 	} else {
 		GH_ = 0;
