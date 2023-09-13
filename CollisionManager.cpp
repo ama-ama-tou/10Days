@@ -10,11 +10,14 @@
 
  ///プレイヤーの当たり判定
 void CollisionManager::playerCollision(Player& player_, Block**& block_) {
-	isGet_ = 0;
+
+
 	for (int r = 0; r < maxCol_; r++) {
 		for (int c = 0; c < maxRow_; c++) {
 			block_[r][c].getType();
 			/*block_[r][c].setPrePos(block_[r][c].getLtVertex());*/
+
+			
 		}
 	}
 
@@ -68,8 +71,9 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 					block_[rowAddress_[0] - 1][colAddress_[0]].setIsHadBlock(true);
 
 					block_[rowAddress_[0] - 1][colAddress_[0]].setIsHadCount(block_[rowAddress_[0] - 1][colAddress_[0]].getIsHadCount() + 1);
-
-					block_[rowAddress_[0] - 1][colAddress_[0]].setIsGetting(true);
+					/*if (block_[rowAddress_[0] - 1][colAddress_[0]].getGetting() == false) {
+						block_[rowAddress_[0] - 1][colAddress_[0]].setIsGetting(true);
+					}*/
 
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingTopType(1);
@@ -111,8 +115,9 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 
 					block_[rowAddress_[1]][colAddress_[1] + 1].setIsHadCount(block_[rowAddress_[1]][colAddress_[1] + 1].getIsHadBlock()+ 1);
 
-					block_[rowAddress_[1]][colAddress_[1] + 1].setIsGetting(true);
-
+					/*if (block_[rowAddress_[1]][colAddress_[1] + 1].getGetting() == false) {
+						block_[rowAddress_[1]][colAddress_[1] + 1].setIsGetting(true);
+					}*/
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingRightType(1);
 					} else if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == S_POLE) {
@@ -146,7 +151,9 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 
 					block_[rowAddress_[3] + 1][colAddress_[3]].setIsHadCount(block_[rowAddress_[3] + 1][colAddress_[3]].getIsHadBlock() + 1);
 
-					block_[rowAddress_[3] + 1][colAddress_[3]].setIsGetting(true);
+					/*if (block_[rowAddress_[3] + 1][colAddress_[3]].getGetting() == false) {
+						block_[rowAddress_[3] + 1][colAddress_[3]].setIsGetting(true);
+					}*/
 
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingBottomType(1);
@@ -181,7 +188,9 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 
 					block_[rowAddress_[0]][colAddress_[0] - 1].setIsHadCount(block_[rowAddress_[0]][colAddress_[0] - 1].getIsHadBlock()+ 1);
 
-					block_[rowAddress_[0]][colAddress_[0] - 1].setIsGetting(true);
+					/*if (block_[rowAddress_[0]][colAddress_[0] - 1].getGetting() == false) {
+						block_[rowAddress_[0]][colAddress_[0] - 1].setIsGetting(true);
+					}*/
 
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingLeftType(1);
@@ -207,7 +216,7 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 
 ///ブロックとブロック
 void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
-	isGet_ = 0;
+	
 
 	for (int r = 0; r < maxRow_; r++) {
 		for (int c = 0; c < maxCol_; c++) {
@@ -270,23 +279,6 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 
 				}
 
-				//ブロックが壁に当たったときの処理
-				for (int i = 0; i < maxRow_; i++) {
-					for (int j = 0; j < maxCol_; j++) {
-						if (block_[i][j].getType() == N_POLE || block_[i][j].getType() == S_POLE) {
-							rbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().y - kFieldLtPos.y) / block_[r][c].getSize().y);
-							cbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().x - kFieldLtPos.x) / block_[r][c].getSize().x);
-
-
-							if (block_[rbro_][cbro_].getType() == 3) {
-
-								player_.setPos(player_.getPrePos());
-								player_.pointInit(player_.getPos());
-							}
-						}
-					}
-				}
-
 				if (block_[r][c].getType() == N_POLE || block_[r][c].getType() == S_POLE) {
 					if (block_[r][c].getType() != WALL && block_[r][c].getType() != NONE) {
 						///----------各頂点の番地からどの面が接しているかの判定----------///
@@ -322,6 +314,10 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 												block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].setLocalCoOrigin(player_.getScreenLtVertex());
 												//ブロックを持たせる
 												block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].setIsHadBlock(true);
+
+												if (block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getGetting() == false) {
+													block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].setIsGetting(true);
+												}
 												//面している
 												block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].setIsFacingTop(true);
 											}
@@ -364,6 +360,10 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 												block_[block_[r][c].getBRtRowAddress()][block_[r][c].getBRtColAddress() + 1].setLocalCoOrigin(player_.getScreenLtVertex());
 												//ブロックを持たせる
 												block_[block_[r][c].getBRtRowAddress()][block_[r][c].getBRtColAddress() + 1].setIsHadBlock(true);
+
+												if(block_[block_[r][c].getBRtRowAddress()][block_[r][c].getBRtColAddress() + 1].getGetting() == false){
+													block_[block_[r][c].getBRtRowAddress()][block_[r][c].getBRtColAddress() + 1].setIsHadBlock(true);
+												}
 												//面している
 												block_[block_[r][c].getBRtRowAddress()][block_[r][c].getBRtColAddress() + 1].setIsFacingRight(true);
 
@@ -403,6 +403,10 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 												block_[block_[r][c].getBRbRowAddress() + 1][block_[r][c].getBRbColAddress()].setLocalCoOrigin(player_.getScreenLtVertex());
 												//ブロックを持たせる
 												block_[block_[r][c].getBRbRowAddress() + 1][block_[r][c].getBRbColAddress()].setIsHadBlock(true);
+
+												if (block_[block_[r][c].getBRbRowAddress() + 1][block_[r][c].getBRbColAddress()].getGetting() == false) {
+													block_[block_[r][c].getBRbRowAddress() + 1][block_[r][c].getBRbColAddress()].setIsGetting(true);
+												}
 												//面している
 												block_[block_[r][c].getBRbRowAddress() + 1][block_[r][c].getBRbColAddress()].setIsFacingBottom(true);
 											}
@@ -443,6 +447,9 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 												//ブロックを持たせる
 												block_[block_[r][c].getBLbRowAddress()][block_[r][c].getBLbColAddress() - 1].setIsHadBlock(true);
 
+												if (block_[block_[r][c].getBLbRowAddress()][block_[r][c].getBLbColAddress() - 1].getGetting() == false) {
+													block_[block_[r][c].getBLbRowAddress()][block_[r][c].getBLbColAddress() - 1].setIsGetting(true);
+												}
 												//面している
 												block_[block_[r][c].getBLbRowAddress()][block_[r][c].getBLbColAddress() - 1].setIsFacingLeft(true);
 											}
@@ -488,43 +495,3 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 	}
 };
 
-
-//描画
-void CollisionManager::Draw(Block**& block_) {
-	Novice::ScreenPrintf(10, 10, "rawAddress[0]:%d", rowAddress_[0]);
-	Novice::ScreenPrintf(10, 30, "rawAddress[1]:%d", rowAddress_[1]);
-	Novice::ScreenPrintf(10, 50, "rawAddress[2]:%d", rowAddress_[2]);
-	Novice::ScreenPrintf(10, 70, "rawAddress[3]:%d", rowAddress_[3]);
-
-	Novice::ScreenPrintf(180, 10, "colAddress[0]:%d(leftTop)", colAddress_[0]);
-	Novice::ScreenPrintf(180, 30, "colAddress[1]:%d(rightTop)", colAddress_[1]);
-	Novice::ScreenPrintf(180, 50, "colAddress[2]:%d(leftBottom)", colAddress_[2]);
-	Novice::ScreenPrintf(180, 70, "colAddress[3]:%d(rightBottom)", colAddress_[3]);
-
-	for (int r = 0; r < maxRow_; r++) {
-		for (int c = 0; c < maxCol_; c++) {
-			if (block_[r][c].getIsHadBlock() == true) {
-				Novice::ScreenPrintf(10, 200 + (r * 20), "isHitBlock[%d][%d]", r, c);
-				Novice::ScreenPrintf(10, 200 + (r * 20), "isHitBlock[%d][%d]", r, c);
-				Novice::ScreenPrintf(10, 270 + (r * 20), "origin.x:%f", block_[r][c].getLtVertex().x);
-				Novice::ScreenPrintf(200, 270, "origin.y:%f", block_[r][c].getLocalCo().getOrigin().y);
-
-				Novice::ScreenPrintf(200, 270, "origin.y:%f", block_[r][c].getLocalCo().getOrigin().y);
-
-				Novice::ScreenPrintf(10, 600, "vertex[0].x:%f", block_[r][c].getScreenLtVertex().x);
-
-
-			}
-		}
-	}
-
-	Novice::ScreenPrintf(10, 620, "colAddress_[0]:%d", colAddress_[0]);
-	Novice::ScreenPrintf(170, 620, "rowAddress_[0]:%d", rowAddress_[0] - 1);
-	Novice::ScreenPrintf(10, 640, "colAddress_[1]:%d", colAddress_[1]);
-	Novice::ScreenPrintf(170, 640, "rowAddress_[1]:%d", rowAddress_[1] - 1);
-	Novice::ScreenPrintf(10, 660, "colAddress_[2]:%d", colAddress_[2]);
-	Novice::ScreenPrintf(170, 660, "rowAddress_[2]:%d", rowAddress_[2] - 1);
-	Novice::ScreenPrintf(10, 680, "colAddress_[3]:%d", colAddress_[3]);
-	Novice::ScreenPrintf(170, 680, "rowAddress_[3]:%d", rowAddress_[3] - 1);
-
-}

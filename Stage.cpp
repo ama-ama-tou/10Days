@@ -180,9 +180,6 @@ void Stage::Update(char* keys, char* preKeys) {
 		}
 	}
 
-	//デバック用
-	collision->Draw(block_);
-
 
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
@@ -356,8 +353,6 @@ void Stage::Draw() {
 				//blockが設置してあればDraw
 				block_[r][c].Draw();
 
-				Novice::ScreenPrintf(10, 200, "NSBlockNum:%d", NSBlockNum_);
-				Novice::ScreenPrintf(10, 220, "playerHasBlockNum:%d", playerHasBlockNum);
 
 			}
 		}
