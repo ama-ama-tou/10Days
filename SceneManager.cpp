@@ -31,8 +31,6 @@ void SceneManager::Update() {
 
 			}
 		}
-
-		
 		//シーンが変わったら初期化
 		sceneArr_[sceneNo_]->Load();
 	}
