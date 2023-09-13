@@ -48,8 +48,10 @@ void Scene_Game::Load() {
 		Vec2(0.0f, 0.0f), resetImageSize);
 
 
+	Novice::StopAudio(backgroundVH_);
 	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
 	backgroundVH_ = -1;
+	isRang_ = false;
 
 	stageArr_[stageNum_]->Init();
 }
@@ -75,18 +77,21 @@ void Scene_Game::Update() {
 	}
 
 	if (stageArr_[stageNum_]->getIsClear()) {
-		Scene::sceneNum = SCENE_CLEAR;
+		Scene::sceneNum = SCENE_CLEAR; Novice::StopAudio(backgroundVH_);
+		isRang_ = true;
 	}
 	Novice::ScreenPrintf(100, 100, "stageNum=%d", stageNum_);
 
 }
 
 void Scene_Game::Draw() {
-
-	//bgmを鳴らす
-	if (Novice::IsPlayingAudio(backgroundVH_) == 0 || backgroundVH_ == -1) {
-		backgroundVH_ = Novice::PlayAudio(backgroundSH_, true, 0.3f);
+	if (!isRang_) {
+		//bgmを鳴らす
+		if (Novice::IsPlayingAudio(backgroundVH_) == 0 || backgroundVH_ == -1) {
+			backgroundVH_ = Novice::PlayAudio(backgroundSH_, true, 0.3f);
+		}
 	}
+	
 	reset.Draw();
 	goSelect_.Draw();
 

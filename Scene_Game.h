@@ -13,6 +13,7 @@ class Scene_Game:
 
 	int backgroundSH_;
 	int backgroundVH_;
+	bool isRang_;
 
 	std::unique_ptr<Stage> stageArr_[12];
 
@@ -23,6 +24,8 @@ public:
 	void Update()override;
 	void Draw()override;
 	void Unload()override;
+
+	int getBackgroundVH() { return backgroundVH_; }
 
 };
 
