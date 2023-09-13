@@ -2,8 +2,13 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Vec2.h"
+#include "Button.h"
+#include "InputManager.h"
 
 void Stage::Init() {
+
+	
+
 	//--------------------------------
 	//ブロックの初期
 	//--------------------------------
@@ -124,6 +129,8 @@ void Stage::Update(char* keys, char* preKeys) {
 		isRang_ = true;
 	}
 
+	
+
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
 			if (block_[r][c].getType() != WALL) {
@@ -193,7 +200,7 @@ void Stage::Update(char* keys, char* preKeys) {
 		//赤色の四角
 		//==================
 
-			//quadの移動
+		//quadの移動
 		bkRedQuadPos_[i] += bkRedQuadSpeed_[i];
 
 		//座標の更新
@@ -230,7 +237,7 @@ void Stage::Update(char* keys, char* preKeys) {
 		//青色の四角
 		//==================
 
-			//quadの移動
+		//quadの移動
 		bkBlueQuadPos_[i] += bkBlueQuadSpeed_[i];
 
 		//座標の更新

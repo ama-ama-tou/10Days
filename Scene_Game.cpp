@@ -23,12 +23,38 @@ Scene_Game::~Scene_Game() {
 
 void Scene_Game::Load() {
 
+	//--------------------------------
+	//ボタンの初期化	
+	//--------------------------------
+
+	//セレクト画面に戻るボタン
+	Vec2 goSelectPos = Vec2(20.0f, 10.0f);
+	Vec2 goSelectButtonImageSize{ 760.0f,220.0f };
+	Vec2 goSelectButtonSize{ 190.0f,55.0f };
+
+	const char* goSelectGH = "./Resources/image/obj/button/goSelectSceneButton.png";
+	goSelect_.Init(goSelectPos, goSelectButtonSize, Vec2(0.0f, 0.0f),
+		goSelectGH, 0x53558bff, WHITE,
+		Vec2(0.0f, 0.0f), goSelectButtonImageSize);
+
+
 	stageArr_[stageNum_]->Init();
 }
 
 void Scene_Game::Update() {
 	stageArr_[stageNum_]->Update(inputManager->GetKeys(), inputManager->GetPreKeys());
 	
+	//ボタンの更新
+	goSelect_.Update(inputManager->getMousePos(), inputManager->getClickState());
+
+	if (goSelect_.getISInsideMouse() == true) {
+		if (goSelect_.getIsClicked() == true) {
+			Scene::sceneNum = SCENE_SELECT;
+		}
+	}
+
+
+
 	if (stageArr_[stageNum_]->getIsClear()) {
 		Scene::sceneNum = SCENE_CLEAR;
 	}
@@ -38,7 +64,7 @@ void Scene_Game::Update() {
 
 void Scene_Game::Draw() {
 
-	
+	goSelect_.Draw();
 
 	stageArr_[stageNum_]->Draw();
 }

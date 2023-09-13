@@ -5,6 +5,8 @@
 #include"LoadCSV.h"
 #include"base.h"
 #include"Vec2.h"
+#include"Button.h"
+#include"Scene.h"
 
 class Stage {
 
@@ -37,6 +39,8 @@ class Stage {
 	bool isClear_;
 	//リセットするか
 	bool isReset_;
+
+	
 
 
 	//背景の四角（赤色）
