@@ -7,6 +7,11 @@
 #include"Vec2.h"
 
 class Stage {
+	// チュートリアル用-------
+	bool isTutorial;
+	Quad explanation;
+	int page;
+	//---------------------
 
 	Coordinate stageCo_{ kFieldLtPos };
 
@@ -101,8 +106,10 @@ public:
 	void Init();
 
 	void Update(char* keys,char*preKeys);
+	void Tutorial(char* keys, char* preKeys,int clickState);
 
 	void Draw();
+	void TutorialDraw();
 
 	void Unload() { Novice::StopAudio(backgroundVH_); };
 

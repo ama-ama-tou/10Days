@@ -27,8 +27,12 @@ void Scene_Game::Load() {
 }
 
 void Scene_Game::Update() {
-	stageArr_[stageNum_]->Update(inputManager->GetKeys(), inputManager->GetPreKeys());
-	
+	if (stageNum_ == STAGE_1ST) {
+		stageArr_[STAGE_1ST]->Tutorial(inputManager->GetKeys(), inputManager->GetPreKeys(), inputManager->getClickState());
+	} else {
+		stageArr_[stageNum_]->Update(inputManager->GetKeys(), inputManager->GetPreKeys());
+	}
+
 	if (stageArr_[stageNum_]->getIsClear()) {
 		Scene::sceneNum = SCENE_CLEAR;
 	}
@@ -37,12 +41,13 @@ void Scene_Game::Update() {
 }
 
 void Scene_Game::Draw() {
-
-	
-
-	stageArr_[stageNum_]->Draw();
+	if (stageNum_ == STAGE_1ST) {
+		stageArr_[stageNum_]->TutorialDraw();
+	} else {
+		stageArr_[stageNum_]->Draw();
+	}
 }
 
 void Scene_Game::Unload() {
-	
+
 };
