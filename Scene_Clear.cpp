@@ -70,7 +70,7 @@ void Scene_Clear::Load() {
 	Vec2 goSelectImageSize{ 760.0f,220.0f };
 	Vec2 goSelectSize{ 190.0f,55.0f };
 
-	const char* goSelectGH = "./Resources/image/obj/button/goSelectButton.png";
+	const char* goSelectGH = "./Resources/image/obj/button/goTitleButton.png";
 	goSelect_.Init(goSelectPos, goSelectSize, Vec2(0.0f, 0.0f),
 		goSelectGH, 0x53558bff, WHITE,
 		Vec2(0.0f, 0.0f), goSelectImageSize);
@@ -90,11 +90,13 @@ void Scene_Clear::Update() {
 	goSelect_.Update(inputManager->getMousePos(),inputManager->getClickState());
 	if (goSelect_.getISInsideMouse() == true) {
 		if (goSelect_.getIsClicked() == true) {
-			Scene::sceneNum = SCENE_SELECT;
+			Scene::sceneNum = SCENE_TITLE;
 		}
 	}
 	
-
+	if (inputManager->GetKeys()[DIK_ESCAPE] && inputManager->GetPreKeys()[DIK_ESCAPE] == false) {
+		Scene::sceneNum = SCENE_TITLE;
+	}
 
 	//クリア画像の更新処理
 	float vertexMoveSpeed = 2.0f;
