@@ -5,7 +5,7 @@
 
 class CollisionManager {
 	/*Player player_;
-	
+
 	Block** block_;*/
 
 	Quad quad_;
@@ -17,45 +17,24 @@ class CollisionManager {
 	int maxRow_;
 	int maxCol_;
 
-	//ブロックの各頂点の番地
-	int bLtRowAddress_;
-	int bRtRowAddress_;
-	int bLbRowAddress_;
-	int bRbRowAddress_;
-
-	int bLtColAddress_;
-	int bRtColAddress_;
-	int bLbColAddress_;
-	int bRbColAddress_;
-
 	///
 	int rbro_;
 	int cbro_;
 
-	///
-	int rltbro_;
-	int rrtbro_;
-	int rlbbro_;
-	int rrbbro_;
-
-	int cltbro_;
-	int crtbro_;
-	int clbbro_;
-	int crbbro_;
-
-	
 	//保存用の変数
 	Vec2 bLtPreVertex_[12][12] = {};
 
+	bool initKeep_;
+
 public:
 	CollisionManager(const int& maxRow, const int& maxCol) {
-	
-		maxRow_	= maxRow;
+
+		maxRow_ = maxRow;
 		maxCol_ = maxCol;
 	};
 
 	//当たり判定
-	void playerCollision(Player& player , Block**& block);
+	void playerCollision(Player& player, Block**& block);
 
 	void blockCollision(Player& player, Block**& block);
 
@@ -71,6 +50,7 @@ public:
 
 	Vec2 getBLtPreVertex() { return quad_.getLtVertex(); }
 	void setBLtPreVertex(Vec2 vertex, int r, int c) { bLtPreVertex_[r][c] = vertex; }
+
 
 };
 

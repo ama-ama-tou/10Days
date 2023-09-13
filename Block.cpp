@@ -2,15 +2,15 @@
 #include <Novice.h>
 #include"base.h"
 
-void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
+void Block::Init(int MaxCol, int MaxRow, int colNum, int rowNum,
 	Vec2 localCoOrigin,
 	Vec2 imageLtPos, Vec2 imageSize) {
 
-	int x= static_cast<int>(kFieldSize.x / MaxRow);
+	int x = static_cast<int>(kFieldSize.x / MaxRow);
 	int y = static_cast<int>(kFieldSize.y / MaxCol);
 
 	Vec2 size(static_cast<float>(x), static_cast<float>(y));
-	
+
 	Vec2 pos;
 	pos.x = rowNum * size.x;
 	pos.y = colNum * size.y;
@@ -28,21 +28,23 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 	}*/
 
 
-	Quad::Init(pos, size, 
+	Quad::Init(pos, size,
 		localCoOrigin,
-		GH_, imageLtPos, imageSize,WHITE);
+		GH_, imageLtPos, imageSize, WHITE);
 }
 
 
 void Block::Update(Vec2 pos) {
+
 	setLocalCoOrigin(pos);
+
 }
 
 
 void Block::Draw() {
-	
+
 	if (!isPreHadBlock_ && isHadBlock_) {
-		if (Novice::IsPlayingAudio(VH_)==0||VH_==-1) {
+		if (Novice::IsPlayingAudio(VH_) == 0 || VH_ == -1) {
 			VH_ = Novice::PlayAudio(SH_, false, 0.3f);
 		}
 	}
@@ -50,12 +52,30 @@ void Block::Draw() {
 	Quad::Draw();
 }
 
+void Block::Keep() {
+	setRowKeepTop(getBLtRowAddress());
+	setRowKeepRight(getBRtRowAddress());
+	setRowKeepBottom(getBLbRowAddress());
+	setRowKeepLeft(getBRbRowAddress());
+
+	setColKeepTop(getBLtColAddress());
+	setColKeepRight(getBRtColAddress());
+	setColKeepBottom(getBLbColAddress());
+	setColKeepLeft(getBRbColAddress());
+
+	setKeepLtVer(getLtVertex());
+	setKeepRtVer(getRtVertex());
+	setKeepLbVer(getLbVertex());
+	setKeepRbVer(getRbVertex());
+
+	setKeepIsHadBlock(getIsHadBlock());
+}
 
 int Block::CalcuRowAddress(int vertexNum) {
 	int row = { 0 };
 	if (vertexNum == 0) {
 		row = static_cast<int>(getLtVertex().x / getSize().x); //左上の場合
-	} else if(vertexNum == 1) {
+	} else if (vertexNum == 1) {
 		row = static_cast<int>((getRtVertex().x - 1) / getSize().x); //右上の場合
 	} else if (vertexNum == 2) {
 		row = static_cast<int>((getRbVertex().x - 1) / getSize().x); //右下の場合
@@ -80,7 +100,7 @@ int Block::CalcuColAddress(int vertexNum) {
 }
 
 void Block::setType(int type) {
-	
+
 	if (type == 0) {
 		GH_ = 0;
 		testType_ = NONE;
@@ -93,7 +113,7 @@ void Block::setType(int type) {
 	} else if (type == 3) {
 		testType_ = WALL;
 		GH_ = Novice::LoadTexture("./Resources/image/obj/wall.png");
-	} else{
+	} else {
 		GH_ = 0;
 		testType_ = NONE;
 	}
