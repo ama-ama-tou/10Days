@@ -228,11 +228,9 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 							block_[r][c].Keep();
 						}
 					}
-					initKeep_ = false;
-
+					
 
 					///前フレームの位置
-
 					int keep = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getType();
 
 					///前フレームのアドレスを更新
