@@ -155,11 +155,8 @@ void Stage::Update(char* keys, char* preKeys) {
 			if (block_[r][c].getType() != WALL) {
 				if (block_[r][c].getIsHadBlock() == true) {
 					block_[r][c].Update(player_.getScreenLtVertex());
-					
 				}
 			}
-
-			
 		}
 	}
 
