@@ -65,7 +65,7 @@ void Scene_Title::Update() {
 void Scene_Title::Draw() {
 
 		//bgmを鳴らす
-	if (Novice::IsPlayingAudio(backgroundVH_) == false) {
+	if (Novice::IsPlayingAudio(backgroundVH_) == false|| backgroundVH_==-1) {
 		backgroundVH_=Novice::PlayAudio(backgroundSH_, true, 0.2f);
 	}
 
