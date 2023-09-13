@@ -37,10 +37,6 @@ class Player
 	int rKeepTop_;
 	int cKeepTop_;
 
-	bool switch_;
-
-	bool isSwitch_;
-	
 public:
 	//===============
 	//メンバ関数

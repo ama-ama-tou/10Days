@@ -228,7 +228,7 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 
 
 
-				if (player_.getIsSwitch() == true) {
+				
 					///前フレームの位置
 					int keep = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getType();
 
@@ -238,10 +238,10 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 					///今のアドレスを更新
 					block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].setType(keep);
 
-					player_.setIsSwitch(false);
-				}
+					
+				
 
-				if (player_.getSwitch() == true) {
+				
 					Vec2 keepCo;
 					///入手したときの座標
 					keepCo.x = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getLtVertex().x;
@@ -254,7 +254,7 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 					block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].setLtVertex(keepCo);
 
 					player_.setSwitch(false);
-				}
+				
 
 				if (block_[r][c].getType() == N_POLE || block_[r][c].getType() == S_POLE) {
 					if (block_[r][c].getType() != WALL && block_[r][c].getType() != NONE) {
