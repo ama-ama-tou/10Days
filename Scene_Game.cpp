@@ -81,7 +81,7 @@ void Scene_Game::Update() {
 	}
 
 	if ((!inputManager->GetKeys()[DIK_SPACE] && inputManager->GetPreKeys()[DIK_SPACE]) || reset.getIsClicked()) {
-		stageArr_[stageNum_]->Unload();
+		//stageArr_[stageNum_]->Unload();
 		stageArr_[stageNum_]->Init();
 	}
 

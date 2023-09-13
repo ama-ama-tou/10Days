@@ -9,6 +9,7 @@ void Stage::Init() {
 
 	isTutorial = true;
 	playerHasBlockNum = 0;
+	NSBlockNum_ = 0;
 	isTutorial = false;
 	page = 0;
 	explanation.Init(kFieldLtPos, kFieldSize, Vec2(0.0f, 0.0f),
@@ -381,5 +382,16 @@ void Stage::TutorialDraw() {
 		);
 		explanation.Draw();
 	}
+}
+
+void Stage::Unload() {
+	for (int i = 0; i < row_; i++) {
+		delete block_[i];
+	}
+
+	delete[] block_;
+
+
+	delete collision;
 }
 

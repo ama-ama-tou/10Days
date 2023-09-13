@@ -41,17 +41,17 @@ void Block::Init(int MaxCol, int MaxRow, int colNum, int rowNum,
 	rowKeepBottom_=0;
 	rowKeepLeft_=0;
 
-	colKeepTop_;
-	colKeepRight_;
-	colKeepBottom_;
-	colKeepLeft_;
+	colKeepTop_=0;
+	colKeepRight_=0;
+	colKeepBottom_=0;
+	colKeepLeft_=0;
 
-	Vec2 keepLtVer_;
-	Vec2 keepRtVer_;
-	Vec2 keepLbVer_;
-	Vec2 keepRbVer_;
+	keepLtVer_={0.0f,0.0f};
+	keepRtVer_={0.0f,0.0f};
+	keepLbVer_={0.0f,0.0f};
+	keepRbVer_ = { 0.0f,0.0f };
 
-	int keepIsHadBlock_;
+	keepIsHadBlock_ = 0;
 
 
 
