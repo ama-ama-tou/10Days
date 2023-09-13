@@ -89,33 +89,41 @@ void Scene_Select::Update() {
 
 
 
-	//キーボードでの移動
-	if (selectNum_ != 3 && selectNum_ != 7 && selectNum_ != 11) {
-		if (inputManager->GetKeys()[DIK_RIGHT] && inputManager->GetPreKeys()[DIK_RIGHT] == false) {
-			selectNum_++;
-			trianglePos_.x = stage_[selectNum_].getLtVertex().x + 30.0f;
+	// キーボードでの移動
+	if (inputManager->GetKeys()[DIK_RIGHT] && inputManager->GetPreKeys()[DIK_RIGHT] == false) {
+		selectNum_++;
+		if (selectNum_ % 4 == 0) {
+			// 右端から右に移動したら左端に
+			selectNum_ -= 4;
 		}
+		trianglePos_.x = stage_[selectNum_].getLtVertex().x + 30.0f;
 	}
 
-	if (selectNum_ != 0 && selectNum_ != 4 && selectNum_ != 8) {
-		if (inputManager->GetKeys()[DIK_LEFT] && inputManager->GetPreKeys()[DIK_LEFT] == false) {
-			selectNum_--;
-			trianglePos_.x = stage_[selectNum_].getLtVertex().x + 30.0f;
+	if (inputManager->GetKeys()[DIK_LEFT] && inputManager->GetPreKeys()[DIK_LEFT] == false) {
+		selectNum_--;
+		if (selectNum_ < 0) {
+			// 左端から左に移動したら右端に
+			selectNum_ += 4;
 		}
+		trianglePos_.x = stage_[selectNum_].getLtVertex().x + 30.0f;
 	}
 
-	//キーボードでの移動
-	if (selectNum_ != 0 && selectNum_ != 1 && selectNum_ != 2 && selectNum_ != 3 ) {
-		if (inputManager->GetKeys()[DIK_UP] && inputManager->GetPreKeys()[DIK_UP] == false) {
-			selectNum_ -= 3;
-			trianglePos_.y = stage_[selectNum_].getLtVertex().y;
+	if (inputManager->GetKeys()[DIK_UP] && inputManager->GetPreKeys()[DIK_UP] == false) {
+		selectNum_ -= 3;
+		if (selectNum_ < 0) {
+			// 上端から上に移動したら下端に
+			selectNum_ += 12;
 		}
+		trianglePos_.y = stage_[selectNum_].getLtVertex().y;
 	}
-	if (selectNum_ != 8 && selectNum_ != 9 && selectNum_ != 10 && selectNum_ != 11) {
-		if (inputManager->GetKeys()[DIK_DOWN] && inputManager->GetPreKeys()[DIK_DOWN] == false) {
-			selectNum_ += 3;
-			trianglePos_.y = stage_[selectNum_].getLtVertex().y;
+
+	if (inputManager->GetKeys()[DIK_DOWN] && inputManager->GetPreKeys()[DIK_DOWN] == false) {
+		selectNum_ += 3;
+		if (selectNum_ >= 12) {
+			// 下端から下に移動したら上端に
+			selectNum_ -= 12;
 		}
+		trianglePos_.y = stage_[selectNum_].getLtVertex().y;
 	}
 
 
