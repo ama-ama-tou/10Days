@@ -60,7 +60,7 @@ void Scene_Game::Draw() {
 	goSelect_.Draw();
 
 	stageArr_[stageNum_]->Draw();
-}
+
 	if (stageNum_ == STAGE_1ST) {
 		stageArr_[stageNum_]->TutorialDraw();
 	} else {
