@@ -37,6 +37,16 @@ void Scene_Game::Load() {
 		goSelectGH, 0x53558bff, WHITE,
 		Vec2(0.0f, 0.0f), goSelectButtonImageSize);
 
+	///リセットボタン
+	const char* resetGH = "./Resources/image/obj/button/reset.png";
+	Vec2 resetPos{ 20.0f,250.0f };
+	Vec2 resetImageSize{ 760.0f,220.0f };
+	Vec2 resetSize{ 190.0f,55.0f };
+	reset.Init(resetPos, resetSize, Vec2(0.0f, 0.0f),
+		resetGH,
+		kBeforeColor, kAfterColor,
+		Vec2(0.0f, 0.0f), resetImageSize);
+
 
 	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
 	backgroundVH_ = -1;
@@ -47,12 +57,13 @@ void Scene_Game::Load() {
 void Scene_Game::Update() {
 
 	goSelect_.Update(inputManager->getMousePos(), inputManager->getClickState());
+	reset.Update(inputManager->getMousePos(), inputManager->getClickState());
 
 	if (goSelect_.getIsClicked() == true) {
 		Scene::sceneNum = SCENE_SELECT;
 	}
 
-	if (!inputManager->GetKeys()[DIK_SPACE]&&inputManager->GetPreKeys()[DIK_SPACE]) {
+	if ((!inputManager->GetKeys()[DIK_SPACE] && inputManager->GetPreKeys()[DIK_SPACE])||reset.getIsClicked()) {
 		stageArr_[stageNum_]->Init();
 	}
 
@@ -76,7 +87,7 @@ void Scene_Game::Draw() {
 	if (Novice::IsPlayingAudio(backgroundVH_) == 0 || backgroundVH_ == -1) {
 		backgroundVH_ = Novice::PlayAudio(backgroundSH_, true, 0.3f);
 	}
-
+	reset.Draw();
 	goSelect_.Draw();
 
 	if (stageNum_ == STAGE_1ST) {

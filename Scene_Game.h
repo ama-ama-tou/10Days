@@ -9,6 +9,7 @@ class Scene_Game:
 	int preStageNum;
 
 	Button goSelect_;
+	Button reset;
 
 	int backgroundSH_;
 	int backgroundVH_;
