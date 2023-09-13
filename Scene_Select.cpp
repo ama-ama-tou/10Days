@@ -103,7 +103,6 @@ void Scene_Select::Update() {
 		}
 	}
 
-
 	//キーボードでの移動
 	if (selectNum_ != 0 && selectNum_ != 1 && selectNum_ != 2 && selectNum_ != 3 ) {
 		if (inputManager->GetKeys()[DIK_UP] && inputManager->GetPreKeys()[DIK_UP] == false) {
@@ -135,7 +134,6 @@ void Scene_Select::Update() {
 		if (stage_[i].getISInsideMouse() == true) {
 			trianglePos_.x = stage_[i].getLtVertex().x + 30.0f;
 			trianglePos_.y = stage_[i].getLtVertex().y - 30.0f;
-			selectNum_ = i;
 		}
 
 		if (stage_[i].getIsClicked()) {
