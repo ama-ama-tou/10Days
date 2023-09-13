@@ -30,16 +30,14 @@ void SceneManager::Update() {
 			sceneArr_[preSceneNo_]->Unload();
 		}
 		
-		animationCount = 60;
+		
 		//シーンが変わったら初期化
 		sceneArr_[sceneNo_]->Load();
 	}
-	if (animationCount<=0) {
+	
 		sceneArr_[sceneNo_]->Update();
 
-	} else {
-		animationCount--;
-	}
+
 		
 		exit_ = sceneArr_[sceneNo_]->getIsExitGame();
 
