@@ -62,13 +62,13 @@ void Stage::Init() {
 		//==================
 
 		//座標をランダムで設定
-		bkRedQuadPos_[i].x = static_cast<float>(rand() % 1280);
-		bkRedQuadPos_[i].y = static_cast<float>(rand() % 720);
+		bkRedQuadPos_[i].x = static_cast<float>(rand() % 1280 - kFieldLtPos.x);
+		bkRedQuadPos_[i].y = static_cast<float>(rand() % 720 + kFieldLtPos.y);
 		//サイズをランダムで設定
 		bkRedQuadSize_[i].x = static_cast<float>(rand() % 11 + 10);
 		bkRedQuadSize_[i].y = bkRedQuadSize_[i].x;
 		//最大・最小拡縮量
-		bkRedQuadScaleValue_[i] = Vec2(0.1f, 0.1f);
+		bkRedQuadScaleValue_[i] = { 0.1f,0.1f };
 		bkRedQuadMinScale_[i] = { bkRedQuadSize_[i].x - 5.0f,bkRedQuadSize_[i].y - 5.0f };
 		bkRedQuadMaxScale_[i] = { bkRedQuadSize_[i].x + 5.0f,bkRedQuadSize_[i].y + 5.0f };
 		//スピードをランダムで設定
@@ -86,13 +86,13 @@ void Stage::Init() {
 		//==================
 
 		//座標をランダムで設定
-		bkBlueQuadPos_[i].x = static_cast<float>(rand() % 1280);
-		bkBlueQuadPos_[i].y = static_cast<float>(rand() % 720);
+		bkBlueQuadPos_[i].x = static_cast<float>(rand() % 1280 - kFieldLtPos.x) ;
+		bkBlueQuadPos_[i].y = static_cast<float>(rand() % 720 + kFieldLtPos.y) ;
 		//サイズをランダムで設定
 		bkBlueQuadSize_[i].x = static_cast<float>(rand() % 11 + 10);
 		bkBlueQuadSize_[i].y = bkBlueQuadSize_[i].x;
 		//最大・最小拡縮量
-		bkBlueQuadScaleValue_[i] = Vec2(0.1f, 0.1f);
+		bkBlueQuadScaleValue_[i] = { 0.1f,0.1f };
 		bkBlueQuadMinScale_[i] = { bkBlueQuadSize_[i].x - 5.0f,bkBlueQuadSize_[i].y - 5.0f };
 		bkBlueQuadMaxScale_[i] = { bkBlueQuadSize_[i].x + 5.0f,bkBlueQuadSize_[i].y + 5.0f };
 		//スピードをランダムで設定
@@ -105,6 +105,9 @@ void Stage::Init() {
 		subtractiveColorBlue_[i] = 0x00000001;
 
 	}
+
+	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
+	backgroundVH_ = -1;
 }
 
 void Stage::Update(char* keys, char* preKeys) {
@@ -148,6 +151,14 @@ void Stage::Update(char* keys, char* preKeys) {
 			}
 		}
 	}
+	Novice::ScreenPrintf(10, 500, "hasBlock=%d, goalBlocks=%d", playerHasBlockNum, NSBlockNum_);
+
+
+	if (playerHasBlockNum == NSBlockNum_) {
+
+
+		isClear_ = true;
+	}
 
 
 	//背景の動き
@@ -168,7 +179,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 		//拡縮
 		bkRedQuadSize_[i] += bkRedQuadScaleValue_[i];
-		if (bkRedQuadSize_[i] += bkRedQuadScaleValue_[i]) {
+		if (bkRedQuadSize_[i] >= bkRedQuadMaxScale_[i]) {
 			bkRedQuadScaleValue_[i] *= Vec2(-1, -1);
 		} else if (bkRedQuadSize_[i] <= bkRedQuadMinScale_[i]) {
 			bkRedQuadScaleValue_[i] *= Vec2(-1, -1);
@@ -182,11 +193,11 @@ void Stage::Update(char* keys, char* preKeys) {
 			subtractiveColorRed_[i] *= -1;
 		}
 
-		//画面外に出たら再スポーン
-		if (bkRedQuadPos_[i].x >= 1280.0f || bkRedQuadPos_[i].x <= 0.0f ||
-			bkRedQuadPos_[i] >= 720.0f || bkRedQuadPos_[i].y <= 0.0f) {
-			bkRedQuadPos_[i].x = static_cast<float>(rand() % 1280);
-			bkRedQuadPos_[i].y = static_cast<float>(rand() % 720);
+		// 画面外に出たら再スポーン
+		if (bkRedQuadPos_[i].x >= 1280.0f + kFieldLtPos.x || bkRedQuadPos_[i].x <= -kFieldLtPos.x ||
+			bkRedQuadPos_[i].y >= 720.0f + kFieldLtPos.y || bkRedQuadPos_[i].y <= kFieldLtPos.y) {
+			bkRedQuadPos_[i].x = static_cast<float>(rand() % 1280) - kFieldLtPos.x;
+			bkRedQuadPos_[i].y = static_cast<float>(rand() % 720) + kFieldLtPos.y;
 		}
 
 
@@ -205,7 +216,7 @@ void Stage::Update(char* keys, char* preKeys) {
 
 		//拡縮
 		bkBlueQuadSize_[i] += bkBlueQuadScaleValue_[i];
-		if (bkBlueQuadSize_[i] += bkBlueQuadScaleValue_[i]) {
+		if (bkBlueQuadSize_[i] >= bkBlueQuadMaxScale_[i]) {
 			bkBlueQuadScaleValue_[i] *= Vec2(-1, -1);
 		} else if (bkBlueQuadSize_[i] <= bkBlueQuadMinScale_[i]) {
 			bkBlueQuadScaleValue_[i] *= Vec2(-1, -1);
@@ -221,19 +232,24 @@ void Stage::Update(char* keys, char* preKeys) {
 			subtractiveColorBlue_[i] *= -1;
 		}
 
-		//画面外に出たら再スポーン
-		if (bkBlueQuadPos_[i].x >= 1280.0f || bkBlueQuadPos_[i].x <= 0.0f ||
-			bkBlueQuadPos_[i] >= 720.0f || bkBlueQuadPos_[i].y <= 0.0f) {
-			bkBlueQuadPos_[i].x = static_cast<float>(rand() % 1280);
-			bkBlueQuadPos_[i].y = static_cast<float>(rand() % 720);
+		// 画面外に出たら再スポーン
+		if (bkBlueQuadPos_[i].x >= 1280.0f + kFieldLtPos.x || bkBlueQuadPos_[i].x <= -kFieldLtPos.x ||
+			bkBlueQuadPos_[i].y >= 720.0f + kFieldLtPos.y || bkBlueQuadPos_[i].y <= kFieldLtPos.y) {
+			bkBlueQuadPos_[i].x = static_cast<float>(rand() % 1280) - kFieldLtPos.x;
+			bkBlueQuadPos_[i].y = static_cast<float>(rand() % 720) + kFieldLtPos.y;
 		}
 
 	}
 
-	
+
 }
 
 void Stage::Draw() {
+
+	//bgmを鳴らす
+	if (Novice::IsPlayingAudio(backgroundVH_) == 0 || backgroundVH_ == -1) {
+		backgroundVH_ = Novice::PlayAudio(backgroundSH_, true, 0.2f);
+	}
 
 	//===================
 	//背景の四角
@@ -280,5 +296,6 @@ void Stage::Draw() {
 		}
 	}
 	player_.Draw();
-	
+
 }
+

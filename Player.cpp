@@ -30,7 +30,7 @@ void Player::Move(char* keys, char* preKeys) {
 		}
 	} else {
 		frameCount_++;
-		if (frameCount_>=14) {
+		if (frameCount_>=13) {
 			isSoundStart_ = false;
 			frameCount_ = 0;
 		}
@@ -51,13 +51,11 @@ void Player::Draw() {
 	//プレイヤーが移動したときのse
 	if (isSoundStart_) {
 		if (Novice::IsPlayingAudio(moveVH_)==0||moveVH_==-1 ){
-			moveVH_ = Novice::PlayAudio(moveSH_, false, 0.1f);
+			moveVH_ = Novice::PlayAudio(moveSH_, false, 0.3f);
 		}
 	}
 
 	Quad::Draw();
-
-	
 
 
 	Novice::ScreenPrintf(1000, 300, "faicing_[0]:%d(top)", getIsFacingTop());

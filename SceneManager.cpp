@@ -7,10 +7,10 @@ SceneManager::SceneManager() {
 	sceneArr_[SCENE_GAME] = std::make_unique<Scene_Game>();
 	sceneArr_[SCENE_CLEAR] = std::make_unique<Scene_Clear>();
 	//初期シーン
-	sceneNo_ = SCENE_TITLE;
+	sceneNo_ = SCENE_CLEAR;
 	sceneArr_[sceneNo_]->Load();
 	
-	bg.Init(Vec2(0.0f, 0.0f),kWindowSize,/* 0xf0f8ffff*/0x000000ff);
+	bg.Init(Vec2(0.0f, 0.0f),kWindowSize,/* 0xf0f8ffff*/0xffffffff);
 }
 
 void SceneManager::Update() {
@@ -44,7 +44,7 @@ void SceneManager::Update() {
 
 	///=======================
 	///描画処理
-		//bg.Draw();
+	//	bg.Draw();
 		sceneArr_[sceneNo_]->Draw();
 		
 	///=======================

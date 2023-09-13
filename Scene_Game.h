@@ -8,8 +8,7 @@ class Scene_Game:
 
 	int preStageNum;
 
-	int backgroundSH_;
-	int backgroundVH_;
+	
 
 	std::unique_ptr<Stage> stageArr_[12];
 
