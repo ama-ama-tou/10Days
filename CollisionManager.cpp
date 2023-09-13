@@ -279,7 +279,7 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 										block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getType() == N_POLE) {
 										//持たれているブロックか判定する
 										if (block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getIsHadBlock() != true) {
-											if (block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType() != 
+											if (block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getType() != 
 												block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getType()) {
 												///ローカル座標に追加するための初期化
 												int aa = (block_[r][c].getBLtColAddress())-colAddress_[0];
@@ -426,11 +426,11 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 						for (int i = 0; i < maxRow_; i++) {
 							for (int j = 0; j < maxCol_; j++) {
 								if (block_[i][j].getType() == N_POLE || block_[i][j].getType() == S_POLE) {
-									rbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().y - kFieldLtPos.y) / block_[r][c].getSize().y);
-									cbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().x - kFieldLtPos.x) / block_[r][c].getSize().x);
+									/*rbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().y - kFieldLtPos.y) / block_[r][c].getSize().y);
+									cbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().x - kFieldLtPos.x) / block_[r][c].getSize().x);*/
 
 
-									if (block_[rbro_][cbro_].getType() == WALL) {
+									if (block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType() == WALL) {
 
 										player_.setPos(player_.getPrePos());
 										player_.pointInit(player_.getPos());
