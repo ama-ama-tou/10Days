@@ -60,10 +60,13 @@ void Scene_Game::Update() {
 
 	goSelect_.Update(inputManager->getMousePos(), inputManager->getClickState());
 	reset.Update(inputManager->getMousePos(), inputManager->getClickState());
-
-	if (goSelect_.getIsClicked() == true) {
-		Scene::sceneNum = SCENE_SELECT;
+	if (goSelect_.getISInsideMouse() == true) {
+		if (goSelect_.getIsClicked() == true) {
+			Scene::sceneNum = SCENE_SELECT;
+			Novice::StopAudio(backgroundVH_);
+		}
 	}
+	
 
 	if (stageNum_ == STAGE_1ST) {
 		stageArr_[STAGE_1ST]->Tutorial(inputManager->GetKeys(), inputManager->GetPreKeys(), inputManager->getClickState());
@@ -72,10 +75,10 @@ void Scene_Game::Update() {
 	}
 
 	if (stageArr_[stageNum_]->getIsClear()) {
-		Scene::sceneNum = SCENE_CLEAR; Novice::StopAudio(backgroundVH_);
+		Scene::sceneNum = SCENE_CLEAR;
+		Novice::StopAudio(backgroundVH_);
 		isRang_ = true;
 	}
-	Novice::ScreenPrintf(100, 100, "stageNum=%d", stageNum_);
 
 	if ((!inputManager->GetKeys()[DIK_SPACE] && inputManager->GetPreKeys()[DIK_SPACE]) || reset.getIsClicked()) {
 		stageArr_[stageNum_]->Unload();

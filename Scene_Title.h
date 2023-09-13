@@ -15,7 +15,7 @@ private:
 	int backgroundSH_;
 	int backgroundVH_;
 
-
+	bool isRang_;
 
 public:
 	Scene_Title() {}
@@ -28,5 +28,9 @@ public:
 
 	void Unload()override;
 	
+
+	bool setIsRang(bool isRang) { isRang_ = isRang; }
+	int getbackgroundVH() { return backgroundVH_; }
+
 };
 
