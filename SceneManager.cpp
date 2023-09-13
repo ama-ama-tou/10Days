@@ -7,7 +7,7 @@ SceneManager::SceneManager() {
 	sceneArr_[SCENE_GAME] = std::make_unique<Scene_Game>();
 	sceneArr_[SCENE_CLEAR] = std::make_unique<Scene_Clear>();
 	//初期シーン
-	sceneNo_ = SCENE_CLEAR;
+	sceneNo_ = SCENE_TITLE;
 	sceneArr_[sceneNo_]->Load();
 	
 	bg.Init(Vec2(0.0f, 0.0f),kWindowSize, 0xf0f8ffff);

@@ -17,6 +17,8 @@ private:
 	int stageSelectVH_;
 	bool isRang_;
 
+	Quad selectBar_;
+
 public:
 	//======================
 	//メンバ関数
