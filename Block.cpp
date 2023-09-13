@@ -20,6 +20,40 @@ void Block::Init(int MaxCol, int MaxRow, int colNum, int rowNum,
 	bRbColAddress_=0;
 
 
+	
+	///ブロックの各面がブロックと接しているか
+	isFacing_ = 0;
+	
+	for (int i = 0; i <4; i++) {
+		isFacingType_[4] = 0;
+	}
+
+	isHadBlock_ = 0;
+	isPreHadBlock_=0;
+
+	isHadCount_ = 0;
+
+	isGetting_ = 0;
+
+	
+	rowKeepTop_=0;
+	rowKeepRight_=0;
+	rowKeepBottom_=0;
+	rowKeepLeft_=0;
+
+	colKeepTop_;
+	colKeepRight_;
+	colKeepBottom_;
+	colKeepLeft_;
+
+	Vec2 keepLtVer_;
+	Vec2 keepRtVer_;
+	Vec2 keepLbVer_;
+	Vec2 keepRbVer_;
+
+	int keepIsHadBlock_;
+
+
 
 	int x = static_cast<int>(kFieldSize.x / MaxRow);
 	int y = static_cast<int>(kFieldSize.y / MaxCol);
