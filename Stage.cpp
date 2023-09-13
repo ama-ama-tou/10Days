@@ -194,11 +194,6 @@ void Stage::Update(char* keys, char* preKeys) {
 			
 		}
 	}
-	
-
-
-	
-
 
 	//背景の動き
 	for (int i = 0; i < 20; i++) {
@@ -277,10 +272,7 @@ void Stage::Update(char* keys, char* preKeys) {
 			bkBlueQuadPos_[i].x = static_cast<float>(rand() % 1280) - kFieldLtPos.x;
 			bkBlueQuadPos_[i].y = static_cast<float>(rand() % 720) + kFieldLtPos.y;
 		}
-
 	}
-
-
 }
 
 void Stage::Tutorial(char* keys, char* preKeys, int clickState) {
@@ -360,8 +352,6 @@ void Stage::Draw() {
 				//blockが設置してあればDraw
 				block_[r][c].Draw();
 
-				Novice::ScreenPrintf(10, 200, "NSBlockNum:%d", NSBlockNum_);
-				Novice::ScreenPrintf(10, 220, "playerHasBlockNum:%d", playerHasBlockNum);
 
 			}
 		}

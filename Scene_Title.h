@@ -12,10 +12,6 @@ private:
 	
 	Button Button_exit;
 
-	int backgroundSH_;
-	int backgroundVH_;
-
-
 
 public:
 	Scene_Title() {}
@@ -27,6 +23,8 @@ public:
 	void Draw()override;
 
 	void Unload()override;
+	
+
 	
 };
 

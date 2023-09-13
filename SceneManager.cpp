@@ -9,47 +9,44 @@ SceneManager::SceneManager() {
 	//初期シーン
 	sceneNo_ = SCENE_TITLE;
 	sceneArr_[sceneNo_]->Load();
-	
-	bg.Init(Vec2(0.0f, 0.0f),kWindowSize, 0xf0f8ffff);
+
+	bg.Init(Vec2(0.0f, 0.0f), kWindowSize, 0xf0f8ffff);
 }
 
 void SceneManager::Update() {
 	///=======================
 	///更新処理
-	
+
 	//前フレームのシーンナンバーを保存
 	preSceneNo_ = sceneNo_;
-	
-	sceneNo_ = sceneArr_[sceneNo_]->getSceneNum();
-	
-	if (sceneNo_ != preSceneNo_) {
-		if (sceneNo_!=SCENE_SELECT&&preSceneNo_!=SCENE_TITLE) {
-			if (preSceneNo_==SCENE_SELECT) {
-				sceneArr_[SCENE_TITLE]->Unload();
-			} else {
-				sceneArr_[preSceneNo_]->Unload();
 
-			}
+	sceneNo_ = sceneArr_[sceneNo_]->getSceneNum();
+
+	if (sceneNo_ != preSceneNo_) {
+
+		if (preSceneNo_ == SCENE_SELECT) {
+			sceneArr_[SCENE_TITLE]->Unload();
+		} else if (!preSceneNo_== SCENE_TITLE) {
+			sceneArr_[preSceneNo_]->Unload();
+
 		}
 		//シーンが変わったら初期化
 		sceneArr_[sceneNo_]->Load();
 	}
-	
-		sceneArr_[sceneNo_]->Update();
 
+	sceneArr_[sceneNo_]->Update();
 
-		
-		exit_ = sceneArr_[sceneNo_]->getIsExitGame();
+	exit_ = sceneArr_[sceneNo_]->getIsExitGame();
 
 	///=======================
 
 	///=======================
 	///描画処理
-	//	bg.Draw();
+	bg.Draw();
 
-		sceneArr_[sceneNo_]->Draw();
-		
+	sceneArr_[sceneNo_]->Draw();
+
 	///=======================
-	
+
 }
 

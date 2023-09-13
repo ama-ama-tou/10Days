@@ -6,6 +6,21 @@ void Block::Init(int MaxCol, int MaxRow, int colNum, int rowNum,
 	Vec2 localCoOrigin,
 	Vec2 imageLtPos, Vec2 imageSize) {
 
+	
+
+	//ブロックの各頂点の番地
+	bLtRowAddress_=0;
+	bRtRowAddress_=0;
+	bLbRowAddress_=0;
+	bRbRowAddress_=0;
+
+	bLtColAddress_=0;
+	bRtColAddress_=0;
+	bLbColAddress_=0;
+	bRbColAddress_=0;
+
+
+
 	int x = static_cast<int>(kFieldSize.x / MaxRow);
 	int y = static_cast<int>(kFieldSize.y / MaxCol);
 

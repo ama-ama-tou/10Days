@@ -168,24 +168,6 @@ void Scene_Select::Update() {
 
 void Scene_Select::Draw() {
 
-	Novice::ScreenPrintf(10, 10, "trianglePos.x= %.1f", trianglePos_.x);
-	Novice::ScreenPrintf(10, 30, "trianglePos.y = %.1f", trianglePos_.y);
-
-	Novice::ScreenPrintf(10, 50, "triangleVertex[0] = %.1f", triangleVertex_[0].x);
-	Novice::ScreenPrintf(10, 70, "triangleVertex[0] = %.1f", triangleVertex_[0].y);
-
-	Novice::ScreenPrintf(10, 90, "triangleVertex[1] = %.1f", triangleVertex_[1].x);
-	Novice::ScreenPrintf(10, 110, "triangleVertex[1] = %.1f", triangleVertex_[1].y);
-
-	Novice::ScreenPrintf(10, 130, "triangleVertex[2] = %.1f", triangleVertex_[2].x);
-	Novice::ScreenPrintf(10, 150, "triangleVertex[2] = %.1f", triangleVertex_[2].y);
-
-	Novice::ScreenPrintf(10, 170, "triangleVertex[3] = %.1f", triangleVertex_[3].x);
-	Novice::ScreenPrintf(10, 190, "triangleVertex[3] = %.1f", triangleVertex_[3].y);
-
-	Novice::ScreenPrintf(10, 210, "selectNum = %d", selectNum_);
-
-
 	for (int i = 0; i < 12; i++) {
 		stage_[i].Draw();
 	}

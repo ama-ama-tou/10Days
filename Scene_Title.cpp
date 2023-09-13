@@ -3,9 +3,6 @@
 #include <Novice.h>
 
 void Scene_Title::Load() {
-	//title画面のBGM
-	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/title.mp3");
-	backgroundVH_ = -1;
 
 	//titleBar初期化
 	Vec2 titlePos;
@@ -52,7 +49,7 @@ void Scene_Title::Update() {
 
 	if (Button_goSelect.getISInsideMouse() == true) {
 		if (Button_goSelect.getIsClicked() == true) {
-
+			
 			Scene::sceneNum = SCENE_SELECT;
 		}
 	}
@@ -63,11 +60,7 @@ void Scene_Title::Update() {
 }
 
 void Scene_Title::Draw() {
-
-		//bgmを鳴らす
-	if (Novice::IsPlayingAudio(backgroundVH_) == false) {
-		backgroundVH_=Novice::PlayAudio(backgroundSH_, true, 0.2f);
-	}
+	
 
 	titleBar.Draw();
 
@@ -79,5 +72,5 @@ void Scene_Title::Draw() {
 
 
 void Scene_Title::Unload() {
-	Novice::StopAudio(backgroundVH_);
+	
 }
