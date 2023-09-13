@@ -198,11 +198,9 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 			//block_[r][c].Update(player_.getScreenLtVertex(), block_[r][c].getType());
 			for (int i = 0; i < maxRow_; i++) {
 				for (int j = 0; j < maxCol_; j++) {
-					block_[i][j].getPreType();
-					block_[r][c].Keep();
+					block_[i][j].getType();
 				}
 			}
-
 
 
 			if (block_[r][c].getIsHadBlock() == true) {
@@ -282,7 +280,7 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 										//持たれているブロックか判定する
 										if (block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getIsHadBlock() != true) {
 											if (block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType() != 
-												block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType()) {
+												block_[block_[r][c].getBLtRowAddress() - 1][block_[r][c].getBLtColAddress()].getType()) {
 												///ローカル座標に追加するための初期化
 												int aa = (block_[r][c].getBLtColAddress())-colAddress_[0];
 												int bb = (block_[r][c].getBLtRowAddress() - 1) - rowAddress_[0];
@@ -428,10 +426,8 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 						for (int i = 0; i < maxRow_; i++) {
 							for (int j = 0; j < maxCol_; j++) {
 								if (block_[i][j].getType() == N_POLE || block_[i][j].getType() == S_POLE) {
-
-
-									rbro_ = static_cast<int>(block_[i][j].getScreenLtVertex().y / 53.0f);
-									cbro_ = static_cast<int>(block_[i][j].getScreenLtVertex().x / 53.0f) - 6;
+									rbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().y - kFieldLtPos.y) / block_[r][c].getSize().y);
+									cbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().x - kFieldLtPos.x) / block_[r][c].getSize().x);
 
 
 									if (block_[rbro_][cbro_].getType() == WALL) {
@@ -448,24 +444,6 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 
 			///保存
 			block_[r][c].Keep();
-
-
-			/*block_[r][c].setRowKeepTop(bLtRowAddress_);
-			block_[r][c].setRowKeepRight(bRtRowAddress_);
-			block_[r][c].setRowKeepBottom(bLbRowAddress_);
-			block_[r][c].setRowKeepLeft(bRbRowAddress_);
-
-			block_[r][c].setColKeepTop(bLtColAddress_);
-			block_[r][c].setColKeepRight(bRtColAddress_);
-			block_[r][c].setColKeepBottom(bLbColAddress_);
-			block_[r][c].setColKeepLeft(bRbColAddress_);
-
-			block_[r][c].setKeepLtVer(block_[r][c].getLtVertex());
-			block_[r][c].setKeepRtVer(block_[r][c].getRtVertex());
-			block_[r][c].setKeepLbVer(block_[r][c].getLbVertex());
-			block_[r][c].setKeepRbVer(block_[r][c].getRbVertex());
-
-			block_[r][c].setKeepIsHadBlock(block_[r][c].getIsHadBlock());*/
 
 		}
 	}
