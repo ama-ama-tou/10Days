@@ -231,7 +231,8 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 					initKeep_ = false;
 
 
-				///前フレームの位置
+					///前フレームの位置
+
 					int keep = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getType();
 
 					///前フレームのアドレスを更新
@@ -253,7 +254,22 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 
 				}
 
+				//ブロックが壁に当たったときの処理
+				for (int i = 0; i < maxRow_; i++) {
+					for (int j = 0; j < maxCol_; j++) {
+						if (block_[i][j].getType() == N_POLE || block_[i][j].getType() == S_POLE) {
+							rbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().y - kFieldLtPos.y) / block_[r][c].getSize().y);
+							cbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().x - kFieldLtPos.x) / block_[r][c].getSize().x);
 
+
+							if (block_[rbro_][cbro_].getType() == WALL) {
+
+								player_.setPos(player_.getPrePos());
+								player_.pointInit(player_.getPos());
+							}
+						}
+					}
+				}
 
 				if (block_[r][c].getType() == N_POLE || block_[r][c].getType() == S_POLE) {
 					if (block_[r][c].getType() != WALL && block_[r][c].getType() != NONE) {
@@ -306,7 +322,7 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 									///面しているブロックの種類を判断
 
 								if (block_[block_[r][c].getBRtRowAddress()][block_[r][c].getBRtColAddress() + 1].getType() == block_[block_[r][c].getBRtRowAddress()][block_[r][c].getBRtColAddress()].getType() && //右上の1個右と今のブロック
-									block_[block_[r][c].getBRbRowAddress()][block_[r][c].getBRbColAddress() + 1].getType() == block_[block_[r][c].getBRbRowAddress()][block_[r][c].getBRbColAddress() + 1].getType()) { //右下の1個右と今のブロック
+									block_[block_[r][c].getBRbRowAddress()][block_[r][c].getBRbColAddress() + 1].getType() == block_[block_[r][c].getBRbRowAddress()][block_[r][c].getBRbColAddress()].getType()) { //右下の1個右と今のブロック
 									if (block_[block_[r][c].getBRtRowAddress()][block_[r][c].getBRtColAddress()].getType() != NONE) {
 
 										//1個先のブロックの左上座標を2個先にする
@@ -317,7 +333,7 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 										block_[block_[r][c].getBRbRowAddress()][block_[r][c].getBRbColAddress() + 1].getType() == N_POLE) {
 
 										if (block_[block_[r][c].getBRtRowAddress()][block_[r][c].getBRtColAddress()].getType() !=
-											block_[block_[r][c].getBRbRowAddress()][block_[r][c].getBRbColAddress()].getType()) {
+											block_[block_[r][c].getBRbRowAddress()][block_[r][c].getBRbColAddress() + 1].getType()) {
 												///持たれているブロックか判定する
 											if (block_[block_[r][c].getBRtRowAddress()][block_[r][c].getBRtColAddress() + 1].getIsHadBlock() != true) {
 
@@ -355,8 +371,8 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 									//1個先のブロックのposを奥に移動させる
 									block_[block_[r][c].getBRbRowAddress() + 1][block_[r][c].getBRbColAddress()].pointInit(block_[block_[r][c].getBRbRowAddress() + 2][block_[r][c].getBRbColAddress()].getPos());
 								} else {
-									if (block_[block_[r][c].getBRbRowAddress() + 1][block_[r][c].getBRbColAddress()].getType() == S_POLE ||
-										block_[block_[r][c].getBRbRowAddress() + 1][block_[r][c].getBRbColAddress()].getType() == N_POLE) {
+									if (block_[block_[r][c].getBRbRowAddress()][block_[r][c].getBRbColAddress()].getType() == S_POLE ||
+										block_[block_[r][c].getBRbRowAddress()][block_[r][c].getBRbColAddress()].getType() == N_POLE) {
 										//持たれているブロックか判定する
 										if (block_[block_[r][c].getBRbRowAddress() + 1][block_[r][c].getBRbColAddress()].getType() == NONE) {
 											if (block_[block_[r][c].getBRbRowAddress() + 1][block_[r][c].getBRbColAddress()].getIsHadBlock() != true) {
@@ -395,7 +411,7 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 										block_[block_[r][c].getBLbRowAddress()][block_[r][c].getBLbColAddress() - 1].getType() == N_POLE) {
 
 										if (block_[block_[r][c].getBLbRowAddress()][block_[r][c].getBLbColAddress()].getType() !=
-											block_[block_[r][c].getBLbRowAddress()][block_[r][c].getBLbColAddress()].getType()) {
+											block_[block_[r][c].getBLbRowAddress()][block_[r][c].getBLbColAddress() - 1].getType()) {
 											//持たれているブロックか判定する
 											if (block_[block_[r][c].getBLbRowAddress()][block_[r][c].getBLbColAddress() - 1].getIsHadBlock() != true) {
 												///ローカル座標に追加するための初期化
@@ -424,11 +440,11 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 						for (int i = 0; i < maxRow_; i++) {
 							for (int j = 0; j < maxCol_; j++) {
 								if (block_[i][j].getType() == N_POLE || block_[i][j].getType() == S_POLE) {
-									/*rbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().y - kFieldLtPos.y) / block_[r][c].getSize().y);
-									cbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().x - kFieldLtPos.x) / block_[r][c].getSize().x);*/
+									rbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().y - kFieldLtPos.y) / block_[r][c].getSize().y);
+									cbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().x - kFieldLtPos.x) / block_[r][c].getSize().x);
 
 
-									if (block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType() == WALL) {
+									if (block_[rbro_][cbro_].getType() == WALL) {
 
 										player_.setPos(player_.getPrePos());
 										player_.pointInit(player_.getPos());
