@@ -37,20 +37,23 @@ void Scene_Game::Load() {
 		goSelectGH, 0x53558bff, WHITE,
 		Vec2(0.0f, 0.0f), goSelectButtonImageSize);
 
-
+	Novice::StopAudio(backgroundVH_);
 	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
 	backgroundVH_ = -1;
+	isRang_ = false;
 
 	stageArr_[stageNum_]->Init();
 }
 
 void Scene_Game::Update() {
-
 	goSelect_.Update(inputManager->getMousePos(),inputManager->getClickState());
 
 	if (goSelect_.getISInsideMouse() == true) {
 		if (goSelect_.getIsClicked() == true) {
 			Scene::sceneNum = SCENE_SELECT;
+			Novice::StopAudio(backgroundVH_);
+			isRang_ = true;
+
 		}
 	}
 
@@ -69,11 +72,13 @@ void Scene_Game::Update() {
 }
 
 void Scene_Game::Draw() {
-
-	//bgmを鳴らす
-	if (Novice::IsPlayingAudio(backgroundVH_) == 0 || backgroundVH_ == -1) {
-		backgroundVH_ = Novice::PlayAudio(backgroundSH_, true, 0.3f);
+	if (!isRang_) {
+		//bgmを鳴らす
+		if (Novice::IsPlayingAudio(backgroundVH_) == 0 || backgroundVH_ == -1) {
+			backgroundVH_ = Novice::PlayAudio(backgroundSH_, true, 0.3f);
+		}
 	}
+	
 
 	goSelect_.Draw();
 	
