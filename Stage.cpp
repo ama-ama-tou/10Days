@@ -292,6 +292,10 @@ void Stage::Tutorial(char* keys, char* preKeys, int clickState) {
 			page--;
 		}
 		
+		if (page<0) {
+			page = 0;
+		}
+
 		explanation.setImageLtPos(Vec2(explanation.getImageSize().x * page,
 			0.0f));
 
@@ -380,7 +384,7 @@ void Stage::TutorialDraw() {
 			static_cast<int>(kFieldSize.x),
 			static_cast<int>(kFieldSize.y),
 			0.0f,
-			0x00000077,
+			0x000000f7,
 			kFillModeSolid
 		);
 		explanation.Draw();
