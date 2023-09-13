@@ -37,15 +37,13 @@ void SceneManager::Update() {
 	
 		sceneArr_[sceneNo_]->Update();
 
-
-		
 		exit_ = sceneArr_[sceneNo_]->getIsExitGame();
 
 	///=======================
 
 	///=======================
 	///描画処理
-	//	bg.Draw();
+	bg.Draw();
 
 		sceneArr_[sceneNo_]->Draw();
 		
