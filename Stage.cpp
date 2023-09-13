@@ -106,11 +106,25 @@ void Stage::Init() {
 
 	}
 
+	//ステージセレクトの効果音
+	stageSelectSH_ = Novice::LoadAudio("./Resources/sound/SE/select.mp3");
+	stageSelectVH_ = -1;
+	isRang_ = false;
+	frameCount_ = 0;
+
+
 	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
 	backgroundVH_ = -1;
 }
 
 void Stage::Update(char* keys, char* preKeys) {
+	//ステージセレクトされた時の音
+	frameCount_++;
+	if (frameCount_ >= 80) {
+		isRang_ = true;
+	}
+
+
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
 			block_[r][c].HitUpdate();
@@ -245,6 +259,15 @@ void Stage::Update(char* keys, char* preKeys) {
 }
 
 void Stage::Draw() {
+
+	//効果音を鳴らす
+	if (!isRang_) {
+		if (Novice::IsPlayingAudio(stageSelectVH_) == 0 || stageSelectVH_ == -1) {
+			stageSelectVH_ = Novice::PlayAudio(stageSelectSH_, false, 0.1f);
+		}
+	} else {
+		Novice::StopAudio(stageSelectVH_);
+	}
 
 	//bgmを鳴らす
 	if (Novice::IsPlayingAudio(backgroundVH_) == 0 || backgroundVH_ == -1) {

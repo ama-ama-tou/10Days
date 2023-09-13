@@ -61,16 +61,16 @@ void Scene_Select::Load() {
 			Vec2(0.0f, 0.0f), selectButtonSize);
 	}
 
-	//ステージセレクトの効果音
-	stageSelectSH_ = Novice::LoadAudio("./Resources/sound/SE/select.mp3");
-	stageSelectVH_ = -1;
-	isRang_ = false;
-	frameCount_ = 0;
+	
 }
 
 void Scene_Select::Update() {
 
 	go2Title.Update(inputManager->getMousePos(), inputManager->getClickState());
+
+	if (inputManager->getClickState()==1) {
+		
+	}
 
 	if (go2Title.getISInsideMouse() == true) {
 		if (go2Title.getIsClicked() == true) {
@@ -90,22 +90,11 @@ void Scene_Select::Update() {
 			Scene::sceneNum = SCENE_GAME;
 		}
 	}
-	frameCount_++;
-	if (frameCount_ >= 80) {
-		isRang_ = true;
-	}
+	
 }
 
 void Scene_Select::Draw() {
-	//効果音を鳴らす
-	if (!isRang_) {
-		if (Novice::IsPlayingAudio(stageSelectVH_) == 0 || stageSelectVH_ == -1) {
-			stageSelectVH_ = Novice::PlayAudio(stageSelectSH_, false, 0.1f);
-		}
-		isRang_ = false;
-	} else {
-		Novice::StopAudio(stageSelectVH_);
-	}
+	
 
 	for (int i = 0; i < 12; i++) {
 		stage_[i].Draw();
