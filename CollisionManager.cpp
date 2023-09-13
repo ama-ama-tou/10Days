@@ -10,7 +10,7 @@
 
  ///プレイヤーの当たり判定
 void CollisionManager::playerCollision(Player& player_, Block**& block_) {
-
+	isGet_ = 0;
 	for (int r = 0; r < maxCol_; r++) {
 		for (int c = 0; c < maxRow_; c++) {
 			block_[r][c].getType();
@@ -67,6 +67,10 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 					//ブロックをプレイヤーに持たせる
 					block_[rowAddress_[0] - 1][colAddress_[0]].setIsHadBlock(true);
 
+					block_[rowAddress_[0] - 1][colAddress_[0]].setIsHadCount(block_[rowAddress_[0] - 1][colAddress_[0]].getIsHadCount() + 1);
+
+					block_[rowAddress_[0] - 1][colAddress_[0]].setIsGetting(true);
+
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingTopType(1);
 
@@ -105,6 +109,10 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 					//ブロックをプレイヤーに持たせる
 					block_[rowAddress_[1]][colAddress_[1] + 1].setIsHadBlock(true);
 
+					block_[rowAddress_[1]][colAddress_[1] + 1].setIsHadCount(block_[rowAddress_[1]][colAddress_[1] + 1].getIsHadBlock()+ 1);
+
+					block_[rowAddress_[1]][colAddress_[1] + 1].setIsGetting(true);
+
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingRightType(1);
 					} else if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == S_POLE) {
@@ -135,6 +143,10 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 					player_.setIsFacingBottom(true);
 					//ブロックをプレイヤーに持たせる
 					block_[rowAddress_[2] + 1][colAddress_[2]].setIsHadBlock(true);
+
+					block_[rowAddress_[3] + 1][colAddress_[3]].setIsHadCount(block_[rowAddress_[3] + 1][colAddress_[3]].getIsHadBlock() + 1);
+
+					block_[rowAddress_[3] + 1][colAddress_[3]].setIsGetting(true);
 
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingBottomType(1);
@@ -167,6 +179,10 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 					//ブロックをプレイヤーに持たせる
 					block_[rowAddress_[3]][colAddress_[3] - 1].setIsHadBlock(true);
 
+					block_[rowAddress_[0]][colAddress_[0] - 1].setIsHadCount(block_[rowAddress_[0]][colAddress_[0] - 1].getIsHadBlock()+ 1);
+
+					block_[rowAddress_[0]][colAddress_[0] - 1].setIsGetting(true);
+
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingLeftType(1);
 
@@ -191,6 +207,8 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 
 ///ブロックとブロック
 void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
+	isGet_ = 0;
+
 	for (int r = 0; r < maxRow_; r++) {
 		for (int c = 0; c < maxCol_; c++) {
 
@@ -453,10 +471,19 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 					}
 				}
 			}
+		}
+	}
 
-			///保存
-			block_[r][c].Keep();
+	for (int i = 0; i < maxRow_; i++) {
+		for (int j = 0; j < maxCol_; j++) {
+			if (block_[i][j].getGetting() == true) {
+				isGet_++;
+				block_[i][j].setIsGetting(false);
 
+				if (isGet_ >= block_[i][j].getIsHadCount()) {
+					block_[i][j].setIsHadCount(isGet_);
+				}
+			}
 		}
 	}
 };

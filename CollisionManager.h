@@ -26,6 +26,8 @@ class CollisionManager {
 
 	bool initKeep_;
 
+	int isGet_;
+
 public:
 	CollisionManager(const int& maxRow, const int& maxCol) {
 
@@ -51,6 +53,7 @@ public:
 	Vec2 getBLtPreVertex() { return quad_.getLtVertex(); }
 	void setBLtPreVertex(Vec2 vertex, int r, int c) { bLtPreVertex_[r][c] = vertex; }
 
+	
 
 };
 

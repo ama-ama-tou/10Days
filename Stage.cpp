@@ -6,11 +6,11 @@
 #include "InputManager.h"
 
 void Stage::Init() {
-
+	playerHasBlockNum = 0;
 	isTutorial = false;
 	page = 0;
 	explanation.Init(kFieldLtPos, kFieldSize, Vec2(0.0f, 0.0f),
-		Novice::LoadTexture("./Resources/image/obj/button/stage1.png"),
+		Novice::LoadTexture("./Resources/image/obj/tutorial.png"),
 		Vec2(0.0f, 0.0f), Vec2(1000.0f, 1000.0f), WHITE
 	);
 
@@ -184,25 +184,24 @@ void Stage::Update(char* keys, char* preKeys) {
 	collision->Draw(block_);
 
 
-
-	if (playerHasBlockNum == NSBlockNum_) {
-		isClear_ = true;
-	}
-
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
-			if (block_[r][c].getIsPreHadBlock() == false && block_[r][c].getIsHadBlock() == true) {
+			
 				//クリア条件
-				playerHasBlockNum++;
-			}
+				playerHasBlockNum = block_[r][c].getIsHadCount();
+
+				if (playerHasBlockNum == NSBlockNum_) {
+					isClear_ = true;
+				}
+
+				Novice::ScreenPrintf(10, 500, "hasBlock=%d, goalBlocks=%d", playerHasBlockNum, NSBlockNum_);
+			
 		}
 	}
-	Novice::ScreenPrintf(10, 500, "hasBlock=%d, goalBlocks=%d", playerHasBlockNum, NSBlockNum_);
+	
 
 
-	if (playerHasBlockNum == NSBlockNum_) {
-		isClear_ = true;
-	}
+	
 
 
 	//背景の動き

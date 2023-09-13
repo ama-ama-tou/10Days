@@ -44,7 +44,6 @@ class Stage {
 
 	
 
-
 	//背景の四角（赤色）
 	Vec2 bkRedQuadPos_[20];
 	Vec2 bkRedQuadSize_[20];

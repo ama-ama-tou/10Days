@@ -34,6 +34,10 @@ class Block :
 	bool isHadBlock_;
 	bool isPreHadBlock_;
 
+	int isHadCount_;
+
+	bool isGetting_;
+
 	//ブロックがくっついたときの効果音
 	int SH_;
 	int VH_;
@@ -112,6 +116,9 @@ public:
 
 	int getHitting() { return isHit_; }
 	void setHitting(int isHit) { isHit_ = isHit; }
+
+	bool getGetting() { return isGetting_; }
+	void setIsGetting(bool isGetting) { isGetting_ = isGetting; }
 
 	/* int getResetAddressR_(int i, int j) { return resetAddressR_[i][j]; }
 	 void setResetAddressR_(int i, int j) { resetAddressC_[i][j] = type; }*/
@@ -202,5 +209,8 @@ public:
 	void setBRtColAddress(int ad) { bRtColAddress_ = ad; }
 	void setBLbColAddress(int ad) { bLbColAddress_ = ad; }
 	void setBRbColAddress(int ad) { bRbColAddress_ = ad; }
+
+	int getIsHadCount() { return isHadCount_; }
+	void setIsHadCount(int num) { isHadCount_ = num; }
 };
 
