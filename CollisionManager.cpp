@@ -278,7 +278,7 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 							cbro_ = static_cast<int>((block_[r][c].getScreenLtVertex().x - kFieldLtPos.x) / block_[r][c].getSize().x);
 
 
-							if (block_[rbro_][cbro_].getType() == WALL) {
+							if (block_[rbro_][cbro_].getType() == 3) {
 
 								player_.setPos(player_.getPrePos());
 								player_.pointInit(player_.getPos());
