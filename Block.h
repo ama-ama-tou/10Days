@@ -16,6 +16,8 @@ class Block :
     Vec2 pos_;
     Vec2 prePos_;
 
+    Block** block_;
+
     int GH_;
 
     int isHit_;

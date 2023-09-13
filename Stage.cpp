@@ -144,9 +144,9 @@ void Stage::Update(char* keys, char* preKeys) {
 	Novice::ScreenPrintf(10, 500, "hasBlock=%d, goalBlocks=%d", playerHasBlockNum, NSBlockNum_);
 
 
-	/*if (playerHasBlockNum == NSBlockNum_) {
+	if (playerHasBlockNum == NSBlockNum_) {
 		isClear_ = true;
-	}*/
+	}
 
 
 

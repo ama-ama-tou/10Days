@@ -48,6 +48,11 @@ void Block::Draw() {
 		}
 	}
 
+	for (int r = 0; r < 12; r++) {
+		for (int c = 0; c < 12; c++) {
+			block_[r][c].setType(block_[r][c].getType());
+		}
+	}
 	Quad::Draw();
 }
 

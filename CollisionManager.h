@@ -28,21 +28,10 @@ class CollisionManager {
 	int bLbColAddress_;
 	int bRbColAddress_;
 
+
 	///
 	int rbro_;
 	int cbro_;
-
-	///
-	int rltbro_;
-	int rrtbro_;
-	int rlbbro_;
-	int rrbbro_;
-
-	int cltbro_;
-	int crtbro_;
-	int clbbro_;
-	int crbbro_;
-
 	
 	//保存用の変数
 	Vec2 bLtPreVertex_[12][12] = {};
