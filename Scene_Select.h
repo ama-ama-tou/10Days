@@ -15,7 +15,7 @@ private:
 
 	int stageSelectSH_;
 	int stageSelectVH_;
-//	int frameCount_;
+	int frameCount_;
 	bool isRang_;
 
 	Quad selectBar_;

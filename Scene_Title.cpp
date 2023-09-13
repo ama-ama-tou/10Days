@@ -64,7 +64,7 @@ void Scene_Title::Draw() {
 
 		//bgmを鳴らす
 	if (Novice::IsPlayingAudio(backgroundVH_) == false) {
-		backgroundVH_=Novice::PlayAudio(backgroundSH_, true, 0.1f);
+		backgroundVH_=Novice::PlayAudio(backgroundSH_, true, 0.2f);
 	}
 
 	titleBar.Draw();
