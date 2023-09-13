@@ -34,7 +34,7 @@ void Scene_Game::Load() {
 
 	const char* goSelectGH = "./Resources/image/obj/button/goSelectSceneButton.png";
 	goSelect_.Init(goSelectPos, goSelectButtonSize, Vec2(0.0f, 0.0f),
-		goSelectGH, 0x53558bff, WHITE,
+		goSelectGH, kBeforeColor,kAfterColor,
 		Vec2(0.0f, 0.0f), goSelectButtonImageSize);
 
 	///リセットボタン
