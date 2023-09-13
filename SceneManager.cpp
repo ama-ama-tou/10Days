@@ -27,9 +27,8 @@ void SceneManager::Update() {
 			if (preSceneNo_==SCENE_SELECT) {
 				sceneArr_[SCENE_TITLE]->Unload();
 			}
-			sceneArr_[preSceneNo_]->Unload();
 		}
-		
+		sceneArr_[preSceneNo_]->Unload();
 		
 		//シーンが変わったら初期化
 		sceneArr_[sceneNo_]->Load();
