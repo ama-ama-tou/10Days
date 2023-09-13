@@ -73,8 +73,7 @@ class Stage {
 	int frameCount_;
 	bool isRang_;
 
-	int backgroundSH_;
-	int backgroundVH_;
+	
 
 public:
 	
@@ -115,7 +114,7 @@ public:
 	void Draw();
 	void TutorialDraw();
 
-	void Unload() { Novice::StopAudio(backgroundVH_); };
+	void Unload() {  };
 
 	bool getIsClear() { return isClear_; }
 

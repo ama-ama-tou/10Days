@@ -123,8 +123,7 @@ void Stage::Init() {
 	frameCount_ = 0;
 
 
-	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
-	backgroundVH_ = -1;
+	
 }
 
 void Stage::Update(char* keys, char* preKeys) {
@@ -318,10 +317,7 @@ void Stage::Draw() {
 		Novice::StopAudio(stageSelectVH_);
 	}
 
-	//bgmを鳴らす
-	if (Novice::IsPlayingAudio(backgroundVH_) == 0 || backgroundVH_ == -1) {
-		backgroundVH_ = Novice::PlayAudio(backgroundSH_, true, 0.3f);
-	}
+	
 
 	//===================
 	//背景の四角
@@ -388,3 +384,4 @@ void Stage::TutorialDraw() {
 		explanation.Draw();
 	}
 }
+

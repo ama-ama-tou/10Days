@@ -10,6 +10,9 @@ class Scene_Game:
 
 	Button goSelect_;
 
+	int backgroundSH_;
+	int backgroundVH_;
+
 	std::unique_ptr<Stage> stageArr_[12];
 
 public:
