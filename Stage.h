@@ -62,6 +62,11 @@ class Stage {
 	int bkBlueQuadColor_[20];
 	int subtractiveColorBlue_[20];
 
+	int stageSelectSH_;
+	int stageSelectVH_;
+	int frameCount_;
+	bool isRang_;
+
 	int backgroundSH_;
 	int backgroundVH_;
 

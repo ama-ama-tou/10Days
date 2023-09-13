@@ -6,9 +6,9 @@
 
 void Scene_Select::Load() {
 
-	
+
 	//ステージセレクトバーの初期化
-	Vec2 titleBarPos = Vec2(1000.0f,10.0f);
+	Vec2 titleBarPos = Vec2(1000.0f, 10.0f);
 	Vec2 titleBarImageSize{ 512.0f,256.0f };
 	Vec2 titleBarSize{ 256.0f,128.0f };
 	int titleBarGH = Novice::LoadTexture("./Resources/image/obj/selectBar.png");
@@ -23,6 +23,11 @@ void Scene_Select::Load() {
 	Vec2 goTitleButtonImageSize{512.0f,256.0f};
 	Vec2 goTitleButtonSize{256.0f,128.0f};
 	
+	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
+	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
+		goTitleGH, 0x53558bff, WHITE,
+		Vec2(0.0f, 0.0f), goTitleButtonImageSize);
+
 	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
 	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
 		goTitleGH, 0x53558bff, WHITE,
@@ -61,41 +66,40 @@ void Scene_Select::Load() {
 			Vec2(0.0f, 0.0f), selectButtonSize);
 	}
 
-	//ステージセレクトの効果音
-	stageSelectSH_ = Novice::LoadAudio("./Resources/sound/SE/select.mp3");
-	stageSelectVH_ = -1;
-	isRang_ = false;
+	
 }
 
 void Scene_Select::Update() {
 
 	go2Title.Update(inputManager->getMousePos(), inputManager->getClickState());
 
-	if (go2Title.getIsClicked()) {
-		Scene::sceneNum = SCENE_TITLE;
+	if (inputManager->getClickState()==1) {
+		
 	}
 
-	if (inputManager->GetKeys()[DIK_ESCAPE] && inputManager->GetPreKeys()[DIK_ESCAPE] == 0) {
+	if (go2Title.getISInsideMouse() == true) {
+		if (go2Title.getIsClicked() == true) {
+			Scene::sceneNum = SCENE_TITLE;
+		}
+	}
+	if (inputManager->GetKeys()[DIK_ESCAPE] && inputManager->GetPreKeys()[DIK_ESCAPE] == false) {
 		Scene::sceneNum = SCENE_TITLE;
+
 	}
 
 	for (int i = 0; i < 12; i++) {
 		stage_[i].Update(inputManager->getMousePos(), inputManager->getClickState());
 		if (stage_[i].getIsClicked()) {
+			
 			Scene::stageNum_ = i;
 			Scene::sceneNum = SCENE_GAME;
 		}
 	}
+	
 }
 
 void Scene_Select::Draw() {
-	//効果音を鳴らす
-	if (isRang_) {
-		if (Novice::IsPlayingAudio(stageSelectVH_) == 0 || stageSelectVH_ == -1) {
-			stageSelectVH_ = Novice::PlayAudio(stageSelectSH_, false, 0.3f);
-		}
-		isRang_ = false;
-	}
+	
 
 	for (int i = 0; i < 12; i++) {
 		stage_[i].Draw();

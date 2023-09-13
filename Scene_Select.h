@@ -13,9 +13,7 @@ private:
 	
 	Button stage_[12];
 
-	int stageSelectSH_;
-	int stageSelectVH_;
-	bool isRang_;
+	
 
 	Quad selectBar_;
 
