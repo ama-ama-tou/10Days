@@ -10,7 +10,7 @@ void Stage::Init() {
 	isTutorial = false;
 	page = 0;
 	explanation.Init(kFieldLtPos, kFieldSize, Vec2(0.0f, 0.0f),
-		Novice::LoadTexture("./Resources/image/obj/tutorial.png"),
+		Novice::LoadTexture("./Resources/image/obj/button/stage1.png"),
 		Vec2(0.0f, 0.0f), Vec2(1000.0f, 1000.0f), WHITE
 	);
 
