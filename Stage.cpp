@@ -6,6 +6,8 @@
 #include "InputManager.h"
 
 void Stage::Init() {
+
+	isTutorial = true;
 	playerHasBlockNum = 0;
 	isTutorial = false;
 	page = 0;
@@ -123,8 +125,7 @@ void Stage::Init() {
 	frameCount_ = 0;
 
 
-	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
-	backgroundVH_ = -1;
+	
 }
 
 void Stage::Update(char* keys, char* preKeys) {
@@ -133,8 +134,6 @@ void Stage::Update(char* keys, char* preKeys) {
 	if (frameCount_ >= 80) {
 		isRang_ = true;
 	}
-
-
 
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
@@ -295,11 +294,17 @@ void Stage::Tutorial(char* keys, char* preKeys, int clickState) {
 		if ((keys[DIK_SPACE] && !preKeys[DIK_SPACE]) || clickState == 2) {
 			page--;
 		}
+		
+		if (page<0) {
+			page = 0;
+		}
+
+		explanation.setImageLtPos(Vec2(explanation.getImageSize().x * page,
+			0.0f));
+
 		if (page > 2) {
 			isTutorial = false;
 		}
-		explanation.setImageLtPos(Vec2(explanation.getImageSize().x * page,
-			explanation.getImageSize().y * page));
 
 	} else {
 		Stage::Update(keys, preKeys);
@@ -318,10 +323,7 @@ void Stage::Draw() {
 		Novice::StopAudio(stageSelectVH_);
 	}
 
-	//bgmを鳴らす
-	if (Novice::IsPlayingAudio(backgroundVH_) == 0 || backgroundVH_ == -1) {
-		backgroundVH_ = Novice::PlayAudio(backgroundSH_, true, 0.3f);
-	}
+	
 
 	//===================
 	//背景の四角
@@ -373,6 +375,8 @@ void Stage::Draw() {
 
 void Stage::TutorialDraw() {
 
+	Stage::Draw();
+
 	if (isTutorial) {
 		Novice::DrawBox(
 			static_cast<int>(kFieldLtPos.x),
@@ -380,11 +384,10 @@ void Stage::TutorialDraw() {
 			static_cast<int>(kFieldSize.x),
 			static_cast<int>(kFieldSize.y),
 			0.0f,
-			0x00000077,
+			0x000000f7,
 			kFillModeSolid
 		);
 		explanation.Draw();
 	}
-	Stage::Draw();
-
 }
+

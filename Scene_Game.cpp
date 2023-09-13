@@ -34,14 +34,42 @@ void Scene_Game::Load() {
 
 	const char* goSelectGH = "./Resources/image/obj/button/goSelectSceneButton.png";
 	goSelect_.Init(goSelectPos, goSelectButtonSize, Vec2(0.0f, 0.0f),
-		goSelectGH, 0x53558bff, WHITE,
+		goSelectGH, kBeforeColor,kAfterColor,
 		Vec2(0.0f, 0.0f), goSelectButtonImageSize);
 
+	///リセットボタン
+	const char* resetGH = "./Resources/image/obj/button/reset.png";
+	Vec2 resetPos{ 20.0f,80.0f };
+	Vec2 resetImageSize{ 760.0f,220.0f };
+	Vec2 resetSize{ 190.0f,55.0f };
+	reset.Init(resetPos, resetSize, Vec2(0.0f, 0.0f),
+		resetGH,
+		kBeforeColor, kAfterColor,
+		Vec2(0.0f, 0.0f), resetImageSize);
+
+
+	Novice::StopAudio(backgroundVH_);
+	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
+	backgroundVH_ = -1;
+	isRang_ = false;
 
 	stageArr_[stageNum_]->Init();
 }
 
 void Scene_Game::Update() {
+
+	goSelect_.Update(inputManager->getMousePos(), inputManager->getClickState());
+	reset.Update(inputManager->getMousePos(), inputManager->getClickState());
+
+	if (goSelect_.getIsClicked() == true) {
+		Scene::sceneNum = SCENE_SELECT;
+	}
+
+	if ((!inputManager->GetKeys()[DIK_SPACE] && inputManager->GetPreKeys()[DIK_SPACE])||reset.getIsClicked()) {
+		stageArr_[stageNum_]->Init();
+	}
+
+
 	if (stageNum_ == STAGE_1ST) {
 		stageArr_[STAGE_1ST]->Tutorial(inputManager->GetKeys(), inputManager->GetPreKeys(), inputManager->getClickState());
 	} else {
@@ -49,23 +77,32 @@ void Scene_Game::Update() {
 	}
 
 	if (stageArr_[stageNum_]->getIsClear()) {
-		Scene::sceneNum = SCENE_CLEAR;
+		Scene::sceneNum = SCENE_CLEAR; Novice::StopAudio(backgroundVH_);
+		isRang_ = true;
 	}
 	Novice::ScreenPrintf(100, 100, "stageNum=%d", stageNum_);
 
 }
 
 void Scene_Game::Draw() {
-
-	goSelect_.Draw();
+	if (!isRang_) {
+		//bgmを鳴らす
+		if (Novice::IsPlayingAudio(backgroundVH_) == 0 || backgroundVH_ == -1) {
+			backgroundVH_ = Novice::PlayAudio(backgroundSH_, true, 0.3f);
+		}
+	}
 	
+	reset.Draw();
+	goSelect_.Draw();
+
 	if (stageNum_ == STAGE_1ST) {
-		stageArr_[stageNum_]->TutorialDraw();
+		stageArr_[STAGE_1ST]->TutorialDraw();
 	} else {
 		stageArr_[stageNum_]->Draw();
 	}
 }
 
 void Scene_Game::Unload() {
+	Novice::StopAudio(backgroundVH_);
 	stageArr_[stageNum_]->Unload();
 };

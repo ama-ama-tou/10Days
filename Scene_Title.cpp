@@ -1,4 +1,5 @@
 ﻿#include "Scene_Title.h"
+#include "Scene_Game.h"
 #include <Novice.h>
 
 void Scene_Title::Load() {
@@ -39,6 +40,7 @@ void Scene_Title::Load() {
 	
 	Button_exit.Init(exitButtonPos,buttonSize, Vec2(0.0f, 0.0f),
 		exitGH, 0x53558bff, 0xe28f8fff, Vec2(0.0f, 0.0f), buttonImageSize);
+
 
 }
 
