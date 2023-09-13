@@ -62,8 +62,8 @@ void Stage::Init() {
 		//==================
 
 		//座標をランダムで設定
-		bkRedQuadPos_[i].x = static_cast<float>(rand() % 1280);
-		bkRedQuadPos_[i].y = static_cast<float>(rand() % 720);
+		bkRedQuadPos_[i].x = static_cast<float>(rand() % 1280 - kFieldLtPos.x);
+		bkRedQuadPos_[i].y = static_cast<float>(rand() % 720 + kFieldLtPos.y);
 		//サイズをランダムで設定
 		bkRedQuadSize_[i].x = static_cast<float>(rand() % 11 + 10);
 		bkRedQuadSize_[i].y = bkRedQuadSize_[i].x;
@@ -86,8 +86,8 @@ void Stage::Init() {
 		//==================
 
 		//座標をランダムで設定
-		bkBlueQuadPos_[i].x = static_cast<float>(rand() % 1280);
-		bkBlueQuadPos_[i].y = static_cast<float>(rand() % 720);
+		bkBlueQuadPos_[i].x = static_cast<float>(rand() % 1280 - kFieldLtPos.x) ;
+		bkBlueQuadPos_[i].y = static_cast<float>(rand() % 720 + kFieldLtPos.y) ;
 		//サイズをランダムで設定
 		bkBlueQuadSize_[i].x = static_cast<float>(rand() % 11 + 10);
 		bkBlueQuadSize_[i].y = bkBlueQuadSize_[i].x;
@@ -106,12 +106,23 @@ void Stage::Init() {
 
 	}
 
+	//ステージセレクトの効果音
+	stageSelectSH_ = Novice::LoadAudio("./Resources/sound/SE/select.mp3");
+	stageSelectVH_ = -1;
+	isRang_ = false;
+	frameCount_ = 0;
+
+
 	backgroundSH_ = Novice::LoadAudio("./Resources/sound/BGM/play.mp3");
 	backgroundVH_ = -1;
 }
 
 void Stage::Update(char* keys, char* preKeys) {
-	player_.Update(keys, preKeys);
+	//ステージセレクトされた時の音
+	frameCount_++;
+	if (frameCount_ >= 80) {
+		isRang_ = true;
+	}
 
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
@@ -125,6 +136,15 @@ void Stage::Update(char* keys, char* preKeys) {
 		}
 	}
 
+	for (int r = 0; r < row_; r++) {
+		for (int c = 0; c < col_; c++) {
+			block_[r][c].HitUpdate();
+		}
+	}
+	Novice::ScreenPrintf(10, 500, "hasBlock=%d, goalBlocks=%d", playerHasBlockNum, NSBlockNum_);
+
+	player_.Update(keys, preKeys);
+
 	collision->playerCollision(player_, block_);
 	collision->blockCollision(player_, block_);
 
@@ -133,7 +153,7 @@ void Stage::Update(char* keys, char* preKeys) {
 			if (block_[r][c].getType() != WALL) {
 				if (block_[r][c].getIsHadBlock() == true) {
 					block_[r][c].Update(player_.getScreenLtVertex());
-					block_[r][c].HitUpdate();
+					
 				}
 			}
 
@@ -146,9 +166,13 @@ void Stage::Update(char* keys, char* preKeys) {
 
 
 
+	if (playerHasBlockNum == NSBlockNum_) {
+		isClear_ = true;
+	}
+
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
-			if (block_[r][c].getIsHadBlock() == true && block_[r][c].getIsPreHadBlock() == false) {
+			if (block_[r][c].getIsPreHadBlock() == false && block_[r][c].getIsHadBlock() == true) {
 				//クリア条件
 				playerHasBlockNum++;
 			}
@@ -162,6 +186,8 @@ void Stage::Update(char* keys, char* preKeys) {
 	}
 
 
+		isClear_ = true;
+	}
 
 
 	//背景の動き
@@ -196,11 +222,11 @@ void Stage::Update(char* keys, char* preKeys) {
 			subtractiveColorRed_[i] *= -1;
 		}
 
-		//画面外に出たら再スポーン
-		if (bkRedQuadPos_[i].x >= 1280.0f || bkRedQuadPos_[i].x <= 0.0f ||
-			bkRedQuadPos_[i] >= 720.0f || bkRedQuadPos_[i].y <= 0.0f) {
-			bkRedQuadPos_[i].x = static_cast<float>(rand() % 1280);
-			bkRedQuadPos_[i].y = static_cast<float>(rand() % 720);
+		// 画面外に出たら再スポーン
+		if (bkRedQuadPos_[i].x >= 1280.0f + kFieldLtPos.x || bkRedQuadPos_[i].x <= -kFieldLtPos.x ||
+			bkRedQuadPos_[i].y >= 720.0f + kFieldLtPos.y || bkRedQuadPos_[i].y <= kFieldLtPos.y) {
+			bkRedQuadPos_[i].x = static_cast<float>(rand() % 1280) - kFieldLtPos.x;
+			bkRedQuadPos_[i].y = static_cast<float>(rand() % 720) + kFieldLtPos.y;
 		}
 
 
@@ -235,11 +261,11 @@ void Stage::Update(char* keys, char* preKeys) {
 			subtractiveColorBlue_[i] *= -1;
 		}
 
-		//画面外に出たら再スポーン
-		if (bkBlueQuadPos_[i].x >= 1280.0f || bkBlueQuadPos_[i].x <= 0.0f ||
-			bkBlueQuadPos_[i] >= 720.0f || bkBlueQuadPos_[i].y <= 0.0f) {
-			bkBlueQuadPos_[i].x = static_cast<float>(rand() % 1280);
-			bkBlueQuadPos_[i].y = static_cast<float>(rand() % 720);
+		// 画面外に出たら再スポーン
+		if (bkBlueQuadPos_[i].x >= 1280.0f + kFieldLtPos.x || bkBlueQuadPos_[i].x <= -kFieldLtPos.x ||
+			bkBlueQuadPos_[i].y >= 720.0f + kFieldLtPos.y || bkBlueQuadPos_[i].y <= kFieldLtPos.y) {
+			bkBlueQuadPos_[i].x = static_cast<float>(rand() % 1280) - kFieldLtPos.x;
+			bkBlueQuadPos_[i].y = static_cast<float>(rand() % 720) + kFieldLtPos.y;
 		}
 
 	}
@@ -249,9 +275,18 @@ void Stage::Update(char* keys, char* preKeys) {
 
 void Stage::Draw() {
 
+	//効果音を鳴らす
+	if (!isRang_) {
+		if (Novice::IsPlayingAudio(stageSelectVH_) == 0 || stageSelectVH_ == -1) {
+			stageSelectVH_ = Novice::PlayAudio(stageSelectSH_, false, 0.1f);
+		}
+	} else {
+		Novice::StopAudio(stageSelectVH_);
+	}
+
 	//bgmを鳴らす
 	if (Novice::IsPlayingAudio(backgroundVH_) == 0 || backgroundVH_ == -1) {
-		backgroundVH_=Novice::PlayAudio(backgroundSH_, true, 0.5f);
+		backgroundVH_ = Novice::PlayAudio(backgroundSH_, true, 0.3f);
 	}
 
 	//===================

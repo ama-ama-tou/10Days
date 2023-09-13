@@ -9,7 +9,7 @@
 class Stage {
 
 	//何ステージか
-	static inline int stageNum_;
+	int stageNum_;
 
 	Coordinate stageCo_{ kFieldLtPos };
 
@@ -61,6 +61,11 @@ class Stage {
 	Vec2 bkBlueQuadMaxScale_[20];
 	int bkBlueQuadColor_[20];
 	int subtractiveColorBlue_[20];
+
+	int stageSelectSH_;
+	int stageSelectVH_;
+	int frameCount_;
+	bool isRang_;
 
 	int backgroundSH_;
 	int backgroundVH_;

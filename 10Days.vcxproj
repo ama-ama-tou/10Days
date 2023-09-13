@@ -114,7 +114,6 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Matrix3x3.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Quad.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -124,7 +123,7 @@
     <ClCompile Include="Scene_Select.cpp" />
     <ClCompile Include="Scene_Title.cpp" />
     <ClCompile Include="Stage.cpp" />
-    <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="Tutorial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base.h" />
@@ -172,7 +171,7 @@
     <ClInclude Include="Scene_Select.h" />
     <ClInclude Include="Scene_Title.h" />
     <ClInclude Include="Stage.h" />
-    <ClInclude Include="Triangle.h" />
+    <ClInclude Include="Tutorial.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="box.h" />
   </ItemGroup>
