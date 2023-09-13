@@ -28,11 +28,7 @@ void Scene_Select::Load() {
 		goTitleGH, 0x53558bff, WHITE,
 		Vec2(0.0f, 0.0f), goTitleButtonImageSize);
 
-	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
-	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
-		goTitleGH, 0x53558bff, WHITE,
-		Vec2(0.0f, 0.0f), goTitleButtonImageSize);
-
+	
 	//ステージセレクトボタン
 	const char* stageGH[12] = { "./Resources/image/obj/button/stage1.png",
 								"./Resources/image/obj/button/stage2.png",
