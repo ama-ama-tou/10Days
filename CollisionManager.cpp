@@ -73,8 +73,7 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 
 						player_.setRkeepTop(rowAddress_[0] - 1);
 						player_.setCkeepTop(colAddress_[0]);
-						player_.setSwitch(true);
-						player_.setIsSwitch(true);
+						
 
 						/*block_[rowAddress_[0] - 1][colAddress_[0]].setTypeReset(N_POLE, rowAddress_[0] - 1, colAddress_[0]);*/
 					} else if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == S_POLE) {
@@ -237,10 +236,6 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 
 					///今のアドレスを更新
 					block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].setType(keep);
-
-					
-				
-
 				
 					Vec2 keepCo;
 					///入手したときの座標
@@ -253,7 +248,7 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 					///今の座標に入手した時の座標を入れる
 					block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].setLtVertex(keepCo);
 
-					player_.setSwitch(false);
+					
 				
 
 				if (block_[r][c].getType() == N_POLE || block_[r][c].getType() == S_POLE) {
