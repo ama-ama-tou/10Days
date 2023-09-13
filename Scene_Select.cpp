@@ -96,7 +96,6 @@ void Scene_Select::Update() {
 			// 右端から右に移動したら左端に
 			selectNum_ -= 4;
 		}
-		trianglePos_.x = stage_[selectNum_].getLtVertex().x + 30.0f;
 	}
 
 	if (inputManager->GetKeys()[DIK_LEFT] && inputManager->GetPreKeys()[DIK_LEFT] == false) {
@@ -105,26 +104,28 @@ void Scene_Select::Update() {
 			// 左端から左に移動したら右端に
 			selectNum_ += 4;
 		}
-		trianglePos_.x = stage_[selectNum_].getLtVertex().x + 30.0f;
 	}
 
 	if (inputManager->GetKeys()[DIK_UP] && inputManager->GetPreKeys()[DIK_UP] == false) {
-		selectNum_ -= 3;
+		selectNum_ -= 4; // 上に移動
 		if (selectNum_ < 0) {
 			// 上端から上に移動したら下端に
 			selectNum_ += 12;
 		}
-		trianglePos_.y = stage_[selectNum_].getLtVertex().y;
 	}
 
 	if (inputManager->GetKeys()[DIK_DOWN] && inputManager->GetPreKeys()[DIK_DOWN] == false) {
-		selectNum_ += 3;
+		selectNum_ += 4; // 下に移動
 		if (selectNum_ >= 12) {
 			// 下端から下に移動したら上端に
 			selectNum_ -= 12;
 		}
-		trianglePos_.y = stage_[selectNum_].getLtVertex().y;
 	}
+
+	// triangleの座標を更新
+	trianglePos_.x = stage_[selectNum_].getLtVertex().x + 30.0f;
+	trianglePos_.y = stage_[selectNum_].getLtVertex().y;
+
 
 
 	if (inputManager->GetKeys()[DIK_RETURN]&&inputManager->GetPreKeys()[DIK_RETURN]) {
