@@ -1,6 +1,7 @@
 ﻿#include "Scene_Clear.h"
 #include <stdlib.h>
 #include <time.h>
+#include<Novice.h>
 
 void Scene_Clear::Load() {
 

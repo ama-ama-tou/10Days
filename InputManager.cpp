@@ -9,12 +9,12 @@ InputManager* InputManager::GetInstance() {
 
 // 更新処理
 void InputManager::Update() {
-	if (Novice::IsPressMouse(0)) {
+	if (Novice::IsTriggerMouse(0)) {
 		clickState_= LEFT_CLICK;
 	} else {
 		clickState_ = 0;
 	}
-	if (Novice::IsPressMouse(1)) {
+	if (Novice::IsTriggerMouse(1)) {
 		clickState_=RIGIHT_CLICK;
 	} 
 

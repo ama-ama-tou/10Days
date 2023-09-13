@@ -10,7 +10,7 @@ SceneManager::SceneManager() {
 	sceneNo_ = SCENE_CLEAR;
 	sceneArr_[sceneNo_]->Load();
 	
-	bg.Init(Vec2(0.0f, 0.0f),kWindowSize,/* 0xf0f8ffff*/0xffffffff);
+	bg.Init(Vec2(0.0f, 0.0f),kWindowSize, 0xf0f8ffff);
 }
 
 void SceneManager::Update() {
@@ -30,21 +30,25 @@ void SceneManager::Update() {
 			sceneArr_[preSceneNo_]->Unload();
 		}
 		
+		animationCount = 60;
 		//シーンが変わったら初期化
 		sceneArr_[sceneNo_]->Load();
 	}
-	
-	
-
+	if (animationCount<=0) {
 		sceneArr_[sceneNo_]->Update();
-	
+
+	} else {
+		animationCount--;
+	}
+		
 		exit_ = sceneArr_[sceneNo_]->getIsExitGame();
 
 	///=======================
 
 	///=======================
 	///描画処理
-	//	bg.Draw();
+		bg.Draw();
+
 		sceneArr_[sceneNo_]->Draw();
 		
 	///=======================

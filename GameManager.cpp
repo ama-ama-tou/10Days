@@ -13,9 +13,6 @@ void GameManager::Run() {
 
 		//選ばれたシーンの処理
 		sceneManager_->Update();
-
-
-
 		// フレームの終了
 		Novice::EndFrame();
 

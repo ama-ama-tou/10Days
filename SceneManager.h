@@ -17,6 +17,8 @@ private:
 
 	int stageNo;
 
+	int animationCount=60;
+
 	//バックグラウンド
 	Box bg;
 
