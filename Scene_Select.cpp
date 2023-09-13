@@ -17,7 +17,7 @@ void Scene_Select::Load() {
 	
 	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
 	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
-		goTitleGH, 0x000000ff, WHITE,
+		goTitleGH, /0x53558bff, WHITE,
 		Vec2(0.0f, 0.0f), goTitleButtonImageSize);
 
 	//ステージセレクトボタン
@@ -61,6 +61,7 @@ void Scene_Select::Load() {
 
 void Scene_Select::Update() {
 
+	go2Title.Update(inputManager->getMousePos(), inputManager->getClickState());
 
 	if (go2Title.getIsClicked()) {
 		Scene::sceneNum = SCENE_TITLE;
