@@ -13,6 +13,14 @@ private:
 	
 	Button stage_[12];
 
+	//選んでるステージを示す三角
+	Quad triangle_;
+	Vec2 trianglePos_;
+	Vec2 triangleSize_;
+	Vec2 triangleVertex_[4];
+	int triangleGH_;
+	int selectNum_;
+
 	
 
 	Quad selectBar_;
