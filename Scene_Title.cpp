@@ -48,10 +48,13 @@ void Scene_Title::Update() {
 	Button_goSelect.Update(inputManager->getMousePos(), inputManager->getClickState());
 	Button_exit.Update(inputManager->getMousePos(), inputManager->getClickState());
 
-	if (Button_goSelect.getIsClicked()) {
-		
-		Scene::sceneNum = SCENE_SELECT;
+	if (Button_goSelect.getISInsideMouse() == true) {
+		if (Button_goSelect.getIsClicked() == true) {
+
+			Scene::sceneNum = SCENE_SELECT;
+		}
 	}
+	
 	if (Button_exit.getIsClicked()) {
 		setIsExitGame(true);
 	}

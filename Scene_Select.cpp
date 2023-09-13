@@ -6,9 +6,9 @@
 
 void Scene_Select::Load() {
 
-	
+
 	//ステージセレクトバーの初期化
-	Vec2 titleBarPos = Vec2(1000.0f,10.0f);
+	Vec2 titleBarPos = Vec2(1000.0f, 10.0f);
 	Vec2 titleBarImageSize{ 512.0f,256.0f };
 	Vec2 titleBarSize{ 256.0f,128.0f };
 	int titleBarGH = Novice::LoadTexture("./Resources/image/obj/selectBar.png");
@@ -19,10 +19,10 @@ void Scene_Select::Load() {
 
 
 	//タイトル画面に戻るボタン
-	Vec2 goTitlePos = Vec2(20.0f, 10.0f);
-	Vec2 goTitleButtonImageSize{760.0f,220.0f};
-	Vec2 goTitleButtonSize{256.0f,128.0f};
-	
+	Vec2 goTitlePos = Vec2(20.0f, 30.0f);
+	Vec2 goTitleButtonImageSize{ 760.0f,220.0f };
+	Vec2 goTitleButtonSize{ 190.0f,55.0f };
+
 	const char* goTitleGH = "./Resources/image/obj/button/goTitleButton.png";
 	go2Title.Init(goTitlePos, goTitleButtonSize, Vec2(0.0f, 0.0f),
 		goTitleGH, 0x53558bff, WHITE,
@@ -71,12 +71,14 @@ void Scene_Select::Update() {
 
 	go2Title.Update(inputManager->getMousePos(), inputManager->getClickState());
 
-	if (go2Title.getIsClicked()) {
-		Scene::sceneNum = SCENE_TITLE;
+	if (go2Title.getISInsideMouse() == true) {
+		if (go2Title.getIsClicked() == true) {
+			Scene::sceneNum = SCENE_TITLE;
+		}
 	}
-
-	if (inputManager->GetKeys()[DIK_ESCAPE] && inputManager->GetPreKeys()[DIK_ESCAPE] ==false) {
+	if (inputManager->GetKeys()[DIK_ESCAPE] && inputManager->GetPreKeys()[DIK_ESCAPE] == false) {
 		Scene::sceneNum = SCENE_TITLE;
+
 	}
 
 	for (int i = 0; i < 12; i++) {
