@@ -71,9 +71,9 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 					block_[rowAddress_[0] - 1][colAddress_[0]].setIsHadBlock(true);
 
 					block_[rowAddress_[0] - 1][colAddress_[0]].setIsHadCount(block_[rowAddress_[0] - 1][colAddress_[0]].getIsHadCount() + 1);
-					if (block_[rowAddress_[0] - 1][colAddress_[0]].getGetting() == false) {
+					/*if (block_[rowAddress_[0] - 1][colAddress_[0]].getGetting() == false) {
 						block_[rowAddress_[0] - 1][colAddress_[0]].setIsGetting(true);
-					}
+					}*/
 
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingTopType(1);
