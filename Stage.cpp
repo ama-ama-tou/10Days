@@ -111,8 +111,14 @@ void Stage::Init() {
 }
 
 void Stage::Update(char* keys, char* preKeys) {
-	player_.Update(keys, preKeys);
+	for (int r = 0; r < row_; r++) {
+		for (int c = 0; c < col_; c++) {
+			block_[r][c].HitUpdate();
+		}
+	}
+	Novice::ScreenPrintf(10, 500, "hasBlock=%d, goalBlocks=%d", playerHasBlockNum, NSBlockNum_);
 
+	player_.Update(keys, preKeys);
 
 	collision->playerCollision(player_, block_);
 	collision->blockCollision(player_, block_);
@@ -122,7 +128,7 @@ void Stage::Update(char* keys, char* preKeys) {
 			if (block_[r][c].getType() != WALL) {
 				if (block_[r][c].getIsHadBlock() == true) {
 					block_[r][c].Update(player_.getScreenLtVertex());
-					block_[r][c].HitUpdate();
+					
 				}
 			}
 		}
@@ -133,9 +139,13 @@ void Stage::Update(char* keys, char* preKeys) {
 
 
 
+	if (playerHasBlockNum == NSBlockNum_) {
+		isClear_ = true;
+	}
+
 	for (int r = 0; r < row_; r++) {
 		for (int c = 0; c < col_; c++) {
-			if (block_[r][c].getIsHadBlock() == true && block_[r][c].getIsPreHadBlock() == false) {
+			if (block_[r][c].getIsPreHadBlock() == false && block_[r][c].getIsHadBlock() == true) {
 				//クリア条件
 				playerHasBlockNum++;
 			}
@@ -149,8 +159,6 @@ void Stage::Update(char* keys, char* preKeys) {
 
 		isClear_ = true;
 	}
-
-
 
 
 	//背景の動き
