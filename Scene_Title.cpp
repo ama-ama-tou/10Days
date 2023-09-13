@@ -29,7 +29,7 @@ void Scene_Title::Load() {
 
 	const char* goSelectGH = "./Resources/image/obj/button/goSelectButton.png";
 	Button_goSelect.Init(goSelectPos, buttonSize, Vec2(0.0f, 0.0f),
-		goSelectGH, 0x53558bff, 0xe28f8fff,
+		goSelectGH, kBeforeColor, kAfterColor,
 		Vec2(0.0f, 0.0f), buttonImageSize);
 
 	
