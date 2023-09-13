@@ -51,7 +51,6 @@ void Scene_Game::Update() {
 	if (goSelect_.getISInsideMouse() == true) {
 		if (goSelect_.getIsClicked() == true) {
 			Scene::sceneNum = SCENE_SELECT;
-			Novice::StopAudio(backgroundVH_);
 		}
 	}
 
@@ -86,6 +85,6 @@ void Scene_Game::Draw() {
 }
 
 void Scene_Game::Unload() {
-	
+	Novice::StopAudio(backgroundVH_);
 	stageArr_[stageNum_]->Unload();
 };
