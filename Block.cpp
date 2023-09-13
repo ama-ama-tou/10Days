@@ -20,6 +20,40 @@ void Block::Init(int MaxCol, int MaxRow, int colNum, int rowNum,
 	bRbColAddress_=0;
 
 
+	
+	///ブロックの各面がブロックと接しているか
+	isFacing_ = 0;
+	
+	for (int i = 0; i <4; i++) {
+		isFacingType_[4] = 0;
+	}
+
+	isHadBlock_ = 0;
+	isPreHadBlock_=0;
+
+	isHadCount_ = 0;
+
+	isGetting_ = 0;
+
+	
+	rowKeepTop_=0;
+	rowKeepRight_=0;
+	rowKeepBottom_=0;
+	rowKeepLeft_=0;
+
+	colKeepTop_=0;
+	colKeepRight_=0;
+	colKeepBottom_=0;
+	colKeepLeft_=0;
+
+	keepLtVer_={0.0f,0.0f};
+	keepRtVer_={0.0f,0.0f};
+	keepLbVer_={0.0f,0.0f};
+	keepRbVer_ = { 0.0f,0.0f };
+
+	keepIsHadBlock_ = 0;
+
+
 
 	int x = static_cast<int>(kFieldSize.x / MaxRow);
 	int y = static_cast<int>(kFieldSize.y / MaxCol);
@@ -127,7 +161,7 @@ void Block::setType(int type) {
 		testType_ = S_POLE;
 		GH_ = Novice::LoadTexture("./Resources/image/character/sPole.png");
 	} else if (type == 3) {
-		testType_ = WALL;
+		testType_ = 3;
 		GH_ = Novice::LoadTexture("./Resources/image/obj/wall.png");
 	} else {
 		GH_ = 0;
