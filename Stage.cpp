@@ -113,6 +113,17 @@ void Stage::Init() {
 void Stage::Update(char* keys, char* preKeys) {
 	player_.Update(keys, preKeys);
 
+	for (int r = 0; r < row_; r++) {
+		for (int c = 0; c < col_; c++) {
+			if (block_[r][c].getType() != WALL) {
+				if (block_[r][c].getIsHadBlock() == true) {
+					block_[r][c].setType(block_[r][c].getType());
+					block_[r][c].Update(player_.getScreenLtVertex());
+					block_[r][c].HitUpdate();
+				}
+			}
+		}
+	}
 
 	collision->playerCollision(player_, block_);
 	collision->blockCollision(player_, block_);
@@ -121,10 +132,13 @@ void Stage::Update(char* keys, char* preKeys) {
 		for (int c = 0; c < col_; c++) {
 			if (block_[r][c].getType() != WALL) {
 				if (block_[r][c].getIsHadBlock() == true) {
-					block_[r][c].Update(player_.getScreenLtVertex(), block_[r][c].getType());
+					
+					block_[r][c].Update(player_.getScreenLtVertex());
 					block_[r][c].HitUpdate();
 				}
 			}
+
+			
 		}
 	}
 

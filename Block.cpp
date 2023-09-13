@@ -37,6 +37,7 @@ void Block::Init(int MaxCol, int MaxRow,int colNum,int rowNum,
 void Block::Update(Vec2 pos) {
 	
 	setLocalCoOrigin(pos);
+
 }
 
 
@@ -48,15 +49,8 @@ void Block::Draw() {
 		}
 	}
 
-	for (int r = 0; r < 12; r++) {
-		for (int c = 0; c < 12; c++) {
-			setType(getType());
-		}
-	}
-
 	Quad::Draw();
 }
-
 
 int Block::CalcuRowAddress(int vertexNum) {
 	int row = { 0 };

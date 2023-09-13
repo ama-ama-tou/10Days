@@ -32,6 +32,14 @@ class Player
 	int isFacingRightType_;
 	int isFacingBottomType_;
 	int isFacingLeftType_;
+
+
+	int rKeepTop_;
+	int cKeepTop_;
+
+	bool switch_;
+
+	bool isSwitch_;
 	
 public:
 	//===============
@@ -83,6 +91,18 @@ public:
 	void setIsHitRt(bool isHit) { isHit_ = isHit; }
 	void setIsHitRb(bool isHit) { isHit_ = isHit; }
 	void setIsHitLb(bool isHit) { isHit_ = isHit; }
+
+	int getRkeepTop() { return rKeepTop_; }
+	void setRkeepTop(int ad) { rKeepTop_ = ad; }
+
+	int getCkeepTop() { return cKeepTop_; }
+	void setCkeepTop(int ad) { cKeepTop_ = ad; }
+
+	bool getSwitch() { return switch_; }
+	void setSwitch(bool switchA) { switch_ = switchA; }
+
+	bool getIsSwitch() { return isSwitch_; }
+	void setIsSwitch(bool switchA) { isSwitch_ = switchA; }
 
 	//どの面が接しているか(上→右→下→左)
 	bool getIsFacingTop() { return isFacing_[0]; }

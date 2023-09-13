@@ -36,6 +36,8 @@ class CollisionManager {
 	//保存用の変数
 	Vec2 bLtPreVertex_[12][12] = {};
 
+
+
 public:
 	CollisionManager(const int& maxRow, const int& maxCol) {
 	
