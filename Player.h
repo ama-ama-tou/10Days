@@ -37,10 +37,6 @@ class Player
 	int rKeepTop_;
 	int cKeepTop_;
 
-	bool switch_;
-
-	bool isSwitch_;
-	
 public:
 	//===============
 	//メンバ関数
@@ -98,11 +94,6 @@ public:
 	int getCkeepTop() { return cKeepTop_; }
 	void setCkeepTop(int ad) { cKeepTop_ = ad; }
 
-	bool getSwitch() { return switch_; }
-	void setSwitch(bool switchA) { switch_ = switchA; }
-
-	bool getIsSwitch() { return isSwitch_; }
-	void setIsSwitch(bool switchA) { isSwitch_ = switchA; }
 
 	//どの面が接しているか(上→右→下→左)
 	bool getIsFacingTop() { return isFacing_[0]; }

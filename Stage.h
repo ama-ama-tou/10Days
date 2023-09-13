@@ -9,9 +9,11 @@
 #include"Scene.h"
 
 class Stage {
-
-	//何ステージか
-	int stageNum_;
+	// チュートリアル用-------
+	bool isTutorial;
+	Quad explanation;
+	int page;
+	//---------------------
 
 	Coordinate stageCo_{ kFieldLtPos };
 
@@ -76,9 +78,7 @@ class Stage {
 
 public:
 	
-	Stage(int stageNum,const std::string& csvFilePath) :csvFilePath_(csvFilePath) {
-		
-		stageNum_ = stageNum;
+	Stage(const std::string& csvFilePath) :csvFilePath_(csvFilePath) {
 		
 		//csvデータ読み込み
 		stageCsv_ = LoadCsv(csvFilePath);
@@ -110,8 +110,10 @@ public:
 	void Init();
 
 	void Update(char* keys,char*preKeys);
+	void Tutorial(char* keys, char* preKeys,int clickState);
 
 	void Draw();
+	void TutorialDraw();
 
 	void Unload() { Novice::StopAudio(backgroundVH_); };
 
