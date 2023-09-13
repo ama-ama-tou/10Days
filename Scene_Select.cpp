@@ -75,7 +75,7 @@ void Scene_Select::Update() {
 		Scene::sceneNum = SCENE_TITLE;
 	}
 
-	if (inputManager->GetKeys()[DIK_ESCAPE] && inputManager->GetPreKeys()[DIK_ESCAPE] == false) {
+	if (inputManager->GetKeys()[DIK_ESCAPE] && inputManager->GetPreKeys()[DIK_ESCAPE] == 0) {
 		Scene::sceneNum = SCENE_TITLE;
 	}
 
