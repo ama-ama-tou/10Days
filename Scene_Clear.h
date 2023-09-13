@@ -50,6 +50,8 @@ class Scene_Clear :
 	int soundCount_;
 	bool isRang_;
 
+	Button goSelect_;
+
 public:
 	//===================
 	//メンバ関数
