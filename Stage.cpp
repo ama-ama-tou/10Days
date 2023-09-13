@@ -7,10 +7,10 @@
 
 void Stage::Init() {
 
-	isTutorial = false;
+	isTutorial = true;
 	page = 0;
 	explanation.Init(kFieldLtPos, kFieldSize, Vec2(0.0f, 0.0f),
-		Novice::LoadTexture("./Resources/image/obj/button/stage1.png"),
+		Novice::LoadTexture("./Resources/image/obj/tutorial.png"),
 		Vec2(0.0f, 0.0f), Vec2(1000.0f, 1000.0f), WHITE
 	);
 
@@ -291,11 +291,13 @@ void Stage::Tutorial(char* keys, char* preKeys, int clickState) {
 		if ((keys[DIK_SPACE] && !preKeys[DIK_SPACE]) || clickState == 2) {
 			page--;
 		}
+		
+		explanation.setImageLtPos(Vec2(explanation.getImageSize().x * page,
+			0.0f));
+
 		if (page > 2) {
 			isTutorial = false;
 		}
-		explanation.setImageLtPos(Vec2(explanation.getImageSize().x * page,
-			explanation.getImageSize().y * page));
 
 	} else {
 		Stage::Update(keys, preKeys);
@@ -369,6 +371,8 @@ void Stage::Draw() {
 
 void Stage::TutorialDraw() {
 
+	Stage::Draw();
+
 	if (isTutorial) {
 		Novice::DrawBox(
 			static_cast<int>(kFieldLtPos.x),
@@ -381,6 +385,4 @@ void Stage::TutorialDraw() {
 		);
 		explanation.Draw();
 	}
-	Stage::Draw();
-
 }
