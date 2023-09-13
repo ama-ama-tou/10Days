@@ -65,7 +65,8 @@ void Scene_Game::Update() {
 	}
 
 	if (stageArr_[stageNum_]->getIsClear()) {
-		Scene::sceneNum = SCENE_CLEAR;
+		Scene::sceneNum = SCENE_CLEAR; Novice::StopAudio(backgroundVH_);
+		isRang_ = true;
 	}
 	Novice::ScreenPrintf(100, 100, "stageNum=%d", stageNum_);
 
