@@ -71,9 +71,10 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 					block_[rowAddress_[0] - 1][colAddress_[0]].setIsHadBlock(true);
 
 					block_[rowAddress_[0] - 1][colAddress_[0]].setIsHadCount(block_[rowAddress_[0] - 1][colAddress_[0]].getIsHadCount() + 1);
-					/*if (block_[rowAddress_[0] - 1][colAddress_[0]].getGetting() == false) {
+
+					if (block_[rowAddress_[0] - 1][colAddress_[0]].getGetting() == false) {
 						block_[rowAddress_[0] - 1][colAddress_[0]].setIsGetting(true);
-					}*/
+					}
 
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingTopType(1);
@@ -118,6 +119,7 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 					if (block_[rowAddress_[1]][colAddress_[1] + 1].getGetting() == false) {
 						block_[rowAddress_[1]][colAddress_[1] + 1].setIsGetting(true);
 					}
+
 					if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == N_POLE) {
 						player_.setIsFacingRightType(1);
 					} else if (block_[rowAddress_[0] - 1][colAddress_[0]].getType() == S_POLE) {
@@ -212,6 +214,19 @@ void CollisionManager::playerCollision(Player& player_, Block**& block_) {
 		player_.setPos(player_.getPrePos());
 		player_.pointInit(player_.getPos());
 	}
+
+	for (int r = 0; r < maxRow_; r++) {
+		for (int c = 0; c < maxCol_; c++) {
+			if (block_[r][c].getGetting() == true) {
+				isGet_++;
+				block_[r][c].setIsGetting(false);
+
+				if (isGet_ > block_[r][c].getIsHadCount()) {
+					block_[r][c].setIsHadCount(isGet_);
+				}
+			}
+		}
+	}
 };
 
 ///ブロックとブロック
@@ -230,7 +245,6 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 
 
 			if (block_[r][c].getIsHadBlock() == true) {
-
 				//頂点の番地の計算
 				if (block_[r][c].getType() == N_POLE || block_[r][c].getType() == S_POLE) {
 					for (int vertexNum = 0; vertexNum < 4; vertexNum++) {
@@ -249,33 +263,11 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 						}
 					}
 
-
 					for (int i = 0; i < maxRow_; i++) {
 						for (int j = 0; j < maxCol_; j++) {
-							block_[r][c].Keep();
+							block_[i][j].Keep();
 						}
 					}
-					
-
-					///前フレームの位置
-					int keep = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getType();
-
-					///前フレームのアドレスを更新
-					block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].setType(block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType());
-
-					///今のアドレスを更新
-					block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].setType(keep);
-
-					Vec2 keepCo;
-					///入手したときの座標
-					keepCo.x = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getLtVertex().x;
-					keepCo.y = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getLtVertex().y;
-
-					///入手したときの座標に動いていない座標ができる
-					block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].setLtVertex(block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getLtVertex());
-
-					///今の座標に入手した時の座標を入れる
-					block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].setLtVertex(keepCo);
 
 				}
 
@@ -478,20 +470,46 @@ void  CollisionManager::blockCollision(Player& player_, Block**& block_) {
 					}
 				}
 			}
-		}
-	}
 
-	for (int i = 0; i < maxRow_; i++) {
-		for (int j = 0; j < maxCol_; j++) {
-			if (block_[i][j].getGetting() == true) {
+
+			if (block_[r][c].getPreType() != block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType()) {
+				///前フレームの位置
+				int keep = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getType();
+
+				///前フレームのアドレスを更新
+				block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].setType(block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getType());
+
+				///今のアドレスを更新
+				block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].setType(keep);
+
+				Vec2 keepCo;
+				///入手したときの座標
+				keepCo.x = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getLtVertex().x;
+				keepCo.y = block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].getLtVertex().y;
+
+				///入手したときの座標に動いていない座標ができる
+				block_[block_[r][c].getRowKeepTop()][block_[r][c].getColKeepTop()].setLtVertex(block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].getLtVertex());
+
+				///今の座標に入手した時の座標を入れる
+				block_[block_[r][c].getBLtRowAddress()][block_[r][c].getBLtColAddress()].setLtVertex(keepCo);
+			}
+
+
+			if (block_[r][c].getGetting() == true) {
 				isGet_++;
-				block_[i][j].setIsGetting(false);
+				block_[r][c].setIsGetting(false);
 
-				if (isGet_ >= block_[i][j].getIsHadCount()) {
-					block_[i][j].setIsHadCount(isGet_);
+				if (isGet_ > block_[r][c].getIsHadCount()) {
+					block_[r][c].setIsHadCount(isGet_);
 				}
 			}
+
 		}
 	}
+
+
+
+
+	
 };
 

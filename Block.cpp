@@ -93,11 +93,11 @@ void Block::Update(Vec2 pos) {
 
 void Block::Draw() {
 
-	if (!isPreHadBlock_ && isHadBlock_) {
+	/*if (!isPreHadBlock_ && isHadBlock_) {
 		if (Novice::IsPlayingAudio(VH_) == 0 || VH_ == -1) {
 			VH_ = Novice::PlayAudio(SH_, false, 0.3f);
 		}
-	}
+	}*/
 
 	Quad::Draw();
 }
