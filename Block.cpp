@@ -163,6 +163,8 @@ void Block::setType(int type) {
 	} else if (type == 3) {
 		testType_ = 3;
 		GH_ = Novice::LoadTexture("./Resources/image/obj/wall.png");
+	} else if(type == 9){
+		testType_ = 9;
 	} else {
 		GH_ = 0;
 		testType_ = NONE;
