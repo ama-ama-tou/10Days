@@ -3,7 +3,7 @@
 #include <Novice.h>
 
 void Scene_Title::Load() {
-
+	
 	//titleBar初期化
 	Vec2 titlePos;
 	titlePos = Vec2{ 327.0f, 200.0f };

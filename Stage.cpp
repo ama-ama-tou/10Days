@@ -123,10 +123,7 @@ void Stage::Init() {
 	stageSelectSH_ = Novice::LoadAudio("./Resources/sound/SE/select.mp3");
 	stageSelectVH_ = -1;
 	isRang_ = false;
-	frameCount_ = 0;
-
-
-	
+	frameCount_ = 0;	
 }
 
 void Stage::Update(char* keys, char* preKeys) {
@@ -352,8 +349,6 @@ void Stage::Draw() {
 			if (block_[r][c].getType() != NONE) {
 				//blockが設置してあればDraw
 				block_[r][c].Draw();
-
-
 			}
 		}
 	}
