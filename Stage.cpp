@@ -184,7 +184,7 @@ void Stage::Update(char* keys, char* preKeys) {
 				//クリア条件
 				playerHasBlockNum = block_[r][c].getIsHadCount();
 
-				if (playerHasBlockNum == NSBlockNum_ + 1) {
+				if (playerHasBlockNum == NSBlockNum_ ) {
 					isClear_ = true;
 				}
 

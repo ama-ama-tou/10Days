@@ -93,11 +93,11 @@ void Block::Update(Vec2 pos) {
 
 void Block::Draw() {
 
-	if (!isPreHadBlock_ && isHadBlock_) {
+	/*if (!isPreHadBlock_ && isHadBlock_) {
 		if (Novice::IsPlayingAudio(VH_) == 0 || VH_ == -1) {
 			VH_ = Novice::PlayAudio(SH_, false, 0.3f);
 		}
-	}
+	}*/
 
 	Quad::Draw();
 }
@@ -163,6 +163,8 @@ void Block::setType(int type) {
 	} else if (type == 3) {
 		testType_ = 3;
 		GH_ = Novice::LoadTexture("./Resources/image/obj/wall.png");
+	} else if(type == 9){
+		testType_ = 9;
 	} else {
 		GH_ = 0;
 		testType_ = NONE;

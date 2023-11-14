@@ -47,6 +47,8 @@ void Player::Move(char* keys, char* preKeys) {
 
 
 	pointInit(pos_);
+
+
 }
 
 

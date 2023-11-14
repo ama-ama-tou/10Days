@@ -14,6 +14,9 @@ class CollisionManager {
 	int rowAddress_[4] = { 0 };
 	int colAddress_[4] = { 0 };
 
+	int preLtRowAddress_ = 0;
+	int preLrColAddress_ = 0;
+
 	int maxRow_;
 	int maxCol_;
 
